@@ -31,7 +31,7 @@ public interface IReCaptchaInterop
     /// Sends a reCAPTCHA token to the ReCaptchaInterop handler
     /// (Should only be used by the HTTP server with javascript/HostedObject)
     /// </summary>
-    /// <param name="token"></param>
+    /// <param name="token">The recieved token to send</param>
     void SendToken(
         string token);
 
@@ -39,6 +39,6 @@ public interface IReCaptchaInterop
     /// <summary>
     /// Creates a new ReCaptchaInterop
     /// </summary>
-    public static ReCaptchaInterop New() =>
+    public static IReCaptchaInterop New() =>
         new ReCaptchaInterop();
 }

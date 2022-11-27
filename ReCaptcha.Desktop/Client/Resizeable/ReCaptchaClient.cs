@@ -3,18 +3,18 @@ using ReCaptcha.Desktop.Configuration;
 using ReCaptcha.Desktop.EventArgs;
 using ReCaptcha.Desktop.HTTP.Interfaces;
 
-namespace ReCaptcha.Desktop.Client;
+namespace ReCaptcha.Desktop.Client.Resizeable;
 
 /// <summary>
-/// Client which handles all ReCaptcha verifications
+/// Client which handles all ReCaptcha verifications with extended resize functions
 /// </summary>
 public class ReCaptchaClient : IReCaptchaClient
 {
     /// <summary>
-    /// The default reCaptcha HTML page
+    /// The default reCaptcha HTML page with extended resize functions
     /// </summary>
-    public static readonly string ReCaptchaHtml =
-        "<script src='https://www.google.com/recaptcha/api.js?hl={0}' async defer></script> <script> window.onload = async function() {{ grecaptcha.execute(); let rendered = false; while (!rendered) {{ rendered = document.body.childElementCount > 1; await (new Promise(resolve => setTimeout(resolve, 100))); }}; document.body.childNodes[1].style = null; new MutationObserver(() => grecaptcha.execute()).observe(document.body.childNodes[1], {{ attributes: true, attributeFilter: ['style'] }}); }}; function onTokenRecieved(token) {{ try {{ const reciever = chrome.webview.hostObjects.reciever; reciever.SendToken(token); document.write('{1}'); }} catch {{ document.write('{2}'.replace('%token%', token)); }}; }}; </script> <style> body {{ overflow: hidden; }} .grecaptcha-badge {{ display: none; }} </style> <div class='g-recaptcha' on data-sitekey='{3}' data-callback='onTokenRecieved' data-size='invisible'></div>";
+    public static readonly string ResizeableReCaptchaHtml =
+        "<script src='https://www.google.com/recaptcha/api.js?hl={0}' async defer></script> <script> window.onload = async function() {{ grecaptcha.execute(); let rendered = false; while (!rendered) {{ rendered = document.body.childElementCount > 1; await (new Promise(resolve => setTimeout(resolve, 100))); }}; document.body.childNodes[1].style = null; new MutationObserver(() => grecaptcha.execute()).observe(document.body.childNodes[1], {{ attributes: true, attributeFilter: ['style'] }}); try {{ const reciever = chrome.webview.hostObjects.reciever; new ResizeObserver(() => reciever.Resize(document.body.childNodes[1].childNodes[1].offsetWidth, document.body.childNodes[1].childNodes[1].offsetHeight)).observe(document.body.childNodes[1].childNodes[1]); }} catch {{}}; }}; function onTokenRecieved(token) {{ try {{ const reciever = chrome.webview.hostObjects.reciever; reciever.SendToken(token); document.write('{1}'); }} catch {{ document.write('{2}'.replace('%token%', token)); }}; }}; </script> <style> body {{ overflow: hidden; }} .grecaptcha-badge {{ display: none; }} </style> <div class='g-recaptcha' on data-sitekey='{3}' data-callback='onTokenRecieved' data-size='invisible'></div>";
 
 
     readonly IHttpServer httpServer;
@@ -28,7 +28,7 @@ public class ReCaptchaClient : IReCaptchaClient
     {
         httpServer = IHttpServer.New(
             configuration.HttpConfiguration,
-            string.Format(ReCaptchaHtml,
+            string.Format(ResizeableReCaptchaHtml,
                 configuration.Language,
                 configuration.TokenRecievedHookedHtml.Replace("\n", "<br/>"),
                 configuration.TokenRecievedHtml.Replace("\n", "<br/>"),
@@ -65,7 +65,6 @@ public class ReCaptchaClient : IReCaptchaClient
         VerificationRecieved?.Invoke(this, new(token));
         return token;
     }
-
 
     /// <summary>
     /// Starts and stops the HTTP server and asynchronously calls verify callback with the url

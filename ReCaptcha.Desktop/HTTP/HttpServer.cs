@@ -2,7 +2,9 @@
 using ReCaptcha.Desktop.EventArgs;
 using ReCaptcha.Desktop.HTTP.Interfaces;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace ReCaptcha.Desktop.HTTP;
 
@@ -110,5 +112,28 @@ public class HttpServer : IHttpServer
                 // Invoke event
                 RequestErrorOccurred?.Invoke(this, new(ex));
             }
+    }
+
+
+    /// <summary>
+    /// Checks wether a connection is open on the given HttpServerConfig
+    /// </summary>
+    /// <param name="configuration">The HttpServer configuration to check</param>
+    /// <param name="cancellationToken">The token to cancel this action</param>
+    /// <returns>A bool wether its true</returns>
+    public static async Task<bool> IsOpenAsync(
+        HttpServerConfig configuration,
+        CancellationToken cancellationToken = default!)
+    {
+        try
+        {
+            using HttpClient client = new();
+            await client.GetAsync($"{configuration.Url}:{configuration.Port}/", cancellationToken);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

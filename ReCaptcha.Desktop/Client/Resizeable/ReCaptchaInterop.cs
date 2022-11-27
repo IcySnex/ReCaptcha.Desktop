@@ -1,10 +1,10 @@
 ﻿using ReCaptcha.Desktop.Client.Interfaces;
 using ReCaptcha.Desktop.EventArgs;
 
-namespace ReCaptcha.Desktop.Client;
+namespace ReCaptcha.Desktop.Client.Resizeable;
 
 /// <summary>
-/// COM Interop handler for communication with the HTTP server
+/// COM Interop handler for communication with the HTTP server with extended resize functions
 /// </summary>
 public class ReCaptchaInterop : IReCaptchaInterop
 {
@@ -23,6 +23,11 @@ public class ReCaptchaInterop : IReCaptchaInterop
     /// Fires when verifcation was cancelled from the HTTP server
     /// </summary>
     public event EventHandler<VerificationCancelledEventArgs>? VerificationCancelled;
+
+    /// <summary>
+    /// Fires when Google reCAPTCHA widget gets resized
+    /// </summary>
+    public event EventHandler<ReCaptchaResizedEventArgs>? ReCaptchaResized;
 
 
     private TaskCompletionSource<string> taskWaiter = new();
@@ -56,4 +61,15 @@ public class ReCaptchaInterop : IReCaptchaInterop
         taskWaiter.SetResult(token);
         VerificationRecieved?.Invoke(this, new(token));
     }
+
+    /// <summary>
+    /// Sends a resized event to the ReCaptchaInterop handler
+    /// (Should only be used by the HTTP server with javascript/HostedObject)
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    public void Resize(
+        int width,
+        int height) =>
+        ReCaptchaResized?.Invoke(this, new(width, height));
 }
