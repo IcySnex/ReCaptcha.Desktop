@@ -1,0 +1,20 @@
+﻿<UserControl
+    x:Class="ReCaptcha.Desktop.Sample.WPF.Views.HomeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ReCaptcha.Desktop.Sample.WPF.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Grid>
+        <TextBlock Text="{Binding Welcome}" />
+        <Button
+            Width="150"
+            Height="50"
+            Command="{Binding NavigateCommand}"
+            Content="Navigate" />
+    </Grid>
+</UserControl>
