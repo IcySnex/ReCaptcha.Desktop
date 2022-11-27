@@ -13,6 +13,11 @@ ReCaptcha.Desktop.Tests/bin/
 ReCaptcha.Desktop.Tests/obj/
 ReCaptcha.Desktop.Tests/Properties/
 
+ReCaptcha.Desktop.WPF/bin/
+ReCaptcha.Desktop.WPF/obj/
+ReCaptcha.Desktop.WPF/Properties/
+
+
 Samples/ReCaptcha.Desktop.Sample/bin/
 Samples/ReCaptcha.Desktop.Sample/obj/
 Samples/ReCaptcha.Desktop.Sample/Properties/
