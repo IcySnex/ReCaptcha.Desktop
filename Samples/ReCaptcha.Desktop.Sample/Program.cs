@@ -53,12 +53,6 @@ reCaptchaClient.VerificationRecieved += (s, e) =>
     Console.WriteLine($"\nToken Recieved:\n\tToken: {e.Token}\n\tOccurred At: {e.OccurredAt}\n");
     Console.ResetColor();
 };
-reCaptchaClient.VerificationCancelled += (s, e) =>
-{
-    Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine($"\nToken Recieved:\n\tOccurred At: {e.OccurredAt}\n");
-    Console.ResetColor();
-};
 
 string verifyCallback(
     string hostUrl,

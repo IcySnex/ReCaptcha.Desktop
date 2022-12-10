@@ -6,6 +6,11 @@ namespace ReCaptcha.Desktop.Client.Interfaces;
 public interface IReCaptchaClient
 {
     /// <summary>
+    /// The configuration used for this client
+    /// </summary>
+    ReCaptchaConfig Configuration { get; set; }
+
+    /// <summary>
     /// Fires when verifcation was recieved
     /// </summary>
     event EventHandler<VerificationRecievedEventArgs>? VerificationRecieved;

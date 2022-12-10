@@ -6,18 +6,19 @@ using Microsoft.Extensions.Configuration;
 using ReCaptcha.Desktop.Client.WPF;
 using Microsoft.Extensions.DependencyInjection;
 using ReCaptcha.Desktop.Configuration;
-using System.Windows.Media;
 using Microsoft.Extensions.Logging;
 using ReCaptcha.Desktop.Sample.WPF.Services;
 using ReCaptcha.Desktop.Sample.WPF.ViewModels;
-using ReCaptcha.Desktop.Sample.WPF.Views;
+using System.Windows.Media.Imaging;
 
 namespace ReCaptcha.Desktop.Sample.WPF;
 
 public partial class App : Application
 {
     readonly IHost host;
+
     public static IServiceProvider Provider { get; private set; } = default!;
+    public static InMemorySink Sink { get; private set; } = new();
 
     public App()
     {
@@ -25,6 +26,7 @@ public partial class App : Application
             .UseSerilog((context, configuration) =>
             {
                 configuration.WriteTo.Debug();
+                configuration.WriteTo.Sink(Sink);
             })
             .ConfigureAppConfiguration((context, builder) =>
             {
@@ -32,51 +34,50 @@ public partial class App : Application
             })
             .ConfigureServices((context, services) =>
             {
+                services.Configure<Models.Configuration>(context.Configuration);
+                Models.Configuration configuration = context.Configuration.Get<Models.Configuration>() ?? new();
+
                 // Create all configurations
                 HttpServerConfig httpConfig = new(
-                    url: context.Configuration.GetValue<string>("HttpUrl")!,
-                    port: context.Configuration.GetValue<int>("HttpPort")!);
-
+                    url: configuration.HttpUrl,
+                    port: configuration.HttpPort);
                 ReCaptchaConfig reCaptchaConfig = new(
-                    siteKey: context.Configuration.GetValue<string>("SiteKey")!,
-                    language: context.Configuration.GetValue<string>("Language")!,
-                    tokenRecievedHtml: context.Configuration.GetValue<string>("TokenRecievedHtml")!,
-                    tokenRecievedHookedHtml: context.Configuration.GetValue<string>("TokenRecievedHookedHtml")!,
+                    siteKey: configuration.SiteKey,
+                    language: configuration.Language,
+                    tokenRecievedHtml: configuration.TokenRecievedHtml,
+                    tokenRecievedHookedHtml: configuration.TokenRecievedHookedHtml,
                     httpConfiguration: httpConfig);
 
                 WindowConfig windowConfig = new(
-                    title: context.Configuration.GetValue<string>("Title")!,
-                    icon: context.Configuration.GetValue<ImageSource>("Icon")!,
-                    startupLocation: context.Configuration.GetValue<WindowStartupLocation>("StartupLocation"),
-                    left: context.Configuration.GetValue<int>("Left"),
-                    top: context.Configuration.GetValue<int>("Top"),
-                    showAsDialog: context.Configuration.GetValue<bool>("ShowAsDialog"),
-                    resizeToCenter: context.Configuration.GetValue<bool>("ResizeToCenter"));
+                    title: configuration.Title,
+                    icon: new BitmapImage(new(configuration.Icon)),
+                    startupLocation: configuration.StartupLocation,
+                    left: configuration.Left,
+                    top: configuration.Top,
+                    showAsDialog: configuration.ShowAsDialog,
+                    resizeToCenter: configuration.ResizeToCenter);
 
 
                 // Add ViewModels and MainView
                 services.AddSingleton<HomeViewModel>();
+                services.AddSingleton<CaptchaViewModel>();
                 services.AddSingleton<SettingsViewModel>();
 
-                services.AddSingleton<MainView>();
+                services.AddSingleton<MainViewModel>();
 
 
                 // Add services
                 services.AddSingleton<JsonConverter>();
-                services.AddSingleton<Navigation>();
 
-                services.AddSingleton((services) => new ReCaptchaClient(
-                    reCaptchaConfig,
-                    windowConfig,
-                    services.GetRequiredService<ILogger<ReCaptchaClient>>()));
+                services.AddSingleton(reCaptchaConfig);
+                services.AddSingleton(windowConfig);
+                services.AddSingleton<ReCaptchaClient>();
             })
             .Build();
         Provider = host.Services;
     }
 
-    protected override void OnStartup(StartupEventArgs e)
-    {
-        MainView mainView = Provider.GetRequiredService<MainView>();
-        mainView.Show();
-    }
+
+    protected override void OnStartup(StartupEventArgs e) =>
+        Provider.GetRequiredService<MainViewModel>().Navigate<HomeViewModel>();
 }

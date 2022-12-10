@@ -18,4 +18,16 @@
 	  <ProjectReference Include="..\..\ReCaptcha.Desktop.WPF\ReCaptcha.Desktop.WPF.csproj" />
 	  <ProjectReference Include="..\..\ReCaptcha.Desktop\ReCaptcha.Desktop.csproj" />
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <Content Include="Icon.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Page Update="Views\CaptchaView.xaml">
+	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+	  </Page>
+	</ItemGroup>
 </Project>

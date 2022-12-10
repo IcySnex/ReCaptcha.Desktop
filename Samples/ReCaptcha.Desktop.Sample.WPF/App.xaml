@@ -2,6 +2,59 @@
     x:Class="ReCaptcha.Desktop.Sample.WPF.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:ReCaptcha.Desktop.Sample.WPF">
-    <Application.Resources />
+    xmlns:conv="clr-namespace:ReCaptcha.Desktop.Sample.WPF.Converters"
+    xmlns:local="clr-namespace:ReCaptcha.Desktop.Sample.WPF"
+    xmlns:views="clr-namespace:ReCaptcha.Desktop.Sample.WPF.Views"
+    xmlns:vms="clr-namespace:ReCaptcha.Desktop.Sample.WPF.ViewModels">
+    <Application.Resources>
+
+        <!--  Converters  -->
+        <conv:TimeSpanConverter x:Key="TimeSpanConverter" />
+
+
+        <!--  Pages  -->
+        <DataTemplate DataType="{x:Type vms:HomeViewModel}">
+            <views:HomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:CaptchaViewModel}">
+            <views:CaptchaView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:SettingsViewModel}">
+            <views:SettingsView />
+        </DataTemplate>
+
+
+        <!--  controls  -->
+        <ControlTemplate x:Key="SettignsCard" TargetType="ContentControl">
+            <Border
+                Margin="0,8,0,0"
+                Padding="8"
+                Background="#70add8e6"
+                BorderBrush="#aaadd8e6"
+                BorderThickness="2"
+                CornerRadius="4">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" MinWidth="300" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock FontSize="16" Text="{TemplateBinding ContentStringFormat}" />
+                    <TextBlock
+                        Margin="0,18,0,0"
+                        FontSize="14"
+                        Opacity="0.5"
+                        Text="{TemplateBinding Tag}"
+                        TextWrapping="WrapWithOverflow" />
+
+                    <ContentControl
+                        Grid.Column="1"
+                        Margin="32,0,0,0"
+                        VerticalAlignment="Center"
+                        Content="{TemplateBinding Content}" />
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+    </Application.Resources>
 </Application>

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -31,7 +32,7 @@ public partial class Configuration : ObservableObject
     string title = "WPF Sample - Google reCAPTCHA";
 
     [ObservableProperty]
-    ImageSource icon = new BitmapImage(new("Assets/Icon.png"));
+    string icon = Environment.CurrentDirectory + "\\Icon.png";
 
     [ObservableProperty]
     WindowStartupLocation startupLocation = WindowStartupLocation.CenterScreen;
@@ -47,4 +48,8 @@ public partial class Configuration : ObservableObject
 
     [ObservableProperty]
     bool resizeToCenter = false;
+
+
+    [ObservableProperty]
+    TimeSpan timeout = TimeSpan.FromMinutes(1);
 }

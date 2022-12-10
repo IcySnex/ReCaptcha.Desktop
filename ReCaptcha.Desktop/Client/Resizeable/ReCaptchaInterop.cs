@@ -30,7 +30,7 @@ public class ReCaptchaInterop : IReCaptchaInterop
     public event EventHandler<ReCaptchaResizedEventArgs>? ReCaptchaResized;
 
 
-    private TaskCompletionSource<string> taskWaiter = new();
+    private TaskCompletionSource<string> taskWaiter = default!;
 
     /// <summary>
     /// Asynchronously waits until a token was sent by the HTTP server
@@ -40,6 +40,8 @@ public class ReCaptchaInterop : IReCaptchaInterop
     public Task<string> WaitAsyc(
         CancellationToken cancellationToken)
     {
+        taskWaiter = new();
+
         cancellationToken.Register(() =>
         {
             taskWaiter.TrySetCanceled();

@@ -17,7 +17,7 @@ public class ReCaptchaClient : IReCaptchaClient
         "<script src='https://www.google.com/recaptcha/api.js?hl={0}' async defer></script> <script> window.onload = async function() {{ grecaptcha.execute(); let rendered = false; while (!rendered) {{ rendered = document.body.childElementCount > 1; await (new Promise(resolve => setTimeout(resolve, 100))); }}; document.body.childNodes[1].style = null; new MutationObserver(() => grecaptcha.execute()).observe(document.body.childNodes[1], {{ attributes: true, attributeFilter: ['style'] }}); try {{ const reciever = chrome.webview.hostObjects.reciever; new ResizeObserver(() => reciever.Resize(document.body.childNodes[1].childNodes[1].offsetWidth, document.body.childNodes[1].childNodes[1].offsetHeight)).observe(document.body.childNodes[1].childNodes[1]); }} catch {{}}; }}; function onTokenRecieved(token) {{ try {{ const reciever = chrome.webview.hostObjects.reciever; reciever.SendToken(token); document.write('{1}'); }} catch {{ document.write('{2}'.replace('%token%', token)); }}; }}; </script> <style> body {{ overflow: hidden; }} .grecaptcha-badge {{ display: none; }} </style> <div class='g-recaptcha' on data-sitekey='{3}' data-callback='onTokenRecieved' data-size='invisible'></div>";
 
 
-    readonly IHttpServer httpServer;
+    IHttpServer httpServer = default!;
 
     /// <summary>
     /// Creates a new ReCaptchaClient
@@ -26,13 +26,29 @@ public class ReCaptchaClient : IReCaptchaClient
     public ReCaptchaClient(
         ReCaptchaConfig configuration)
     {
-        httpServer = IHttpServer.New(
-            configuration.HttpConfiguration,
-            string.Format(ResizeableReCaptchaHtml,
-                configuration.Language,
-                configuration.TokenRecievedHookedHtml.Replace("\n", "<br/>"),
-                configuration.TokenRecievedHtml.Replace("\n", "<br/>"),
-                configuration.SiteKey));
+        Configuration = configuration;
+    }
+
+
+    ReCaptchaConfig configuration = default!;
+    /// <summary>
+    /// The configuration used for this client
+    /// </summary>
+    public ReCaptchaConfig Configuration
+    {
+        get => configuration;
+        set
+        {
+            httpServer = IHttpServer.New(
+                value.HttpConfiguration,
+                string.Format(ResizeableReCaptchaHtml,
+                    value.Language,
+                    value.TokenRecievedHookedHtml.Replace("\n", "<br/>"),
+                    value.TokenRecievedHtml.Replace("\n", "<br/>"),
+                    value.SiteKey));
+
+            configuration = value;
+        }
     }
 
 
@@ -52,18 +68,23 @@ public class ReCaptchaClient : IReCaptchaClient
         Func<string, CancellationToken, string> verifyCallback,
         CancellationToken cancellationToken = default!)
     {
-        // Start HTTP server
-        string hostUrl = httpServer.Start()[0];
+        try
+        {
+            // Start HTTP server
+            string hostUrl = httpServer.Start()[0];
 
-        // Verify reCAPTCHA
-        string token = verifyCallback.Invoke(hostUrl, cancellationToken);
+            // Verify reCAPTCHA
+            string token = verifyCallback.Invoke(hostUrl, cancellationToken);
 
-        // Stop Server
-        httpServer.Stop();
-
-        // Invoke event and return token
-        VerificationRecieved?.Invoke(this, new(token));
-        return token;
+            // Invoke event and return token
+            VerificationRecieved?.Invoke(this, new(token));
+            return token;
+        }
+        finally
+        {
+            // Stop Server
+            httpServer.Stop();
+        }
     }
 
     /// <summary>
@@ -76,17 +97,22 @@ public class ReCaptchaClient : IReCaptchaClient
         Func<string, CancellationToken, Task<string>> verifyCallback,
         CancellationToken cancellationToken = default!)
     {
-        // Start HTTP server
-        string hostUrl = httpServer.Start()[0];
+        try
+        {
+            // Start HTTP server
+            string hostUrl = httpServer.Start()[0];
 
-        // Verify reCAPTCHA
-        string token = await verifyCallback.Invoke(hostUrl, cancellationToken);
+            // Verify reCAPTCHA
+            string token = await verifyCallback.Invoke(hostUrl, cancellationToken);
 
-        // Stop Server
-        httpServer.Stop();
-
-        // Invoke event and return token
-        VerificationRecieved?.Invoke(this, new(token));
-        return token;
+            // Invoke event and return token
+            VerificationRecieved?.Invoke(this, new(token));
+            return token;
+        }
+        finally
+        {
+            // Stop Server
+            httpServer.Stop();
+        }
     }
 }
