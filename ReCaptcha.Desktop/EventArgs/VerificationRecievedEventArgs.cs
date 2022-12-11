@@ -1,4 +1,6 @@
-﻿namespace ReCaptcha.Desktop.EventArgs;
+﻿using System.Text.Json.Serialization;
+
+namespace ReCaptcha.Desktop.EventArgs;
 
 /// <summary>
 /// Event arguments for when a verification successfully recieved
@@ -8,6 +10,7 @@ public class VerificationRecievedEventArgs : System.EventArgs
     /// <summary>
     /// The recieved token
     /// </summary>
+    [JsonPropertyName("token")]
     public string Token { get; }
 
     /// <summary>
@@ -18,6 +21,7 @@ public class VerificationRecievedEventArgs : System.EventArgs
     /// <summary>
     /// Creates new VerificationRecievedEventArgs
     /// </summary>
+    [JsonConstructor]
     public VerificationRecievedEventArgs(
         string token)
     {

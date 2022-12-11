@@ -13,7 +13,7 @@ namespace ReCaptcha.Desktop.Client.WPF;
 public class ReCaptchaClient : IReCaptchaClient
 {
     Resizeable.ReCaptchaClient baseClient = default!;
-    readonly Resizeable.ReCaptchaInterop reCaptchaInterop = new();
+    readonly ReCaptchaReciever reciever = new();
 
     readonly ILogger<ReCaptchaClient>? logger;
 
@@ -114,8 +114,8 @@ public class ReCaptchaClient : IReCaptchaClient
     /// </summary>
     public event EventHandler<VerificationCancelledEventArgs>? VerificationCancelled
     {
-        add => reCaptchaInterop.VerificationCancelled += value;
-        remove => reCaptchaInterop.VerificationCancelled -= value;
+        add => reciever.VerificationCancelled += value;
+        remove => reciever.VerificationCancelled -= value;
     }
 
     /// <summary>
@@ -123,8 +123,8 @@ public class ReCaptchaClient : IReCaptchaClient
     /// </summary>
     public event EventHandler<ReCaptchaResizedEventArgs>? ReCaptchaResized
     {
-        add => reCaptchaInterop.ReCaptchaResized += value;
-        remove => reCaptchaInterop.ReCaptchaResized -= value;
+        add => reciever.ReCaptchaResized += value;
+        remove => reciever.ReCaptchaResized -= value;
     }
 
 
@@ -213,7 +213,7 @@ public class ReCaptchaClient : IReCaptchaClient
             } ?? WindowConfiguration.Top;
             window.Top = top < 0 ? 0 : top > SystemParameters.PrimaryScreenHeight - e.Height ? SystemParameters.PrimaryScreenHeight - e.Height - 30 : top;
 
-            // Set width
+            // Set size
             webView.Width = e.Width;
             webView.Height = e.Height;
             hasResized = true;
@@ -231,7 +231,7 @@ public class ReCaptchaClient : IReCaptchaClient
 
         // Setup WebView
         await webView.EnsureCoreWebView2Async();
-        webView.CoreWebView2.AddHostObjectToScript("reciever", reCaptchaInterop);
+        reciever.SetWebView(webView.CoreWebView2);
 
         webView.CoreWebView2.Settings.AreDevToolsEnabled = false;
         webView.CoreWebView2.Settings.IsZoomControlEnabled = false;
@@ -245,7 +245,7 @@ public class ReCaptchaClient : IReCaptchaClient
             // Set page to hosted reCAPTCHA
             webView.Source = new(url);
             // Wait until verified
-            return reCaptchaInterop.WaitAsyc(cancellationToken);
+            return reciever.WaitAsyc(cancellationToken);
         }
 
         token = await baseClient.VerifyAsync(WaitForVerificationAsync, cancelSource.Token);

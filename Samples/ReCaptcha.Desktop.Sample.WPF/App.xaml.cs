@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using ReCaptcha.Desktop.Client.WPF;
 using Microsoft.Extensions.DependencyInjection;
 using ReCaptcha.Desktop.Configuration;
-using Microsoft.Extensions.Logging;
 using ReCaptcha.Desktop.Sample.WPF.Services;
 using ReCaptcha.Desktop.Sample.WPF.ViewModels;
 using System.Windows.Media.Imaging;
