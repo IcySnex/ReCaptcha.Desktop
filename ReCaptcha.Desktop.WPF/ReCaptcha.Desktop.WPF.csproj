@@ -5,11 +5,24 @@
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="UI\Assets\Icon.png" />
+	  <None Remove="UI\Assets\Roboto-Regular.ttf" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="UI\Assets\Icon.png">
+	    <CopyToOutputDirectory></CopyToOutputDirectory>
+	  </Resource>
+	</ItemGroup>
+	<ItemGroup>
 	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
 	  <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1418.22" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\ReCaptcha.Desktop\ReCaptcha.Desktop.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="UI\Assets\Roboto-Regular.ttf" />
 	</ItemGroup>
 </Project>

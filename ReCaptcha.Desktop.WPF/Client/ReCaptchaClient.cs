@@ -131,16 +131,16 @@ public class ReCaptchaClient : IReCaptchaClient
     /// <summary>
     /// Starts and stops the HTTP server and opens a new window for the user to verify
     /// </summary>
-    /// <param name="timeout">The timespan when this action times out</param>
+    /// <param name="cancellationToken">The token to cancel this action</param>
     /// <returns>A Google reCAPTCHA token</returns>
     public async Task<string> VerifyAsync(
-        TimeSpan? timeout = null)
+        CancellationToken cancellationToken = default!)
     {
         // Define result
         string? token = null;
 
         // Create cancellation token based on timeout
-        CancellationTokenSource cancelSource = timeout.HasValue ? new(timeout.Value) : new();
+        CancellationTokenSource cancelSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         cancelSource.Token.Register(() =>
         {
             // If cancelled and token is still not set close window
