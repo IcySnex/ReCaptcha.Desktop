@@ -17,6 +17,10 @@ ReCaptcha.Desktop.WPF/bin/
 ReCaptcha.Desktop.WPF/obj/
 ReCaptcha.Desktop.WPF/Properties/
 
+ReCaptcha.Desktop.WinUI/bin/
+ReCaptcha.Desktop.WinUI/obj/
+ReCaptcha.Desktop.WinUI/Properties/
+
 
 Samples/ReCaptcha.Desktop.Sample/bin/
 Samples/ReCaptcha.Desktop.Sample/obj/
@@ -25,3 +29,7 @@ Samples/ReCaptcha.Desktop.Sample/Properties/
 Samples/ReCaptcha.Desktop.Sample.WPF/bin/
 Samples/ReCaptcha.Desktop.Sample.WPF/obj/
 Samples/ReCaptcha.Desktop.Sample.WPF/Properties/
+
+Samples/ReCaptcha.Desktop.Sample.WinUI/bin/
+Samples/ReCaptcha.Desktop.Sample.WinUI/obj/
+Samples/ReCaptcha.Desktop.Sample.WinUI/Properties/

@@ -3,6 +3,9 @@ using ReCaptcha.Desktop.EventArgs;
 
 namespace ReCaptcha.Desktop.Client.Interfaces;
 
+/// <summary>
+/// Client which handles all ReCaptcha verifications
+/// </summary>
 public interface IReCaptchaClient
 {
     /// <summary>
