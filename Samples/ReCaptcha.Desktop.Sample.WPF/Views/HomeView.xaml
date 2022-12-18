@@ -10,7 +10,7 @@
     mc:Ignorable="d">
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Image Height="60" Source="../Assets/Icon.png" />
+        <Image Height="60" Source="../Icon.png" />
 
         <TextBlock
             Margin="12,0"

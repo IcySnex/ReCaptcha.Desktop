@@ -5,7 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ReCaptcha.Desktop.Sample.WPF.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
+    xmlns:ui="clr-namespace:ReCaptcha.Desktop.WPF.UI;assembly=ReCaptcha.Desktop.WPF"
+    d:DesignHeight="500"
     d:DesignWidth="800"
     mc:Ignorable="d">
 
@@ -37,11 +38,18 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button Command="{Binding StartCommand}" Content="Start" />
+                <ui:ReCaptcha
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                    IsLoading="{Binding IsLoading, Mode=TwoWay}"
+                    VerificationRemovedCommand="{Binding RemoveVerificationCommand}"
+                    VerificationRequestedCommand="{Binding VerifyCommand}" />
+
+                <!--<Button Command="{Binding StartCommand}" Content="Start" />-->
                 <TextBox
                     Grid.Column="1"
                     Margin="12,0,0,0"

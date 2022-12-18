@@ -8,6 +8,8 @@ using System.Windows.Media.Imaging;
 using System.Windows;
 using Microsoft.Extensions.Options;
 using System;
+using System.Diagnostics;
+using System.Threading;
 
 namespace ReCaptcha.Desktop.Sample.WPF.ViewModels;
 
@@ -32,6 +34,8 @@ public partial class CaptchaViewModel : ObservableObject
         HookHandlers();
     }
 
+
+    CancellationTokenSource? cancelSource;
 
     void HookHandlers()
     {
@@ -89,19 +93,45 @@ public partial class CaptchaViewModel : ObservableObject
 
 
     [ObservableProperty]
-    string token = "Press 'Start'!";
+    string token = "Press \"I'm not a robot\"!";
+
+    [ObservableProperty]
+    bool isChecked = false;
+
+    [ObservableProperty]
+    bool isLoading = false;
 
     [RelayCommand]
-    async Task StartAsync()
+    async Task VerifyAsync()
     {
+        // IMPLEMENT ERROR LOLLL
+        IsErrorVisible = true;
+        IsLoading = true;
+
         UpdateConfigurations();
         try
         {
-            Token = await captchaClient.VerifyAsync(configuration.Timeout);
+            cancelSource = new(configuration.Timeout);
+            Token = await captchaClient.VerifyAsync(cancelSource.Token);
         }
         catch (Exception ex)
         {
+            IsChecked = false;
+            IsErrorVisible = true;
             Token = $"Exception was thrown: {ex.Message} - {ex.InnerException?.Message}";
         }
+        finally
+        {
+            cancelSource = null;
+        }
+
+        IsLoading = false;
+    }
+
+    [RelayCommand]
+    void RemoveVerification()
+    {
+        Token = "Press \"I'm not a robot\"!";
+        cancelSource?.Cancel();
     }
 }
