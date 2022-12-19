@@ -26,6 +26,11 @@ public interface ITheme
     /// </summary>
     public SolidColorBrush ForegroundSecondary { get; }
 
+    /// <summary>
+    /// The error message color
+    /// </summary>
+    public SolidColorBrush Error { get; }
+
 
     /// <summary>
     /// The checkbox background color

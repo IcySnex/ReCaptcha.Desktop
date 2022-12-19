@@ -17,7 +17,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="CheckBox">
+                    <!--  STORYBOARDS  -->
                     <ControlTemplate.Resources>
+                        <!--  ANIMATION TO VISUALIZE FALSE STATE  -->
                         <Storyboard x:Key="FalseStoryboard">
                             <DoubleAnimation
                                 BeginTime="0:0:0.2"
@@ -52,6 +54,7 @@
                                 Duration="0:0:0.15" />
                         </Storyboard>
 
+                        <!--  ANIMATION TO VISUALIZE TRUE STATE  -->
                         <Storyboard x:Key="TrueStoryboard">
                             <DoubleAnimation
                                 Storyboard.TargetName="RootLayout"
@@ -83,6 +86,7 @@
                                 Duration="0:0:0.15" />
                         </Storyboard>
 
+                        <!--  ANIMATION TO VISUALIZE LOADING STATE  -->
                         <Storyboard x:Key="NullStoryboard">
                             <DoubleAnimation
                                 Storyboard.TargetName="RootLayout"
@@ -115,6 +119,7 @@
                                 Duration="0:0:0.15" />
                         </Storyboard>
 
+                        <!--  ANIMATION TO SPIN LOADER  -->
                         <Storyboard x:Key="LoadingSpinnerStoryboard" RepeatBehavior="Forever">
                             <DoubleAnimation
                                 Storyboard.TargetName="LoadingSpinnerRotation"
@@ -124,21 +129,30 @@
                         </Storyboard>
                     </ControlTemplate.Resources>
 
+                    <!--  UI  -->
                     <Grid Background="Transparent">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
+                        <!--  ROOT: CHECKBOX  -->
                         <Border
                             Name="RootLayout"
                             Width="28"
                             Height="28"
-                            Background="{Binding Tag.CheckBoxBackground, RelativeSource={RelativeSource TemplatedParent}}"
-                            BorderBrush="{Binding Tag.CheckBoxBorder, RelativeSource={RelativeSource TemplatedParent}}"
-                            BorderThickness="2"
-                            CornerRadius="2" />
+                            Background="{Binding Tag.CheckBoxBorder, RelativeSource={RelativeSource TemplatedParent}}"
+                            CornerRadius="2">
+                            <Grid>
+                                <Rectangle Name="RootError" Fill="{Binding Tag.Error, RelativeSource={RelativeSource TemplatedParent}}" />
+                                <Rectangle
+                                    Name="RootInner"
+                                    Margin="2"
+                                    Fill="{Binding Tag.CheckBoxBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Grid>
+                        </Border>
 
+                        <!--  LOADING SPINNER  -->
                         <Ellipse
                             Name="LoadingSpinner"
                             Width="28"
@@ -154,20 +168,24 @@
                             </Ellipse.RenderTransform>
                         </Ellipse>
 
+                        <!--  CHECKMARK  -->
                         <Viewbox
                             Name="Checkmark"
                             Width="0"
                             Height="25"
+                            Margin="0,0,0,5"
                             HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
+                            VerticalAlignment="Center"
                             Opacity="1"
                             Stretch="UniformToFill">
                             <Path Data="M64,12.73a3.91,3.91,0,0,0-6.68-2.81h0L24.07,43.15a3.88,3.88,0,0,1-5.44-.24h0L6.69,31h0a3.91,3.91,0,1,0-5.53,5.53h0l17.41,17.4v0a3.88,3.88,0,0,0,2.87,1.31,3.94,3.94,0,0,0,2.8-1.15h0L62.86,15.46h0A3.9,3.9,0,0,0,64,12.73Z" Fill="{Binding Tag.CheckBoxCheckmark, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Viewbox>
 
+                        <!--  CONTENT MESSAGE  -->
                         <TextBlock
+                            Name="ContentMessage"
                             Grid.Column="1"
-                            MaxWidth="150"
+                            MaxWidth="170"
                             Margin="12,0,0,0"
                             VerticalAlignment="Center"
                             FontFamily="{TemplateBinding FontFamily}"
@@ -175,27 +193,89 @@
                             Foreground="{Binding Tag.Foreground, RelativeSource={RelativeSource TemplatedParent}}"
                             Text="{TemplateBinding Content}"
                             TextTrimming="CharacterEllipsis" />
+
+                        <!--  ERROR MESSAGE  -->
+                        <TextBlock
+                            Name="ErrorMessage"
+                            Grid.Column="1"
+                            MaxWidth="170"
+                            Margin="12,0"
+                            VerticalAlignment="Center"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="14"
+                            Foreground="{Binding Tag.Error, RelativeSource={RelativeSource TemplatedParent}}"
+                            Opacity="0"
+                            Text="{TemplateBinding CommandParameter}"
+                            TextTrimming="CharacterEllipsis"
+                            TextWrapping="Wrap" />
                     </Grid>
 
+                    <!--  ANIMATIONS  -->
                     <ControlTemplate.Triggers>
+                        <!--  HOVER: CHANCHE ROOT BACKGROUND AND BORDER COLOR  -->
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="RootLayout" Property="Background" Value="{Binding Tag.CheckBoxBackgroundHover, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="RootLayout" Property="BorderBrush" Value="{Binding Tag.CheckBoxBorderHover, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="RootInner" Property="Fill" Value="{Binding Tag.CheckBoxBackgroundHover, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="RootLayout" Property="Background" Value="{Binding Tag.CheckBoxBorderHover, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
+                        <!--  PRESSED: CHANCHE ROOT BACKGROUND AND BORDER COLOR  -->
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="RootLayout" Property="Background" Value="{Binding Tag.CheckBoxBackgroundPressed, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Setter TargetName="RootLayout" Property="BorderBrush" Value="{Binding Tag.CheckBoxBorderPressed, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="RootInner" Property="Fill" Value="{Binding Tag.CheckBoxBackgroundPressed, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="RootLayout" Property="Background" Value="{Binding Tag.CheckBoxBorderPressed, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
 
+                        <!--  LOADED: START LOADING ANIMATION  -->
                         <EventTrigger RoutedEvent="Loaded">
                             <BeginStoryboard Name="BeginLoadingSpinnerStoryboard" Storyboard="{StaticResource LoadingSpinnerStoryboard}" />
                         </EventTrigger>
+                        <!--  ISLOADINGCHANGED: PAUSE/RESUME LOADING ANIMATION  -->
                         <Trigger Property="AllowDrop" Value="True">
                             <Trigger.EnterActions>
                                 <ResumeStoryboard BeginStoryboardName="BeginLoadingSpinnerStoryboard" />
                             </Trigger.EnterActions>
+
                             <Trigger.ExitActions>
                                 <PauseStoryboard BeginStoryboardName="BeginLoadingSpinnerStoryboard" />
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <!--  ERRORMESSAGECHANGED: CHANCHE ROOT BACKGROUND AND BORDER COLOR  -->
+                        <Trigger Property="CommandParameter" Value="{x:Null}">
+                            <Setter TargetName="RootError" Property="Visibility" Value="Collapsed" />
+
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ContentMessage"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.2" />
+
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ErrorMessage"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ContentMessage"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="0"
+                                            Duration="0:0:0.2" />
+
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ErrorMessage"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
                             </Trigger.ExitActions>
                         </Trigger>
                     </ControlTemplate.Triggers>

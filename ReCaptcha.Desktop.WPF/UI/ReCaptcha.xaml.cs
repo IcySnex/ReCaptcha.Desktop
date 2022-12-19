@@ -47,10 +47,14 @@ public partial class ReCaptcha : UserControl
 
     private static void OnIsCheckedChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
     {
+        Debug.WriteLine("SSS");
+        if (e.NewValue == e.OldValue)
+            return;
+
         ReCaptcha owner = (ReCaptcha)sender;
         bool newVal = (bool)e.NewValue;
 
-        OnIsLoadingChanged(sender, e);
+        UpdateCheckbox(owner, (bool)e.NewValue ? "True" : "False");
 
         (newVal ? owner.VerificationRequested : owner.VerificationRemoved)?.Invoke(owner, new());
         (newVal ? owner.VerificationRequestedCommand : owner.VerificationRemovedCommand)?.Execute(newVal == true ? owner.VerificationRequestedCommandParameter : owner.VerificationRemovedCommandParameter);
@@ -58,10 +62,20 @@ public partial class ReCaptcha : UserControl
 
     private static void OnIsLoadingChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
     {
-        ReCaptcha owner = (ReCaptcha)sender;
+        if (e.NewValue == e.OldValue)
+            return;
 
+        ReCaptcha owner = (ReCaptcha)sender;
+        UpdateCheckbox(owner, (bool)e.NewValue ? "Null" : owner.IsChecked ? "True" : "False");
+
+    }
+
+    private static void UpdateCheckbox(
+        ReCaptcha owner,
+        string state)
+    {
         CheckBox VerifyCheckBox = (CheckBox)owner.Template.FindName("VerifyCheckBox", owner);
-        ((Storyboard)VerifyCheckBox.Template.Resources[$"{((bool)e.NewValue ? "Null" : owner.IsChecked ? "True" : "False")}Storyboard"]).Begin(VerifyCheckBox, VerifyCheckBox.Template);
+        ((Storyboard)VerifyCheckBox.Template.Resources[$"{state}Storyboard"]).Begin(VerifyCheckBox, VerifyCheckBox.Template);
     }
 
 
@@ -266,4 +280,20 @@ public partial class ReCaptcha : UserControl
     /// </summary>
     public static readonly DependencyProperty IsLoadingProperty = DependencyProperty.Register(
         "IsLoading", typeof(bool), typeof(ReCaptcha), new PropertyMetadata(false, OnIsLoadingChanged));
+    
+
+    /// <summary>
+    /// The error message which gets displayed if not null
+    /// </summary>
+    public string? ErrorMessage
+    {
+        get => (string?)GetValue(ErrorMessageProperty);
+        set => SetValue(ErrorMessageProperty, value);
+    }
+
+    /// <summary>
+    /// The error message property which gets displayed if not null
+    /// </summary>
+    public static readonly DependencyProperty ErrorMessageProperty = DependencyProperty.Register(
+        "ErrorMessage", typeof(string), typeof(ReCaptcha), new PropertyMetadata(null));
 }

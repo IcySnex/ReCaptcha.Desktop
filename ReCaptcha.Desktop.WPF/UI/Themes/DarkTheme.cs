@@ -27,6 +27,10 @@ public class DarkTheme : ITheme
     /// </summary>
     public SolidColorBrush ForegroundSecondary { get; } = new(Color.FromRgb(170, 170, 170));
 
+    /// <summary>
+    /// The error message color
+    /// </summary>
+    public SolidColorBrush Error { get; } = new(Color.FromRgb(255, 0, 0));
 
     /// <summary>
     /// The checkbox background color

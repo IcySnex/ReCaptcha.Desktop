@@ -101,11 +101,19 @@ public partial class CaptchaViewModel : ObservableObject
     [ObservableProperty]
     bool isLoading = false;
 
+    [ObservableProperty]
+    string? errorMessage;
+
     [RelayCommand]
     async Task VerifyAsync()
     {
-        // IMPLEMENT ERROR LOLLL
-        IsErrorVisible = true;
+        // BUG:
+        // TWO WAY BINGING KEEPS VIEW (DATATTEMPLATE IN APP.XAML) ALIVE AND THE PROPERTYCHANGEDCALLBACK KEEPS REGISTERING SINCE A NEW RECAPTCHA CONTROL IS LOADED EVERY SINGLE TIME
+        // BECAUSE THE OLD VIEW DOESNT GET DESTROYED (BEC TWO WAY BINDING). fix pleaze UwU :3
+        // YOU CAN SEE THIS BECAUSE OF DOUBLE 'SSS' IN CONSOLE WHEN RENAVIGATING TO PAGE
+
+        return;
+        ErrorMessage = null;
         IsLoading = true;
 
         UpdateConfigurations();
@@ -114,18 +122,23 @@ public partial class CaptchaViewModel : ObservableObject
             cancelSource = new(configuration.Timeout);
             Token = await captchaClient.VerifyAsync(cancelSource.Token);
         }
+        catch (TaskCanceledException)
+        {
+            Token = "Press \"I'm not a robot\"!";
+            IsChecked = false;
+        }
         catch (Exception ex)
         {
-            IsChecked = false;
-            IsErrorVisible = true;
             Token = $"Exception was thrown: {ex.Message} - {ex.InnerException?.Message}";
+            IsChecked = false;
+            ErrorMessage = ex.Message;
         }
         finally
         {
+            IsLoading = false;
             cancelSource = null;
         }
 
-        IsLoading = false;
     }
 
     [RelayCommand]

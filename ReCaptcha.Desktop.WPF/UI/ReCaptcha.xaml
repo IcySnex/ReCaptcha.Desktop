@@ -40,6 +40,7 @@
                     <CheckBox
                         Name="VerifyCheckBox"
                         AllowDrop="{Binding IsLoading, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        CommandParameter="{Binding ErrorMessage, RelativeSource={RelativeSource AncestorType=UserControl}}"
                         Content="{Binding Content, RelativeSource={RelativeSource AncestorType=UserControl}}"
                         FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType=UserControl}}"
                         IsChecked="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=UserControl}}"

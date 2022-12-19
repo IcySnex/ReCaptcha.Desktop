@@ -44,8 +44,9 @@
 
                 <ui:ReCaptcha
                     VerticalAlignment="Top"
+                    ErrorMessage="{Binding ErrorMessage}"
                     IsChecked="{Binding IsChecked, Mode=TwoWay}"
-                    IsLoading="{Binding IsLoading, Mode=TwoWay}"
+                    IsLoading="{Binding IsLoading}"
                     VerificationRemovedCommand="{Binding RemoveVerificationCommand}"
                     VerificationRequestedCommand="{Binding VerifyCommand}" />
 
