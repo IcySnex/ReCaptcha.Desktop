@@ -144,7 +144,7 @@ public class ReCaptchaClient : IReCaptchaClient
         cancelSource.Token.Register(() =>
         {
             // If cancelled and token is still not set close window
-            if (token is null)
+            if (token is null && window is not null)
                 window.Dispatcher.BeginInvoke(window.Close);
 
             logger?.LogInformation("[ReCaptchaClient-OnTokenCancelled] reCAPTCHA vericitaion timed out");

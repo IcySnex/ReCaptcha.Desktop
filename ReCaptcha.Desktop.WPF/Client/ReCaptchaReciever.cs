@@ -27,6 +27,9 @@ public class ReCaptchaReciever
     public void SetWebView(
         CoreWebView2 coreWebView)
     {
+        if (coreWebView is null)
+            return;
+
         // Handler
         void WebMessageRecieved(object? _, CoreWebView2WebMessageReceivedEventArgs e)
         {
