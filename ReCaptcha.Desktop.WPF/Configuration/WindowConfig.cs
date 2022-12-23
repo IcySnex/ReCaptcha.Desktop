@@ -30,6 +30,7 @@ public class WindowConfig
         bool resizeToCenter = true)
     {
         Title = title;
+        Owner = owner;
         Icon = icon;
         ShowAsDialog = showAsDialog;
         StartupLocation = startupLocation;
