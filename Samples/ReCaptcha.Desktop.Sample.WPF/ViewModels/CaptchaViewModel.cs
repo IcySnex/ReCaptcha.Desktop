@@ -8,8 +8,10 @@ using System.Windows.Media.Imaging;
 using System.Windows;
 using Microsoft.Extensions.Options;
 using System;
-using System.Diagnostics;
 using System.Threading;
+using ReCaptcha.Desktop.WPF.UI.Themes;
+using ReCaptcha.Desktop.WPF.UI.Themes.Interfaces;
+using System.Windows.Media;
 
 namespace ReCaptcha.Desktop.Sample.WPF.ViewModels;
 
@@ -41,25 +43,28 @@ public partial class CaptchaViewModel : ObservableObject
     {
         captchaClient.VerificationRecieved += (s, e) =>
         {
-            string msg = $"Token: {e.Token[..15]}...\nOccurred at: {e.OccurredAt}";
+            string msg = $"Token: {e.Token[..15]}...\n\tOccurred at: {e.OccurredAt}";
 
-            MessageBox.Show(msg, "Verification was recieved", MessageBoxButton.OK, MessageBoxImage.Information);
-            logger.LogInformation($"[CaptchaViewModel-VerificationRecieved] Verification was recieved\n{msg}");
+            if (configuration.ShowHandlerMessages)
+                MessageBox.Show(msg, "Verification was recieved", MessageBoxButton.OK, MessageBoxImage.Information);
+            logger.LogInformation($"[CaptchaViewModel-VerificationRecieved] Verification was recieved\n\t{msg}");
         };
 
         captchaClient.VerificationCancelled += (s, e) =>
         {
             string msg = $"Occurred at: {e.OccurredAt}";
 
-            MessageBox.Show(msg, "Verification was cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
-            logger.LogInformation($"[CaptchaViewModel-VerificationCancelled] Verification was cancelled\n{msg}");
+            if (configuration.ShowHandlerMessages)
+                MessageBox.Show(msg, "Verification was cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
+            logger.LogInformation($"[CaptchaViewModel-VerificationCancelled] Verification was cancelled\n\t{msg}");
         };
 
         captchaClient.ReCaptchaResized += (s, e) =>
         {
             string msg = $"Width: {e.Width}\n\tHeight: {e.Height}\n\tOccurred at: {e.OccurredAt}";
-
-            logger.LogInformation($"[CaptchaViewModel-ReCaptchaResized] ReCaptcha was resized\n{msg}");
+            if (configuration.ShowHandlerMessages)
+                MessageBox.Show(msg, "ReCaptcha resized", MessageBoxButton.OK, MessageBoxImage.Information);
+            logger.LogInformation($"[CaptchaViewModel-ReCaptchaResized] ReCaptcha was resized\n\t{msg}");
         };
     }
 
@@ -107,43 +112,40 @@ public partial class CaptchaViewModel : ObservableObject
     [RelayCommand]
     async Task VerifyAsync()
     {
-        // BUG:
-        // TWO WAY BINGING KEEPS VIEW (DATATTEMPLATE IN APP.XAML) ALIVE AND THE PROPERTYCHANGEDCALLBACK KEEPS REGISTERING SINCE A NEW RECAPTCHA CONTROL IS LOADED EVERY SINGLE TIME
-        // BECAUSE THE OLD VIEW DOESNT GET DESTROYED (BEC TWO WAY BINDING). fix pleaze UwU :3
-        // YOU CAN SEE THIS BECAUSE OF DOUBLE 'SSS' IN CONSOLE WHEN RENAVIGATING TO PAGE
-
-        return;
+        // Remove error message and enable loading
         ErrorMessage = null;
         IsLoading = true;
 
+        // Update configuration so ReCaptcha configs are equal to local settings
         UpdateConfigurations();
-        try
+
+        try // Create a new cancel token and await verification
         {
             cancelSource = new(configuration.Timeout);
             Token = await captchaClient.VerifyAsync(cancelSource.Token);
         }
-        catch (TaskCanceledException)
+        catch (TaskCanceledException) // Task was cancelled by user or timed out: Reset token and uncheck 
         {
             Token = "Press \"I'm not a robot\"!";
             IsChecked = false;
         }
-        catch (Exception ex)
+        catch (Exception ex) // Error was thrown: Set wrror message and uncheck 
         {
             Token = $"Exception was thrown: {ex.Message} - {ex.InnerException?.Message}";
             IsChecked = false;
             ErrorMessage = ex.Message;
         }
-        finally
+        finally // Disable loading and reset cancel token
         {
             IsLoading = false;
             cancelSource = null;
         }
-
     }
 
     [RelayCommand]
     void RemoveVerification()
     {
+        // Reset token and cancel verification if not already reset
         Token = "Press \"I'm not a robot\"!";
         cancelSource?.Cancel();
     }

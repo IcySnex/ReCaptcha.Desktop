@@ -52,4 +52,7 @@ public partial class Configuration : ObservableObject
 
     [ObservableProperty]
     TimeSpan timeout = TimeSpan.FromMinutes(1);
+
+    [ObservableProperty]
+    bool showHandlerMessages = false;
 }
