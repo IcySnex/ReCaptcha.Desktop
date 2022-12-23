@@ -10,62 +10,62 @@ public interface ITheme
     /// <summary>
     /// The main backhround color
     /// </summary>
-    public SolidColorBrush Background { get; }
+    public Brush Background { get; }
 
     /// <summary>
     /// The main border color
     /// </summary>
-    public SolidColorBrush Border { get; }
+    public Brush Border { get; }
 
     /// <summary>
     /// The main foreground color
     /// </summary>
-    public SolidColorBrush Foreground { get; }
+    public Brush Foreground { get; }
     /// <summary>
     /// The secondary foreground color
     /// </summary>
-    public SolidColorBrush ForegroundSecondary { get; }
+    public Brush ForegroundSecondary { get; }
 
     /// <summary>
     /// The error message color
     /// </summary>
-    public SolidColorBrush Error { get; }
+    public Brush Error { get; }
 
 
     /// <summary>
     /// The checkbox background color
     /// </summary>
-    public SolidColorBrush CheckBoxBackground { get; }
+    public Brush CheckBoxBackground { get; }
     /// <summary>
     /// The checkbox background color when hovered
     /// </summary>
-    public SolidColorBrush CheckBoxBackgroundHover { get; }
+    public Brush CheckBoxBackgroundHover { get; }
     /// <summary>
     /// The checkbox background color when pressed
     /// </summary>
-    public SolidColorBrush CheckBoxBackgroundPressed { get; }
+    public Brush CheckBoxBackgroundPressed { get; }
 
     /// <summary>
     /// The checkbox border color
     /// </summary>
-    public SolidColorBrush CheckBoxBorder { get; }
+    public Brush CheckBoxBorder { get; }
     /// <summary>
     /// The checkbox border color when hovered
     /// </summary>
-    public SolidColorBrush CheckBoxBorderHover { get; }
+    public Brush CheckBoxBorderHover { get; }
     /// <summary>
     /// The checkbox border color when pressed
     /// </summary>
-    public SolidColorBrush CheckBoxBorderPressed { get; }
+    public Brush CheckBoxBorderPressed { get; }
 
     /// <summary>
     /// The checkbox loading spinner color
     /// </summary>
-    public SolidColorBrush CheckBoxSpinner { get; }
+    public Brush CheckBoxSpinner { get; }
     /// <summary>
     /// The checkbox checkmark color
     /// </summary>
-    public SolidColorBrush CheckBoxCheckmark { get; }
+    public Brush CheckBoxCheckmark { get; }
 
 
     /// <summary>
