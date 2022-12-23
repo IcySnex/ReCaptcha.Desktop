@@ -36,27 +36,6 @@ public partial class App : Application
                 services.Configure<Models.Configuration>(context.Configuration);
                 Models.Configuration configuration = context.Configuration.Get<Models.Configuration>() ?? new();
 
-                // Create all configurations
-                HttpServerConfig httpConfig = new(
-                    url: configuration.HttpUrl,
-                    port: configuration.HttpPort);
-                ReCaptchaConfig reCaptchaConfig = new(
-                    siteKey: configuration.SiteKey,
-                    language: configuration.Language,
-                    tokenRecievedHtml: configuration.TokenRecievedHtml,
-                    tokenRecievedHookedHtml: configuration.TokenRecievedHookedHtml,
-                    httpConfiguration: httpConfig);
-
-                WindowConfig windowConfig = new(
-                    title: configuration.Title,
-                    icon: new BitmapImage(new(configuration.Icon)),
-                    startupLocation: configuration.StartupLocation,
-                    left: configuration.Left,
-                    top: configuration.Top,
-                    showAsDialog: configuration.ShowAsDialog,
-                    resizeToCenter: configuration.ResizeToCenter);
-
-
                 // Add ViewModels and MainView
                 services.AddSingleton<HomeViewModel>();
                 services.AddSingleton<CaptchaViewModel>();
@@ -67,10 +46,7 @@ public partial class App : Application
 
                 // Add services
                 services.AddSingleton<JsonConverter>();
-
-                services.AddSingleton(reCaptchaConfig);
-                services.AddSingleton(windowConfig);
-                services.AddSingleton<ReCaptchaClient>();
+                services.AddSingleton(new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title)));
             })
             .Build();
         Provider = host.Services;
