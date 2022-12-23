@@ -180,8 +180,7 @@ public class ReCaptchaClient : IReCaptchaClient
         void OnVerificationCancelled(object? _, VerificationCancelledEventArgs e)
         {
             // If possible close window
-            if (window is not null)
-                window.Dispatcher.BeginInvoke(window.Close);
+            window?.Dispatcher.BeginInvoke(window.Close);
 
             logger?.LogInformation("[ReCaptchaClient-OnVerificationCancelled] reCAPTCHA vericitaion was cancelled");
         }

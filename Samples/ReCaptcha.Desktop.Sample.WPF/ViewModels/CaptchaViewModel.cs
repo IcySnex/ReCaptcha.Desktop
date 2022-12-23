@@ -9,10 +9,6 @@ using System.Windows;
 using Microsoft.Extensions.Options;
 using System;
 using System.Threading;
-using ReCaptcha.Desktop.WPF.UI.Themes;
-using ReCaptcha.Desktop.WPF.UI.Themes.Interfaces;
-using System.Windows.Media;
-
 namespace ReCaptcha.Desktop.Sample.WPF.ViewModels;
 
 public partial class CaptchaViewModel : ObservableObject
