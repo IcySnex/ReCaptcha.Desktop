@@ -1,6 +1,5 @@
 ﻿using ReCaptcha.Desktop.WPF.UI.Themes.Interfaces;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +22,8 @@ public partial class ReCaptcha : UserControl
     public ReCaptcha()
     {
         InitializeComponent();
+
+        Unloaded += OnUnloaded;
     }
 
 
@@ -37,7 +38,8 @@ public partial class ReCaptcha : UserControl
     public event EventHandler? VerificationRemoved;
 
 
-    private void OnHyperlinkRequest(object _, RequestNavigateEventArgs e) =>
+    private void OnHyperlinkRequest(object _,
+        RequestNavigateEventArgs e) =>
         Process.Start(new ProcessStartInfo()
         {
             FileName = e.Uri.AbsoluteUri,
@@ -45,9 +47,31 @@ public partial class ReCaptcha : UserControl
             CreateNoWindow = true
         });
 
-    private static void OnIsCheckedChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+    private void OnUnloaded(object _, RoutedEventArgs _1)
     {
-        Debug.WriteLine("SSS");
+        ClearValue(VerificationRequestedCommandProperty);
+        ClearValue(VerificationRequestedCommandParameterProperty);
+        ClearValue(VerificationRemovedCommandProperty);
+        ClearValue(VerificationRemovedCommandParameterProperty);
+        ClearValue(ThemeProperty);
+        ClearValue(IconProperty);
+        ClearValue(TitleProperty);
+        ClearValue(FirstUriProperty);
+        ClearValue(FirstUriTextProperty);
+        ClearValue(SecondaryUriProperty);
+        ClearValue(SecondaryUriTextProperty);
+        ClearValue(IsCheckedProperty);
+        ClearValue(IsLoadingProperty);
+        ClearValue(ErrorMessageProperty);
+
+        Unloaded -= OnUnloaded;
+    }
+
+
+    private static void OnIsCheckedChanged(
+        DependencyObject sender,
+        DependencyPropertyChangedEventArgs e)
+    {
         if (e.NewValue == e.OldValue)
             return;
 
@@ -60,7 +84,9 @@ public partial class ReCaptcha : UserControl
         (newVal ? owner.VerificationRequestedCommand : owner.VerificationRemovedCommand)?.Execute(newVal == true ? owner.VerificationRequestedCommandParameter : owner.VerificationRemovedCommandParameter);
     }
 
-    private static void OnIsLoadingChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+    private static void OnIsLoadingChanged(
+        DependencyObject sender,
+        DependencyPropertyChangedEventArgs e)
     {
         if (e.NewValue == e.OldValue)
             return;
