@@ -4,11 +4,11 @@ using Serilog;
 using Microsoft.Extensions.Configuration;
 using ReCaptcha.Desktop.Sample.WinUI.Services;
 using Microsoft.Extensions.DependencyInjection;
-using ReCaptcha.Desktop.Configuration;
 using ReCaptcha.Desktop.Client.WinUI;
 using ReCaptcha.Desktop.Sample.WinUI.Views;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ReCaptcha.Desktop.Sample.WinUI.ViewModels;
 
 namespace ReCaptcha.Desktop.Sample.WinUI;
 
@@ -36,28 +36,11 @@ public partial class App : Application
                 services.Configure<Models.Configuration>(context.Configuration);
                 Models.Configuration configuration = context.Configuration.Get<Models.Configuration>() ?? new();
 
-                // Create all configurations
-                HttpServerConfig httpConfig = new(
-                    url: configuration.HttpUrl,
-                    port: configuration.HttpPort);
-                ReCaptchaConfig reCaptchaConfig = new(
-                    siteKey: configuration.SiteKey,
-                    language: configuration.Language,
-                    tokenRecievedHtml: configuration.TokenRecievedHtml,
-                    tokenRecievedHookedHtml: configuration.TokenRecievedHookedHtml,
-                    httpConfiguration: httpConfig);
-
-                WindowConfig windowConfig = new(
-                    title: configuration.Title,
-                    icon: configuration.Icon,
-                    startupLocation: configuration.StartupLocation,
-                    left: configuration.Left,
-                    top: configuration.Top,
-                    showAsDialog: configuration.ShowAsDialog,
-                    resizeToCenter: configuration.ResizeToCenter);
-
-
                 // Add ViewModels and MainView
+                services.AddSingleton<HomeViewModel>();
+                services.AddSingleton<SettingsViewModel>();
+                services.AddSingleton<CaptchaViewModel>();
+
                 services.AddSingleton(provider => new MainView() { Title = "ReCaptcha.Desktop - WinUI3 Sample" });
 
 
@@ -66,10 +49,8 @@ public partial class App : Application
                 services.AddSingleton<WindowHelper>();
                 services.AddSingleton<MicaBackdropHandler>();
                 services.AddSingleton<AcrylicBackdropHandler>();
-
-                services.AddSingleton(reCaptchaConfig);
-                services.AddSingleton(windowConfig);
-                services.AddSingleton<ReCaptchaClient>();
+                services.AddSingleton<Navigation>();
+                services.AddSingleton(new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title)));
             })
             .Build();
         Provider = host.Services;
@@ -87,6 +68,7 @@ public partial class App : Application
         AcrylicBackdropHandler acrylic = Provider.GetRequiredService<AcrylicBackdropHandler>();
         JsonConverter converter = Provider.GetRequiredService<JsonConverter>();
         MainView mainView = Provider.GetRequiredService<MainView>();
+        Navigation navigation = Provider.GetRequiredService<Navigation>();
 
         AppDomain.CurrentDomain.FirstChanceException += (s, e) =>
         {
@@ -103,8 +85,7 @@ public partial class App : Application
 
         mainView.Closed += async (s, e) =>
         {
-            //if (windowHandler.LoggerWindow is not null)
-            //    windowHandler.LoggerWindow.Close();
+            windowHelper.LoggerView?.Close();
 
             string config = converter.ToString(configuration.Value);
             await File.WriteAllTextAsync("Configuration.json", config);
@@ -112,5 +93,14 @@ public partial class App : Application
             logger.LogInformation("[MainView-Closed] Closed main window");
         };
         mainView.Activate();
+
+        navigation.Navigate("Home");
     }
+}
+
+public static class Extentions
+{
+    public static Type? AsType(this string input,
+        string assembly = "ReCaptcha.Desktop.Sample.WinUI") =>
+        Type.GetType($"{assembly}.{input}, {assembly}");
 }

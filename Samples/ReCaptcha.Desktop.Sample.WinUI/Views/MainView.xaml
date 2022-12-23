@@ -102,10 +102,12 @@
                     <Button
                         Background="Transparent"
                         BorderBrush="Transparent"
+                        Click="OnLoggerClick"
                         Content="Show Logger" />
                     <Button
                         Background="Transparent"
                         BorderBrush="Transparent"
+                        Click="OnGithubClick"
                         Content="Open GitHub" />
                 </StackPanel>
             </NavigationView.PaneFooter>
