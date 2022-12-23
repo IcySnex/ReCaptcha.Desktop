@@ -4,7 +4,6 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using System;
 using System.Runtime.InteropServices;
-using Windows.Foundation;
 using Windows.Graphics;
 using WinRT.Interop;
 
@@ -91,15 +90,6 @@ internal class WindowHelper
     {
         get => ((OverlappedPresenter) window.Presenter).IsModal;
         set => ((OverlappedPresenter)window.Presenter).IsModal = value;
-    }
-
-    /// <summary>
-    /// Fires on the current main window closing
-    /// </summary>
-    public event TypedEventHandler<AppWindow, AppWindowClosingEventArgs> OnClosing
-    {
-        add => window.Closing += value;
-        remove => window.Closing -= value;
     }
 
     /// <summary>

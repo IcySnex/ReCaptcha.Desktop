@@ -135,18 +135,18 @@ public class ReCaptchaClient : IReCaptchaClient
     /// <param name="timeout">The timespan when this action times out</param>
     /// <returns>A Google reCAPTCHA token</returns>
     public async Task<string> VerifyAsync(
-        TimeSpan? timeout = null)
+        CancellationToken cancellationToken = default!)
     {
         // Define result
         string? token = null;
 
         // Create cancellation token based on timeout
-        CancellationTokenSource cancelSource = timeout.HasValue ? new(timeout.Value) : new();
+        CancellationTokenSource cancelSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         cancelSource.Token.Register(() =>
         {
             // If cancelled and token is still not set close window
-            if (token is null)
-                window.DispatcherQueue.TryEnqueue(() => window.Close());
+            if (token is null && window is not null)
+                window.DispatcherQueue.TryEnqueue(() => window?.Close());
 
             logger?.LogInformation("[ReCaptchaClient-OnTokenCancelled] reCAPTCHA vericitaion timed out");
         });
@@ -155,25 +155,8 @@ public class ReCaptchaClient : IReCaptchaClient
         // Create UI
         CreateWindowAndWebView();
 
-        // Hook handlers
         window.Closed += OnWindowClosed;
-        void OnWindowClosed(object? _, object _1)
-        {
-            // Remove all used handlers
-            window.Closed -= OnWindowClosed;
-            windowHelper.OnClosing -= OnWindowClosing;
-            VerificationCancelled -= OnVerificationCancelled;
-            ReCaptchaResized -= OnReCaptchaResized;
-
-            // If SetWindowLongPtr was set before, owner window will be minimized at closing => Manually activate it
-            if (WindowConfiguration.Owner is not null)
-                WindowConfiguration.Owner.Activate();
-
-            logger?.LogInformation("[ReCaptchaClient-OnWindowClosed] reCAPTCHA window was fully closed and handlers unhooked");
-        }
-
-        windowHelper.OnClosing += OnWindowClosing;
-        void OnWindowClosing(object _, object _1)
+        void OnWindowClosed(object _, object _1)
         {
             // Immediately close and cancel if user closed window
             if (token is null)
@@ -182,10 +165,18 @@ public class ReCaptchaClient : IReCaptchaClient
                 cancelSource.Cancel();
             }
 
+            // Remove all used handlers
+            window.Closed -= OnWindowClosed;
+            VerificationCancelled -= OnVerificationCancelled;
+            ReCaptchaResized -= OnReCaptchaResized;
+
             // Dispose all objects and clear UI
             cancelSource.Dispose();
             window = default!;
             webView = default!;
+
+            // If SetWindowLongPtr was set before, owner window will be minimized at closing => Manually activate it
+            WindowConfiguration.Owner?.Activate();
 
             logger?.LogInformation("[ReCaptchaClient-OnWindowClosing] reCAPTCHA window is closing and objects were disposed");
         }
@@ -194,8 +185,7 @@ public class ReCaptchaClient : IReCaptchaClient
         void OnVerificationCancelled(object? _, VerificationCancelledEventArgs e)
         {
             // If possible close window
-            if (window is not null)
-                window.DispatcherQueue.TryEnqueue(() => window.Close());
+            window?.DispatcherQueue.TryEnqueue(() => window?.Close());
 
             logger?.LogInformation("[ReCaptchaClient-OnVerificationCancelled] reCAPTCHA vericitaion was cancelled");
         }
