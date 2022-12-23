@@ -30,8 +30,7 @@ public partial class MainViewModel : ObservableObject
 
         MainView.Closed += async (s, e) =>
         {
-            if (LoggerWindow is not null)
-                LoggerWindow.Close();
+            LoggerWindow?.Close();
 
             string config = jsonConverter.ToString(configuration.Value);
             await File.WriteAllTextAsync("Configuration.json", config);
@@ -46,7 +45,7 @@ public partial class MainViewModel : ObservableObject
 
     public bool Navigate<T>()
     {
-        if (!(App.Provider.GetService<T>() is ObservableObject viewModel))
+        if (App.Provider.GetService<T>() is not ObservableObject viewModel)
             return false;
 
         CurrentViewModel = viewModel;

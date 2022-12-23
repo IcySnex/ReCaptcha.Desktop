@@ -7,7 +7,6 @@ public partial class SettingsViewModel : ObservableObject
 {
     public Models.Configuration Configuration { get; }
 
-
     public SettingsViewModel(
         IOptions<Models.Configuration> configuration)
     {

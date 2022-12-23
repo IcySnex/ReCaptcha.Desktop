@@ -2,9 +2,10 @@
 using System.Text.Json;
 
 namespace ReCaptcha.Desktop.Sample.WPF.Services;
+
 public class JsonConverter
 {
-    ILogger<JsonConverter> logger;
+    readonly ILogger<JsonConverter> logger;
 
     public JsonConverter(
         ILogger<JsonConverter> logger)

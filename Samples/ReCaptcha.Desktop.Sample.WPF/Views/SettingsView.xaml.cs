@@ -20,6 +20,6 @@ public partial class SettingsView : UserControl
         if (e.Key == Key.Enter || e.Key == Key.Back || e.Key == Key.Delete || e.Key == Key.Left || e.Key == Key.Right)
             return;
 
-        e.Handled = !(e.Key < Key.D0 || e.Key > Key.D9) ? false : (e.Key < Key.NumPad0 || e.Key > Key.NumPad9);
+        e.Handled = (e.Key < Key.D0 || e.Key > Key.D9) && (e.Key < Key.NumPad0 || e.Key > Key.NumPad9);
     }
 }
