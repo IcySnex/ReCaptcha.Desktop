@@ -25,7 +25,7 @@ public interface IReCaptchaClient
     /// <param name="configuration">The configuration the ReCaptchaClient should be created with</param>
     public static ReCaptchaClient New(
         ReCaptchaConfig configuration) =>
-        new ReCaptchaClient(configuration);
+        new(configuration);
 
     /// <summary>
     /// Creates a new ReCaptchaClient with extended resize functions
@@ -33,5 +33,5 @@ public interface IReCaptchaClient
     /// <param name="configuration">The configuration the ReCaptchaClient should be created with</param>
     public static Resizeable.ReCaptchaClient NewResizeable(
         ReCaptchaConfig configuration) =>
-        new Resizeable.ReCaptchaClient(configuration);
+        new(configuration);
 }
