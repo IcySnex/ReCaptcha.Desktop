@@ -15,6 +15,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="Icon.ico" />
+	  <None Remove="Views\MainView.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Include="Icon.ico">
@@ -43,5 +44,11 @@
 	  <Content Update="Icon.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="Views\MainView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 </Project>

@@ -9,7 +9,16 @@
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
             </ResourceDictionary.MergedDictionaries>
 
+            
+            <!--#region Window-->
+            <SolidColorBrush x:Key="WindowCaptionBackground" Color="Transparent" />
+            <SolidColorBrush x:Key="WindowCaptionBackgroundDisabled" Color="Transparent" />
 
+            <SolidColorBrush x:Key="WindowCaptionForeground" Color="Gray" />
+            <SolidColorBrush x:Key="WindowCaptionForegroundDisabled" Color="Gray" />
+
+            <SolidColorBrush x:Key="SystemControlPageBackgroundMediumAltMediumBrush" Color="Transparent" />
+            <!--#endregion-->
 
         </ResourceDictionary>
     </Application.Resources>

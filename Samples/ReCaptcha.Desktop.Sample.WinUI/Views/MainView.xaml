@@ -1,0 +1,116 @@
+<Window
+    x:Class="ReCaptcha.Desktop.Sample.WinUI.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ReCaptcha.Desktop.Sample.WinUI.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:nmtdvsls1="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+    mc:Ignorable="d">
+
+    <Grid Name="MainGrid" x:FieldModifier="public">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Name="TitleBarContainer"
+            x:FieldModifier="public"
+            Visibility="Visible">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <Button
+                    Name="BackButton"
+                    Width="0"
+                    Height="32"
+                    Margin="4,4,0,4"
+                    Padding="0"
+                    x:FieldModifier="public"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Opacity="0">
+                    <Button.OpacityTransition>
+                        <ScalarTransition />
+                    </Button.OpacityTransition>
+                    <Button.Resources>
+                        <Storyboard x:Key="InBoard">
+                            <DoubleAnimation
+                                EnableDependentAnimation="True"
+                                Storyboard.TargetName="BackButton"
+                                Storyboard.TargetProperty="Width"
+                                From="0"
+                                To="32"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+
+                        <Storyboard x:Key="OutBoard">
+                            <DoubleAnimation
+                                EnableDependentAnimation="True"
+                                Storyboard.TargetName="BackButton"
+                                Storyboard.TargetProperty="Width"
+                                From="32"
+                                To="0"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                    </Button.Resources>
+
+                    <Viewbox Width="16" Height="16">
+                        <AnimatedIcon>
+                            <AnimatedIcon.Source>
+                                <nmtdvsls1:AnimatedBackVisualSource />
+                            </AnimatedIcon.Source>
+                            <AnimatedIcon.FallbackIconSource>
+                                <SymbolIconSource Symbol="Back" />
+                            </AnimatedIcon.FallbackIconSource>
+                        </AnimatedIcon>
+                    </Viewbox>
+                </Button>
+
+                <Image
+                    Width="19"
+                    Height="19"
+                    HorizontalAlignment="Left"
+                    Source="../Icon.png" />
+
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="12"
+                    Text="ReCaptcha.Desktop - WinUI3 Sample" />
+            </StackPanel>
+
+            <Rectangle
+                Name="TitleBarDragArea"
+                Margin="39,0,0,0"
+                HorizontalAlignment="Stretch"
+                x:FieldModifier="public" />
+        </Grid>
+
+        <NavigationView
+            Name="NavigationView"
+            Grid.Row="1"
+            x:FieldModifier="public"
+            IsBackButtonVisible="Collapsed"
+            IsBackEnabled="{x:Bind ContentFrame.CanGoBack, Mode=OneWay}"
+            IsSettingsVisible="False"
+            PaneDisplayMode="Top">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Home" Icon="Home" />
+                <NavigationViewItem Content="Settings" Icon="Setting" />
+            </NavigationView.MenuItems>
+            <NavigationView.PaneFooter>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Button
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Content="Show Logger" />
+                    <Button
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Content="Open GitHub" />
+                </StackPanel>
+            </NavigationView.PaneFooter>
+
+            <Frame Name="ContentFrame" x:FieldModifier="public" />
+        </NavigationView>
+    </Grid>
+</Window>

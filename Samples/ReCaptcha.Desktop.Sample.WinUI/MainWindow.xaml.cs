@@ -1,22 +1,7 @@
-﻿using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
+﻿using Microsoft.UI.Xaml;
 using ReCaptcha.Desktop.Client.WinUI;
 using ReCaptcha.Desktop.Configuration;
-using ReCaptcha.Desktop.WinUI.Internal;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 
 namespace ReCaptcha.Desktop.Sample.WinUI
 {
@@ -45,15 +30,18 @@ namespace ReCaptcha.Desktop.Sample.WinUI
 
             try
             {
-                await client.VerifyAsync(TimeSpan.FromSeconds(10));
-            } catch (TaskCanceledException ex)
+                CancellationTokenSource cance = new(TimeSpan.FromSeconds(10));
+                await client.VerifyAsync(cance.Token);
+            }
+            catch (TaskCanceledException)
             {
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                Debug.WriteLine(ex);
             }
 
-            myButton.Content = "Clicked";
+            myButton.Content = "DIBNE";
+
         }
 
     }
