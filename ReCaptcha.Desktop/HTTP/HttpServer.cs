@@ -2,9 +2,7 @@
 using ReCaptcha.Desktop.EventArgs;
 using ReCaptcha.Desktop.HTTP.Interfaces;
 using System.Net;
-using System.Net.Sockets;
 using System.Text;
-using System.Threading;
 
 namespace ReCaptcha.Desktop.HTTP;
 
@@ -31,7 +29,7 @@ public class HttpServer : IHttpServer
         this.webContent = webContent;
 
         listener.Prefixes.Add($"{configuration.Url}:{configuration.Port}/");
-        //listener.TimeoutManager.EntityBody
+        //listener.TimeoutManager.EntityBody = configuration.Timeout;
     }
 
 
