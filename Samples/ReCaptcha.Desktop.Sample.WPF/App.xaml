@@ -50,8 +50,10 @@
                     <ContentControl
                         Grid.Column="1"
                         Margin="32,0,0,0"
+                        Padding="6"
                         VerticalAlignment="Center"
-                        Content="{TemplateBinding Content}" />
+                        Content="{TemplateBinding Content}"
+                        Opacity="0.7" />
                 </Grid>
             </Border>
         </ControlTemplate>

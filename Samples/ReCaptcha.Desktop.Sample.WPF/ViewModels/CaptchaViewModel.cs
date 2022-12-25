@@ -58,6 +58,7 @@ public partial class CaptchaViewModel : ObservableObject
         captchaClient.ReCaptchaResized += (s, e) =>
         {
             string msg = $"Width: {e.Width}\n\tHeight: {e.Height}\n\tOccurred at: {e.OccurredAt}";
+
             if (configuration.ShowHandlerMessages)
                 MessageBox.Show(msg, "ReCaptcha resized", MessageBoxButton.OK, MessageBoxImage.Information);
             logger.LogInformation($"[CaptchaViewModel-ReCaptchaResized] ReCaptcha was resized\n\t{msg}");

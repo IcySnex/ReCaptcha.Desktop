@@ -31,7 +31,6 @@
                 <TextBox
                     Padding="6"
                     FontSize="14"
-                    Opacity="0.7"
                     Text="{Binding Configuration.HttpUrl, Mode=TwoWay}" />
             </ContentControl>
 
@@ -45,7 +44,6 @@
                     Padding="6"
                     HorizontalAlignment="Right"
                     FontSize="14"
-                    Opacity="0.7"
                     PreviewKeyDown="OnHttpPortKeyDown"
                     Text="{Binding Configuration.HttpPort, Mode=TwoWay}" />
             </ContentControl>
@@ -58,7 +56,6 @@
                 <TextBox
                     Padding="6"
                     FontSize="14"
-                    Opacity="0.7"
                     Text="{Binding Configuration.SiteKey, Mode=TwoWay}" />
             </ContentControl>
 
@@ -72,7 +69,6 @@
                     Padding="6"
                     HorizontalAlignment="Right"
                     FontSize="14"
-                    Opacity="0.7"
                     Text="{Binding Configuration.Language, Mode=TwoWay}" />
             </ContentControl>
 
@@ -84,7 +80,6 @@
                 <TextBox
                     Padding="6"
                     FontSize="14"
-                    Opacity="0.7"
                     Text="{Binding Configuration.TokenRecievedHtml, Mode=TwoWay}" />
             </ContentControl>
 
@@ -96,8 +91,7 @@
                 <TextBox
                     Padding="6"
                     FontSize="14"
-                    Opacity="0.7"
-                    Text="{Binding Configuration.TokenRecievedHtml, Mode=TwoWay}" />
+                    Text="{Binding Configuration.TokenRecievedHookedHtml, Mode=TwoWay}" />
             </ContentControl>
 
             <ContentControl
@@ -108,7 +102,6 @@
                 <TextBox
                     Padding="6"
                     FontSize="14"
-                    Opacity="0.7"
                     Text="{Binding Configuration.Title, Mode=TwoWay}" />
             </ContentControl>
 
@@ -120,7 +113,6 @@
                 <TextBox
                     Padding="6"
                     FontSize="14"
-                    Opacity="0.7"
                     Text="{Binding Configuration.Icon, Mode=TwoWay}" />
             </ContentControl>
 
@@ -132,7 +124,6 @@
                 <TextBox
                     Padding="6"
                     FontSize="14"
-                    Opacity="0.7"
                     Text="{Binding Configuration.StartupLocation, Mode=TwoWay}" />
             </ContentControl>
 
@@ -146,7 +137,6 @@
                     Padding="6"
                     HorizontalAlignment="Right"
                     FontSize="14"
-                    Opacity="0.7"
                     PreviewKeyDown="OnHttpPortKeyDown"
                     Text="{Binding Configuration.Left, Mode=TwoWay}" />
             </ContentControl>
@@ -161,7 +151,6 @@
                     Padding="6"
                     HorizontalAlignment="Right"
                     FontSize="14"
-                    Opacity="0.7"
                     PreviewKeyDown="OnHttpPortKeyDown"
                     Text="{Binding Configuration.Top, Mode=TwoWay}" />
             </ContentControl>
@@ -172,13 +161,11 @@
                 Template="{StaticResource SettignsCard}">
 
                 <CheckBox
-                    Margin="0,0,-15,-30"
-                    Padding="6"
+                    Margin="0,0,-8,-8"
                     HorizontalAlignment="Right"
                     Content=""
                     FontSize="14"
-                    IsChecked="{Binding Configuration.ShowAsDialog, Mode=TwoWay}"
-                    Opacity="0.7">
+                    IsChecked="{Binding Configuration.ShowAsDialog, Mode=TwoWay}">
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                     </CheckBox.LayoutTransform>
@@ -186,19 +173,16 @@
             </ContentControl>
 
             <ContentControl
-                Margin="0,0,0,12"
                 ContentStringFormat="ResizeToCenter"
                 Tag="Wether to resize from the center point"
                 Template="{StaticResource SettignsCard}">
 
                 <CheckBox
-                    Margin="0,0,-15,-30"
-                    Padding="6"
+                    Margin="0,0,-8,-8"
                     HorizontalAlignment="Right"
                     Content=""
                     FontSize="14"
-                    IsChecked="{Binding Configuration.ResizeToCenter, Mode=TwoWay}"
-                    Opacity="0.7">
+                    IsChecked="{Binding Configuration.ResizeToCenter, Mode=TwoWay}">
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                     </CheckBox.LayoutTransform>
@@ -206,7 +190,6 @@
             </ContentControl>
 
             <ContentControl
-                Margin="0,0,0,12"
                 ContentStringFormat="Timeout"
                 Tag="The timespan when this action times out"
                 Template="{StaticResource SettignsCard}">
@@ -214,7 +197,6 @@
                 <TextBox
                     Padding="6"
                     FontSize="14"
-                    Opacity="0.7"
                     Text="{Binding Configuration.Timeout, Mode=TwoWay, Converter={StaticResource TimeSpanConverter}}" />
             </ContentControl>
 
@@ -225,13 +207,11 @@
                 Template="{StaticResource SettignsCard}">
 
                 <CheckBox
-                    Margin="0,0,-15,-30"
-                    Padding="6"
+                    Margin="0,0,-8,-8"
                     HorizontalAlignment="Right"
                     Content=""
                     FontSize="14"
-                    IsChecked="{Binding Configuration.ShowHandlerMessages, Mode=TwoWay}"
-                    Opacity="0.7">
+                    IsChecked="{Binding Configuration.ShowHandlerMessages, Mode=TwoWay}">
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
                     </CheckBox.LayoutTransform>

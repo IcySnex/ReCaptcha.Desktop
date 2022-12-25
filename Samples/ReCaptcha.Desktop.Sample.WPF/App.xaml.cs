@@ -9,6 +9,7 @@ using ReCaptcha.Desktop.Configuration;
 using ReCaptcha.Desktop.Sample.WPF.Services;
 using ReCaptcha.Desktop.Sample.WPF.ViewModels;
 using System.Windows.Media.Imaging;
+using System.Diagnostics;
 
 namespace ReCaptcha.Desktop.Sample.WPF;
 
