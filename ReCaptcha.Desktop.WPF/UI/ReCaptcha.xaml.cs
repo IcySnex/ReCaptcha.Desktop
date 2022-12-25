@@ -100,8 +100,8 @@ public partial class ReCaptcha : UserControl
         ReCaptcha owner,
         string state)
     {
-        CheckBox VerifyCheckBox = (CheckBox)owner.Template.FindName("VerifyCheckBox", owner);
-        ((Storyboard)VerifyCheckBox.Template.Resources[$"{state}Storyboard"]).Begin(VerifyCheckBox, VerifyCheckBox.Template);
+        CheckBox verifyCheckBox = (CheckBox)owner.Template.FindName("VerifyCheckBox", owner);
+        ((Storyboard)verifyCheckBox.Template.Resources[$"{state}Storyboard"]).Begin(verifyCheckBox, verifyCheckBox.Template);
     }
 
 
