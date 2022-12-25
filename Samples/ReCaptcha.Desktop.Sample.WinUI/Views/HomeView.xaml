@@ -7,7 +7,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <Button Command="{x:Bind viewModel.NavigateToCaptchaCommand}" />
-    </Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Image Height="60" Source="../Icon.png" />
+
+        <TextBlock
+            Margin="12,0"
+            FontSize="30"
+            FontWeight="SemiBold"
+            Text="Welcome to Google reCAPTCHA on Desktop!"
+            TextAlignment="Center"
+            TextDecorations="Underline"
+            TextWrapping="Wrap" />
+        <TextBlock
+            Margin="12,0"
+            FontSize="20"
+            Opacity="0.5"
+            TextAlignment="Center"
+            TextWrapping="Wrap">
+            This is an example application based on WPF with MVVM/Dependency Inection.<LineBreak />
+            This is an open source library and is not affiliated with Google in any way.</TextBlock>
+
+        <Button
+            Width="150"
+            Height="50"
+            Margin="0,24,0,0"
+            HorizontalAlignment="Center"
+            Command="{x:Bind viewModel.NavigateToCaptchaCommand}"
+            Content="Lets get started!" />
+    </StackPanel>
 </Page>

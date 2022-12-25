@@ -70,11 +70,6 @@ public partial class App : Application
         MainView mainView = Provider.GetRequiredService<MainView>();
         Navigation navigation = Provider.GetRequiredService<Navigation>();
 
-        AppDomain.CurrentDomain.FirstChanceException += (s, e) =>
-        {
-            logger.LogError(e.Exception, "Global exception thrown");
-        };
-
         windowHelper.SetTitleBar(mainView.TitleBarDragArea, mainView.TitleBarContainer);
         windowHelper.SetIcon("Icon.ico");
         windowHelper.SetSize(900, 500);

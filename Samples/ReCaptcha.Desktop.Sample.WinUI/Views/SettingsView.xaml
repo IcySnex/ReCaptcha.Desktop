@@ -3,11 +3,174 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:ReCaptcha.Desktop.Sample.WinUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock Text="Settingssssss" />
-    </Grid>
+    <StackPanel Margin="24,12,24,0">
+        <TextBlock
+            FontSize="24"
+            FontWeight="Medium"
+            Text="Settings" />
+        <Rectangle
+            Height="2"
+            Margin="0,6"
+            HorizontalAlignment="Stretch"
+            Fill="{ThemeResource SystemControlForegroundBaseHighBrush}"
+            Opacity="0.3" />
+
+
+        <ContentControl
+            AccessKey="HttpUrl"
+            Tag="The url the server lives on"
+            Template="{StaticResource SettignsCard}">
+
+            <TextBox FontSize="14" Text="{x:Bind viewModel.Configuration.HttpUrl, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="HttpPort"
+            Tag="The port the server lives on"
+            Template="{StaticResource SettignsCard}">
+
+            <NumberBox
+                Width="150"
+                FontSize="14"
+                Maximum="65535"
+                Minimum="1"
+                SpinButtonPlacementMode="Compact"
+                Value="{x:Bind viewModel.Configuration.HttpPort, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="SiteKey"
+            Tag="The SiteKey for the Google reCAPTCHA service"
+            Template="{StaticResource SettignsCard}">
+
+            <TextBox FontSize="14" Text="{x:Bind viewModel.Configuration.SiteKey, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="Language"
+            Tag="The language for the Google reCAPTCHA service"
+            Template="{StaticResource SettignsCard}">
+
+            <TextBox
+                Width="100"
+                FontSize="14"
+                Text="{x:Bind viewModel.Configuration.Language, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="TokenRecievedHtml"
+            Tag="The HTML which gets displayed after the user verifed the reCAPTCHA"
+            Template="{StaticResource SettignsCard}">
+
+            <TextBox FontSize="14" Text="{x:Bind viewModel.Configuration.TokenRecievedHtml, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="TokenRecievedHookedHtml"
+            Tag="The HTML which gets displayed after the user verifed the reCAPTCHA and its hooked to the application"
+            Template="{StaticResource SettignsCard}">
+
+            <TextBox FontSize="14" Text="{x:Bind viewModel.Configuration.TokenRecievedHookedHtml, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="Title"
+            Tag="The title of the window"
+            Template="{StaticResource SettignsCard}">
+
+            <TextBox FontSize="14" Text="{x:Bind viewModel.Configuration.Title, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="Icon"
+            Tag="The icon of the window"
+            Template="{StaticResource SettignsCard}">
+
+            <TextBox FontSize="14" Text="{x:Bind viewModel.Configuration.Icon, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="StartupLocation"
+            Tag="The startup postion of the window"
+            Template="{StaticResource SettignsCard}">
+
+            <ComboBox FontSize="14" SelectedIndex="{x:Bind viewModel.Configuration.StartupLocation, Mode=TwoWay, Converter={StaticResource EnumIntConverter}}">
+                <ComboBoxItem Content="Manual" />
+                <ComboBoxItem Content="CenterScreen" />
+                <ComboBoxItem Content="CenterOwner" />
+            </ComboBox>
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="Left"
+            Tag="The left position of the window"
+            Template="{StaticResource SettignsCard}">
+
+            <NumberBox
+                Width="100"
+                FontSize="14"
+                Minimum="0"
+                SpinButtonPlacementMode="Compact"
+                Value="{x:Bind viewModel.Configuration.Left, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="Top"
+            Tag="The top position of the window"
+            Template="{StaticResource SettignsCard}">
+
+            <NumberBox
+                Width="100"
+                FontSize="14"
+                Minimum="0"
+                SpinButtonPlacementMode="Compact"
+                Value="{x:Bind viewModel.Configuration.Top, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="ShowAsDialog"
+            Tag="Wether to block the UI thread when showing the window"
+            Template="{StaticResource SettignsCard}">
+
+            <ToggleSwitch
+                Margin="0,0,-80,0"
+                FontSize="14"
+                IsOn="{x:Bind viewModel.Configuration.ShowAsDialog, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="ResizeToCenter"
+            Tag="Wether to resize from the center point"
+            Template="{StaticResource SettignsCard}">
+
+            <ToggleSwitch
+                Margin="0,0,-80,0"
+                FontSize="14"
+                IsOn="{x:Bind viewModel.Configuration.ResizeToCenter, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            AccessKey="Timeout"
+            Tag="The timespan when this action times out"
+            Template="{StaticResource SettignsCard}">
+
+            <TextBox FontSize="14" Text="{x:Bind viewModel.Configuration.Timeout, Mode=TwoWay, Converter={StaticResource TimespanConverter}}" />
+        </ContentControl>
+
+        <ContentControl
+            Margin="0,0,0,12"
+            AccessKey="ShowHandlerMessages"
+            Tag="Wether to show a popup when a handler recieves a message"
+            Template="{StaticResource SettignsCard}">
+
+            <ToggleSwitch
+                Margin="0,0,-80,0"
+                FontSize="14"
+                IsOn="{x:Bind viewModel.Configuration.ShowHandlerMessages, Mode=TwoWay}" />
+        </ContentControl>
+
+    </StackPanel>
 </Page>

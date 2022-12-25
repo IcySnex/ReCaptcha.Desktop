@@ -26,9 +26,8 @@
                     Margin="4,4,0,4"
                     Padding="0"
                     x:FieldModifier="public"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Opacity="0">
+                    Opacity="0"
+                    Style="{StaticResource TransparentButton}">
                     <Button.OpacityTransition>
                         <ScalarTransition />
                     </Button.OpacityTransition>
@@ -100,19 +99,19 @@
             <NavigationView.PaneFooter>
                 <StackPanel Orientation="Horizontal" Spacing="8">
                     <Button
-                        Background="Transparent"
-                        BorderBrush="Transparent"
                         Click="OnLoggerClick"
-                        Content="Show Logger" />
+                        Content="Show Logger"
+                        Style="{StaticResource TransparentButton}" />
                     <Button
-                        Background="Transparent"
-                        BorderBrush="Transparent"
                         Click="OnGithubClick"
-                        Content="Open GitHub" />
+                        Content="Open GitHub"
+                        Style="{StaticResource TransparentButton}" />
                 </StackPanel>
             </NavigationView.PaneFooter>
 
-            <Frame Name="ContentFrame" x:FieldModifier="public" />
+            <ScrollViewer>
+                <Frame Name="ContentFrame" x:FieldModifier="public" />
+            </ScrollViewer>
         </NavigationView>
     </Grid>
 </Window>

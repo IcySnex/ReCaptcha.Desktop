@@ -26,7 +26,7 @@ public partial class Configuration : ObservableObject
 
 
     [ObservableProperty]
-    string title = "WPF Sample - Google reCAPTCHA";
+    string title = "WinUI Sample - Google reCAPTCHA";
 
     [ObservableProperty]
     string icon = Environment.CurrentDirectory + "\\Icon.png";
