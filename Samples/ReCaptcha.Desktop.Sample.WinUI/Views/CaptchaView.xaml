@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ReCaptcha.Desktop.Sample.WinUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:ReCaptcha.Desktop.WinUI.UI"
     mc:Ignorable="d">
 
     <StackPanel Margin="24,12,24,0">
@@ -38,10 +39,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button
-                VerticalAlignment="Top"
-                Command="{x:Bind viewModel.VerifyCommand}"
-                Content="Verify" />
+            <ui:ReCaptcha VerticalAlignment="Top" />
             <!--<ui:ReCaptcha
                     VerticalAlignment="Top"
                     ErrorMessage="{Binding ErrorMessage}"
