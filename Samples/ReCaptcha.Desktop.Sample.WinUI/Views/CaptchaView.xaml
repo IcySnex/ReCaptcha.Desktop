@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ReCaptcha.Desktop.Sample.WinUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:themes="using:ReCaptcha.Desktop.WPF.UI.Themes"
     xmlns:ui="using:ReCaptcha.Desktop.WinUI.UI"
     mc:Ignorable="d">
 
@@ -39,14 +40,13 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <ui:ReCaptcha VerticalAlignment="Top" />
-            <!--<ui:ReCaptcha
-                    VerticalAlignment="Top"
-                    ErrorMessage="{Binding ErrorMessage}"
-                    IsChecked="{Binding IsChecked, Mode=TwoWay}"
-                    IsLoading="{Binding IsLoading}"
-                    VerificationRemovedCommand="{Binding RemoveVerificationCommand}"
-                    VerificationRequestedCommand="{Binding VerifyCommand}" />-->
+            <ui:ReCaptcha
+                VerticalAlignment="Top"
+                ErrorMessage="{x:Bind viewModel.ErrorMessage, Mode=OneWay}"
+                IsChecked="{x:Bind viewModel.IsChecked, Mode=TwoWay}"
+                IsLoading="{x:Bind viewModel.IsLoading, Mode=OneWay}"
+                VerificationRemovedCommand="{x:Bind viewModel.RemoveVerificationCommand}"
+                VerificationRequestedCommand="{x:Bind viewModel.VerifyCommand}" />
 
             <TextBox
                 Grid.Column="1"

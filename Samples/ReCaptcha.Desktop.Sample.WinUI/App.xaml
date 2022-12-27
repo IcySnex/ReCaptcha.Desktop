@@ -7,6 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <CommonDictionary xmlns="using:ReCaptcha.Desktop.WinUI.UI" />
             </ResourceDictionary.MergedDictionaries>
 
             <!--  CONVERTERS  -->

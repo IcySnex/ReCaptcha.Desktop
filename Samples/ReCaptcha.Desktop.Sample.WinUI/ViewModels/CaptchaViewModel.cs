@@ -123,7 +123,7 @@ public partial class CaptchaViewModel : ObservableObject
             Token = "Press \"I'm not a robot\"!";
             IsChecked = false;
         }
-        catch (Exception ex) // Error was thrown: Set wrror message and uncheck 
+        catch (Exception ex) // Error was thrown: Set error message and uncheck 
         {
             Token = $"Exception was thrown: {ex.Message} - {ex.InnerException?.Message}";
             IsChecked = false;
