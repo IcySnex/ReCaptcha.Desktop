@@ -237,7 +237,7 @@ public class ReCaptchaClient : IReCaptchaClient
 
 
         // Setup WebView
-        await webView.EnsureCoreWebView2Async();
+        await webView.EnsureCoreWebView2Async().AsTask(cancellationToken);
         reciever.SetWebView(webView.CoreWebView2);
 
         webView.CoreWebView2.Settings.AreDevToolsEnabled = false;
