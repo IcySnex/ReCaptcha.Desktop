@@ -8,12 +8,8 @@
 		<UseWinUI>true</UseWinUI>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Content Remove="UI\Assets\Icon.png" />
-	</ItemGroup>
-	<ItemGroup>
 	  <None Remove="UI\Assets\Roboto-Regular.ttf" />
-	  <None Remove="UI\Generic.xaml" />
-	  <None Remove="UI\ReCaptcha.xaml" />
+	  <None Remove="UI\CommonDictionary.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -27,20 +23,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Resource Include="UI\Assets\Icon.png">
-	    <CopyToOutputDirectory></CopyToOutputDirectory>
-	  </Resource>
-	  <Resource Include="UI\Assets\Roboto-Regular.ttf" />
+	  <Content Include="UI\Assets\Roboto-Regular.ttf">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Page Update="UI\Generic.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Page>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Page Update="UI\ReCaptcha.xaml">
+	  <Page Update="UI\CommonDictionary.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
 	</ItemGroup>

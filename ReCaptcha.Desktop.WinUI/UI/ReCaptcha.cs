@@ -1,37 +1,24 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Documents;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.UI.Xaml.Media.Imaging;
-using Microsoft.UI.Xaml.Navigation;
-using ReCaptcha.Desktop.WinUI.UI.Themes.Interfaces;
+using Microsoft.UI.Xaml.Media;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Input;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.System;
+using ReCaptcha.Desktop.WinUI.UI.Themes.Interfaces;
 
 namespace ReCaptcha.Desktop.WinUI.UI;
 
 /// <summary>
 /// ReCaptcha control that mimics the original Google reCAPTCHA widget
 /// </summary>
-public sealed partial class ReCaptcha : UserControl
+public sealed class ReCaptcha : ContentControl
 {
     /// <summary>
     /// Creates a new ReCaptcha control
     /// </summary>
     public ReCaptcha() =>
-        InitializeComponent();
+        DefaultStyleKey = typeof(ReCaptcha);
 
 
     /// <summary>
@@ -43,12 +30,6 @@ public sealed partial class ReCaptcha : UserControl
     /// Fires when the user removes a verification or stops a verification request
     /// </summary>
     public event EventHandler? VerificationRemoved;
-
-
-    private async void OnHyperlinkClicked(
-        Hyperlink sender, HyperlinkClickEventArgs _) =>
-        await Launcher.LaunchUriAsync(sender.NavigateUri);
-
 
 
     private static void OnIsCheckedChanged(
@@ -79,12 +60,35 @@ public sealed partial class ReCaptcha : UserControl
 
     }
 
+    private static void OnErrorMessageChanged(
+        DependencyObject sender,
+        DependencyPropertyChangedEventArgs e)
+    {
+        if (e.NewValue == e.OldValue)
+            return;
+
+        UpdateCheckbox((ReCaptcha)sender, string.IsNullOrEmpty((string?)e.NewValue) ? "ErrorHidden" : "ErrorVisible");
+    }
+
     private static void UpdateCheckbox(
         ReCaptcha owner,
         string state)
     {
-        CheckBox verifyCheckBox = (CheckBox)((Grid)VisualTreeHelper.GetChild(owner, 0)).Children[0];
-        ((Storyboard)((Grid)VisualTreeHelper.GetChild(verifyCheckBox, 0)).Resources[$"{state}Storyboard"]).Begin();
+        CheckBox verifyCheckBox = (CheckBox)owner.GetTemplateChild("VerifyCheckBox");
+        if (verifyCheckBox is null)
+        {
+            owner.ApplyTemplate();
+            verifyCheckBox = (CheckBox)owner.GetTemplateChild("VerifyCheckBox");
+        }
+
+        Grid rootLayout = (Grid)VisualTreeHelper.GetChild(verifyCheckBox, 0);
+        if (rootLayout is null)
+        {
+            verifyCheckBox.ApplyTemplate();
+            rootLayout = (Grid)VisualTreeHelper.GetChild(verifyCheckBox, 0);
+        }
+
+        ((Storyboard)rootLayout.Resources[$"{state}Storyboard"]).Begin();
     }
 
 
@@ -179,7 +183,7 @@ public sealed partial class ReCaptcha : UserControl
     /// The icon source property shown on the right side of the ReCaptcha control
     /// </summary>
     public static readonly DependencyProperty IconProperty = DependencyProperty.Register(
-        "Icon", typeof(ImageSource), typeof(ReCaptcha), new PropertyMetadata(new BitmapImage(new("pack://application:,,,/ReCaptcha.Desktop.WinUI;component/UI/Assets/Icon.png"))));
+        "Icon", typeof(ImageSource), typeof(ReCaptcha), new PropertyMetadata(new BitmapImage(new("ms-appx:///ReCaptcha.Desktop.WinUI/UI/Assets/Icon.png"))));
 
     /// <summary>
     /// The title shown on the right side of the ReCaptcha control
@@ -304,22 +308,5 @@ public sealed partial class ReCaptcha : UserControl
     /// The error message property which gets displayed if not null
     /// </summary>
     public static readonly DependencyProperty ErrorMessageProperty = DependencyProperty.Register(
-        "ErrorMessage", typeof(string), typeof(ReCaptcha), new PropertyMetadata(null));
-
-
-    /// <summary>
-    /// The error message which gets displayed if not null
-    /// </summary>
-    public new string? Content
-    {
-        get => (string?)GetValue(ContentProperty);
-        set => SetValue(ContentProperty, value);
-    }
-
-    /// <summary>
-    /// The error message property which gets displayed if not null
-    /// </summary>
-    public static new readonly DependencyProperty ContentProperty = DependencyProperty.Register(
-        "Content", typeof(string), typeof(ReCaptcha), new PropertyMetadata("I'm not a robot"));
-
+        "ErrorMessage", typeof(string), typeof(ReCaptcha), new PropertyMetadata(null, OnErrorMessageChanged));
 }
