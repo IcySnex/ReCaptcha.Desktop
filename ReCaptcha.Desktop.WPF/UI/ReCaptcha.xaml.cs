@@ -49,6 +49,8 @@ public partial class ReCaptcha : UserControl
 
     private void OnUnloaded(object _, RoutedEventArgs _1)
     {
+        Unloaded -= OnUnloaded;
+
         ClearValue(VerificationRequestedCommandProperty);
         ClearValue(VerificationRequestedCommandParameterProperty);
         ClearValue(VerificationRemovedCommandProperty);
@@ -63,8 +65,6 @@ public partial class ReCaptcha : UserControl
         ClearValue(IsCheckedProperty);
         ClearValue(IsLoadingProperty);
         ClearValue(ErrorMessageProperty);
-
-        Unloaded -= OnUnloaded;
     }
 
 
@@ -100,7 +100,13 @@ public partial class ReCaptcha : UserControl
         ReCaptcha owner,
         string state)
     {
-        CheckBox verifyCheckBox = (CheckBox)owner.Template.FindName("VerifyCheckBox", owner);
+        CheckBox verifyCheckBox = (CheckBox)owner.GetTemplateChild("VerifyCheckBox");
+        if (verifyCheckBox is null)
+        {
+            owner.ApplyTemplate();
+            verifyCheckBox = (CheckBox)owner.GetTemplateChild("VerifyCheckBox");
+        }
+
         ((Storyboard)verifyCheckBox.Template.Resources[$"{state}Storyboard"]).Begin(verifyCheckBox, verifyCheckBox.Template);
     }
 

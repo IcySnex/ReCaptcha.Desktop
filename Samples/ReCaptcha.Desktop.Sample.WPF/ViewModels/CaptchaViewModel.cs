@@ -39,29 +39,26 @@ public partial class CaptchaViewModel : ObservableObject
     {
         captchaClient.VerificationRecieved += (s, e) =>
         {
-            string msg = $"Token: {e.Token[..15]}...\n\tOccurred at: {e.OccurredAt}";
+            logger.LogInformation("[CaptchaViewModel-VerificationRecieved] Verification was recieved\n\t Token: {token}...\n\tOccurred at: {occurred}", e.Token[..15], e.OccurredAt);
 
             if (configuration.ShowHandlerMessages)
-                MessageBox.Show(msg, "Verification was recieved", MessageBoxButton.OK, MessageBoxImage.Information);
-            logger.LogInformation($"[CaptchaViewModel-VerificationRecieved] Verification was recieved\n\t{msg}");
+                MessageBox.Show($"Token: {e.Token[..15]}...\nOccurred at: {e.OccurredAt}", "Verification was recieved", MessageBoxButton.OK, MessageBoxImage.Information);
         };
 
         captchaClient.VerificationCancelled += (s, e) =>
         {
-            string msg = $"Occurred at: {e.OccurredAt}";
+            logger.LogInformation("[CaptchaViewModel-VerificationCancelled] Verification was cancelled\n\tOccurred at {occurred}", e.OccurredAt);
 
             if (configuration.ShowHandlerMessages)
-                MessageBox.Show(msg, "Verification was cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
-            logger.LogInformation($"[CaptchaViewModel-VerificationCancelled] Verification was cancelled\n\t{msg}");
+                MessageBox.Show($"Occurred at {e.OccurredAt}", "Verification was cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
         };
 
         captchaClient.ReCaptchaResized += (s, e) =>
         {
-            string msg = $"Width: {e.Width}\n\tHeight: {e.Height}\n\tOccurred at: {e.OccurredAt}";
-
+            logger.LogInformation("[CaptchaViewModel-ReCaptchaResized] ReCaptcha was resized\n\tWidth: {width}\n\tHeight: {height}\n\tOccurred at: {occurred}", e.Width, e.Height, e.OccurredAt);
+            
             if (configuration.ShowHandlerMessages)
-                MessageBox.Show(msg, "ReCaptcha resized", MessageBoxButton.OK, MessageBoxImage.Information);
-            logger.LogInformation($"[CaptchaViewModel-ReCaptchaResized] ReCaptcha was resized\n\t{msg}");
+                MessageBox.Show($"Width: {e.Width}\nHeight: {e.Height}\nOccurred at: {e.OccurredAt}", "ReCaptcha resized", MessageBoxButton.OK, MessageBoxImage.Information);
         };
     }
 
@@ -84,8 +81,7 @@ public partial class CaptchaViewModel : ObservableObject
             startupLocation: configuration.StartupLocation,
             left: configuration.Left,
             top: configuration.Top,
-            showAsDialog: configuration.ShowAsDialog,
-            resizeToCenter: configuration.ResizeToCenter);
+            showAsDialog: configuration.ShowAsDialog);
 
         captchaClient.Configuration = reCaptchaConfig;
         captchaClient.WindowConfiguration = windowConfig;
@@ -99,6 +95,9 @@ public partial class CaptchaViewModel : ObservableObject
 
     [ObservableProperty]
     bool isChecked = false;
+    partial void OnIsCheckedChanged(bool value)
+    {
+    }
 
     [ObservableProperty]
     bool isLoading = false;
@@ -126,7 +125,7 @@ public partial class CaptchaViewModel : ObservableObject
             Token = "Press \"I'm not a robot\"!";
             IsChecked = false;
         }
-        catch (Exception ex) // Error was thrown: Set wrror message and uncheck 
+        catch (Exception ex) // Error was thrown: Set error message and uncheck 
         {
             Token = $"Exception was thrown: {ex.Message} - {ex.InnerException?.Message}";
             IsChecked = false;

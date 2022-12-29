@@ -74,37 +74,29 @@
                             TextTrimming="CharacterEllipsis" />
 
                         <!--  URIS  -->
-                        <Grid
+                        <TextBlock
                             Grid.Row="2"
                             Margin="0,0.5,0,0"
-                            HorizontalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock
-                                FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                FontSize="8.3"
-                                Foreground="{Binding Theme.Foreground, RelativeSource={RelativeSource AncestorType=UserControl}}">
-                                <Hyperlink
-                                    FocusVisualStyle="{x:Null}"
-                                    Foreground="{Binding Theme.ForegroundSecondary, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                    NavigateUri="{Binding FirstUri, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                    RequestNavigate="OnHyperlinkRequest">
-                                    <Run Text="{Binding FirstUriText, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                                </Hyperlink>
-                                <Run Text="-" />
-                                <Hyperlink
-                                    FocusVisualStyle="{x:Null}"
-                                    Foreground="{Binding Theme.ForegroundSecondary, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                    NavigateUri="{Binding SecondaryUri, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                    RequestNavigate="OnHyperlinkRequest">
-                                    <Run Text="{Binding SecondaryUriText, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                                </Hyperlink>
-                            </TextBlock>
-                        </Grid>
+                            HorizontalAlignment="Center"
+                            FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                            FontSize="8.3"
+                            Foreground="{Binding Theme.Foreground, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                            <Hyperlink
+                                FocusVisualStyle="{x:Null}"
+                                Foreground="{Binding Theme.ForegroundSecondary, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                NavigateUri="{Binding FirstUri, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                RequestNavigate="OnHyperlinkRequest">
+                                <Run Text="{Binding FirstUriText, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                            </Hyperlink>
+                            <Run Text="-" />
+                            <Hyperlink
+                                FocusVisualStyle="{x:Null}"
+                                Foreground="{Binding Theme.ForegroundSecondary, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                NavigateUri="{Binding SecondaryUri, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                RequestNavigate="OnHyperlinkRequest">
+                                <Run Text="{Binding SecondaryUriText, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                            </Hyperlink>
+                        </TextBlock>
                     </Grid>
                 </Grid>
             </Border>
