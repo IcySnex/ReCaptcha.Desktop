@@ -2,8 +2,10 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.UI.Xaml.Controls;
 using ReCaptcha.Desktop.Client.WinUI;
 using ReCaptcha.Desktop.Configuration;
+using ReCaptcha.Desktop.Sample.WinUI.Services;
 using ReCaptcha.Desktop.Sample.WinUI.Views;
 
 namespace ReCaptcha.Desktop.Sample.WinUI.ViewModels;
@@ -13,17 +15,20 @@ public partial class CaptchaViewModel : ObservableObject
     readonly ILogger logger;
     readonly Models.Configuration configuration;
     readonly MainView mainView;
+    readonly WindowHelper windowHelper;
     readonly ReCaptchaClient captchaClient;
 
     public CaptchaViewModel(
         ILogger<CaptchaViewModel> logger,
         IOptions<Models.Configuration> configuration,
         MainView mainView,
+        WindowHelper windowHelper,
         ReCaptchaClient captchaClient)
     {
         this.logger = logger;
         this.configuration = configuration.Value;
         this.mainView = mainView;
+        this.windowHelper = windowHelper;
         this.captchaClient = captchaClient;
 
         HookHandlers();
@@ -34,31 +39,34 @@ public partial class CaptchaViewModel : ObservableObject
 
     void HookHandlers()
     {
-        captchaClient.VerificationRecieved += (s, e) =>
+        ContentDialog dialog = new()
         {
-            string msg = $"Token: {e.Token[..15]}...\n\tOccurred at: {e.OccurredAt}";
-
-            //if (configuration.ShowHandlerMessages)
-            //    MessageBox.Show(msg, "Verification was recieved", MessageBoxButton.OK, MessageBoxImage.Information);
-            logger.LogInformation($"[CaptchaViewModel-VerificationRecieved] Verification was recieved\n\t{msg}");
+            CloseButtonText = "Ok",
+            XamlRoot = mainView.Content.XamlRoot,
         };
 
-        captchaClient.VerificationCancelled += (s, e) =>
+        captchaClient.VerificationRecieved += async (s, e) =>
         {
-            string msg = $"Occurred at: {e.OccurredAt}";
+            logger.LogInformation("[CaptchaViewModel-VerificationRecieved] Verification was recieved\n\t Token: {token}...\n\tOccurred at: {occurred}", e.Token[..15], e.OccurredAt);
 
-            //if (configuration.ShowHandlerMessages)
-            //    MessageBox.Show(msg, "Verification was cancelled", MessageBoxButton.OK, MessageBoxImage.Information);
-            logger.LogInformation($"[CaptchaViewModel-VerificationCancelled] Verification was cancelled\n\t{msg}");
+            if (configuration.ShowHandlerMessages)
+                await windowHelper.AlertAsync($"Token: {e.Token[..15]}...\nOccurred at: {e.OccurredAt}", "Verification was recieved");
         };
 
-        captchaClient.ReCaptchaResized += (s, e) =>
+        captchaClient.VerificationCancelled += async (s, e) =>
         {
-            string msg = $"Width: {e.Width}\n\tHeight: {e.Height}\n\tOccurred at: {e.OccurredAt}";
+            logger.LogInformation("[CaptchaViewModel-VerificationCancelled] Verification was cancelled\n\tOccurred at {occurred}", e.OccurredAt);
 
-            //if (configuration.ShowHandlerMessages)
-            //    MessageBox.Show(msg, "ReCaptcha resized", MessageBoxButton.OK, MessageBoxImage.Information);
-            logger.LogInformation($"[CaptchaViewModel-ReCaptchaResized] ReCaptcha was resized\n\t{msg}");
+            if (configuration.ShowHandlerMessages)
+                await windowHelper.AlertAsync($"Occurred at {e.OccurredAt}", "Verification was cancelled");
+        };
+
+        captchaClient.ReCaptchaResized += async (s, e) =>
+        {
+            logger.LogInformation("[CaptchaViewModel-ReCaptchaResized] ReCaptcha was resized\n\tWidth: {width}\n\tHeight: {height}\n\tOccurred at: {occurred}", e.Width, e.Height, e.OccurredAt);
+
+            if (configuration.ShowHandlerMessages)
+                await windowHelper.AlertAsync($"Width: {e.Width}\nHeight: {e.Height}\nOccurred at: {e.OccurredAt}", "ReCaptcha resized");
         };
     }
 
@@ -81,8 +89,7 @@ public partial class CaptchaViewModel : ObservableObject
             startupLocation: configuration.StartupLocation,
             left: configuration.Left,
             top: configuration.Top,
-            showAsDialog: configuration.ShowAsDialog,
-            resizeToCenter: configuration.ResizeToCenter);
+            showAsDialog: configuration.ShowAsDialog);
 
         captchaClient.Configuration = reCaptchaConfig;
         captchaClient.WindowConfiguration = windowConfig;
@@ -96,6 +103,9 @@ public partial class CaptchaViewModel : ObservableObject
 
     [ObservableProperty]
     bool isChecked = false;
+    partial void OnIsCheckedChanged(bool value)
+    {
+    }
 
     [ObservableProperty]
     bool isLoading = false;

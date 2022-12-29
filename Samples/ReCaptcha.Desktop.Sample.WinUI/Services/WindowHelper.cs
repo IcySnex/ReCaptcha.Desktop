@@ -6,6 +6,8 @@ using Microsoft.UI.Xaml;
 using ReCaptcha.Desktop.Sample.WinUI.Views;
 using System.Runtime.InteropServices;
 using WinRT.Interop;
+using Windows.UI.Popups;
+using Windows.Foundation;
 
 namespace ReCaptcha.Desktop.Sample.WinUI.Services;
 
@@ -167,6 +169,21 @@ public class WindowHelper
             logger.LogInformation("Failed to set custom TitleBar", ex);
             return false;
         }
+    }
+
+
+    /// <summary>
+    /// Creates a new MessageDialog which displays the content and title
+    /// </summary>
+    /// <param name="content">The content of the MessageDialog</param>
+    /// <param name="title">The title of the MessageDialog</param>
+    public IAsyncOperation<IUICommand> AlertAsync(
+        string content,
+        string title)
+    {
+        MessageDialog messageDialog = new(content, title);
+        InitializeWithWindow.Initialize(messageDialog, HWnd);
+        return messageDialog.ShowAsync();
     }
 
 

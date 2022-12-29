@@ -6,6 +6,9 @@ using Microsoft.UI.Xaml.Media;
 using System;
 using System.Windows.Input;
 using ReCaptcha.Desktop.WinUI.UI.Themes.Interfaces;
+using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Data;
+using System.Threading.Tasks;
 
 namespace ReCaptcha.Desktop.WinUI.UI;
 
@@ -17,8 +20,12 @@ public sealed class ReCaptcha : ContentControl
     /// <summary>
     /// Creates a new ReCaptcha control
     /// </summary>
-    public ReCaptcha() =>
+    public ReCaptcha()
+    {
         DefaultStyleKey = typeof(ReCaptcha);
+
+        Unloaded += OnUnloaded;
+    }
 
 
     /// <summary>
@@ -32,6 +39,31 @@ public sealed class ReCaptcha : ContentControl
     public event EventHandler? VerificationRemoved;
 
 
+    private void OnUnloaded(object _, RoutedEventArgs _1)
+    {
+        Unloaded -= OnUnloaded;
+
+        if (NavigationCacheMode != NavigationCacheMode.Disabled)
+            return;
+
+        ClearValue(VerificationRequestedCommandProperty);
+        ClearValue(VerificationRequestedCommandParameterProperty);
+        ClearValue(VerificationRemovedCommandProperty);
+        ClearValue(VerificationRemovedCommandParameterProperty);
+        ClearValue(ThemeProperty);
+        ClearValue(IconProperty);
+        ClearValue(TitleProperty);
+        ClearValue(FirstUriProperty);
+        ClearValue(FirstUriTextProperty);
+        ClearValue(SecondaryUriProperty);
+        ClearValue(SecondaryUriTextProperty);
+        ClearValue(IsCheckedProperty);
+        ClearValue(IsLoadingProperty);
+        ClearValue(ErrorMessageProperty);
+        ClearValue(NavigationCacheModeProperty);
+    }
+
+
     private static void OnIsCheckedChanged(
         DependencyObject sender,
         DependencyPropertyChangedEventArgs e)
@@ -42,7 +74,7 @@ public sealed class ReCaptcha : ContentControl
         ReCaptcha owner = (ReCaptcha)sender;
         bool newVal = (bool)e.NewValue;
 
-        UpdateCheckbox(owner, (bool)e.NewValue ? "True" : "False");
+        UpdateCheckbox(owner, newVal ? "True" : "False");
 
         (newVal ? owner.VerificationRequested : owner.VerificationRemoved)?.Invoke(owner, new());
         (newVal ? owner.VerificationRequestedCommand : owner.VerificationRemovedCommand)?.Execute(newVal == true ? owner.VerificationRequestedCommandParameter : owner.VerificationRemovedCommandParameter);
@@ -56,7 +88,7 @@ public sealed class ReCaptcha : ContentControl
             return;
 
         ReCaptcha owner = (ReCaptcha)sender;
-        UpdateCheckbox(owner, (bool)e.NewValue ? "Null" : owner.IsChecked ? "True" : "False");
+        UpdateCheckbox(owner, (bool)e.NewValue ? "Null" : string.IsNullOrEmpty(owner.ErrorMessage) ? owner.IsChecked ? "True" : "False" : "ErrorVisible");
 
     }
 
@@ -309,4 +341,20 @@ public sealed class ReCaptcha : ContentControl
     /// </summary>
     public static readonly DependencyProperty ErrorMessageProperty = DependencyProperty.Register(
         "ErrorMessage", typeof(string), typeof(ReCaptcha), new PropertyMetadata(null, OnErrorMessageChanged));
+
+
+    /// <summary>
+    /// The caching characteristics for the control involved in a navigation
+    /// </summary>
+    public NavigationCacheMode NavigationCacheMode
+    {
+        get => (NavigationCacheMode)GetValue(NavigationCacheModeProperty);
+        set => SetValue(NavigationCacheModeProperty, value);
+    }
+
+    /// <summary>
+    /// The caching characteristics property for the control involved in a navigation
+    /// </summary>
+    public static readonly DependencyProperty NavigationCacheModeProperty = DependencyProperty.Register(
+        "NavigationCacheMode", typeof(NavigationCacheMode), typeof(ReCaptcha), new PropertyMetadata(NavigationCacheMode.Disabled));
 }

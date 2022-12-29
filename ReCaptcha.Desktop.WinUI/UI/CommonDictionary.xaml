@@ -164,7 +164,6 @@
                                     Storyboard.TargetProperty="Opacity"
                                     To="1"
                                     Duration="0:0:0.2" />
-
                                 <DoubleAnimation
                                     Storyboard.TargetName="ErrorMessage"
                                     Storyboard.TargetProperty="Opacity"
@@ -181,12 +180,30 @@
                                     Storyboard.TargetProperty="Opacity"
                                     To="0"
                                     Duration="0:0:0.2" />
-
                                 <DoubleAnimation
                                     Storyboard.TargetName="ErrorMessage"
                                     Storyboard.TargetProperty="Opacity"
                                     To="1"
                                     Duration="0:0:0.2" />
+
+                                <DoubleAnimation
+                                    Storyboard.TargetName="RootLayout"
+                                    Storyboard.TargetProperty="Opacity"
+                                    To="1"
+                                    Duration="0:0:0.2" />
+
+                                <DoubleAnimation
+                                    EnableDependentAnimation="True"
+                                    Storyboard.TargetName="RootLayout"
+                                    Storyboard.TargetProperty="Width"
+                                    To="28"
+                                    Duration="0:0:0.3" />
+                                <DoubleAnimation
+                                    EnableDependentAnimation="True"
+                                    Storyboard.TargetName="RootLayout"
+                                    Storyboard.TargetProperty="Height"
+                                    To="28"
+                                    Duration="0:0:0.3" />
                             </Storyboard>
                         </Grid.Resources>
 

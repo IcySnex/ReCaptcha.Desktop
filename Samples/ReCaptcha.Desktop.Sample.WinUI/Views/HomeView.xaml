@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ReCaptcha.Desktop.Sample.WinUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -24,7 +25,7 @@
             Opacity="0.5"
             TextAlignment="Center"
             TextWrapping="Wrap">
-            This is an example application based on WPF with MVVM/Dependency Inection.<LineBreak />
+            This is an example application based on WinUI3 with MVVM/Dependency Inection.<LineBreak />
             This is an open source library and is not affiliated with Google in any way.</TextBlock>
 
         <Button
