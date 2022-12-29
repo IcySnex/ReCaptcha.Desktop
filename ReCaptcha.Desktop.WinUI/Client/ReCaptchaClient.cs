@@ -9,6 +9,8 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using ReCaptcha.Desktop.WinUI.Internal;
 using Windows.Graphics;
+using Windows.UI.Popups;
+using WinRT.Interop;
 
 namespace ReCaptcha.Desktop.Client.WinUI;
 
@@ -127,7 +129,6 @@ public class ReCaptchaClient : IReCaptchaClient
         add => reciever.ReCaptchaResized += value;
         remove => reciever.ReCaptchaResized -= value;
     }
-
 
     /// <summary>
     /// Starts and stops the HTTP server and opens a new window for the user to verify

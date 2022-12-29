@@ -5,7 +5,7 @@
     xmlns:local="using:ReCaptcha.Desktop.WinUI.UI">
 
     <!--  HYPERLINKBUTTON: REMOVE BUTTON, ADD UNDERLINE ON HOVER  -->
-    <Style x:Name="ReCaptchaHyperlinkButtonStyle" TargetType="HyperlinkButton">
+    <Style x:Key="ReCaptchaHyperlinkButtonStyle" TargetType="HyperlinkButton">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="HyperlinkButton">

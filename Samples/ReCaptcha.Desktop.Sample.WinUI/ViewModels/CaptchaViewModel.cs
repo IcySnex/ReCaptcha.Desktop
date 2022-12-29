@@ -103,9 +103,6 @@ public partial class CaptchaViewModel : ObservableObject
 
     [ObservableProperty]
     bool isChecked = false;
-    partial void OnIsCheckedChanged(bool value)
-    {
-    }
 
     [ObservableProperty]
     bool isLoading = false;

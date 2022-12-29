@@ -7,8 +7,6 @@ using System;
 using System.Windows.Input;
 using ReCaptcha.Desktop.WinUI.UI.Themes.Interfaces;
 using Microsoft.UI.Xaml.Navigation;
-using Microsoft.UI.Xaml.Data;
-using System.Threading.Tasks;
 
 namespace ReCaptcha.Desktop.WinUI.UI;
 
