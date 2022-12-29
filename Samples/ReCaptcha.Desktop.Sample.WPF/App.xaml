@@ -7,56 +7,58 @@
     xmlns:views="clr-namespace:ReCaptcha.Desktop.Sample.WPF.Views"
     xmlns:vms="clr-namespace:ReCaptcha.Desktop.Sample.WPF.ViewModels">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <CommonDictionary xmlns="clr-namespace:ReCaptcha.Desktop.WPF.UI;assembly=ReCaptcha.Desktop.WPF" />
+            </ResourceDictionary.MergedDictionaries>
 
-        <!--  Converters  -->
-        <conv:TimeSpanConverter x:Key="TimeSpanConverter" />
+            <!--  Converters  -->
+            <conv:TimeSpanConverter x:Key="TimeSpanConverter" />
 
+            <!--  Pages  -->
+            <DataTemplate DataType="{x:Type vms:HomeViewModel}">
+                <views:HomeView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:CaptchaViewModel}">
+                <views:CaptchaView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:SettingsViewModel}">
+                <views:SettingsView />
+            </DataTemplate>
 
-        <!--  Pages  -->
-        <DataTemplate DataType="{x:Type vms:HomeViewModel}">
-            <views:HomeView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vms:CaptchaViewModel}">
-            <views:CaptchaView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vms:SettingsViewModel}">
-            <views:SettingsView />
-        </DataTemplate>
+            <!--  controls  -->
+            <ControlTemplate x:Key="SettignsCard" TargetType="ContentControl">
+                <Border
+                    Margin="0,8,0,0"
+                    Padding="8"
+                    Background="#70add8e6"
+                    BorderBrush="#aaadd8e6"
+                    BorderThickness="2"
+                    CornerRadius="4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" MinWidth="300" />
+                        </Grid.ColumnDefinitions>
 
+                        <TextBlock FontSize="16" Text="{TemplateBinding ContentStringFormat}" />
+                        <TextBlock
+                            Margin="0,18,0,0"
+                            FontSize="14"
+                            Opacity="0.5"
+                            Text="{TemplateBinding Tag}"
+                            TextWrapping="WrapWithOverflow" />
 
-        <!--  controls  -->
-        <ControlTemplate x:Key="SettignsCard" TargetType="ContentControl">
-            <Border
-                Margin="0,8,0,0"
-                Padding="8"
-                Background="#70add8e6"
-                BorderBrush="#aaadd8e6"
-                BorderThickness="2"
-                CornerRadius="4">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" MinWidth="300" />
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock FontSize="16" Text="{TemplateBinding ContentStringFormat}" />
-                    <TextBlock
-                        Margin="0,18,0,0"
-                        FontSize="14"
-                        Opacity="0.5"
-                        Text="{TemplateBinding Tag}"
-                        TextWrapping="WrapWithOverflow" />
-
-                    <ContentControl
-                        Grid.Column="1"
-                        Margin="32,0,0,0"
-                        Padding="6"
-                        VerticalAlignment="Center"
-                        Content="{TemplateBinding Content}"
-                        Opacity="0.7" />
-                </Grid>
-            </Border>
-        </ControlTemplate>
-
+                        <ContentControl
+                            Grid.Column="1"
+                            Margin="32,0,0,0"
+                            Padding="6"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}"
+                            Opacity="0.7" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

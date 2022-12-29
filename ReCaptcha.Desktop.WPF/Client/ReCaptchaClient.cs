@@ -127,7 +127,6 @@ public class ReCaptchaClient : IReCaptchaClient
         remove => reciever.ReCaptchaResized -= value;
     }
 
-
     /// <summary>
     /// Starts and stops the HTTP server and opens a new window for the user to verify
     /// </summary>

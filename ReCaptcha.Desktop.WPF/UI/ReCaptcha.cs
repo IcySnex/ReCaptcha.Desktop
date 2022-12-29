@@ -1,28 +1,29 @@
-﻿using ReCaptcha.Desktop.WPF.UI.Themes.Interfaces;
+﻿using System.Diagnostics;
 using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Windows.Media;
 using System.Windows.Navigation;
+using ReCaptcha.Desktop.WPF.UI.Themes.Interfaces;
 
 namespace ReCaptcha.Desktop.WPF.UI;
 
 /// <summary>
 /// ReCaptcha control that mimics the original Google reCAPTCHA widget
 /// </summary>
-public partial class ReCaptcha : UserControl
+public class ReCaptcha : ContentControl
 {
+    static ReCaptcha() =>
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(ReCaptcha), new FrameworkPropertyMetadata(typeof(ReCaptcha)));
+
     /// <summary>
     /// Creates a new ReCaptcha control
     /// </summary>
     public ReCaptcha()
     {
-        InitializeComponent();
-
         Unloaded += OnUnloaded;
     }
 
@@ -37,15 +38,6 @@ public partial class ReCaptcha : UserControl
     /// </summary>
     public event EventHandler? VerificationRemoved;
 
-
-    private void OnHyperlinkRequest(object _,
-        RequestNavigateEventArgs e) =>
-        Process.Start(new ProcessStartInfo()
-        {
-            FileName = e.Uri.AbsoluteUri,
-            UseShellExecute = true,
-            CreateNoWindow = true
-        });
 
     private void OnUnloaded(object _, RoutedEventArgs _1)
     {
@@ -125,7 +117,7 @@ public partial class ReCaptcha : UserControl
     /// </summary>
     public static readonly DependencyProperty VerificationRequestedCommandProperty = DependencyProperty.Register(
         "VerificationRequestedCommand", typeof(ICommand), typeof(ReCaptcha), new PropertyMetadata());
-    
+
     /// <summary>
     /// The command that gets executed when the user requests a verification
     /// </summary>
@@ -296,7 +288,7 @@ public partial class ReCaptcha : UserControl
     /// </summary>
     public static readonly DependencyProperty IsCheckedProperty = DependencyProperty.Register(
         "IsChecked", typeof(bool), typeof(ReCaptcha), new PropertyMetadata(false, OnIsCheckedChanged));
-    
+
 
     /// <summary>
     /// Wether the ReCaptcha control shows loading
@@ -312,7 +304,7 @@ public partial class ReCaptcha : UserControl
     /// </summary>
     public static readonly DependencyProperty IsLoadingProperty = DependencyProperty.Register(
         "IsLoading", typeof(bool), typeof(ReCaptcha), new PropertyMetadata(false, OnIsLoadingChanged));
-    
+
 
     /// <summary>
     /// The error message which gets displayed if not null
