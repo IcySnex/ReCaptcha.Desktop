@@ -14,7 +14,6 @@ public static class Extentions
     /// <param name="left">The left position of the window</param>
     /// <param name="top">The top position of the window</param>
     /// <param name="showAsDialog">Wether to block the UI thread when showing the window</param>
-    /// <param name="resizeToCenter">Wether to resize from the center point</param>
     /// <returns>A new WindowConfig</returns>
     public static WindowConfig AsWindowConfig(
         this string title,
@@ -23,7 +22,6 @@ public static class Extentions
         bool showAsDialog = false,
         WindowStartupLocation startupLocation = WindowStartupLocation.CenterScreen,
         int left = 0,
-        int top = 0,
-        bool resizeToCenter = true) =>
-        new(title, icon, owner, startupLocation, left, top, showAsDialog, resizeToCenter);
+        int top = 0) =>
+        new(title, icon, owner, startupLocation, left, top, showAsDialog);
 }

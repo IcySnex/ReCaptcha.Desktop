@@ -17,7 +17,6 @@ public class WindowConfig
     /// <param name="left">The left position of the window</param>
     /// <param name="top">The top position of the window</param>
     /// <param name="showAsDialog">Wether to block the UI thread when showing the window</param>
-    /// <param name="resizeToCenter">Wether to resize from the center point</param>
     public WindowConfig(
         string title,
         string icon = default!,
@@ -25,8 +24,7 @@ public class WindowConfig
         WindowStartupLocation startupLocation = WindowStartupLocation.CenterScreen,
         int left = 0,
         int top = 0,
-        bool showAsDialog = false,
-        bool resizeToCenter = true)
+        bool showAsDialog = false)
     {
         Title = title;
         Icon = icon;
@@ -35,7 +33,6 @@ public class WindowConfig
         StartupLocation = startupLocation;
         Left = left;
         Top = top;
-        ResizeToCenter = resizeToCenter;
     }
 
 
@@ -74,9 +71,4 @@ public class WindowConfig
     /// Wether to block the UI thread when showing the window
     /// </summary>
     public bool ShowAsDialog { get; set; }
-
-    /// <summary>
-    /// Wether to resize from the center point
-    /// </summary>
-    public bool ResizeToCenter { get; set; }
 }

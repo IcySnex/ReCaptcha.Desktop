@@ -44,9 +44,6 @@ public partial class Configuration : ObservableObject
     [ObservableProperty]
     bool showAsDialog = false;
 
-    [ObservableProperty]
-    bool resizeToCenter = false;
-
 
     [ObservableProperty]
     TimeSpan timeout = TimeSpan.FromMinutes(1);

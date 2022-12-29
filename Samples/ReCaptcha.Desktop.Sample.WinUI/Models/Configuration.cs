@@ -5,6 +5,13 @@ namespace ReCaptcha.Desktop.Sample.WinUI.Models;
 
 public partial class Configuration : ObservableObject
 {
+    /// <summary>
+    /// Requires application restart.
+    /// Property is not visible in settings view.
+    /// </summary>
+    public bool UseMica { get; set; } = true;
+
+
     [ObservableProperty]
     string httpUrl = "http://localhost";
 
@@ -29,7 +36,7 @@ public partial class Configuration : ObservableObject
     string title = "WinUI Sample - Google reCAPTCHA";
 
     [ObservableProperty]
-    string icon = Environment.CurrentDirectory + "\\Icon.png";
+    string icon = Environment.CurrentDirectory + "\\Icon.ico";
 
     [ObservableProperty]
     WindowStartupLocation startupLocation = WindowStartupLocation.CenterScreen;
@@ -42,9 +49,6 @@ public partial class Configuration : ObservableObject
 
     [ObservableProperty]
     bool showAsDialog = false;
-
-    [ObservableProperty]
-    bool resizeToCenter = false;
 
 
     [ObservableProperty]

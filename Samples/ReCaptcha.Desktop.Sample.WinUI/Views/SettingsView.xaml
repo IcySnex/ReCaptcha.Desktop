@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
     <StackPanel Margin="24,12,24,0">
@@ -139,17 +140,6 @@
                 Margin="0,0,-80,0"
                 FontSize="14"
                 IsOn="{x:Bind viewModel.Configuration.ShowAsDialog, Mode=TwoWay}" />
-        </ContentControl>
-
-        <ContentControl
-            AccessKey="ResizeToCenter"
-            Tag="Wether to resize from the center point"
-            Template="{StaticResource SettignsCard}">
-
-            <ToggleSwitch
-                Margin="0,0,-80,0"
-                FontSize="14"
-                IsOn="{x:Bind viewModel.Configuration.ResizeToCenter, Mode=TwoWay}" />
         </ContentControl>
 
         <ContentControl

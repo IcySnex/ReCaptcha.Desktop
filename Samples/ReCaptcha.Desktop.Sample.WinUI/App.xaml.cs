@@ -75,7 +75,7 @@ public partial class App : Application
         windowHelper.SetSize(900, 500);
 
         windowHelper.EnsureWindowsSystemDispatcherQueueController();
-        if (!mica.EnableBackdrop())
+        if (!configuration.Value.UseMica || !mica.EnableBackdrop())
             acrylic.EnableBackdrop();
 
         mainView.Closed += async (s, e) =>

@@ -173,23 +173,6 @@
             </ContentControl>
 
             <ContentControl
-                ContentStringFormat="ResizeToCenter"
-                Tag="Wether to resize from the center point"
-                Template="{StaticResource SettignsCard}">
-
-                <CheckBox
-                    Margin="0,0,-8,-8"
-                    HorizontalAlignment="Right"
-                    Content=""
-                    FontSize="14"
-                    IsChecked="{Binding Configuration.ResizeToCenter, Mode=TwoWay}">
-                    <CheckBox.LayoutTransform>
-                        <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
-                    </CheckBox.LayoutTransform>
-                </CheckBox>
-            </ContentControl>
-
-            <ContentControl
                 ContentStringFormat="Timeout"
                 Tag="The timespan when this action times out"
                 Template="{StaticResource SettignsCard}">
