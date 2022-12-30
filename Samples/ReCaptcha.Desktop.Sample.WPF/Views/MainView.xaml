@@ -18,12 +18,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Background="LightBlue" Opacity="0.75">
+        <Grid
+            Height="45"
+            Background="LightBlue"
+            Opacity="0.75">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
@@ -34,41 +36,28 @@
                     Opacity="0.3" />
             </Grid.Effect>
 
-            <Image
-                Height="26"
-                Margin="12,8"
-                Source="../Icon.png" />
-
-            <TextBlock
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                FontSize="16"
-                FontWeight="SemiBold"
-                Text="ReCaptcha.Desktop - WPF SAMPLE" />
-
             <Button
-                Grid.Column="2"
                 Padding="18,0"
                 Background="Transparent"
                 BorderThickness="0"
                 Command="{Binding NavigateToHomeCommand}"
                 Content="Home" />
             <Button
-                Grid.Column="3"
+                Grid.Column="1"
                 Padding="18,0"
                 Background="Transparent"
                 BorderThickness="0"
                 Command="{Binding NavigateToSettingsCommand}"
                 Content="Settings" />
             <Button
-                Grid.Column="4"
+                Grid.Column="3"
                 Padding="18,0"
                 Background="Transparent"
                 BorderThickness="0"
                 Command="{Binding CreateLoggerCommand}"
                 Content="Show Logger" />
             <Button
-                Grid.Column="5"
+                Grid.Column="4"
                 Padding="18,0"
                 Background="Transparent"
                 BorderThickness="0"
