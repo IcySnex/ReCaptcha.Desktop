@@ -33,3 +33,7 @@ Samples/ReCaptcha.Desktop.Sample.WPF/Properties/
 Samples/ReCaptcha.Desktop.Sample.WinUI/bin/
 Samples/ReCaptcha.Desktop.Sample.WinUI/obj/
 Samples/ReCaptcha.Desktop.Sample.WinUI/Properties/
+
+Samples/ReCaptcha.Desktop.Sample.UWP/bin/
+Samples/ReCaptcha.Desktop.Sample.UWP/obj/
+Samples/ReCaptcha.Desktop.Sample.UWP/Properties/
