@@ -1,5 +1,4 @@
 ﻿using Microsoft.UI.Xaml.Media;
-using ReCaptcha.Desktop.WPF.UI.Themes;
 
 namespace ReCaptcha.Desktop.WinUI.UI.Themes.Interfaces;
 

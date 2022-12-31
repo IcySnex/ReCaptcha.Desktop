@@ -7,6 +7,7 @@ using ReCaptcha.Desktop.Client.WinUI;
 using ReCaptcha.Desktop.Configuration;
 using ReCaptcha.Desktop.Sample.WinUI.Services;
 using ReCaptcha.Desktop.Sample.WinUI.Views;
+using ReCaptcha.Desktop.WinUI.UI.Themes;
 
 namespace ReCaptcha.Desktop.Sample.WinUI.ViewModels;
 

@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ReCaptcha.Desktop.Sample.WinUI.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:themes="using:ReCaptcha.Desktop.WPF.UI.Themes"
+    xmlns:themes="using:ReCaptcha.Desktop.WinUI.UI.Themes"
     xmlns:ui="using:ReCaptcha.Desktop.WinUI.UI"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
