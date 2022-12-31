@@ -340,7 +340,7 @@
                             CommandParameter="{TemplateBinding ErrorMessage}"
                             Content="{TemplateBinding Content}"
                             FontFamily="{TemplateBinding FontFamily}"
-                            IsChecked="{x:Bind IsChecked, Mode=TwoWay}"
+                            IsChecked="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                             Style="{StaticResource ReCaptchaCheckBoxStyle}"
                             Tag="{TemplateBinding Theme}" />
 

@@ -6,7 +6,6 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
-using System.Windows.Navigation;
 using ReCaptcha.Desktop.WPF.UI.Themes.Interfaces;
 
 namespace ReCaptcha.Desktop.WPF.UI;
@@ -27,6 +26,17 @@ public class ReCaptcha : ContentControl
         Unloaded += OnUnloaded;
     }
 
+    CheckBox verifyCheckBox = default!;
+
+    public override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+
+        verifyCheckBox = (CheckBox)GetTemplateChild("VerifyCheckBox");
+        verifyCheckBox.Checked += OnVerifyCheckBoxChecked;
+        verifyCheckBox.Unchecked += OnVerifyCheckBoxUnchecked;
+    }
+
 
     /// <summary>
     /// Fires when the user requests a verification
@@ -38,6 +48,18 @@ public class ReCaptcha : ContentControl
     /// </summary>
     public event EventHandler? VerificationRemoved;
 
+
+    private void OnVerifyCheckBoxChecked(object _, RoutedEventArgs _1)
+    {
+        VerificationRequested?.Invoke(this, new());
+        VerificationRequestedCommand?.Execute(VerificationRequestedCommandParameter);
+    }
+
+    private void OnVerifyCheckBoxUnchecked(object _, RoutedEventArgs _1)
+    {
+        VerificationRemoved?.Invoke(this, new());
+        VerificationRemovedCommand?.Execute(VerificationRemovedCommandParameter);
+    }
 
     private void OnUnloaded(object _, RoutedEventArgs _1)
     {
@@ -68,12 +90,7 @@ public class ReCaptcha : ContentControl
             return;
 
         ReCaptcha owner = (ReCaptcha)sender;
-        bool newVal = (bool)e.NewValue;
-
-        UpdateCheckbox(owner, (bool)e.NewValue ? "True" : "False");
-
-        (newVal ? owner.VerificationRequested : owner.VerificationRemoved)?.Invoke(owner, new());
-        (newVal ? owner.VerificationRequestedCommand : owner.VerificationRemovedCommand)?.Execute(newVal == true ? owner.VerificationRequestedCommandParameter : owner.VerificationRemovedCommandParameter);
+        owner.UpdateCheckbox((bool)e.NewValue ? "True" : "False");
     }
 
     private static void OnIsLoadingChanged(
@@ -84,22 +101,17 @@ public class ReCaptcha : ContentControl
             return;
 
         ReCaptcha owner = (ReCaptcha)sender;
-        UpdateCheckbox(owner, (bool)e.NewValue ? "Null" : owner.IsChecked ? "True" : "False");
+        owner.UpdateCheckbox((bool)e.NewValue ? "Null" : owner.IsChecked ? "True" : "False");
 
     }
 
-    private static void UpdateCheckbox(
-        ReCaptcha owner,
+    private void UpdateCheckbox(
         string state)
     {
-        CheckBox verifyCheckBox = (CheckBox)owner.GetTemplateChild("VerifyCheckBox");
         if (verifyCheckBox is null)
-        {
-            owner.ApplyTemplate();
-            verifyCheckBox = (CheckBox)owner.GetTemplateChild("VerifyCheckBox");
-        }
+            ApplyTemplate();
 
-        ((Storyboard)verifyCheckBox.Template.Resources[$"{state}Storyboard"]).Begin(verifyCheckBox, verifyCheckBox.Template);
+        ((Storyboard)verifyCheckBox!.Template.Resources[$"{state}Storyboard"]).Begin(verifyCheckBox, verifyCheckBox.Template);
     }
 
 

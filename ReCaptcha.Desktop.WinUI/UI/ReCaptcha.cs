@@ -25,6 +25,17 @@ public sealed class ReCaptcha : ContentControl
         Unloaded += OnUnloaded;
     }
 
+    CheckBox verifyCheckBox = default!;
+
+    protected override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+
+        verifyCheckBox = (CheckBox)GetTemplateChild("VerifyCheckBox");
+        verifyCheckBox.Checked += OnVerifyCheckBoxChecked;
+        verifyCheckBox.Unchecked += OnVerifyCheckBoxUnchecked;
+    }
+
 
     /// <summary>
     /// Fires when the user requests a verification
@@ -37,12 +48,26 @@ public sealed class ReCaptcha : ContentControl
     public event EventHandler? VerificationRemoved;
 
 
+    private void OnVerifyCheckBoxChecked(object _, RoutedEventArgs _1)
+    {
+        VerificationRequested?.Invoke(this, new());
+        VerificationRequestedCommand?.Execute(VerificationRequestedCommandParameter);
+    }
+    
+    private void OnVerifyCheckBoxUnchecked(object _, RoutedEventArgs _1)
+    {
+        VerificationRemoved?.Invoke(this, new());
+        VerificationRemovedCommand?.Execute(VerificationRemovedCommandParameter);
+    }
+
     private void OnUnloaded(object _, RoutedEventArgs _1)
     {
-        Unloaded -= OnUnloaded;
-
         if (NavigationCacheMode != NavigationCacheMode.Disabled)
             return;
+
+        Unloaded -= OnUnloaded;
+        verifyCheckBox.Checked -= OnVerifyCheckBoxChecked;
+        verifyCheckBox.Unchecked -= OnVerifyCheckBoxUnchecked;
 
         ClearValue(VerificationRequestedCommandProperty);
         ClearValue(VerificationRequestedCommandParameterProperty);
@@ -70,12 +95,8 @@ public sealed class ReCaptcha : ContentControl
             return;
 
         ReCaptcha owner = (ReCaptcha)sender;
-        bool newVal = (bool)e.NewValue;
+        owner.UpdateCheckbox((bool)e.NewValue ? "True" : "False");
 
-        UpdateCheckbox(owner, newVal ? "True" : "False");
-
-        (newVal ? owner.VerificationRequested : owner.VerificationRemoved)?.Invoke(owner, new());
-        (newVal ? owner.VerificationRequestedCommand : owner.VerificationRemovedCommand)?.Execute(newVal == true ? owner.VerificationRequestedCommandParameter : owner.VerificationRemovedCommandParameter);
     }
 
     private static void OnIsLoadingChanged(
@@ -86,7 +107,7 @@ public sealed class ReCaptcha : ContentControl
             return;
 
         ReCaptcha owner = (ReCaptcha)sender;
-        UpdateCheckbox(owner, (bool)e.NewValue ? "Null" : string.IsNullOrEmpty(owner.ErrorMessage) ? owner.IsChecked ? "True" : "False" : "ErrorVisible");
+        owner.UpdateCheckbox((bool)e.NewValue ? "Null" : string.IsNullOrEmpty(owner.ErrorMessage) ? owner.IsChecked ? "True" : "False" : "ErrorVisible");
 
     }
 
@@ -97,24 +118,20 @@ public sealed class ReCaptcha : ContentControl
         if (e.NewValue == e.OldValue)
             return;
 
-        UpdateCheckbox((ReCaptcha)sender, string.IsNullOrEmpty((string?)e.NewValue) ? "ErrorHidden" : "ErrorVisible");
+        ReCaptcha owner = (ReCaptcha)sender;
+        owner.UpdateCheckbox(string.IsNullOrEmpty((string?)e.NewValue) ? "ErrorHidden" : "ErrorVisible");
     }
 
-    private static void UpdateCheckbox(
-        ReCaptcha owner,
+    private void UpdateCheckbox(
         string state)
     {
-        CheckBox verifyCheckBox = (CheckBox)owner.GetTemplateChild("VerifyCheckBox");
         if (verifyCheckBox is null)
-        {
-            owner.ApplyTemplate();
-            verifyCheckBox = (CheckBox)owner.GetTemplateChild("VerifyCheckBox");
-        }
+            ApplyTemplate();
 
         Grid rootLayout = (Grid)VisualTreeHelper.GetChild(verifyCheckBox, 0);
         if (rootLayout is null)
         {
-            verifyCheckBox.ApplyTemplate();
+            verifyCheckBox!.ApplyTemplate();
             rootLayout = (Grid)VisualTreeHelper.GetChild(verifyCheckBox, 0);
         }
 
@@ -338,7 +355,7 @@ public sealed class ReCaptcha : ContentControl
     /// The error message property which gets displayed if not null
     /// </summary>
     public static readonly DependencyProperty ErrorMessageProperty = DependencyProperty.Register(
-        "ErrorMessage", typeof(string), typeof(ReCaptcha), new PropertyMetadata(null, OnErrorMessageChanged));
+        "ErrorMessage", typeof(string), typeof(ReCaptcha), new PropertyMetadata(string.Empty, OnErrorMessageChanged));
 
 
     /// <summary>
