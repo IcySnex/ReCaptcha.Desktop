@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ReCaptcha.Desktop.Client.WPF;
 
+/// <summary>
+/// Client which handles all ReCaptcha verifications
+/// </summary>
 public class ReCaptchaClient : IReCaptchaClient
 {
     Resizeable.ReCaptchaClient baseClient = default!;

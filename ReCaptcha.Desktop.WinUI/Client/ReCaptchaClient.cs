@@ -12,6 +12,9 @@ using Windows.Graphics;
 
 namespace ReCaptcha.Desktop.Client.WinUI;
 
+/// <summary>
+/// Client which handles all ReCaptcha verifications
+/// </summary>
 public class ReCaptchaClient : IReCaptchaClient
 {
     Resizeable.ReCaptchaClient baseClient = default!;
