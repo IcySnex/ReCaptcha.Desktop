@@ -7,33 +7,31 @@ _ReSharper.*
 
 ReCaptcha.Desktop/bin/
 ReCaptcha.Desktop/obj/
-ReCaptcha.Desktop/Properties/
 
 ReCaptcha.Desktop.Tests/bin/
 ReCaptcha.Desktop.Tests/obj/
-ReCaptcha.Desktop.Tests/Properties/
 
 ReCaptcha.Desktop.WPF/bin/
 ReCaptcha.Desktop.WPF/obj/
-ReCaptcha.Desktop.WPF/Properties/
 
 ReCaptcha.Desktop.WinUI/bin/
 ReCaptcha.Desktop.WinUI/obj/
-ReCaptcha.Desktop.WinUI/Properties/
+
+ReCaptcha.Desktop.WinUI/bin/
+ReCaptcha.Desktop.WinUI/obj/
+
+ReCaptcha.Desktop.UWP/bin/
+ReCaptcha.Desktop.UWP/obj/
 
 
 Samples/ReCaptcha.Desktop.Sample/bin/
 Samples/ReCaptcha.Desktop.Sample/obj/
-Samples/ReCaptcha.Desktop.Sample/Properties/
 
 Samples/ReCaptcha.Desktop.Sample.WPF/bin/
 Samples/ReCaptcha.Desktop.Sample.WPF/obj/
-Samples/ReCaptcha.Desktop.Sample.WPF/Properties/
 
 Samples/ReCaptcha.Desktop.Sample.WinUI/bin/
 Samples/ReCaptcha.Desktop.Sample.WinUI/obj/
-Samples/ReCaptcha.Desktop.Sample.WinUI/Properties/
 
 Samples/ReCaptcha.Desktop.Sample.UWP/bin/
 Samples/ReCaptcha.Desktop.Sample.UWP/obj/
-Samples/ReCaptcha.Desktop.Sample.UWP/Properties/
