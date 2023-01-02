@@ -67,21 +67,20 @@ public class WindowHelper
             return;
         }
 
-        LoggerView loggerView = new() { Title = "IcyLauncher - Logger" };
+        LoggerView = new() { Title = "ReCaptcha.Desktop - WinUI Sample (Logger)" };
 
         void handler(object? s, string e) =>
-            loggerView.ContentBlock.Text += e;
+            LoggerView.ContentBlock.Text += e;
 
         App.Sink.OnNewLog += handler;
-        loggerView.Closed += (s, e) =>
+        LoggerView.Closed += (s, e) =>
         {
             App.Sink.OnNewLog -= handler;
             LoggerView = null;
         };
 
-        SetSize(loggerView, 700, 400);
-        LoggerView = loggerView;
-        loggerView.Activate();
+        SetSize(LoggerView, 700, 400);
+        LoggerView.Activate();
 
         logger.LogInformation("Created new LoggerWindow and hooked handler");
     }
@@ -196,7 +195,7 @@ public class WindowHelper
     }
 
     [DllImport("CoreMessaging.dll")]
-    public static extern IntPtr CreateDispatcherQueueController(
+    static extern IntPtr CreateDispatcherQueueController(
         [In] DISPATCHERQUEUEOPTIONS options,
         [In, Out, MarshalAs(UnmanagedType.IUnknown)] ref object? dispatcherQueueController);
 

@@ -7,7 +7,6 @@ using ReCaptcha.Desktop.Client.WinUI;
 using ReCaptcha.Desktop.Configuration;
 using ReCaptcha.Desktop.Sample.WinUI.Services;
 using ReCaptcha.Desktop.Sample.WinUI.Views;
-using ReCaptcha.Desktop.WinUI.UI.Themes;
 
 namespace ReCaptcha.Desktop.Sample.WinUI.ViewModels;
 
@@ -40,12 +39,6 @@ public partial class CaptchaViewModel : ObservableObject
 
     void HookHandlers()
     {
-        ContentDialog dialog = new()
-        {
-            CloseButtonText = "Ok",
-            XamlRoot = mainView.Content.XamlRoot,
-        };
-
         captchaClient.VerificationRecieved += async (s, e) =>
         {
             logger.LogInformation("[CaptchaViewModel-VerificationRecieved] Verification was recieved\n\t Token: {token}...\n\tOccurred at: {occurred}", e.Token[..15], e.OccurredAt);
