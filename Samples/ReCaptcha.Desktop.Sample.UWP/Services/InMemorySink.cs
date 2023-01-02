@@ -7,21 +7,20 @@ using Serilog.Formatting;
 using System;
 using System.IO;
 
-namespace ReCaptcha.Desktop.Sample.UWP.Services
+namespace ReCaptcha.Desktop.Sample.UWP.Services;
+
+public class InMemorySink : ILogEventSink
 {
-    public class InMemorySink : ILogEventSink
+    readonly ITextFormatter textFormatter = new MessageTemplateTextFormatter("[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}");
+
+    public event EventHandler<string>? OnNewLog;
+
+    public void Emit(
+        LogEvent logEvent)
     {
-        readonly ITextFormatter textFormatter = new MessageTemplateTextFormatter("[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}");
+        StringWriter renderSpace = new();
+        textFormatter.Format(logEvent, renderSpace);
 
-        public event EventHandler<string>? OnNewLog;
-
-        public void Emit(
-            LogEvent logEvent)
-        {
-            StringWriter renderSpace = new();
-            textFormatter.Format(logEvent, renderSpace);
-
-            OnNewLog?.Invoke(this, renderSpace.ToString());
-        }
+        OnNewLog?.Invoke(this, renderSpace.ToString());
     }
 }

@@ -2,13 +2,12 @@
 using ReCaptcha.Desktop.Sample.UWP.ViewModels;
 using Windows.UI.Xaml.Controls;
 
-namespace ReCaptcha.Desktop.Sample.UWP.Views
-{
-    public sealed partial class HomeView : Page
-    {
-        HomeViewModel viewModel = App.Provider.GetRequiredService<HomeViewModel>();
+namespace ReCaptcha.Desktop.Sample.UWP.Views;
 
-        public HomeView() =>
-            InitializeComponent();
-    }
+public sealed partial class HomeView : Page
+{
+    HomeViewModel viewModel = App.Provider.GetRequiredService<HomeViewModel>();
+
+    public HomeView() =>
+        InitializeComponent();
 }
