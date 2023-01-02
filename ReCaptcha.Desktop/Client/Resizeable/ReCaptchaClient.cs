@@ -1,6 +1,7 @@
 ﻿using ReCaptcha.Desktop.Client.Interfaces;
 using ReCaptcha.Desktop.Configuration;
 using ReCaptcha.Desktop.EventArgs;
+using ReCaptcha.Desktop.HTTP;
 using ReCaptcha.Desktop.HTTP.Interfaces;
 
 namespace ReCaptcha.Desktop.Client.Resizeable;
@@ -39,7 +40,7 @@ public class ReCaptchaClient : IReCaptchaClient
         get => configuration;
         set
         {
-            httpServer = IHttpServer.New(
+            httpServer = new HttpServer(
                 value.HttpConfiguration,
                 string.Format(ResizeableReCaptchaHtml,
                     value.Language,

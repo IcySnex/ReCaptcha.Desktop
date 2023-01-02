@@ -1,5 +1,4 @@
-﻿using ReCaptcha.Desktop.Configuration;
-using ReCaptcha.Desktop.EventArgs;
+﻿using ReCaptcha.Desktop.EventArgs;
 
 namespace ReCaptcha.Desktop.HTTP.Interfaces;
 
@@ -41,14 +40,14 @@ public interface IHttpServer
     void Stop();
 
 
-    /// <summary>
-    /// Creates a new HttpServer
-    /// </summary>
-    /// <param name="configuration">The configuration the HttppServer should be created with</param>
-    /// <param name="webContent">The HTML web content which should get displayed on the server</param>
-    /// <returns>A new HttpServer</returns>
-    public static IHttpServer New(
-        HttpServerConfig configuration,
-        string webContent) =>
-        new HttpServer(configuration, webContent);
+    ///// <summary>
+    ///// Creates a new HttpServer
+    ///// </summary>
+    ///// <param name="configuration">The configuration the HttppServer should be created with</param>
+    ///// <param name="webContent">The HTML web content which should get displayed on the server</param>
+    ///// <returns>A new HttpServer</returns>
+    //public static IHttpServer New(
+    //    HttpServerConfig configuration,
+    //    string webContent) =>
+    //    new HttpServer(configuration, webContent);
 }

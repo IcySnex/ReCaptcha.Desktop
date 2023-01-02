@@ -1,4 +1,5 @@
 ﻿using ReCaptcha.Desktop.Configuration;
+using ReCaptcha.Desktop.HTTP;
 using ReCaptcha.Desktop.HTTP.Interfaces;
 using System.Diagnostics;
 using System.Text;
@@ -15,7 +16,7 @@ class HttpServerTests
     {
         // Mock config/server
         config = new(TestData.HostUrl, TestData.HostPort);
-        server = IHttpServer.New(config, TestData.WebContent);
+        server = new HttpServer(config, TestData.WebContent);
     }
 
 

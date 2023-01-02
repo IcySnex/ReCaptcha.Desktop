@@ -1,5 +1,4 @@
 ﻿using ReCaptcha.Desktop.Client;
-using ReCaptcha.Desktop.Client.Interfaces;
 using ReCaptcha.Desktop.Configuration;
 using System.Diagnostics;
 
@@ -45,7 +44,7 @@ Console.WriteLine("\nPress any key to continue.");
 Console.ReadKey();
 Console.Clear();
 
-ReCaptchaClient reCaptchaClient = IReCaptchaClient.New(config);
+ReCaptchaClient reCaptchaClient = new(config);
 
 reCaptchaClient.VerificationRecieved += (s, e) =>
 {

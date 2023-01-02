@@ -19,19 +19,19 @@ public interface IReCaptchaClient
     event EventHandler<VerificationRecievedEventArgs>? VerificationRecieved;
 
 
-    /// <summary>
-    /// Creates a new ReCaptchaClient
-    /// </summary>
-    /// <param name="configuration">The configuration the ReCaptchaClient should be created with</param>
-    public static ReCaptchaClient New(
-        ReCaptchaConfig configuration) =>
-        new(configuration);
+    ///// <summary>
+    ///// Creates a new ReCaptchaClient
+    ///// </summary>
+    ///// <param name="configuration">The configuration the ReCaptchaClient should be created with</param>
+    //public static ReCaptchaClient New(
+    //    ReCaptchaConfig configuration) =>
+    //    new(configuration);
 
-    /// <summary>
-    /// Creates a new ReCaptchaClient with extended resize functions
-    /// </summary>
-    /// <param name="configuration">The configuration the ReCaptchaClient should be created with</param>
-    public static Resizeable.ReCaptchaClient NewResizeable(
-        ReCaptchaConfig configuration) =>
-        new(configuration);
+    ///// <summary>
+    ///// Creates a new ReCaptchaClient with extended resize functions
+    ///// </summary>
+    ///// <param name="configuration">The configuration the ReCaptchaClient should be created with</param>
+    //public static Resizeable.ReCaptchaClient NewResizeable(
+    //    ReCaptchaConfig configuration) =>
+    //    new(configuration);
 }

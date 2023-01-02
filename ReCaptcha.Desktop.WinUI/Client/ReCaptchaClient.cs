@@ -9,8 +9,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using ReCaptcha.Desktop.WinUI.Internal;
 using Windows.Graphics;
-using Windows.UI.Popups;
-using WinRT.Interop;
 
 namespace ReCaptcha.Desktop.Client.WinUI;
 
@@ -45,7 +43,7 @@ public class ReCaptchaClient : IReCaptchaClient
         WindowConfig windowConfiguration,
         ILogger<ReCaptchaClient> logger)
     {
-        baseClient = IReCaptchaClient.NewResizeable(configuration);
+        baseClient = new(configuration);
 
         Configuration = configuration;
         WindowConfiguration = windowConfiguration;
@@ -65,7 +63,7 @@ public class ReCaptchaClient : IReCaptchaClient
         get => configuration;
         set
         {
-            baseClient = IReCaptchaClient.NewResizeable(value);
+            baseClient = new(value);
             logger?.LogInformation("[ReCaptchaClient-Configuration.Set] Created new resizeable BaseClient");
 
             configuration = value;

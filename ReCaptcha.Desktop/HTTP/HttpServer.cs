@@ -96,7 +96,7 @@ public class HttpServer : IHttpServer
 
                 // Write web content
                 byte[] response = Encoding.ASCII.GetBytes(webContent);
-                await context.Response.OutputStream.WriteAsync(response);
+                await context.Response.OutputStream.WriteAsync(response, 0, response.Length);
 
                 // Invoke event
                 RequestOccurred?.Invoke(this, new(context, response));

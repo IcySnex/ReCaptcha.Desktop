@@ -41,7 +41,7 @@ public class ReCaptchaClient : IReCaptchaClient
         WindowConfig windowConfiguration,
         ILogger<ReCaptchaClient> logger)
     {
-        baseClient = IReCaptchaClient.NewResizeable(configuration);
+        baseClient = new(configuration);
 
         Configuration = configuration;
         WindowConfiguration = windowConfiguration;
@@ -61,7 +61,7 @@ public class ReCaptchaClient : IReCaptchaClient
         get => configuration;
         set
         {
-            baseClient = IReCaptchaClient.NewResizeable(value);
+            baseClient = new(value);
             logger?.LogInformation("[ReCaptchaClient-Configuration.Set] Created new resizeable BaseClient");
 
             configuration = value;
