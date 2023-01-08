@@ -25,7 +25,7 @@
                 <win10v1903:ThemeShadow />
             </win10v1903:Grid.Shadow>
             <Grid.RenderTransform>
-                <TranslateTransform x:Name="RenderTransform" X="0" Y="0" />
+                <TranslateTransform x:Name="RootTransform" X="0" Y="0" />
             </Grid.RenderTransform>
 
             <Grid.RowDefinitions>

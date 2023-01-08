@@ -81,7 +81,7 @@ internal sealed partial class ReCaptchaPopup : ContentControl
         BackgroundPresenter.Width = e.Size.Width;
         BackgroundPresenter.Height = e.Size.Height;
 
-        MoveFromCenter(RenderTransform.X, RenderTransform.Y);
+        MoveFromCenter(RootTransform.X, RootTransform.Y);
     }
 
     private void OnCloseClicked(object _, RoutedEventArgs _1) =>
@@ -93,9 +93,9 @@ internal sealed partial class ReCaptchaPopup : ContentControl
 
     private void OnTitleBarDragPressed(object _, PointerRoutedEventArgs e)
     {
-        Point currentposition = e.GetCurrentPoint(this.XamlRoot.Content).Position;
-        x = currentposition.X - RenderTransform.X;
-        y = currentposition.Y - RenderTransform.Y;
+        Point currentposition = e.GetCurrentPoint(this).Position;
+        x = currentposition.X - RootTransform.X;
+        y = currentposition.Y - RootTransform.Y;
     }
 
     private void OnTitleBarDragMoved(object _, PointerRoutedEventArgs e)
@@ -103,7 +103,7 @@ internal sealed partial class ReCaptchaPopup : ContentControl
         if (e.Pointer.PointerDeviceType != PointerDeviceType.Mouse)
             return;
 
-        PointerPoint currentPoint = e.GetCurrentPoint(XamlRoot.Content);
+        PointerPoint currentPoint = e.GetCurrentPoint(this);
         if (!currentPoint.Properties.IsLeftButtonPressed)
             return;
 
@@ -131,7 +131,7 @@ internal sealed partial class ReCaptchaPopup : ContentControl
         double y)
     {
         (double minX, double minY) = ((Window.Current.Content.ActualSize.X - RootLayout.ActualWidth) / 2, (Window.Current.Content.ActualSize.Y - RootLayout.ActualHeight) / 2);
-        (RenderTransform.X, RenderTransform.Y) =
+        (RootTransform.X, RootTransform.Y) =
             (x > -minX ? x < minX ? x : minX : -minX,
             y > -minY + 32 ? y < minY ? y : minY : -minY + 32);
     }
@@ -146,7 +146,7 @@ internal sealed partial class ReCaptchaPopup : ContentControl
         double y)
     {
         (double minX, double minY) = ((Window.Current.Content.ActualSize.X - RootLayout.ActualWidth) / 2, (Window.Current.Content.ActualSize.Y - RootLayout.ActualHeight) / 2);
-        (RenderTransform.X, RenderTransform.Y) =
+        (RootTransform.X, RootTransform.Y) =
             (x > 0 ? x < minX ? x - minX : minX : -minX,
             y > 32 ? y < minX ? y - minY : minY : -minY + 32);
     }
