@@ -36,7 +36,7 @@ public partial class Configuration : ObservableObject
     string title = "WinUI Sample - Google reCAPTCHA";
 
     [ObservableProperty]
-    string icon = Environment.CurrentDirectory + "\\Icon.ico";
+    string icon = "Icon.ico";
 
     [ObservableProperty]
     WindowStartupLocation startupLocation = WindowStartupLocation.CenterScreen;
