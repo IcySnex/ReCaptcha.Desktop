@@ -109,8 +109,8 @@ public class ReCaptchaClient : IReCaptchaClient
     /// </summary>
     public event EventHandler<VerificationRecievedEventArgs>? VerificationRecieved
     {
-        add => baseClient.VerificationRecieved += value;
-        remove => baseClient.VerificationRecieved -= value;
+        add => reciever.VerificationRecieved += value;
+        remove => reciever.VerificationRecieved -= value;
     }
 
     /// <summary>
