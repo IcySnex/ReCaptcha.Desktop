@@ -169,7 +169,6 @@ public class ReCaptchaClient : IReCaptchaClient
 
             // Remove all used handlers
             window.Closed -= OnWindowClosed;
-            VerificationCancelled -= OnVerificationCancelled;
             ReCaptchaResized -= OnReCaptchaResized;
 
             // Dispose all objects and clear UI
@@ -181,15 +180,6 @@ public class ReCaptchaClient : IReCaptchaClient
             WindowConfiguration.Owner?.Activate();
 
             logger?.LogInformation("[ReCaptchaClient-OnWindowClosing] reCAPTCHA window is closing and objects were disposed");
-        }
-
-        VerificationCancelled += OnVerificationCancelled;
-        void OnVerificationCancelled(object? _, VerificationCancelledEventArgs e)
-        {
-            // If possible close window
-            window?.DispatcherQueue.TryEnqueue(() => window?.Close());
-
-            logger?.LogInformation("[ReCaptchaClient-OnVerificationCancelled] reCAPTCHA vericitaion was cancelled");
         }
 
         ReCaptchaResized += OnReCaptchaResized;

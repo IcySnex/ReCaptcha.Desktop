@@ -147,7 +147,7 @@ public class ReCaptchaClient : IReCaptchaClient
         {
             // If cancelled and token is still not set close window
             if (token is null && window is not null)
-                window.Dispatcher.BeginInvoke(window.Close);
+                window.Dispatcher.BeginInvoke(() => window?.Close());
 
             logger?.LogInformation("[ReCaptchaClient-OnTokenCancelled] reCAPTCHA vericitaion timed out");
         });
@@ -162,7 +162,6 @@ public class ReCaptchaClient : IReCaptchaClient
         {
             // Remove all used handlers
             window.Closed -= OnWindowClosed;
-            VerificationCancelled -= OnVerificationCancelled;
             ReCaptchaResized -= OnReCaptchaResized;
 
             // If token stil not set cancel
@@ -176,15 +175,6 @@ public class ReCaptchaClient : IReCaptchaClient
             webView = default!;
 
             logger?.LogInformation("[ReCaptchaClient-OnWindowClosed] reCAPTCHA window was closed and objects were disposed");
-        }
-
-        VerificationCancelled += OnVerificationCancelled;
-        void OnVerificationCancelled(object? _, VerificationCancelledEventArgs e)
-        {
-            // If possible close window
-            window?.Dispatcher.BeginInvoke(window.Close);
-
-            logger?.LogInformation("[ReCaptchaClient-OnVerificationCancelled] reCAPTCHA vericitaion was cancelled");
         }
 
         ReCaptchaResized += OnReCaptchaResized;
