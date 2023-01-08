@@ -123,12 +123,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Client\ReCaptchaClient.cs" />
+    <Compile Include="Client\ReCaptchaReciever.cs" />
+    <Compile Include="Configuration\Extentions.cs" />
+    <Compile Include="Configuration\PopupConfig.cs" />
+    <Compile Include="Configuration\PopupStartupLocation.cs" />
+    <Compile Include="Internal\ReCaptchaPopup.xaml.cs">
+      <DependentUpon>ReCaptchaPopup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\ReCaptcha.Desktop.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions">
+      <Version>7.0.0</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml">
+      <Version>2.8.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +149,17 @@
       <Project>{18dd6c60-6c49-4300-83da-8525e3f74bcc}</Project>
       <Name>ReCaptcha.Desktop</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Internal\ReCaptchaPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="UI\Assets\Icon.png" />
+    <Content Include="UI\Assets\Roboto-Regular.ttf" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
