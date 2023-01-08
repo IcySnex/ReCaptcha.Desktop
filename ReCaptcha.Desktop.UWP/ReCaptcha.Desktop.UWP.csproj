@@ -131,6 +131,9 @@
       <DependentUpon>ReCaptchaPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Themes\DarkTheme.cs" />
+    <Compile Include="UI\Themes\Interfaces\ITheme.cs" />
+    <Compile Include="UI\Themes\LightTheme.cs" />
     <EmbeddedResource Include="Properties\ReCaptcha.Desktop.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
