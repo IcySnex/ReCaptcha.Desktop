@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using ReCaptcha.Desktop.Configuration;
 using System;
 
 namespace ReCaptcha.Desktop.Sample.UWP.Models;
@@ -29,10 +30,22 @@ public partial class Configuration : ObservableObject
     string title = "UWP Sample - Google reCAPTCHA";
 
     [ObservableProperty]
-    string icon = Environment.CurrentDirectory + "\\Icon.ico";
+    string icon = "ms-appx:///Icon.png";
 
-    //[ObservableProperty]
-    //WindowStartupLocation startupLocation = WindowStartupLocation.CenterScreen;
+    [ObservableProperty]
+    bool hasTitleBar = true;
+
+    [ObservableProperty]
+    bool isDragable = false;
+
+    [ObservableProperty]
+    bool isDimmed = true;
+
+    [ObservableProperty]
+    bool? hasRoundedCorners = null;
+
+    [ObservableProperty]
+    PopupStartupLocation startupLocation = PopupStartupLocation.CenterPrimary;
 
     [ObservableProperty]
     int left = 0;
@@ -40,8 +53,6 @@ public partial class Configuration : ObservableObject
     [ObservableProperty]
     int top = 0;
 
-    [ObservableProperty]
-    bool showAsDialog = false;
 
 
     [ObservableProperty]

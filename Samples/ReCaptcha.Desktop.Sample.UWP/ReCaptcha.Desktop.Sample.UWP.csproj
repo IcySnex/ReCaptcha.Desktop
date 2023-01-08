@@ -206,6 +206,16 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ReCaptcha.Desktop.UWP\ReCaptcha.Desktop.UWP.csproj">
+      <Project>{4C3AB4D6-A9F8-4BC5-A1B0-A5D9423E083A}</Project>
+      <Name>ReCaptcha.Desktop.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ReCaptcha.Desktop\ReCaptcha.Desktop.csproj">
+      <Project>{18dd6c60-6c49-4300-83da-8525e3f74bcc}</Project>
+      <Name>ReCaptcha.Desktop</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

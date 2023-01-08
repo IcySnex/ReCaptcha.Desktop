@@ -85,28 +85,75 @@
 
         <ContentControl
             AccessKey="Icon"
-            Tag="The icon of the window"
+            Tag="The The icon of the dialog"
             Template="{StaticResource SettignsCard}">
 
             <TextBox FontSize="14" Text="{x:Bind viewModel.Configuration.Icon, Mode=TwoWay}" />
         </ContentControl>
 
         <ContentControl
-            AccessKey="StartupLocation"
-            Tag="The startup postion of the window"
+            Margin="0,0,0,12"
+            AccessKey="HasTitleBar"
+            Tag="Wether the dialog has a TitleBar"
             Template="{StaticResource SettignsCard}">
 
-            <!--<ComboBox FontSize="14" SelectedIndex="{x:Bind viewModel.Configuration.StartupLocation, Mode=TwoWay, Converter={StaticResource EnumIntConverter}}">
-                <ComboBoxItem Content="Manual" />
-                <ComboBoxItem Content="CenterScreen" />
-                <ComboBoxItem Content="CenterOwner" />
-            </ComboBox>-->
+            <ToggleSwitch
+                Margin="0,0,-80,0"
+                FontSize="14"
+                IsOn="{x:Bind viewModel.Configuration.HasTitleBar, Mode=TwoWay}" />
         </ContentControl>
 
+        <ContentControl
+            Margin="0,0,0,12"
+            AccessKey="IsDragable"
+            Tag="Wether the dialog is draggable within the main window"
+            Template="{StaticResource SettignsCard}">
+
+            <ToggleSwitch
+                Margin="0,0,-80,0"
+                FontSize="14"
+                IsOn="{x:Bind viewModel.Configuration.IsDragable, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            Margin="0,0,0,12"
+            AccessKey="IsDimmed"
+            Tag="Wether the dialog dims the main windows background"
+            Template="{StaticResource SettignsCard}">
+
+            <ToggleSwitch
+                Margin="0,0,-80,0"
+                FontSize="14"
+                IsOn="{x:Bind viewModel.Configuration.IsDimmed, Mode=TwoWay}" />
+        </ContentControl>
+
+        <ContentControl
+            Margin="0,0,0,12"
+            AccessKey="HasRoundedCorners"
+            Tag="Wether the window has rounded corners"
+            Template="{StaticResource SettignsCard}">
+
+            <CheckBox
+                Margin="0,0,-100,0"
+                IsChecked="{x:Bind viewModel.Configuration.HasRoundedCorners, Mode=TwoWay}"
+                IsThreeState="True" />
+        </ContentControl>
+
+        <ContentControl
+            Margin="0,0,0,12"
+            AccessKey="StartupLocation"
+            Tag="The startup location of the popup"
+            Template="{StaticResource SettignsCard}">
+
+            <ComboBox FontSize="14" SelectedIndex="{x:Bind viewModel.Configuration.StartupLocation, Mode=TwoWay, Converter={StaticResource EnumIntConverter}}">
+                <ComboBoxItem Content="Manual" />
+                <ComboBoxItem Content="CenterPrimary" />
+            </ComboBox>
+        </ContentControl>
 
         <ContentControl
             AccessKey="Left"
-            Tag="The left position of the window"
+            Tag="The left position of the popup"
             Template="{StaticResource SettignsCard}">
 
             <TextBox
@@ -118,7 +165,7 @@
 
         <ContentControl
             AccessKey="Top"
-            Tag="The top position of the window"
+            Tag="The top position of the popup"
             Template="{StaticResource SettignsCard}">
 
             <TextBox
@@ -126,17 +173,6 @@
                 FontSize="14"
                 PreviewKeyDown="OnNumberBoxKeyDown"
                 Text="{x:Bind viewModel.Configuration.Top, Mode=TwoWay}" />
-        </ContentControl>
-
-        <ContentControl
-            AccessKey="ShowAsDialog"
-            Tag="Wether to block the UI thread when showing the window"
-            Template="{StaticResource SettignsCard}">
-
-            <ToggleSwitch
-                Margin="0,0,-80,0"
-                FontSize="14"
-                IsOn="{x:Bind viewModel.Configuration.ShowAsDialog, Mode=TwoWay}" />
         </ContentControl>
 
         <ContentControl
