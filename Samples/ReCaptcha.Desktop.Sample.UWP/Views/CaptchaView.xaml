@@ -5,6 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:ReCaptcha.Desktop.Samples.UWP.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:themes="using:ReCaptcha.Desktop.UWP.UI.Themes"
+    xmlns:ui="using:ReCaptcha.Desktop.UWP.UI"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
     <StackPanel Margin="24,12,24,0">
@@ -38,15 +41,14 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!--<ui:ReCaptcha
+            <ui:ReCaptcha
                 VerticalAlignment="Top"
                 ErrorMessage="{x:Bind viewModel.ErrorMessage, Mode=OneWay}"
                 IsChecked="{x:Bind viewModel.IsChecked, Mode=TwoWay}"
                 IsLoading="{x:Bind viewModel.IsLoading, Mode=OneWay}"
                 NavigationCacheMode="{x:Bind NavigationCacheMode}"
                 VerificationRemovedCommand="{x:Bind viewModel.RemoveVerificationCommand}"
-                VerificationRequestedCommand="{x:Bind viewModel.VerifyCommand}" />-->
-            <Button Content="Verify" VerticalAlignment="Top" Command="{x:Bind viewModel.VerifyCommand}" />
+                VerificationRequestedCommand="{x:Bind viewModel.VerifyCommand}" />
 
             <TextBox
                 Grid.Column="1"

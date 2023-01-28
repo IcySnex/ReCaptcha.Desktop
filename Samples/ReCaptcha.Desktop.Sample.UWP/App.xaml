@@ -5,48 +5,53 @@
     xmlns:conv="using:ReCaptcha.Desktop.Sample.UWP.Converters"
     xmlns:local="using:ReCaptcha.Desktop.Sample.UWP">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <CommonDictionary xmlns="using:ReCaptcha.Desktop.UWP.UI" />
+            </ResourceDictionary.MergedDictionaries>
 
-        <!--  CONVERTERS  -->
-        <conv:EnumIntConverter x:Key="EnumIntConverter" />
-        <conv:TimespanConverter x:Key="TimespanConverter" />
+            <!--  CONVERTERS  -->
+            <conv:EnumIntConverter x:Key="EnumIntConverter" />
+            <conv:TimespanConverter x:Key="TimespanConverter" />
 
-        <!--  CONTROLS  -->
-        <ControlTemplate x:Key="SettignsCard" TargetType="ContentControl">
-            <Grid
-                Margin="0,8,0,0"
-                Padding="8"
-                HorizontalAlignment="Stretch">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" MinWidth="100" />
-                    <ColumnDefinition Width="32" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Rectangle
-                    Grid.ColumnSpan="3"
-                    Margin="-8"
-                    Fill="{ThemeResource SystemChromeAltHighColor}"
-                    Opacity="0.6"
-                    Stroke="{ThemeResource SystemChromeMediumHighColor}"
-                    StrokeThickness="2" />
+            <!--  CONTROLS  -->
+            <ControlTemplate x:Key="SettignsCard" TargetType="ContentControl">
+                <Grid
+                    Margin="0,8,0,0"
+                    Padding="8"
+                    HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" MinWidth="100" />
+                        <ColumnDefinition Width="32" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Rectangle
+                        Grid.ColumnSpan="3"
+                        Margin="-8"
+                        Fill="{ThemeResource SystemChromeAltHighColor}"
+                        Opacity="0.6"
+                        Stroke="{ThemeResource SystemChromeMediumHighColor}"
+                        StrokeThickness="2" />
 
-                <TextBlock
-                    Margin="0,4,0,0"
-                    FontSize="16"
-                    Text="{TemplateBinding AccessKey}"
-                    TextTrimming="CharacterEllipsis" />
-                <TextBlock
-                    Margin="0,22,0,0"
-                    FontSize="14"
-                    Opacity="0.5"
-                    Text="{TemplateBinding Tag}"
-                    TextTrimming="CharacterEllipsis" />
+                    <TextBlock
+                        Margin="0,4,0,0"
+                        FontSize="16"
+                        Text="{TemplateBinding AccessKey}"
+                        TextTrimming="CharacterEllipsis" />
+                    <TextBlock
+                        Margin="0,22,0,0"
+                        FontSize="14"
+                        Opacity="0.5"
+                        Text="{TemplateBinding Tag}"
+                        TextTrimming="CharacterEllipsis" />
 
-                <ContentPresenter
-                    Grid.Column="2"
-                    Margin="0,0,4,0"
-                    VerticalAlignment="Center"
-                    Opacity="0.7" />
-            </Grid>
-        </ControlTemplate>
+                    <ContentPresenter
+                        Grid.Column="2"
+                        Margin="0,0,4,0"
+                        VerticalAlignment="Center"
+                        Opacity="0.7" />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

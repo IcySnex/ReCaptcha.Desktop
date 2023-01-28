@@ -65,12 +65,14 @@ sealed partial class App : Application
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
         Window.Current.Content = new MainView();
-        ApplicationView.PreferredLaunchViewSize = new(900, 500);
+        ApplicationView.PreferredLaunchViewSize = new(900, 700);
+
+        ApplicationView appView = ApplicationView.GetForCurrentView();
+        appView.SetPreferredMinSize(new(500, 500));
 
         CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
-        ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-        titleBar.ButtonBackgroundColor = Colors.Transparent;
-        titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+        appView.TitleBar.ButtonBackgroundColor = Colors.Transparent;
+        appView.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
 
 
         Navigation navigation = Provider.GetRequiredService<Navigation>();
