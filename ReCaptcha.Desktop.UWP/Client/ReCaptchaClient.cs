@@ -160,13 +160,16 @@ public class ReCaptchaClient : IReCaptchaClient
         popup.Closed += OnPopupClosed;
         void OnPopupClosed(object _, object _1)
         {
+            // Immediately close and cancel if user closed window
+            if (token is null)
+            {
+                webView.Close();
+                cancelSource.Cancel();
+            }
+
             // Remove all used handlers
             popup.Closed -= OnPopupClosed;
             ReCaptchaResized -= OnReCaptchaResized;
-
-            // If token still not set cancel
-            if (token is null)
-                cancelSource.Cancel();
 
             // Dispose all objects and clear UI
             cancelSource.Dispose();
@@ -221,6 +224,7 @@ public class ReCaptchaClient : IReCaptchaClient
         logger?.LogInformation("[ReCaptchaClient-VerifyAsync] reCAPTCHA was successfully verified");
 
         // Close popup and return
+        webView.Close();
         popup.IsOpen = false;
         return token;
     }
