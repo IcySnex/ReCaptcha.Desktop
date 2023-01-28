@@ -131,6 +131,10 @@
       <DependentUpon>ReCaptchaPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\CommonDictionary.xaml.cs">
+      <DependentUpon>CommonDictionary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReCaptcha.cs" />
     <Compile Include="UI\Themes\DarkTheme.cs" />
     <Compile Include="UI\Themes\Interfaces\ITheme.cs" />
     <Compile Include="UI\Themes\LightTheme.cs" />
@@ -155,6 +159,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Internal\ReCaptchaPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\CommonDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
