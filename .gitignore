@@ -23,6 +23,9 @@ ReCaptcha.Desktop.WinUI/obj/
 ReCaptcha.Desktop.UWP/bin/
 ReCaptcha.Desktop.UWP/obj/
 
+ReCaptcha.Desktop.WinForms/bin/
+ReCaptcha.Desktop.WinForms/obj/
+
 
 Samples/ReCaptcha.Desktop.Sample/bin/
 Samples/ReCaptcha.Desktop.Sample/obj/
@@ -35,3 +38,6 @@ Samples/ReCaptcha.Desktop.Sample.WinUI/obj/
 
 Samples/ReCaptcha.Desktop.Sample.UWP/bin/
 Samples/ReCaptcha.Desktop.Sample.UWP/obj/
+
+Samples/ReCaptcha.Desktop.Sample.WinForms/bin/
+Samples/ReCaptcha.Desktop.Sample.WinForms/obj/
