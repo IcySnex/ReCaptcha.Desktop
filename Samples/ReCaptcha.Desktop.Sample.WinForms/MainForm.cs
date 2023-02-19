@@ -1,10 +1,13 @@
-﻿using ReCaptcha.Desktop.Sample.WinForms.Controls;
+﻿using Microsoft.Extensions.Logging;
+using ReCaptcha.Desktop.Sample.WinForms.Controls;
 using System.Diagnostics;
 
 namespace ReCaptcha.Desktop.Sample.WinForms;
 
 public partial class MainForm : Form
 {
+    ILogger logger = Program.LoggerFactory.CreateLogger<MainForm>();
+
     public MainForm()
     {
         InitializeComponent();
@@ -18,7 +21,7 @@ public partial class MainForm : Form
         ContentPanel.Controls.Clear();
         ContentPanel.Controls.Add(control);
 
-        Program.Logger.Information("[MainForm-Navigate] Navigated to control");
+        logger.LogInformation("[MainForm-Navigate] Navigated to control");
     }
 
 
@@ -77,6 +80,6 @@ public partial class MainForm : Form
         LoggerForm = form;
         LoggerForm.Show();
 
-        Program.Logger.Information("[MainForm-LoggerButton_Click] Created new LoggerForm and hooked handler");
+        logger.LogInformation("[MainForm-LoggerButton_Click] Created new LoggerForm and hooked handler");
     }
 }
