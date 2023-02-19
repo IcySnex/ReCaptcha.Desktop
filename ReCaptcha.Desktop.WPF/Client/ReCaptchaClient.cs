@@ -214,7 +214,7 @@ public class ReCaptchaClient : IReCaptchaClient
 
 
         // Launch window
-        if (WindowConfiguration.ShowAsDialog)
+        if (WindowConfiguration.ShowAsDialog && WindowConfiguration.Owner is not null)
             await Task.Run(() => window.Dispatcher.BeginInvoke(window.ShowDialog));
         else
             window.Show();
