@@ -91,7 +91,9 @@ public class ReCaptchaClient : IReCaptchaClient
             Owner = WindowConfiguration.Owner,
             Left = 0,
             Top = 0,
-            FormBorderStyle = FormBorderStyle.FixedToolWindow,
+            FormBorderStyle = FormBorderStyle.FixedSingle,
+            MaximizeBox = false,
+            MinimizeBox = false,
             WindowState = FormWindowState.Minimized,
         };
         window.Controls.Add(webView);
@@ -145,7 +147,7 @@ public class ReCaptchaClient : IReCaptchaClient
         {
             // If cancelled and token is still not set close window
             if (token is null && window is not null)
-                window?.Close(); //window.Dispatcher.BeginInvoke(() => window?.Close());
+                window.BeginInvoke(() => window?.Close());
 
             logger?.LogInformation("[ReCaptchaClient-OnTokenCancelled] reCAPTCHA vericitaion timed out");
         });
@@ -186,27 +188,32 @@ public class ReCaptchaClient : IReCaptchaClient
             window.WindowState = FormWindowState.Normal;
             window.ShowInTaskbar = true;
 
+            // Scaling
+            double scaling = window.DeviceDpi / 96.0;
+            int width = (int)(e.Width * scaling);
+            int height = (int)(e.Height * scaling);
+
             // Set window position based on configuration and size
             Rectangle screen = Screen.GetBounds(webView);
 
-            int left = hasResized ? window.Left + (webView.Width / 2) - (e.Width / 2) : WindowConfiguration.StartupLocation switch
+            int left = hasResized ? window.Left + (webView.Width / 2) - (width / 2) : WindowConfiguration.StartupLocation switch
             {
-                FormStartPosition.CenterScreen => (screen.Width - e.Width) / 2,
-                FormStartPosition.CenterParent => WindowConfiguration.Owner?.Left + (WindowConfiguration.Owner?.Width / 2) - (e.Width / 2),
+                FormStartPosition.CenterScreen => (screen.Width - width) / 2,
+                FormStartPosition.CenterParent => WindowConfiguration.Owner?.Left + (WindowConfiguration.Owner?.Width / 2) - (width / 2),
                 _ => WindowConfiguration.Left
             } ?? WindowConfiguration.Left;
-            window.Left = left < 0 ? 0 : left > screen.Width - e.Width ? screen.Width - e.Width : left;
-            int top = hasResized ? window.Top + (webView.Height / 2) - (e.Height / 2) : WindowConfiguration.StartupLocation switch
+            window.Left = left < 0 ? 0 : left > screen.Width - width ? screen.Width - width : left;
+            int top = hasResized ? window.Top + (webView.Height / 2) - (height / 2) : WindowConfiguration.StartupLocation switch
             {
-                FormStartPosition.CenterScreen => (screen.Height - e.Height) / 2,
-                FormStartPosition.CenterParent => WindowConfiguration.Owner?.Top + (WindowConfiguration.Owner?.Height / 2) - (e.Height / 2),
+                FormStartPosition.CenterScreen => (screen.Height - height) / 2,
+                FormStartPosition.CenterParent => WindowConfiguration.Owner?.Top + (WindowConfiguration.Owner?.Height / 2) - (height / 2),
                 _ => WindowConfiguration.Top
             } ?? WindowConfiguration.Top;
-            window.Top = top < 0 ? 0 : top > screen.Height - e.Height ? screen.Height - e.Height - 30 : top;
+            window.Top = top < 0 ? 0 : top > screen.Height - height ? screen.Height - height - 30 : top;
 
             // Set size
-            window.Width = e.Width;
-            window.Height = e.Height;
+            window.Width = (int)(width + 17 * scaling);
+            window.Height = (int)(height + 42 * scaling);
             hasResized = true;
 
             logger?.LogInformation("[ReCaptchaClient-OnReCaptchaResized] reCAPTCHA widget was resized");
@@ -214,8 +221,8 @@ public class ReCaptchaClient : IReCaptchaClient
 
 
         // Launch window
-        if (WindowConfiguration.ShowAsDialog)
-            window.ShowDialog(); //await Task.Run(() => window.Dispatcher.BeginInvoke(window.ShowDialog));
+        if (WindowConfiguration.ShowAsDialog && WindowConfiguration.Owner is not null)
+            await Task.Run(() => WindowConfiguration.Owner.BeginInvoke(() => window.ShowDialog()));
         else
             window.Show();
 
