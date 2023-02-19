@@ -4,7 +4,9 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using System;
 using System.Runtime.InteropServices;
+using System.Runtime.Intrinsics.Arm;
 using Windows.Graphics;
+using Windows.System;
 using WinRT.Interop;
 
 namespace ReCaptcha.Desktop.WinUI.Internal;
@@ -67,6 +69,9 @@ internal class WindowHelper
     [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
     private static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 
+    [DllImport("user32.dll", EntryPoint = "GetDpiForWindow")]
+    public static extern int GetDpiForWindow(IntPtr hwnd);
+
 
     /// <summary>
     /// HWND of the current main window
@@ -119,7 +124,8 @@ internal class WindowHelper
         int width,
         int height)
     {
-        window.Resize(new(width + 16, height + 39));
+        double scaling = GetDpiForWindow(HWnd) / 96.0;
+        window.Resize(new((int)((width + 16) * scaling), (int)((height + 39) * scaling)));
 
         logger?.LogInformation("[WindowHelper-SetSize] Set window size [{width}x{height}]", width, height);
     }
