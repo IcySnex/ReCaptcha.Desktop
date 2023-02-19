@@ -80,6 +80,7 @@
             this.TokenBox.Multiline = true;
             this.TokenBox.Name = "TokenBox";
             this.TokenBox.ReadOnly = true;
+            this.TokenBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.TokenBox.Size = new System.Drawing.Size(551, 74);
             this.TokenBox.TabIndex = 4;
             this.TokenBox.Text = "Press \"I\'m not a robot\"!";

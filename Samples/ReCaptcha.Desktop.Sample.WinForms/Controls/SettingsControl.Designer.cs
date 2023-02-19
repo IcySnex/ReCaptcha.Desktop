@@ -832,6 +832,5 @@
         private CheckBox ShowHandlerMessagesContent;
         private Label ShowHandlerMessagesDescription;
         private Label ShowHandlerMessagesTitle;
-        private Button button1;
     }
 }

@@ -58,7 +58,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ContentLabel.Text" xml:space="preserve">
-    <value>You can setup your HTTP server, reCAPTCHA &amp;amp; window configuration if you press 'Settings' in the top left corner.
+    <value>You can setup your HTTP server, reCAPTCHA &amp;&amp; window configuration if you press 'Settings' in the top left corner.
 You can also create a Logger window to view the log events by pressing 'Show Logger' in the top left corner.
 
 The reCAPTCHA client works by creating a new HTTP server which listens to all requests on the specified URL &amp;amp; Port.
