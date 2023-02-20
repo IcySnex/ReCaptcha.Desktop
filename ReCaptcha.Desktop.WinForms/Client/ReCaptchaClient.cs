@@ -20,30 +20,30 @@ public class ReCaptchaClient : IReCaptchaClient
     /// Creates a new ReCaptchaClient
     /// </summary>
     /// <param name="configuration">The configuration the ReCaptchaClient should be created with</param>
-    /// <param name="windowConfiguration">The configuration the reCAPTCHA window will be created with</param>
+    /// <param name="formConfiguration">The configuration the reCAPTCHA form will be created with</param>
     public ReCaptchaClient(
         ReCaptchaConfig configuration,
-        WindowConfig windowConfiguration)
+        FormConfig formConfiguration)
     {
         Configuration = configuration;
-        WindowConfiguration = windowConfiguration;
+        FormConfiguration = formConfiguration;
     }
 
     /// <summary>
     /// Creates a new ReCaptchaClient with extendended logging functions
     /// </summary>
     /// <param name="configuration">The configuration the ReCaptchaClient should be created with</param>
-    /// <param name="windowConfiguration">The configuration the reCAPTCHA window will be created with</param>
+    /// <param name="formConfiguration">The configuration the reCAPTCHA form will be created with</param>
     /// <param name="logger">A logger from Dependency Injection with MVVM</param>
     public ReCaptchaClient(
         ReCaptchaConfig configuration,
-        WindowConfig windowConfiguration,
+        FormConfig formConfiguration,
         ILogger<ReCaptchaClient> logger)
     {
         baseClient = new(configuration);
 
         Configuration = configuration;
-        WindowConfiguration = windowConfiguration;
+        FormConfiguration = formConfiguration;
 
         this.logger = logger;
 
@@ -51,44 +51,34 @@ public class ReCaptchaClient : IReCaptchaClient
     }
 
 
-    ReCaptchaConfig configuration = default!;
     /// <summary>
     /// The configuration used for this client
     /// </summary>
     public ReCaptchaConfig Configuration
     {
-        get => configuration;
-        set
-        {
-            baseClient = new(value);
-            logger?.LogInformation("[ReCaptchaClient-Configuration.Set] Created new resizeable BaseClient");
-
-            configuration = value;
-        }
+        get => baseClient.Configuration;
+        set => baseClient.Configuration = value;
     }
 
     /// <summary>
-    /// The window configuration used for this client
+    /// The form configuration used for this client
     /// </summary>
-    public WindowConfig WindowConfiguration { get; set; }
+    public FormConfig FormConfiguration { get; set; }
 
 
-    Form window = default!;
+    Form form = default!;
     WebView2 webView = default!;
 
     bool hasResized = false;
 
-    void CreateWindowAndWebView()
+    void CreateFormAndWebView()
     {
-        webView = new()
+        webView = new() { Dock = DockStyle.Fill };
+        form = new()
         {
-            Dock = DockStyle.Fill
-        };
-        window = new()
-        {
-            Text = WindowConfiguration.Title,
-            Icon = WindowConfiguration.Icon,
-            Owner = WindowConfiguration.Owner,
+            Text = FormConfiguration.Title,
+            Icon = FormConfiguration.Icon,
+            Owner = FormConfiguration.Parent,
             Left = 0,
             Top = 0,
             FormBorderStyle = FormBorderStyle.FixedSingle,
@@ -96,10 +86,10 @@ public class ReCaptchaClient : IReCaptchaClient
             MinimizeBox = false,
             WindowState = FormWindowState.Minimized,
         };
-        window.Controls.Add(webView);
+        form.Controls.Add(webView);
         hasResized = false;
 
-        logger?.LogInformation("[ReCaptchaClient-CreateWindowAndWebView] Created reCAPTCHA window with webView");
+        logger?.LogInformation("[ReCaptchaClient-CreateFormAndWebView] Created reCAPTCHA form with webView");
     }
 
 
@@ -131,7 +121,7 @@ public class ReCaptchaClient : IReCaptchaClient
     }
 
     /// <summary>
-    /// Starts and stops the HTTP server and opens a new window for the user to verify
+    /// Starts and stops the HTTP server and opens a new form for the user to verify
     /// </summary>
     /// <param name="cancellationToken">The token to cancel this action</param>
     /// <returns>A Google reCAPTCHA token</returns>
@@ -145,23 +135,23 @@ public class ReCaptchaClient : IReCaptchaClient
         CancellationTokenSource cancelSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         cancelSource.Token.Register(() =>
         {
-            // If cancelled and token is still not set close window
-            if (token is null && window is not null)
-                window.BeginInvoke(() => window?.Close());
+            // If cancelled and token is still not set close form
+            if (token is null && form is not null)
+                form.BeginInvoke(() => form?.Close());
 
             logger?.LogInformation("[ReCaptchaClient-OnTokenCancelled] reCAPTCHA vericitaion timed out");
         });
 
 
         // Create UI
-        CreateWindowAndWebView();
+        CreateFormAndWebView();
 
         // Hook handlers
-        window.Closed += OnWindowClosed;
-        void OnWindowClosed(object? _, object _1)
+        form.Closed += OnFormClosed;
+        void OnFormClosed(object? _, object _1)
         {
             // Remove all used handlers
-            window.Closed -= OnWindowClosed;
+            form.Closed -= OnFormClosed;
             ReCaptchaResized -= OnReCaptchaResized;
 
             // If token stil not set cancel
@@ -171,10 +161,10 @@ public class ReCaptchaClient : IReCaptchaClient
             // Dispose all objects and clear UI
             cancelSource.Dispose();
             webView.Dispose();
-            window = default!;
+            form = default!;
             webView = default!;
 
-            logger?.LogInformation("[ReCaptchaClient-OnWindowClosed] reCAPTCHA window was closed and objects were disposed");
+            logger?.LogInformation("[ReCaptchaClient-OnFormClosed] reCAPTCHA form was closed and objects were disposed");
         }
 
         ReCaptchaResized += OnReCaptchaResized;
@@ -184,47 +174,47 @@ public class ReCaptchaClient : IReCaptchaClient
             if (e.Height < 200)
                 return;
 
-            // Shoe window
-            window.WindowState = FormWindowState.Normal;
-            window.ShowInTaskbar = true;
+            // Show form
+            form.WindowState = FormWindowState.Normal;
+            form.ShowInTaskbar = true;
 
             // Scaling
-            double scaling = window.DeviceDpi / 96.0;
+            double scaling = form.DeviceDpi / 96.0;
             int width = (int)(e.Width * scaling);
             int height = (int)(e.Height * scaling);
 
             // Set window position based on configuration and size
             Rectangle screen = Screen.GetBounds(webView);
 
-            int left = hasResized ? window.Left + (webView.Width / 2) - (width / 2) : WindowConfiguration.StartupLocation switch
+            int left = hasResized ? form.Left + (webView.Width / 2) - (width / 2) : FormConfiguration.StartPosition switch
             {
                 FormStartPosition.CenterScreen => (screen.Width - width) / 2,
-                FormStartPosition.CenterParent => WindowConfiguration.Owner?.Left + (WindowConfiguration.Owner?.Width / 2) - (width / 2),
-                _ => WindowConfiguration.Left
-            } ?? WindowConfiguration.Left;
-            window.Left = left < 0 ? 0 : left > screen.Width - width ? screen.Width - width : left;
-            int top = hasResized ? window.Top + (webView.Height / 2) - (height / 2) : WindowConfiguration.StartupLocation switch
+                FormStartPosition.CenterParent => FormConfiguration.Parent?.Left + (FormConfiguration.Parent?.Width / 2) - (width / 2),
+                _ => FormConfiguration.Left
+            } ?? FormConfiguration.Left;
+            form.Left = left < 0 ? 0 : left > screen.Width - width ? screen.Width - width : left;
+            int top = hasResized ? form.Top + (webView.Height / 2) - (height / 2) : FormConfiguration.StartPosition switch
             {
                 FormStartPosition.CenterScreen => (screen.Height - height) / 2,
-                FormStartPosition.CenterParent => WindowConfiguration.Owner?.Top + (WindowConfiguration.Owner?.Height / 2) - (height / 2),
-                _ => WindowConfiguration.Top
-            } ?? WindowConfiguration.Top;
-            window.Top = top < 0 ? 0 : top > screen.Height - height ? screen.Height - height - 30 : top;
+                FormStartPosition.CenterParent => FormConfiguration.Parent?.Top + (FormConfiguration.Parent?.Height / 2) - (height / 2),
+                _ => FormConfiguration.Top
+            } ?? FormConfiguration.Top;
+            form.Top = top < 0 ? 0 : top > screen.Height - height ? screen.Height - height - 30 : top;
 
             // Set size
-            window.Width = (int)(width + 17 * scaling);
-            window.Height = (int)(height + 42 * scaling);
+            form.Width = (int)(width + 17 * scaling);
+            form.Height = (int)(height + 42 * scaling);
             hasResized = true;
 
             logger?.LogInformation("[ReCaptchaClient-OnReCaptchaResized] reCAPTCHA widget was resized");
         }
 
 
-        // Launch window
-        if (WindowConfiguration.ShowAsDialog && WindowConfiguration.Owner is not null)
-            await Task.Run(() => WindowConfiguration.Owner.BeginInvoke(() => window.ShowDialog()));
+        // Launch form
+        if (FormConfiguration.ShowAsDialog && FormConfiguration.Parent is not null)
+            await Task.Run(() => FormConfiguration.Parent.BeginInvoke(() => form.ShowDialog()));
         else
-            window.Show();
+            form.Show();
 
 
         // Setup WebView
@@ -249,8 +239,8 @@ public class ReCaptchaClient : IReCaptchaClient
         token = await baseClient.VerifyAsync(WaitForVerificationAsync, cancelSource.Token);
         logger?.LogInformation("[ReCaptchaClient-VerifyAsync] reCAPTCHA was successfully verified");
 
-        // Close window and return
-        window.Close();
+        // Close form and return
+        form.Close();
         return token;
     }
 }
