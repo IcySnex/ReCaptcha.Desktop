@@ -25,6 +25,8 @@ public class ReCaptchaClient : IReCaptchaClient
         ReCaptchaConfig configuration,
         FormConfig formConfiguration)
     {
+        baseClient = new(configuration);
+
         Configuration = configuration;
         FormConfiguration = formConfiguration;
     }
@@ -183,7 +185,7 @@ public class ReCaptchaClient : IReCaptchaClient
             int width = (int)(e.Width * scaling);
             int height = (int)(e.Height * scaling);
 
-            // Set window position based on configuration and size
+            // Set form position based on configuration and size
             Rectangle screen = Screen.GetBounds(webView);
 
             int left = hasResized ? form.Left + (webView.Width / 2) - (width / 2) : FormConfiguration.StartPosition switch

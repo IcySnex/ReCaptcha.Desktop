@@ -11,9 +11,6 @@ namespace ReCaptcha.Desktop.HTTP;
 /// </summary>
 public class HttpServer : IHttpServer
 {
-    readonly HttpServerConfig configuration;
-    readonly string webContent;
-
     readonly HttpListener listener = new();
 
     /// <summary>
@@ -25,12 +22,33 @@ public class HttpServer : IHttpServer
         HttpServerConfig configuration,
         string webContent)
     {
-        this.configuration = configuration;
-        this.webContent = webContent;
+        Configuration = configuration;
+        WebContent = webContent;
 
-        listener.Prefixes.Add($"{configuration.Url}:{configuration.Port}/");
         //listener.TimeoutManager.EntityBody = configuration.Timeout;
     }
+
+
+    HttpServerConfig configuration = default!;
+    /// <summary>
+    /// The configuration the HttppServer should be created with
+    /// </summary>
+    public HttpServerConfig Configuration
+    {
+        get => configuration;
+        set
+        {
+            listener.Prefixes.Clear();
+            listener.Prefixes.Add($"{value.Url}:{value.Port}/");
+
+            configuration = value;
+        }
+    }
+
+    /// <summary>
+    /// The HTML web content which should get displayed on the server
+    /// </summary>
+    public string WebContent { get; set; } = default!;
 
 
     /// <summary>
@@ -95,7 +113,7 @@ public class HttpServer : IHttpServer
                 HttpListenerContext context = await listener.GetContextAsync();
 
                 // Write web content
-                byte[] response = Encoding.ASCII.GetBytes(webContent);
+                byte[] response = Encoding.ASCII.GetBytes(WebContent);
                 await context.Response.OutputStream.WriteAsync(response, 0, response.Length);
 
                 // Invoke event

@@ -27,6 +27,14 @@ public class ReCaptchaClient : IReCaptchaClient
     public ReCaptchaClient(
         ReCaptchaConfig configuration)
     {
+        httpServer = new HttpServer(
+            configuration.HttpConfiguration,
+            string.Format(ReCaptchaHtml,
+                configuration.Language,
+                configuration.TokenRecievedHookedHtml.Replace("\n", "<br/>"),
+                configuration.TokenRecievedHtml.Replace("\n", "<br/>"),
+                configuration.SiteKey));
+
         Configuration = configuration;
     }
 
@@ -40,13 +48,15 @@ public class ReCaptchaClient : IReCaptchaClient
         get => configuration;
         set
         {
-            httpServer = new HttpServer(
-                value.HttpConfiguration,
-                string.Format(ReCaptchaHtml,
+            if (httpServer.Configuration == value.HttpConfiguration)
+                return;
+
+            httpServer.Configuration = value.HttpConfiguration;
+            httpServer.WebContent = string.Format(ReCaptchaHtml,
                     value.Language,
                     value.TokenRecievedHookedHtml.Replace("\n", "<br/>"),
                     value.TokenRecievedHtml.Replace("\n", "<br/>"),
-                    value.SiteKey));
+                    value.SiteKey);
 
             configuration = value;
         }

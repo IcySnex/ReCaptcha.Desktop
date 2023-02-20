@@ -34,6 +34,8 @@ public class ReCaptchaClient : IReCaptchaClient
         ReCaptchaConfig configuration,
         PopupConfig popupConfiguration)
     {
+        baseClient = new(configuration);
+
         Configuration = configuration;
         PopupConfiguration = popupConfiguration;
     }
@@ -60,20 +62,13 @@ public class ReCaptchaClient : IReCaptchaClient
     }
 
 
-    ReCaptchaConfig configuration = default!;
     /// <summary>
     /// The configuration used for this client
     /// </summary>
     public ReCaptchaConfig Configuration
     {
-        get => configuration;
-        set
-        {
-            baseClient = new(value);
-            logger?.LogInformation("[ReCaptchaClient-Configuration.Set] Created new resizeable BaseClient");
-
-            configuration = value;
-        }
+        get => baseClient.Configuration;
+        set => baseClient.Configuration = value;
     }
 
     /// <summary>

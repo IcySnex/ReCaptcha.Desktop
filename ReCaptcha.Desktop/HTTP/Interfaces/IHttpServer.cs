@@ -1,4 +1,5 @@
-﻿using ReCaptcha.Desktop.EventArgs;
+﻿using ReCaptcha.Desktop.Configuration;
+using ReCaptcha.Desktop.EventArgs;
 
 namespace ReCaptcha.Desktop.HTTP.Interfaces;
 
@@ -7,6 +8,17 @@ namespace ReCaptcha.Desktop.HTTP.Interfaces;
 /// </summary>
 public interface IHttpServer
 {
+    /// <summary>
+    /// The configuration the HttppServer should be created with
+    /// </summary>
+    public HttpServerConfig Configuration { get; set; }
+
+    /// <summary>
+    /// The HTML web content which should get displayed on the server
+    /// </summary>
+    public string WebContent { get; set; }
+
+
     /// <summary>
     /// Fires when the HttpServer started
     /// </summary>
