@@ -16,8 +16,8 @@ public partial class SettingsControl : UserControl
         TokenRecievedHookedHtmlContent.DataBindings.Add(new("Text", Program.Configuration, "TokenRecievedHookedHtml"));
         TitleContent.DataBindings.Add(new("Text", Program.Configuration, "Title"));
         IconContent.DataBindings.Add(new("Text", Program.Configuration, "Icon"));
-        StartupLocationContent.DataSource = Enum.GetValues(typeof(FormStartPosition));
-        StartupLocationContent.DataBindings.Add(new("SelectedItem", Program.Configuration, "StartupLocation"));
+        StartPositionContent.DataSource = Enum.GetValues(typeof(FormStartPosition));
+        StartPositionContent.DataBindings.Add(new("SelectedItem", Program.Configuration, "StartPosition"));
         LeftContent.DataBindings.Add(new("Value", Program.Configuration, "Left"));
         TopContent.DataBindings.Add(new("Value", Program.Configuration, "Top"));
         ShowAsDialogContent.DataBindings.Add(new("Checked", Program.Configuration, "ShowAsDialog"));

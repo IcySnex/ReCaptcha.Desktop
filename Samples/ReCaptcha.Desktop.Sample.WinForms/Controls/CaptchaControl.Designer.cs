@@ -34,6 +34,7 @@
             this.ContentLabel = new System.Windows.Forms.Label();
             this.VerifyButton = new System.Windows.Forms.Button();
             this.TokenBox = new System.Windows.Forms.TextBox();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CaptchaLabel
@@ -67,7 +68,7 @@
             // 
             this.VerifyButton.Location = new System.Drawing.Point(12, 326);
             this.VerifyButton.Name = "VerifyButton";
-            this.VerifyButton.Size = new System.Drawing.Size(296, 74);
+            this.VerifyButton.Size = new System.Drawing.Size(238, 74);
             this.VerifyButton.TabIndex = 3;
             this.VerifyButton.Text = "I\'m not a robot";
             this.VerifyButton.UseVisualStyleBackColor = true;
@@ -85,10 +86,21 @@
             this.TokenBox.TabIndex = 4;
             this.TokenBox.Text = "Press \"I\'m not a robot\"!";
             // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(250, 326);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(58, 74);
+            this.CancelButton.TabIndex = 5;
+            this.CancelButton.Text = "Reset";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
             // CaptchaControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.TokenBox);
             this.Controls.Add(this.VerifyButton);
             this.Controls.Add(this.ContentLabel);
@@ -108,5 +120,6 @@
         private Label ContentLabel;
         private Button VerifyButton;
         private TextBox TokenBox;
+        private Button CancelButton;
     }
 }

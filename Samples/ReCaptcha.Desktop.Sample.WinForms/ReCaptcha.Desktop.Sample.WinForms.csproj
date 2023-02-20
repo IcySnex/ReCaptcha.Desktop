@@ -7,10 +7,18 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Icon.ico" />
+	</ItemGroup>
+	<ItemGroup>
 	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
 	  <PackageReference Include="Serilog" Version="2.12.0" />
 	  <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
 	  <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="Icon.ico">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\ReCaptcha.Desktop.WinForms\ReCaptcha.Desktop.WinForms.csproj" />

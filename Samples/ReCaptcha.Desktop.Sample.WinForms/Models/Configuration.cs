@@ -18,9 +18,9 @@ public class Configuration
 
     public string Title { get; set; } = "WinForms Sample - Google reCAPTCHA";
 
-    public string Icon { get; set; } = "Icon.ico";
+    public string Icon { get; set; } = "icon.ico";
 
-    public FormStartPosition StartupLocation { get; set; } = FormStartPosition.CenterScreen;
+    public FormStartPosition StartPosition { get; set; } = FormStartPosition.CenterScreen;
 
     public int Left { get; set; } = 0;
     

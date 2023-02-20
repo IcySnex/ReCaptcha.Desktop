@@ -63,10 +63,10 @@
             this.IconTitle = new System.Windows.Forms.Label();
             this.IconContent = new System.Windows.Forms.TextBox();
             this.IconDescription = new System.Windows.Forms.Label();
-            this.StartupLocationPanel = new System.Windows.Forms.Panel();
-            this.StartupLocationTitle = new System.Windows.Forms.Label();
-            this.StartupLocationDescription = new System.Windows.Forms.Label();
-            this.StartupLocationContent = new System.Windows.Forms.ComboBox();
+            this.StartPositionPanel = new System.Windows.Forms.Panel();
+            this.StartPositionTitle = new System.Windows.Forms.Label();
+            this.StartPositionDescription = new System.Windows.Forms.Label();
+            this.StartPositionContent = new System.Windows.Forms.ComboBox();
             this.LeftPanel = new System.Windows.Forms.Panel();
             this.LeftDescription = new System.Windows.Forms.Label();
             this.LeftContent = new System.Windows.Forms.NumericUpDown();
@@ -97,7 +97,7 @@
             this.TokenRecievedHookedHtmlPanel.SuspendLayout();
             this.TitlePanel.SuspendLayout();
             this.IconPanel.SuspendLayout();
-            this.StartupLocationPanel.SuspendLayout();
+            this.StartPositionPanel.SuspendLayout();
             this.LeftPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LeftContent)).BeginInit();
             this.TopPanel.SuspendLayout();
@@ -136,7 +136,7 @@
             this.ContentLayoutPanel.Controls.Add(this.TokenRecievedHookedHtmlPanel);
             this.ContentLayoutPanel.Controls.Add(this.TitlePanel);
             this.ContentLayoutPanel.Controls.Add(this.IconPanel);
-            this.ContentLayoutPanel.Controls.Add(this.StartupLocationPanel);
+            this.ContentLayoutPanel.Controls.Add(this.StartPositionPanel);
             this.ContentLayoutPanel.Controls.Add(this.LeftPanel);
             this.ContentLayoutPanel.Controls.Add(this.TopPanel);
             this.ContentLayoutPanel.Controls.Add(this.ShowAsDialogpanel);
@@ -429,9 +429,9 @@
             this.TitleDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.TitleDescription.Location = new System.Drawing.Point(15, 35);
             this.TitleDescription.Name = "TitleDescription";
-            this.TitleDescription.Size = new System.Drawing.Size(162, 20);
+            this.TitleDescription.Size = new System.Drawing.Size(142, 20);
             this.TitleDescription.TabIndex = 4;
-            this.TitleDescription.Text = "The title of the window";
+            this.TitleDescription.Text = "The title of the form";
             // 
             // IconPanel
             // 
@@ -469,49 +469,49 @@
             this.IconDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.IconDescription.Location = new System.Drawing.Point(15, 35);
             this.IconDescription.Name = "IconDescription";
-            this.IconDescription.Size = new System.Drawing.Size(164, 20);
+            this.IconDescription.Size = new System.Drawing.Size(144, 20);
             this.IconDescription.TabIndex = 4;
-            this.IconDescription.Text = "The icon of the window";
+            this.IconDescription.Text = "The icon of the form";
             // 
-            // StartupLocationPanel
+            // StartPositionPanel
             // 
-            this.StartupLocationPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.StartupLocationPanel.Controls.Add(this.StartupLocationTitle);
-            this.StartupLocationPanel.Controls.Add(this.StartupLocationDescription);
-            this.StartupLocationPanel.Controls.Add(this.StartupLocationContent);
-            this.StartupLocationPanel.Location = new System.Drawing.Point(3, 579);
-            this.StartupLocationPanel.Name = "StartupLocationPanel";
-            this.StartupLocationPanel.Size = new System.Drawing.Size(840, 66);
-            this.StartupLocationPanel.TabIndex = 11;
+            this.StartPositionPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.StartPositionPanel.Controls.Add(this.StartPositionTitle);
+            this.StartPositionPanel.Controls.Add(this.StartPositionDescription);
+            this.StartPositionPanel.Controls.Add(this.StartPositionContent);
+            this.StartPositionPanel.Location = new System.Drawing.Point(3, 579);
+            this.StartPositionPanel.Name = "StartPositionPanel";
+            this.StartPositionPanel.Size = new System.Drawing.Size(840, 66);
+            this.StartPositionPanel.TabIndex = 11;
             // 
-            // StartupLocationTitle
+            // StartPositionTitle
             // 
-            this.StartupLocationTitle.AutoSize = true;
-            this.StartupLocationTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StartupLocationTitle.Location = new System.Drawing.Point(12, 12);
-            this.StartupLocationTitle.Name = "StartupLocationTitle";
-            this.StartupLocationTitle.Size = new System.Drawing.Size(144, 25);
-            this.StartupLocationTitle.TabIndex = 3;
-            this.StartupLocationTitle.Text = "StartupLocation";
+            this.StartPositionTitle.AutoSize = true;
+            this.StartPositionTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StartPositionTitle.Location = new System.Drawing.Point(12, 12);
+            this.StartPositionTitle.Name = "StartPositionTitle";
+            this.StartPositionTitle.Size = new System.Drawing.Size(117, 25);
+            this.StartPositionTitle.TabIndex = 3;
+            this.StartPositionTitle.Text = "StartPosition";
             // 
-            // StartupLocationDescription
+            // StartPositionDescription
             // 
-            this.StartupLocationDescription.AutoSize = true;
-            this.StartupLocationDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StartupLocationDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.StartupLocationDescription.Location = new System.Drawing.Point(15, 35);
-            this.StartupLocationDescription.Name = "StartupLocationDescription";
-            this.StartupLocationDescription.Size = new System.Drawing.Size(236, 20);
-            this.StartupLocationDescription.TabIndex = 4;
-            this.StartupLocationDescription.Text = "The startup postion of the window";
+            this.StartPositionDescription.AutoSize = true;
+            this.StartPositionDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StartPositionDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.StartPositionDescription.Location = new System.Drawing.Point(15, 35);
+            this.StartPositionDescription.Name = "StartPositionDescription";
+            this.StartPositionDescription.Size = new System.Drawing.Size(203, 20);
+            this.StartPositionDescription.TabIndex = 4;
+            this.StartPositionDescription.Text = "The start position of the form";
             // 
-            // StartupLocationContent
+            // StartPositionContent
             // 
-            this.StartupLocationContent.FormattingEnabled = true;
-            this.StartupLocationContent.Location = new System.Drawing.Point(567, 22);
-            this.StartupLocationContent.Name = "StartupLocationContent";
-            this.StartupLocationContent.Size = new System.Drawing.Size(256, 23);
-            this.StartupLocationContent.TabIndex = 7;
+            this.StartPositionContent.FormattingEnabled = true;
+            this.StartPositionContent.Location = new System.Drawing.Point(567, 22);
+            this.StartPositionContent.Name = "StartPositionContent";
+            this.StartPositionContent.Size = new System.Drawing.Size(256, 23);
+            this.StartPositionContent.TabIndex = 7;
             // 
             // LeftPanel
             // 
@@ -531,9 +531,9 @@
             this.LeftDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.LeftDescription.Location = new System.Drawing.Point(15, 35);
             this.LeftDescription.Name = "LeftDescription";
-            this.LeftDescription.Size = new System.Drawing.Size(216, 20);
+            this.LeftDescription.Size = new System.Drawing.Size(196, 20);
             this.LeftDescription.TabIndex = 4;
-            this.LeftDescription.Text = "The left position of the window";
+            this.LeftDescription.Text = "The left position of the form";
             // 
             // LeftContent
             // 
@@ -575,9 +575,9 @@
             this.RightDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.RightDescription.Location = new System.Drawing.Point(15, 35);
             this.RightDescription.Name = "RightDescription";
-            this.RightDescription.Size = new System.Drawing.Size(217, 20);
+            this.RightDescription.Size = new System.Drawing.Size(197, 20);
             this.RightDescription.TabIndex = 4;
-            this.RightDescription.Text = "The top position of the window";
+            this.RightDescription.Text = "The top position of the form";
             // 
             // TopContent
             // 
@@ -628,9 +628,9 @@
             this.ShowAsDialogDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ShowAsDialogDescription.Location = new System.Drawing.Point(15, 35);
             this.ShowAsDialogDescription.Name = "ShowAsDialogDescription";
-            this.ShowAsDialogDescription.Size = new System.Drawing.Size(383, 20);
+            this.ShowAsDialogDescription.Size = new System.Drawing.Size(363, 20);
             this.ShowAsDialogDescription.TabIndex = 4;
-            this.ShowAsDialogDescription.Text = "Wether to block the UI thread when showing the window";
+            this.ShowAsDialogDescription.Text = "Wether to block the UI thread when showing the form";
             // 
             // ShowAsDialogTitle
             // 
@@ -710,9 +710,9 @@
             this.ShowHandlerMessagesDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ShowHandlerMessagesDescription.Location = new System.Drawing.Point(15, 35);
             this.ShowHandlerMessagesDescription.Name = "ShowHandlerMessagesDescription";
-            this.ShowHandlerMessagesDescription.Size = new System.Drawing.Size(383, 20);
+            this.ShowHandlerMessagesDescription.Size = new System.Drawing.Size(363, 20);
             this.ShowHandlerMessagesDescription.TabIndex = 4;
-            this.ShowHandlerMessagesDescription.Text = "Wether to block the UI thread when showing the window";
+            this.ShowHandlerMessagesDescription.Text = "Wether to block the UI thread when showing the form";
             // 
             // ShowHandlerMessagesTitle
             // 
@@ -752,8 +752,8 @@
             this.TitlePanel.PerformLayout();
             this.IconPanel.ResumeLayout(false);
             this.IconPanel.PerformLayout();
-            this.StartupLocationPanel.ResumeLayout(false);
-            this.StartupLocationPanel.PerformLayout();
+            this.StartPositionPanel.ResumeLayout(false);
+            this.StartPositionPanel.PerformLayout();
             this.LeftPanel.ResumeLayout(false);
             this.LeftPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LeftContent)).EndInit();
@@ -808,10 +808,10 @@
         private Label IconTitle;
         private TextBox IconContent;
         private Label IconDescription;
-        private Panel StartupLocationPanel;
-        private Label StartupLocationTitle;
-        private Label StartupLocationDescription;
-        private ComboBox StartupLocationContent;
+        private Panel StartPositionPanel;
+        private Label StartPositionTitle;
+        private Label StartPositionDescription;
+        private ComboBox StartPositionContent;
         private Panel LeftPanel;
         private Label LeftDescription;
         private NumericUpDown LeftContent;
