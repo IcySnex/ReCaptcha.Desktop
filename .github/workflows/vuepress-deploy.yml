@@ -23,21 +23,16 @@ jobs:
       - name: Build VuePress site
         run: |
           cd Documentation
+          npm install vuepress@2.0.0-beta.61
           npm run docs:build
           
-      - name: Init new repo in wwwroot and commit generated files
-        run: |
-          cd wwwroot
-          git init
-          git add -A
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -m 'deploy'
-          
-      - name: Force push to destination branch
-        uses: ad-m/github-push-action@v0.5.0
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v2
         with:
-          github_token: '${{ secrets.GITHUB_TOKEN }}'
-          branch: gh-pages
-          force: true
-          directory: ./Documentation/docs/.vuepress/dist
+          # deploy to gh-pages branch
+          target_branch: gh-pages
+          # deploy the default output dir of VuePress
+          build_dir: Documentation/docs/.vuepress/dist
+        env:
+          # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
