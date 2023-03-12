@@ -17,10 +17,6 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 6.0.2
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
-            - args: [--global, gulp, prettier, typescrip
           
       - name: Setup Node.js
         uses: actions/setup-node@v3
