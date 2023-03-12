@@ -3,6 +3,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 import { searchPlugin } from '@vuepress/plugin-search'
 
 export default defineUserConfig({
+  base: '/ReCaptcha.Desktop/',
   lang: 'en-US',
   title: 'ReCaptcha.Desktop',
   description: 'Access Google reCAPTCHA on all major windows desktop frameworks (WPF, WinUI, UWP, Winforms, Console) ',
