@@ -1,12 +1,118 @@
 # Getting Started
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-## Hello World
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+## Prerequisites
+- [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/) or IDE with [NuGet Package Manager](https://www.nuget.org/)
+- Project using [WPF](https://learn.microsoft.com/en-us/dotnet/desktop/wpf) or [WinUI3](https://learn.microsoft.com/en-us/windows/apps/winui/winui3/) or [UWP](https://learn.microsoft.com/windows/uwp/) or [WinForms](https://learn.microsoft.com/en-us/dotnet/desktop/winforms) or Console
+- A Google reCAPTCHA site key
 
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ull
 
-## Test
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+## Installation (.NET CLI)
+This section will show you how to install ReCaptcha.Desktop with the [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/).
 
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ull
+- **Step 1:** Open Developer PowerShell window.
+
+(Microsoft Visual Studio Community 2022)
+![View > Terminal](/guide/getting-started/installation(.netcli)-step1.png)
+
+- **Step 2:** Install base package (ReCaptcha.Desktop).
+```powershell
+dotnet add <PROJECT> package ReCaptcha.Desktop
+```
+---
+
+
+## Console
+This section will explain how to use ReCaptcha.Desktop without any UI framework.
+
+- **Step 1:** Import ReCaptcha.Desktop dependencies
+```cs
+using ReCaptcha.Desktop.Client.Base;
+using ReCaptcha.Desktop.Client.Interfaces;
+using ReCaptcha.Desktop.Configuration;
+```
+
+- **Step 2:** Create ReCaptcha [configuration]() & [base]()
+```cs
+ReCaptchaConfig config = new("SITE_KEY");
+IRecaptchaBase reCaptcha = new ReCaptchaBase(config);
+```
+
+- **Step 3:** Hook events _(Optional)_
+
+The `VerificationRecieved` event gets fired when the ReCaptcha base successfully recieved a token.
+```cs
+reCaptcha.VerificationRecieved += (s, e) =>
+    Console.WriteLine($"Verification recieved:\n\tToken: {e.Token}\n\tOccurred At: {e.OccurredAt}\n");
+```
+
+- **Step 4:** Create verify callback
+
+Since we don't have an UI in a console application and therefore cannot display a popup, we simply open a new browser window and prompt the user to insert the token shown.
+```cs
+string verifyCallback(string hostUrl, CancellationToken cancellationToken)
+{
+    Process.Start(new ProcessStartInfo()
+    {
+        FileName = hostUrl,
+        UseShellExecute = true,
+        CreateNoWindow = true
+    });
+
+    Console.Write("Paste token here: ");
+    string? token = Console.ReadLine();
+    if (string.IsNullOrWhiteSpace(token))
+        throw new Exception("Invalid token");
+
+    Console.Clear();
+    return token;
+}
+```
+
+- **Step 5:** Run `Verify` function
+```cs
+string token = reCaptcha.Verify(verifyCallback);
+```
+
+---
+
+## WPF / WinUI3 / UWP / WinForms
+This section will explain how to use ReCaptcha.Desktop with an UI framework.
+Generally the library is used the same for all UI frameworks, but there are a few small adjustments to the respective framework, such as naming conventions or UI related properties.
+
+- **Step 1:** Install UI package (ReCaptcha.Desktop.WPF)
+```powershell
+dotnet add <PROJECT> package ReCaptcha.Desktop.WPF
+```
+
+- **Step 2:** Import ReCaptcha.Desktop dependencies
+```cs
+using ReCaptcha.Desktop.Client.WPF;
+using ReCaptcha.Desktop.Client.Interfaces;
+using ReCaptcha.Desktop.Configuration;
+```
+
+- **Step 3:** Create ReCaptcha [configuration](), window configuration & [client]()
+```cs
+WindowConfig uiConfig = new("WINDOW_TITLE"); // WPF
+WindowConfig uiConfig = new("WINDOW_TITLE"); // WinUI3
+PopupConfig uiConfig = new("POPUP_TITLE"); // UWP
+FormConfig uiConfig = new("FORM_TITLE"); // WinForms 
+
+ReCaptchaConfig config = new("SITE_KEY");
+IReCaptchaClient reCaptcha = new ReCaptchaClient(config, uiConfig);
+```
+
+- **Step 4:** Hook events _(Optional)_
+```cs
+reCaptcha.VerificationRecieved += (s, e) =>
+    MessageBox.Show($"Token: {e.Token}\nOccurred At: {e.OccurredAt}", "Verification recieved");
+
+reCaptcha.VerificationCancelled += (s, e) =>
+    MessageBox.Show($"Occurred At: {e.OccurredAt}", "Verification cancelled");
+```
+
+- **Step 4:** Run `Verify` function
+```cs
+CancellationTokenSource cts = new(TimeSpan.FromMinutes(1));
+string token = await reCaptcha.VerifyAsync(cts.Token);
+```
