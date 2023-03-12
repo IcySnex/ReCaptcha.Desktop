@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "install": "pnpm recursive install",
-    "build": "pnpm recursive build"
+    "docs:build": "vuepress build docs"
   },
   "author": "IcySnex",
   "license": "GNU General Public License v3.0",
