@@ -7,6 +7,7 @@ using System.Windows;
 using Microsoft.Web.WebView2.Wpf;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using ReCaptcha.Desktop.Client.Base;
 
 namespace ReCaptcha.Desktop.Client.WPF;
 
@@ -15,7 +16,7 @@ namespace ReCaptcha.Desktop.Client.WPF;
 /// </summary>
 public class ReCaptchaClient : IReCaptchaClient
 {
-    Resizeable.ReCaptchaClient baseClient = default!;
+    readonly IReCaptchaBase reCaptcha = default!;
     readonly ReCaptchaReciever reciever = new();
 
     readonly ILogger<ReCaptchaClient>? logger;
@@ -29,7 +30,7 @@ public class ReCaptchaClient : IReCaptchaClient
         ReCaptchaConfig configuration,
         WindowConfig windowConfiguration)
     {
-        baseClient = new(configuration);
+        reCaptcha = new ReCaptchaResizeableBase(configuration);
 
         Configuration = configuration;
         WindowConfiguration = windowConfiguration;
@@ -46,7 +47,7 @@ public class ReCaptchaClient : IReCaptchaClient
         WindowConfig windowConfiguration,
         ILogger<ReCaptchaClient> logger)
     {
-        baseClient = new(configuration);
+        reCaptcha = new ReCaptchaResizeableBase(configuration);
 
         Configuration = configuration;
         WindowConfiguration = windowConfiguration;
@@ -62,8 +63,8 @@ public class ReCaptchaClient : IReCaptchaClient
     /// </summary>
     public ReCaptchaConfig Configuration
     {
-        get => baseClient.Configuration;
-        set => baseClient.Configuration = value;
+        get => reCaptcha.Configuration;
+        set => reCaptcha.Configuration = value;
     }
 
     /// <summary>
@@ -124,6 +125,7 @@ public class ReCaptchaClient : IReCaptchaClient
         add => reciever.ReCaptchaResized += value;
         remove => reciever.ReCaptchaResized -= value;
     }
+
 
     /// <summary>
     /// Starts and stops the HTTP server and opens a new window for the user to verify
@@ -234,7 +236,7 @@ public class ReCaptchaClient : IReCaptchaClient
             return reciever.WaitAsyc(cancellationToken);
         }
 
-        token = await baseClient.VerifyAsync(WaitForVerificationAsync, cancelSource.Token);
+        token = await reCaptcha.VerifyAsync(WaitForVerificationAsync, cancelSource.Token);
         logger?.LogInformation("[ReCaptchaClient-VerifyAsync] reCAPTCHA was successfully verified");
 
         // Close window and return

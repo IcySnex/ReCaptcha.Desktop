@@ -50,7 +50,7 @@ public partial class App : Application
                 services.AddSingleton<MicaBackdropHandler>();
                 services.AddSingleton<AcrylicBackdropHandler>();
                 services.AddSingleton<Navigation>();
-                services.AddSingleton(new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title)));
+                services.AddSingleton(s => new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title), s.GetRequiredService<ILogger<ReCaptchaClient>>()));
             })
             .Build();
         Provider = host.Services;

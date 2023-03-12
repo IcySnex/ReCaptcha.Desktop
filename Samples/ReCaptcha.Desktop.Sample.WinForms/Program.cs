@@ -12,7 +12,7 @@ internal static class Program
     public static Models.Configuration Configuration { get; private set; } = default!;
 
     public static InMemorySink Sink { get; } = new();
-    public static SerilogLoggerFactory LoggerFactory = new SerilogLoggerFactory(
+    public static SerilogLoggerFactory LoggerFactory = new(
         new LoggerConfiguration()
         .WriteTo.Debug()
         .WriteTo.Sink(Sink)

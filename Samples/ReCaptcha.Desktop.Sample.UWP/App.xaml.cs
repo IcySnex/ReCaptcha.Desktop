@@ -3,6 +3,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ReCaptcha.Desktop.Client.UWP;
 using ReCaptcha.Desktop.Sample.UWP.Models;
@@ -55,7 +56,7 @@ sealed partial class App : Application
             // Add services
             services.AddSingleton<JsonConverter>();
             services.AddSingleton<Navigation>();
-            services.AddSingleton(new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title)));
+            services.AddSingleton(s => new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title), s.GetRequiredService<ILogger<ReCaptchaClient>>()));
         })
         .Build();
         Provider = host.Services;

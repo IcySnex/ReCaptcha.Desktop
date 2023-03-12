@@ -10,6 +10,8 @@ using ReCaptcha.Desktop.Sample.WPF.Services;
 using ReCaptcha.Desktop.Sample.WPF.ViewModels;
 using System.Windows.Media.Imaging;
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using ReCaptcha.Desktop.Client.Interfaces;
 
 namespace ReCaptcha.Desktop.Sample.WPF;
 
@@ -47,7 +49,7 @@ public partial class App : Application
 
                 // Add services
                 services.AddSingleton<JsonConverter>();
-                services.AddSingleton(new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title)));
+                services.AddSingleton(s => new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title), s.GetRequiredService<ILogger<ReCaptchaClient>>()));
             })
             .Build();
         Provider = host.Services;

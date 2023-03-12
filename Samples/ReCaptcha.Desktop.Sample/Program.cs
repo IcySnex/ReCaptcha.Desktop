@@ -1,4 +1,5 @@
-﻿using ReCaptcha.Desktop.Client;
+﻿using ReCaptcha.Desktop.Client.Base;
+using ReCaptcha.Desktop.Client.Interfaces;
 using ReCaptcha.Desktop.Configuration;
 using System.Diagnostics;
 
@@ -44,9 +45,9 @@ Console.WriteLine("\nPress any key to continue.");
 Console.ReadKey();
 Console.Clear();
 
-ReCaptchaClient reCaptchaClient = new(config);
+IReCaptchaBase reCaptcha = new ReCaptchaBase(config);
 
-reCaptchaClient.VerificationRecieved += (s, e) =>
+reCaptcha.VerificationRecieved += (s, e) =>
 {
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine($"\nToken Recieved:\n\tToken: {e.Token}\n\tOccurred At: {e.OccurredAt}\n");
@@ -76,7 +77,7 @@ string verifyCallback(
     return token;
 }
 
-string token = reCaptchaClient.Verify(verifyCallback);
+string token = reCaptcha.Verify(verifyCallback);
 
 Console.ResetColor();
 Console.WriteLine("Press any key to exit.");

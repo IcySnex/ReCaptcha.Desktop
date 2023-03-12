@@ -12,6 +12,7 @@ using ReCaptcha.Desktop.UWP.Internal;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Core;
+using ReCaptcha.Desktop.Client.Base;
 
 namespace ReCaptcha.Desktop.Client.UWP;
 
@@ -20,7 +21,7 @@ namespace ReCaptcha.Desktop.Client.UWP;
 /// </summary>
 public class ReCaptchaClient : IReCaptchaClient
 {
-    Resizeable.ReCaptchaClient baseClient = default!;
+    readonly IReCaptchaBase reCaptcha = default!;
     readonly ReCaptchaReciever reciever = new();
 
     readonly ILogger<ReCaptchaClient>? logger;
@@ -34,7 +35,7 @@ public class ReCaptchaClient : IReCaptchaClient
         ReCaptchaConfig configuration,
         PopupConfig popupConfiguration)
     {
-        baseClient = new(configuration);
+        reCaptcha = new ReCaptchaResizeableBase(configuration);
 
         Configuration = configuration;
         PopupConfiguration = popupConfiguration;
@@ -51,7 +52,7 @@ public class ReCaptchaClient : IReCaptchaClient
         PopupConfig popupConfiguration,
         ILogger<ReCaptchaClient> logger)
     {
-        baseClient = new(configuration);
+        reCaptcha = new ReCaptchaResizeableBase(configuration);
 
         Configuration = configuration;
         PopupConfiguration = popupConfiguration;
@@ -67,8 +68,8 @@ public class ReCaptchaClient : IReCaptchaClient
     /// </summary>
     public ReCaptchaConfig Configuration
     {
-        get => baseClient.Configuration;
-        set => baseClient.Configuration = value;
+        get => reCaptcha.Configuration;
+        set => reCaptcha.Configuration = value;
     }
 
     /// <summary>
@@ -215,7 +216,7 @@ public class ReCaptchaClient : IReCaptchaClient
             return reciever.WaitAsyc(cancellationToken);
         }
 
-        token = await baseClient.VerifyAsync(WaitForVerificationAsync, cancelSource.Token);
+        token = await reCaptcha.VerifyAsync(WaitForVerificationAsync, cancelSource.Token);
         logger?.LogInformation("[ReCaptchaClient-VerifyAsync] reCAPTCHA was successfully verified");
 
         // Close popup and return

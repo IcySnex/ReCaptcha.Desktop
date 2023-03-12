@@ -4,32 +4,32 @@ using ReCaptcha.Desktop.EventArgs;
 using ReCaptcha.Desktop.HTTP;
 using ReCaptcha.Desktop.HTTP.Interfaces;
 
-namespace ReCaptcha.Desktop.Client.Resizeable;
+namespace ReCaptcha.Desktop.Client.Base;
 
 /// <summary>
-/// Client which handles all ReCaptcha verifications with extended resize functions
+/// Base client which manages a ReCaptcha HTTP server with extended resize functions
 /// </summary>
-public class ReCaptchaClient : IReCaptchaClient
+public class ReCaptchaResizeableBase : IReCaptchaBase
 {
     /// <summary>
     /// The default reCaptcha HTML page with extended resize functions
     /// </summary>
-    public static readonly string ResizeableReCaptchaHtml =
+    public static readonly string ReCaptchaHtml =
         "<script src='https://www.google.com/recaptcha/api.js?hl={0}' async defer></script> <script> window.onload = async function() {{ grecaptcha.execute(); let rendered = false; while (!rendered) {{ rendered = document.body.childElementCount > 1; await (new Promise(resolve => setTimeout(resolve, 100))); }}; document.body.childNodes[1].style = null; new MutationObserver(() => grecaptcha.execute()).observe(document.body.childNodes[1], {{ attributes: true, attributeFilter: ['style'] }}); try {{ new ResizeObserver(() => chrome.webview.postMessage({{ 'width': document.body.childNodes[1].childNodes[1].offsetWidth, 'height': document.body.childNodes[1].childNodes[1].offsetHeight}})).observe(document.body.childNodes[1].childNodes[1]); }} catch {{}}; }}; function onTokenRecieved(token) {{ try {{ chrome.webview.postMessage({{ 'token': token }}); document.write('{1}'.replace('%token%', token)); }} catch {{ document.write('{2}'.replace('%token%', token)); }}; }}; </script> <style> body {{ overflow: hidden; }} .grecaptcha-badge {{ display: none; }} </style> <div class='g-recaptcha' on data-sitekey='{3}' data-callback='onTokenRecieved' data-size='invisible'></div>";
 
 
-    IHttpServer httpServer = default!;
+    readonly IHttpServer httpServer = default!;
 
     /// <summary>
-    /// Creates a new ReCaptchaClient
+    /// Creates a new ReCaptchaResizeableBase
     /// </summary>
-    /// <param name="configuration">The configuration the ReCaptchaClient should be created with</param>
-    public ReCaptchaClient(
+    /// <param name="configuration">The configuration the ReCaptchaResizeableBase should be created with</param>
+    public ReCaptchaResizeableBase(
         ReCaptchaConfig configuration)
     {
         httpServer = new HttpServer(
             configuration.HttpConfiguration,
-            string.Format(ResizeableReCaptchaHtml,
+            string.Format(ReCaptchaHtml,
                 configuration.Language,
                 configuration.TokenRecievedHookedHtml.Replace("\n", "<br/>"),
                 configuration.TokenRecievedHtml.Replace("\n", "<br/>"),
@@ -41,7 +41,7 @@ public class ReCaptchaClient : IReCaptchaClient
 
     ReCaptchaConfig configuration = default!;
     /// <summary>
-    /// The configuration used for this client
+    /// The configuration used for this base client
     /// </summary>
     public ReCaptchaConfig Configuration
     {
@@ -52,7 +52,7 @@ public class ReCaptchaClient : IReCaptchaClient
                 return;
 
             httpServer.Configuration = value.HttpConfiguration;
-            httpServer.WebContent = string.Format(ResizeableReCaptchaHtml,
+            httpServer.WebContent = string.Format(ReCaptchaHtml,
                     value.Language,
                     value.TokenRecievedHookedHtml.Replace("\n", "<br/>"),
                     value.TokenRecievedHtml.Replace("\n", "<br/>"),
