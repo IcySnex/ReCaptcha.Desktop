@@ -20,6 +20,6 @@ jobs:
         node-version: '12.x'
     - run: |
         echo ass,
-        ls -a,
-        cd Documentation,
+        ls -a
+        cd Documentation
         ls -a
