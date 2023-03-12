@@ -1,41 +1,41 @@
 name: Deploy to GitHub pages
-
-on:
-  # trigger deployment on every push to main branch
+'on':
   push:
-    branches: [main]
-    # trigger deployment manually
-    workflow_dispatch:
-
+    branches:
+      - main
+    workflow_dispatch: null
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Generate static vuepress files
-      uses: actions/setup-node@v1
-      with:
-        node-version: '18.x'
-    - run: |
-        cd Documentation
-        npm run docs:build
-    
-    - name: Init new repo in wwwroot and commit generated files
-      run: |
-        cd wwwroot
-        git init
-        git add -A
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -m 'deploy'
-        
-    - name: Force push to destination branch
-      uses: ad-m/github-push-action@v0.5.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        # this might change depending on whether you are publishing a site for a normal repo or a user/organization repo
-        branch: gh-pages
-        force: true
-        directory: ./Documentation/docs/.vuepress/dist
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+          run_install: true
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+      - run: |
+          cd Documentation
+          npm run docs:build
+      - name: Init new repo in wwwroot and commit generated files
+        run: |
+          cd wwwroot
+          git init
+          git add -A
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m 'deploy'
+      - name: Force push to destination branch
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: '${{ secrets.GITHUB_TOKEN }}'
+          branch: gh-pages
+          force: true
+          directory: ./Documentation/docs/.vuepress/dist
