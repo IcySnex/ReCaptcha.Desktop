@@ -1,0 +1,26 @@
+:root {
+    // brand colors
+    --c-brand: #3d6aae;
+    --c-brand-light: #5f7faf;
+    
+    // border colors
+    --c-border: #cfcece;
+    --c-border-dark: #c4c4c4;
+}
+
+html.dark {
+    // brand colors
+    --c-brand: #5899fb;
+    --c-brand-light: #75acff;
+    
+    // background colors
+    --c-bg: #1f1f1f;
+    --c-bg-light: #252525;
+    --c-bg-lighter: #2c2c2c;
+    --c-bg-dark: #222222;
+    --c-bg-darker: #000000;
+    
+    // border colors
+    --c-border: #464646;
+    --c-border-dark: #363636;
+}

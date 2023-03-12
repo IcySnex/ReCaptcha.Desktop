@@ -5,6 +5,11 @@ packages/
 *.user
 _ReSharper.*
 
+Documentation/node_modules
+Documentation/docs/.vuepress/.temp
+Documentation/docs/.vuepress/.cache
+
+
 ReCaptcha.Desktop/bin/
 ReCaptcha.Desktop/obj/
 
