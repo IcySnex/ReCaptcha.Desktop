@@ -10,11 +10,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v2
 
-    - name: Run a multi-line script
-      run: |
-        echo test the checkout,
-        ls -a
+    - name: Generate static vuepress files
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: cd Documentation
+    - run: ls -a
+    - run: npm ci
+    - run: npm run build
