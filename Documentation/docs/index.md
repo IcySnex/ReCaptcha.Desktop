@@ -9,8 +9,8 @@ actions:
   - text: Get Started ➜
     link: /guide/getting-started
     type: primary
-  - text: About
-    link: /about
+  - text: Introduction
+    link: /guide
     type: secondary
 
 features:
