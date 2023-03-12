@@ -2,8 +2,9 @@ name: Deploy to GitHub pages
 
 on:
   push:
-    # this might change depending on whether you are publishing a site for a normal repo or a user/organization repo
-    branches: [ master ]
+    # trigger deployment on every push to main branch
+    push:
+      branches: [main]
     # trigger deployment manually
     workflow_dispatch:
 
