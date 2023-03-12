@@ -35,6 +35,7 @@ export default defineUserConfig({
   plugins: [
     searchPlugin({
       maxSuggestions: 10,
+      getExtraFields: (page) => page.frontmatter.tags ?? [],
       locales: { '/': { placeholder: 'Search' }}
     })
   ]
