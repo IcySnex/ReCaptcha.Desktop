@@ -19,7 +19,7 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
-        echo ass,
-        ls -a
+        echo starting...,
         cd Documentation
-        ls -a
+        npm ci
+        npm run build
