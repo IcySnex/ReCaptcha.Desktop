@@ -4,8 +4,8 @@ on:
   # trigger deployment on every push to main branch
   push:
     branches: [main]
-  # trigger deployment manually
-  workflow_dispatch:
+    # trigger deployment manually
+    workflow_dispatch:
 
 jobs:
   build:
@@ -19,5 +19,6 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
+        ls -a,
         cd Documentation,
         ls -a
