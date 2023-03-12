@@ -14,5 +14,5 @@ jobs:
 
     - name: Run a multi-line script
       run: |
-        echo test the checkout action,
+        echo test the checkout,
         ls -a
