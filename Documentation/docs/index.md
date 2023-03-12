@@ -23,7 +23,7 @@ features:
 
 footer: '
 This is an open source library and not affiliated with Google in any way.
-<a href="/license.html">License</a>
+<a href="/ReCaptcha.Desktop/license.html">License</a>
 '
 footerHtml: true
 ---

@@ -8,10 +8,10 @@ export default defineUserConfig({
   title: 'ReCaptcha.Desktop',
   description: 'Access Google reCAPTCHA on all major windows desktop frameworks (WPF, WinUI, UWP, Winforms, Console) ',
 
-  head: [[ 'link', { rel: 'icon', href: '/icon.svg' }]],
+  head: [[ 'link', { rel: 'icon', href: '/ReCaptcha.Desktop/icon.svg' }]],
   theme: defaultTheme({
     colorMode: 'dark',
-    logo: '/ReCaptcha.Desktop/icon.svg',
+    logo: '/icon.svg',
 
     repo: 'IcySnex/ReCaptcha.Desktop',
     editLinkText: 'Edit this page on GitHub',
