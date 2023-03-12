@@ -23,6 +23,7 @@ jobs:
       - name: Build VuePress site
         run: |
           cd Documentation
+          npm install vuepress@2.0.0-beta.61
           npm run docs:build
           
       - name: Init new repo in wwwroot and commit generated files
