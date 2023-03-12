@@ -1,29 +1,37 @@
 name: Deploy to GitHub pages
+
 'on':
   push:
     branches:
       - main
     workflow_dispatch: null
+    
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7
-          run_install: true
+          version: 6.0.2
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+            - args: [--global, gulp, prettier, typescrip
+          
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: pnpm
+          
       - run: |
           cd Documentation
           npm run docs:build
+          
       - name: Init new repo in wwwroot and commit generated files
         run: |
           cd wwwroot
@@ -32,6 +40,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m 'deploy'
+          
       - name: Force push to destination branch
         uses: ad-m/github-push-action@v0.5.0
         with:
