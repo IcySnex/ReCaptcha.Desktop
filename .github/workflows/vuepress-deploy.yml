@@ -1,12 +1,11 @@
 name: Deploy to GitHub pages
 
 on:
+  # trigger deployment on every push to main branch
   push:
-    # trigger deployment on every push to main branch
-    push:
-      branches: [main]
-    # trigger deployment manually
-    workflow_dispatch:
+    branches: [main]
+  # trigger deployment manually
+  workflow_dispatch:
 
 jobs:
   build:
