@@ -22,7 +22,10 @@ jobs:
         echo starting...,
         cd Documentation
         npm run docs:build
-        cd docs/.vuepress/dist
+    
+    - name: Init new repo in wwwroot and commit generated files
+      run: |
+        cd wwwroot
         git init
         git add -A
         git config --local user.email "action@github.com"
