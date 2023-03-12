@@ -19,7 +19,7 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
-      cd Documentation
-      ls -a
-      npm ci
-      npm run build
+      cd Documentation,
+      ls -a,
+      npm ci,
+      npm run build,
