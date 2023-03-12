@@ -19,7 +19,5 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
-      cd Documentation,
-      ls -a,
-      npm ci,
-      npm run build,
+        echo test the checkout action,
+        ls -a
