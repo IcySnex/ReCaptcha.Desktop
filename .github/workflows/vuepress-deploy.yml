@@ -12,23 +12,18 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 6.0.2
           
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'pnpm'
+          cache: 'npm'
           cache-dependency-path: Documentation/package-lock.json
           
       - name: Build VuePress site
         run: |
           cd Documentation
-          pnpm docs:build
+          npm run docs:build
           
       - name: Init new repo in wwwroot and commit generated files
         run: |
