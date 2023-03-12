@@ -2,7 +2,7 @@
 home: true
 
 title: Home
-heroImage: /ReCaptcha.Desktop/icon.svg
+heroImage: /icon.svg
 heroHeight: 120
 
 actions:

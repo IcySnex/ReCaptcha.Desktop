@@ -11,14 +11,14 @@ export default defineUserConfig({
   head: [[ 'link', { rel: 'icon', href: '/icon.svg' }]],
   theme: defaultTheme({
     colorMode: 'dark',
-    logo: '/icon.svg',
+    logo: '/ReCaptcha.Desktop/icon.svg',
 
     repo: 'IcySnex/ReCaptcha.Desktop',
     editLinkText: 'Edit this page on GitHub',
 
     docsRepo: 'IcySnex/ReCaptcha.Desktop',
-    docsBranch: 'docs',
-    docsDir: 'docs',
+    docsBranch: 'main',
+    docsDir: 'Documentation/docs',
 
     sidebar: {
       '/guide': [
