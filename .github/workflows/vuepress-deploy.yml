@@ -20,9 +20,8 @@ jobs:
           cache: 'npm'
           cache-dependency-path: Documentation/package-lock.json
           
-      - run: |
-          cd Documentation
-          npm run docs:build
+      - name: Build VuePress site
+        run: npm docs:build
           
       - name: Init new repo in wwwroot and commit generated files
         run: |
