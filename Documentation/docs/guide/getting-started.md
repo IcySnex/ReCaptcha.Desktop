@@ -9,12 +9,7 @@
 ## Installation (.NET CLI)
 This section will show you how to install ReCaptcha.Desktop with the [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/).
 
-- **Step 1:** Open Developer PowerShell window.
-
-(Microsoft Visual Studio Community 2022)
-![View > Terminal](/guide/getting-started/installation(.netcli)-step1.png)
-
-- **Step 2:** Install base package (ReCaptcha.Desktop).
+Install base package (ReCaptcha.Desktop).
 ```powershell
 dotnet add <PROJECT> package ReCaptcha.Desktop
 ```
@@ -81,12 +76,19 @@ Generally the library is used the same for all UI frameworks, but there are a fe
 
 - **Step 1:** Install UI package (ReCaptcha.Desktop.WPF)
 ```powershell
-dotnet add <PROJECT> package ReCaptcha.Desktop.WPF
+dotnet add <PROJECT> package ReCaptcha.Desktop.WPF # WPF
+dotnet add <PROJECT> package ReCaptcha.Desktop.WinUI # WinUI3
+dotnet add <PROJECT> package ReCaptcha.Desktop.UWP # UWP
+dotnet add <PROJECT> package ReCaptcha.Desktop.WinForms # WinForms 
 ```
 
 - **Step 2:** Import ReCaptcha.Desktop dependencies
 ```cs
-using ReCaptcha.Desktop.Client.WPF;
+using ReCaptcha.Desktop.Client.WPF; // WPF
+using ReCaptcha.Desktop.Client.WinUI; // WinUI3
+using ReCaptcha.Desktop.Client.UWP; // UWP
+using ReCaptcha.Desktop.Client.WinForms; // WinForms 
+
 using ReCaptcha.Desktop.Client.Interfaces;
 using ReCaptcha.Desktop.Configuration;
 ```
@@ -112,7 +114,16 @@ reCaptcha.VerificationCancelled += (s, e) =>
 ```
 
 - **Step 4:** Run `Verify` function
+
+Now that we have a UI framework, we don't need to create our own verify callback like in the Console sample - ReCaptcha.Desktop handles everything for us!
+Running reCaptcha.VerifyAsync` will show a new window on WPF, WinUI3 and WinForms. Since multi windowing is really limited in UWP a popup will be shown instead.
 ```cs
 CancellationTokenSource cts = new(TimeSpan.FromMinutes(1));
 string token = await reCaptcha.VerifyAsync(cts.Token);
 ```
+
+---
+
+## That's it!
+As you can see this wasn't really difficult, was it?
+Now we can start learning about advanced stuff like configuring our [ReCaptchaClient]() or widgets that look just like the original "I'm not a robot" widget.
