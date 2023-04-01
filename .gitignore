@@ -6,6 +6,7 @@ packages/
 _ReSharper.*
 
 Documentation/node_modules
+Documentation/docs/.vuepress/dist
 Documentation/docs/.vuepress/.temp
 Documentation/docs/.vuepress/.cache
 
