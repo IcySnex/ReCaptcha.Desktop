@@ -24,12 +24,18 @@ export default defineUserConfig({
       '/guide': [
         {
           text: 'Guide',
-          children: [ '/guide', '/guide/getting-started' ],
+          children: [
+            '/guide',
+            '/guide/getting-started',
+            '/guide/configuration'
+          ],
         }
       ]
     },
 
-    navbar: [{ text: 'Guide', link: '/guide/getting-started' }]
+    navbar: [
+      { text: 'Guide', link: '/guide/getting-started' }
+    ]
   }),
 
   plugins: [
