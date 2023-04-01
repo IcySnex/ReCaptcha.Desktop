@@ -145,11 +145,11 @@ public class HttpServer : IHttpServer
         {
             using HttpClient client = new();
             await client.GetAsync($"{configuration.Url}:{configuration.Port}/", cancellationToken);
-            return true;
+            return false;
         }
         catch
         {
-            return false;
+            return true;
         }
     }
 }
