@@ -1,4 +1,4 @@
-# Configuration
+# Configurating
 
 ## HttpServerConfig
 The `HttpServerConfig` is the configuration which configures the backend [HttpServer](/http) as you might have guessed.

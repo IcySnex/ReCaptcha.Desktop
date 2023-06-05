@@ -3,6 +3,7 @@ ReCaptcha.Desktop is an open source library to access Google's reCAPTCHA API on 
 
 ReCaptcha.Desktop is fast and reliable. It uses Microsoft's official [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) library on each specific plattform and the offical Google [reCAPTCHA widget/API](https://www.google.com/recaptcha/about/) to bring you the best performance and stability. Not only is ReCaptcha.Desktop fast but also highly customizable. You are able to change about anything - from themes to fundamental components like porting it to another plattform is very easy.
 
+
 ## How it works
 Since Google does not officially support any .NET desktop framework, ReCaptcha.Desktop has to use a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) to display a custom reCAPTCHA widget hosted by a [HTTPListener](https://learn.microsoft.com/en-us/dotnet/api/system.net.httplistener).
 
@@ -10,7 +11,6 @@ You may be wondering why ReCaptcha.Desktop needs to host its own local server in
 
 But don't worry, ReCaptcha.Desktop is still fast and the user doesn't see any of the fancy actions. A window appears only when manual user input is requested by Google.
 
----
 
 ## Information
 - **ReCaptcha.Desktop:** .NET Standard 2.0
@@ -25,6 +25,7 @@ But don't worry, ReCaptcha.Desktop is still fast and the user doesn't see any of
 - **ReCaptcha.Desktop.WinUI:** .NET 6.0
 - **ReCaptcha.Desktop.UWP.Sample:** Target: Windows 11 (10.0; Build 22000) / Minimum: Windows 10, version 1809 (10.0; Build 17763)
 - **ReCaptcha.Desktop.WinForms:** .NET 6.0
+
 
 ## Dependencies
 - **ReCaptcha.Desktop:**

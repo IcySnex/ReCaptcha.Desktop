@@ -13,7 +13,6 @@ Install base package (ReCaptcha.Desktop).
 ```powershell
 dotnet add <PROJECT> package ReCaptcha.Desktop
 ```
----
 
 
 ## Console
@@ -68,13 +67,12 @@ string verifyCallback(string hostUrl, CancellationToken cancellationToken)
 string token = reCaptcha.Verify(verifyCallback);
 ```
 
----
 
 ## WPF / WinUI3 / UWP / WinForms
 This section will explain how to use ReCaptcha.Desktop with an UI framework.
 Generally the library is used the same for all UI frameworks, but there are a few small adjustments to the respective framework, such as naming conventions or UI related properties.
 
-- **Step 1:** Install UI package (ReCaptcha.Desktop.WPF)
+- **Step 1:** Install UI package
 ```powershell
 dotnet add <PROJECT> package ReCaptcha.Desktop.WPF # WPF
 dotnet add <PROJECT> package ReCaptcha.Desktop.WinUI # WinUI3
@@ -115,14 +113,13 @@ reCaptcha.VerificationCancelled += (s, e) =>
 
 - **Step 4:** Run `Verify` function
 
-Now that we have a UI framework, we don't need to create our own verify callback like in the Console sample - ReCaptcha.Desktop handles everything for us!
-Running reCaptcha.VerifyAsync` will show a new window on WPF, WinUI3 and WinForms. Since multi windowing is really limited in UWP a popup will be shown instead.
+Now that we have an UI framework, we don't need to create our own verify callback like in the Console sample - ReCaptcha.Desktop handles everything for us!
+`Running reCaptcha.VerifyAsync` will show a new window on WPF and WinUI3. On WinForms a new form will be shown. Since multi windowing is really limited in UWP a popup will be shown instead.
 ```cs
 CancellationTokenSource cts = new(TimeSpan.FromMinutes(1));
 string token = await reCaptcha.VerifyAsync(cts.Token);
 ```
 
----
 
 ## That's it!
 As you can see this wasn't really difficult, was it?
