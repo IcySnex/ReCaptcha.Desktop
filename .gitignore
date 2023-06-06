@@ -48,5 +48,8 @@ Samples/ReCaptcha.Desktop.Sample.UWP/obj/
 Samples/ReCaptcha.Desktop.Sample.WinForms/bin/
 Samples/ReCaptcha.Desktop.Sample.WinForms/obj/
 
+Samples/SimpleExampleMVVM/bin/
+Samples/SimpleExampleMVVM/obj/
+
 
 Development/

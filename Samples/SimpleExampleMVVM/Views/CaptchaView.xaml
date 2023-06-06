@@ -1,0 +1,239 @@
+﻿<UserControl
+    x:Class="SimpleExampleMVVM.Views.CaptchaView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SimpleExampleMVVM.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:themes="clr-namespace:ReCaptcha.Desktop.WPF.UI.Themes;assembly=ReCaptcha.Desktop.WPF"
+    xmlns:ui="clr-namespace:ReCaptcha.Desktop.WPF.UI;assembly=ReCaptcha.Desktop.WPF"
+    Width="800"
+    Height="450"
+    Background="#202020"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#bbffffff" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="StyledTextBox" TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="#1affffff" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border
+                            Name="root"
+                            Background="#0fffffff"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="4">
+                            <TextBox
+                                Padding="4"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                CaretBrush="#7dc3ff"
+                                FontSize="16"
+                                Foreground="#ffffff"
+                                Text="{TemplateBinding Text}" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="GotFocus">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="root"
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                To="#7dc3ff"
+                                                Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="LostFocus">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="root"
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                To="#1affffff"
+                                                Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Name="root"
+                            Background="#0fffffff"
+                            BorderBrush="#1affffff"
+                            BorderThickness="1"
+                            CornerRadius="4">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                Foreground="White"
+                                Text="{TemplateBinding Content}" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="root"
+                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                To="#27ffffff"
+                                                Duration="0:0:0.1" />
+                                            <ColorAnimation
+                                                Storyboard.TargetName="root"
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                To="#33ffffff"
+                                                Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="root"
+                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                To="#0fffffff"
+                                                Duration="0:0:0.1" />
+                                            <ColorAnimation
+                                                Storyboard.TargetName="root"
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                To="#1affffff"
+                                                Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Margin="0,0,0,4"
+            FontSize="20"
+            FontWeight="DemiBold"
+            Foreground="#7dc3ff"
+            Text="ReCaptcha.Desktop - Example (MVVM/Dependency Injection)"
+            TextDecorations="Underline" />
+        <TextBlock Grid.Row="1" Margin="0,0,0,12">
+            This is a simple example project to learn how to use ReCaptcha.Desktop with MVVM and Dependency Injection. You can see a full step by step guide here: ‎<Hyperlink
+                Command="{Binding OpenBrowserCommand}"
+                CommandParameter="https://icysnex.github.io/ReCaptcha.Desktop/guide/how-to-use"
+                Foreground="#877dc3ff">
+                ReCaptcha.Desktop Documenation - How To Use
+            </Hyperlink>
+        </TextBlock>
+
+        <Border
+            Grid.Row="2"
+            Width="760"
+            Height="355"
+            Padding="12"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#0fffffff"
+            BorderBrush="#1affffff"
+            BorderThickness="2"
+            CornerRadius="8">
+            <StackPanel>
+                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                    <TextBlock Text="Full Name:  " />
+                    <TextBox Width="646" Style="{StaticResource StyledTextBox}" />
+                </StackPanel>
+
+                <StackPanel
+                    Margin="0,12,0,0"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+                    <TextBlock Text="Email:  " />
+                    <TextBox Width="680" Style="{StaticResource StyledTextBox}" />
+                </StackPanel>
+
+                <StackPanel
+                    Margin="0,12,0,0"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+                    <TextBlock Text="Password:  " />
+                    <TextBox
+                        Width="248"
+                        Margin="0,0,16,0"
+                        Style="{StaticResource StyledTextBox}" />
+
+                    <TextBlock Text="Confirm Password:  " />
+                    <TextBox Width="249" Style="{StaticResource StyledTextBox}" />
+                </StackPanel>
+
+                <StackPanel
+                    Margin="0,12,0,0"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+                    <TextBlock Text="Company Name:  " />
+                    <TextBox Width="605" Style="{StaticResource StyledTextBox}" />
+                </StackPanel>
+
+                <Viewbox
+                    Height="20"
+                    Margin="0,12,0,24"
+                    HorizontalAlignment="Left">
+                    <CheckBox Content="I agree to the Terms and conditions" Foreground="#bbffffff" />
+                </Viewbox>
+
+                <ui:ReCaptcha
+                    HorizontalAlignment="Left"
+                    ErrorMessage="{Binding ErroMessage}"
+                    IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                    IsLoading="{Binding IsLoading}"
+                    VerificationRemovedCommand="{Binding RemoveVerificationCommand}"
+                    VerificationRequestedCommand="{Binding VerifyCommand}">
+                    <ui:ReCaptcha.Theme>
+                        <themes:DarkTheme />
+                    </ui:ReCaptcha.Theme>
+                </ui:ReCaptcha>
+
+                <Button
+                    Width="306"
+                    Height="30"
+                    Margin="0,4,0,0"
+                    HorizontalAlignment="Left"
+                    Command="{Binding SendRegistrationCommand}"
+                    Content="Send" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

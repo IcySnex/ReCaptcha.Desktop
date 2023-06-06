@@ -23,9 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCaptcha.Desktop.Sample.UW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCaptcha.Desktop.UWP", "ReCaptcha.Desktop.UWP\ReCaptcha.Desktop.UWP.csproj", "{4C3AB4D6-A9F8-4BC5-A1B0-A5D9423E083A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCaptcha.Desktop.WinForms", "ReCaptcha.Desktop.WinForms\ReCaptcha.Desktop.WinForms.csproj", "{63B2757A-79A7-4A70-B659-A565F9D980BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCaptcha.Desktop.WinForms", "ReCaptcha.Desktop.WinForms\ReCaptcha.Desktop.WinForms.csproj", "{63B2757A-79A7-4A70-B659-A565F9D980BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCaptcha.Desktop.Sample.WinForms", "Samples\ReCaptcha.Desktop.Sample.WinForms\ReCaptcha.Desktop.Sample.WinForms.csproj", "{5D0F4C5E-0FC7-4D2E-809D-12AA5AA862AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCaptcha.Desktop.Sample.WinForms", "Samples\ReCaptcha.Desktop.Sample.WinForms\ReCaptcha.Desktop.Sample.WinForms.csproj", "{5D0F4C5E-0FC7-4D2E-809D-12AA5AA862AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleExampleMVVM", "C:\Users\User69\Desktop\SimpleExampleMVVM\SimpleExampleMVVM\SimpleExampleMVVM.csproj", "{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -279,6 +281,26 @@ Global
 		{5D0F4C5E-0FC7-4D2E-809D-12AA5AA862AC}.Release|x64.Build.0 = Release|Any CPU
 		{5D0F4C5E-0FC7-4D2E-809D-12AA5AA862AC}.Release|x86.ActiveCfg = Release|Any CPU
 		{5D0F4C5E-0FC7-4D2E-809D-12AA5AA862AC}.Release|x86.Build.0 = Release|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Debug|ARM.Build.0 = Debug|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Debug|arm64.Build.0 = Debug|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Debug|x64.Build.0 = Debug|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Debug|x86.Build.0 = Debug|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Release|ARM.ActiveCfg = Release|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Release|ARM.Build.0 = Release|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Release|arm64.ActiveCfg = Release|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Release|arm64.Build.0 = Release|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Release|x64.ActiveCfg = Release|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Release|x64.Build.0 = Release|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Release|x86.ActiveCfg = Release|Any CPU
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -289,6 +311,7 @@ Global
 		{5FB364BF-0C44-43A3-B096-CA867E009C12} = {B17DAFC7-41EE-485D-84A9-BB8290924329}
 		{CA5D4D90-6871-4BE5-9208-23CF28E5B584} = {B17DAFC7-41EE-485D-84A9-BB8290924329}
 		{5D0F4C5E-0FC7-4D2E-809D-12AA5AA862AC} = {B17DAFC7-41EE-485D-84A9-BB8290924329}
+		{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248} = {B17DAFC7-41EE-485D-84A9-BB8290924329}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B7B85638-BBE1-429C-A65C-D23A7B1EDBE4}

@@ -1,0 +1,16 @@
+﻿<Application
+    x:Class="SimpleExampleMVVM.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:SimpleExampleMVVM"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <CommonDictionary xmlns="clr-namespace:ReCaptcha.Desktop.WPF.UI;assembly=ReCaptcha.Desktop.WPF" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--  OITHER APP RESOURCES  -->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
