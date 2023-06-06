@@ -9,7 +9,7 @@
 ## Installation (.NET CLI)
 This section will show you how to install ReCaptcha.Desktop with the [.NET CLI](https://learn.microsoft.com/en-us/dotnet/core/tools/).
 
-Install base package (ReCaptcha.Desktop).
+- **Step 1:** Install base package (ReCaptcha.Desktop)
 ```powershell
 dotnet add <PROJECT> package ReCaptcha.Desktop
 ```

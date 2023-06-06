@@ -28,7 +28,8 @@ export default defineUserConfig({
             '/guide',
             '/guide/getting-started',
             '/guide/configurating',
-            '/guide/widget'
+            '/guide/widget',
+            '/guide/how-to-use'
           ],
         }
       ]
