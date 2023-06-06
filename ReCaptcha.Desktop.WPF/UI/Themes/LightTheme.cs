@@ -25,7 +25,7 @@ public class LightTheme : ITheme
     /// <summary>
     /// The secondary foreground color
     /// </summary>
-    public Brush ForegroundSecondary { get; } = new SolidColorBrush(Color.FromRgb(85, 85, 85));
+    public Brush ForegroundSecondary { get; init; } = new SolidColorBrush(Color.FromRgb(85, 85, 85));
 
     /// <summary>
     /// The error message color

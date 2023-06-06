@@ -19,7 +19,7 @@ public class ReCaptchaClient : IReCaptchaClient
     readonly IReCaptchaBase reCaptcha = default!;
     readonly ReCaptchaReciever reciever = new();
 
-    readonly ILogger<ReCaptchaClient>? logger;
+    readonly ILogger<IReCaptchaClient>? logger;
 
     /// <summary>
     /// Creates a new ReCaptchaClient
@@ -45,7 +45,7 @@ public class ReCaptchaClient : IReCaptchaClient
     public ReCaptchaClient(
         ReCaptchaConfig configuration,
         WindowConfig windowConfiguration,
-        ILogger<ReCaptchaClient> logger)
+        ILogger<IReCaptchaClient> logger)
     {
         reCaptcha = new ReCaptchaResizeableBase(configuration);
 
