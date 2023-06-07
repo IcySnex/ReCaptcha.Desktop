@@ -25,7 +25,7 @@ public interface IReCaptchaClient
     event EventHandler<VerificationCancelledEventArgs>? VerificationCancelled;
 
     /// <summary>
-    /// Fires when verifcation was cancelled
+    /// Fires when reCAPTCHA widget was resized
     /// </summary>
     event EventHandler<ReCaptchaResizedEventArgs>? ReCaptchaResized;
 

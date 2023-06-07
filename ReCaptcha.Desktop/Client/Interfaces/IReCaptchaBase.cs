@@ -4,7 +4,7 @@ using ReCaptcha.Desktop.EventArgs;
 namespace ReCaptcha.Desktop.Client.Interfaces;
 
 /// <summary>
-/// Base client which manages a ReCaptcha HTTP server with
+/// Base client which manages a ReCaptcha HTTP server
 /// </summary>
 public interface IReCaptchaBase
 {
