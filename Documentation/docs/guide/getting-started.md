@@ -114,7 +114,7 @@ reCaptcha.VerificationCancelled += (s, e) =>
 - **Step 4:** Run `Verify` function
 
 Now that we have an UI framework, we don't need to create our own verify callback like in the Console sample - ReCaptcha.Desktop handles everything for us!
-`Running reCaptcha.VerifyAsync` will show a new window on WPF and WinUI3. On WinForms a new form will be shown. Since multi windowing is really limited in UWP a popup will be shown instead.
+Running `reCaptcha.VerifyAsync` will show a new window on WPF and WinUI3. On WinForms a new form will be shown. Since multi windowing is really limited in UWP a popup will be shown instead.
 ```cs
 CancellationTokenSource cts = new(TimeSpan.FromMinutes(1));
 string token = await reCaptcha.VerifyAsync(cts.Token);
@@ -123,4 +123,4 @@ string token = await reCaptcha.VerifyAsync(cts.Token);
 
 ## That's it!
 As you can see this wasn't really difficult, was it?
-Now we can start learning about advanced stuff like configuring our [ReCaptchaClient]() or widgets that look just like the original "I'm not a robot" widget.
+Now we can start learning about advanced stuff like [configuring our ReCaptchaClient](/guide/configurating) or widgets that look just like the original "I'm not a robot" widget.
