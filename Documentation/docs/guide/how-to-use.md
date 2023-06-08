@@ -85,7 +85,7 @@ services.AddSingleton<CaptchaViewModel>();
 
 ### Step 5: Add an User Interface
 This is an example "user registration" form. You can view the full XAML code on [GitHub](https://github.com/IcySnex/ReCaptcha.Desktop/tree/main/Samples/SimpleExampleMVVM/Views/CaptchaView.xaml)
-![](/guide/how-to-use/userinterface.gif)
+![](/ReCaptcha.Desktop/guide/how-to-use/userinterface.gif)
 
 ### Step 6: Add logic to your ViewModel
 The ReCaptcha.Desktop widget supports both MVVM and non-MVVM applications so you can also use `EventHandlers` instead of `Commands` and edit the control properties without `Bindings`.
@@ -170,7 +170,7 @@ void SendRegistration()
 ```
 
 ### Step 7: Add reCAPTCHA widget
-Befroe you can start using the ReCaptcha control in your user interface, you have to follow the steps on the [Widget Installation](/guide/widget#installation) guide.
+Befroe you can start using the ReCaptcha control in your user interface, you have to follow the steps on the [Widget Installation](/ReCaptcha.Desktop/guide/widget.html#installation) guide.
 
 After installing the necessary resources to your App you can just add the `<ui:ReCaptcha />` control to your visual tree. Make sure to bind all properties and commands set in the ViewModel.
 ```xml
@@ -189,10 +189,10 @@ After installing the necessary resources to your App you can just add the `<ui:R
 
 ## Final Product
 If you did everything correct your application should look like this:
-![](/guide/how-to-use/finished.gif)
+![](/ReCaptcha.Desktop/guide/how-to-use/finished.gif)
 
 It may happen that Google requests user input for the verification. But dont worry, ReCaptcha.Desktop fully supports reCAPTCHA, even audio challanges. The ReCaptcha popup will look like this:
-![](/guide/how-to-use/finished-user.gif)
+![](/ReCaptcha.Desktop/guide/how-to-use/finished-user.gif)
 
 ---
 

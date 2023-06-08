@@ -123,4 +123,4 @@ string token = await reCaptcha.VerifyAsync(cts.Token);
 
 ## That's it!
 As you can see this wasn't really difficult, was it?
-Now we can start learning about advanced stuff like [configuring our ReCaptchaClient](/guide/configurating) or widgets that look just like the original "I'm not a robot" widget.
+Now we can start learning about advanced stuff like [configuring our ReCaptchaClient](/ReCaptcha.Desktop/guide/configurating.html) or widgets that look just like the original "I'm not a robot" widget.

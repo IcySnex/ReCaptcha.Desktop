@@ -8,6 +8,6 @@ Contains the ReCaptcha client and reciever for UWP to handle verifications, wind
 ## Namespaces
 | Namespace                                                       | Description                                                         |
 |-----------------------------------------------------------------|---------------------------------------------------------------------|
-| [Client](/reference/recaptcha.desktop.uwp/client)               | Contains the ReCaptcha client and reciever to handle verifications. |
-| [Configuration](/reference/recaptcha.desktop.uwp/configuration) | Also contains extensions to create this configs easier.             |
-| [UI](/reference/recaptcha.desktop.uwp/ui)                       | Contains the ReCaptcha control with support for themes.             |
+| [Client](/ReCaptcha.Desktop/reference/recaptcha.desktop.uwp/client)               | Contains the ReCaptcha client and reciever to handle verifications. |
+| [Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.uwp/configuration) | Also contains extensions to create this configs easier.             |
+| [UI](/ReCaptcha.Desktop/reference/recaptcha.desktop.uwp/ui)                       | Contains the ReCaptcha control with support for themes.             |

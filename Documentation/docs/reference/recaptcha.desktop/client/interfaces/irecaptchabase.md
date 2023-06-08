@@ -3,9 +3,9 @@ Base client which manages a ReCaptcha HTTP server.
 
 **Type:** Interface
 <br />
-**Namespace:** [ReCaptcha.Desktop.Client.Interfaces](/reference/recaptcha.desktop/client/interfaces)
+**Namespace:** [ReCaptcha.Desktop.Client.Interfaces](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces)
 <br />
-**Assembly:** ReCaptcha.Desktop.dll
+**Assembly:** [ReCaptcha.Desktop](/ReCaptcha.Desktop/reference/recaptcha.desktop)
 
 ```cs
 public interface IReCaptchaBase

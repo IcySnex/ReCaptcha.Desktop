@@ -3,11 +3,11 @@ Base client which manages a ReCaptcha HTTP server.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Client.Base](/reference/recaptcha.desktop/client/base)
+**Namespace:** [ReCaptcha.Desktop.Client.Base](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/base)
 <br />
-**Assembly:** ReCaptcha.Desktop.dll
+**Assembly:** [ReCaptcha.Desktop](/ReCaptcha.Desktop/reference/recaptcha.desktop)
 <br />
-**Inherits from:** [IReCaptchaBase](/reference/recaptcha.desktop/client/interfaces/irecaptchabase)
+**Inherits from:** [IReCaptchaBase](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces/irecaptchabase)
 
 ```cs
 public class ReCaptchaBase : IReCaptchaBase
