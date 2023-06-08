@@ -5,7 +5,7 @@ The ReCaptcha control is available for [WPF](reference/wpf/ui), [WinUI3](referen
 
 WPF                                                |  WinUi3                                                |  UWP
 :-------------------------------------------------:|:------------------------------------------------------:|:----------------------------------------------------:
-![](/ReCaptcha.Desktop/guide/widget/demo-wpf.png)  |  ![](/ReCaptcha.Desktop/guide/widget/demo-winui3.png)  |  ![](/ReCaptcha.Desktop/guide/widget/demo-uwp.png)
+![](/guide/widget/demo-wpf.png)  |  ![](/guide/widget/demo-winui3.png)  |  ![](/guide/widget/demo-uwp.png)
 
 
 ## Installation
@@ -98,7 +98,7 @@ By simply adding the control to your visual tree, you can see that it looks exac
 ```xml
 <ui:ReCaptcha />
 ```
-![](/ReCaptcha.Desktop/guide/widget/control.gif)
+![](/guide/widget/control.gif)
 
 ### Themes
 Like said before, ReCaptcha.Desktop supports varios themes. The default theme is `Light` which mimics the Google reCAPTCHA colors. There is also an out of the box `Dark` theme which mimics Googles dark mode colors.
@@ -115,7 +115,7 @@ Like said before, ReCaptcha.Desktop supports varios themes. The default theme is
     </ui:ReCaptcha.Theme>
 </ui:ReCaptcha>
 ```
-![](/ReCaptcha.Desktop/guide/widget/control-themes.png)
+![](/guide/widget/control-themes.png)
 
 ### Custom Themes
 Of course you can customize the Theme of the ReCaptcha control all by yourself. You can decide if you want to edit a "base theme" or create a full custom theme all by yourself.
@@ -144,7 +144,7 @@ To edit a base theme you first have to decide if you want to use a light or dark
     </ui:ReCaptcha.Theme>
 </ui:ReCaptcha>
 ```
-![](/ReCaptcha.Desktop/guide/widget/control-customthemes-base.png)
+![](/guide/widget/control-customthemes-base.png)
 
 #### Create a custom theme
 If you want to reuse your theme multiple times without storing a theme somewhere in your application you can also create a custom theme by just creating a new class and inheriting from the Interface `ITheme`.
@@ -179,7 +179,7 @@ public class MyTheme : ITheme
     </ui:ReCaptcha.Theme>
 </ui:ReCaptcha>
 ```
-![](/ReCaptcha.Desktop/guide/widget/control-customthemes-custom.png)
+![](/guide/widget/control-customthemes-custom.png)
 
 ### Text & Assets
 As you may already noticed, the official Google reCAPTCHA widget has a `I'm not a robot` label in the center, a reCAPTCHA icon with label on the right side and underneath 2 hyperlinks for `Privacy` and `Terms`.
@@ -200,4 +200,4 @@ A customized widget may look like this:
    SecondaryUri="https://icysnex.github.io/ReCaptcha.Desktop/"
    SecondaryUriText="DOCSSSSS" />
 ```
-![](/ReCaptcha.Desktop/guide/widget/control-textassets.png)
+![](/guide/widget/control-textassets.png)
