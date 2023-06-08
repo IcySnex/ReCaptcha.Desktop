@@ -7,10 +7,10 @@ heroHeight: 120
 
 actions:
   - text: Get Started ➜
-    link: /guide/getting-started
+    link: /guide/getting-started.html
     type: primary
   - text: Introduction
-    link: /guide
+    link: /guide/
     type: secondary
 
 features:

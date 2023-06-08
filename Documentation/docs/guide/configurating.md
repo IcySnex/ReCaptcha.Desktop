@@ -1,10 +1,10 @@
 # Configurating
 
 ## HttpServerConfig
-The `HttpServerConfig` is the configuration which configures the backend [HttpServer](/ReCaptcha.Desktop/reference/recaptcha.desktop/http/httpserver) as you might have guessed.
+The `HttpServerConfig` is the configuration which configures the backend [HttpServer](/ReCaptcha.Desktop/reference/recaptcha.desktop/http/httpserver.html) as you might have guessed.
 You can change the url and port the server lives on. It is not recommended to change the url through.
 
-To learn more about the `HttpServerConfig` visit the [Reference](/ReCaptcha.Desktop/reference/recapthca.desktop/configuration/httpserverconfig).
+To learn more about the `HttpServerConfig` visit the [Reference](/ReCaptcha.Desktop/reference/recaptcha.desktop/configuration/httpserverconfig.html).
 It contains an explanation of all properties and functions.
 
 ### Creating an instance
@@ -42,7 +42,7 @@ while(!await serverConfig.IsOpenAsync())
 The `ReCaptchaConfig` is the main configuration. This configuration configures everything from the Google sitekey to the UI.
 It also contains an instance of a [HttpServerConfig](#httpserverconfig).
 
-To learn more about the `ReCaptchaConfig` visit the [Reference](/ReCaptcha.Desktop/reference/recaptcha.desktop/configuration/recaptchaconfig).
+To learn more about the `ReCaptchaConfig` visit the [Reference](/ReCaptcha.Desktop/reference/recaptcha.desktop/configuration/recaptchaconfig.html).
 It contains an explanation of all properties and functions.
 
 ### Creating an instance

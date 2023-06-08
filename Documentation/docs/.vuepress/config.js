@@ -101,7 +101,7 @@ export default defineUserConfig({
                     link: '/reference/recaptcha.desktop/http/interfaces',
                     collapsible: true,
                     children: [
-                      '/reference/recaptcha.desktop/http//interfaces/ihttpserver',
+                      '/reference/recaptcha.desktop/http/interfaces/ihttpserver',
                     ]
                   },
                   '/reference/recaptcha.desktop/http/httpserver'

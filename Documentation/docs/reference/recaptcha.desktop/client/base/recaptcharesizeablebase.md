@@ -3,11 +3,11 @@ Base client which manages a ReCaptcha HTTP server with extended resize functions
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Client.Base](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/base)
+**Namespace:** [ReCaptcha.Desktop.Client.Base](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/base/)
 <br />
-**Assembly:** [ReCaptcha.Desktop](/ReCaptcha.Desktop/reference/recaptcha.desktop)
+**Assembly:** [ReCaptcha.Desktop](/ReCaptcha.Desktop/reference/recaptcha.desktop/)
 <br />
-**Inherits from:** [IReCaptchaBase](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces/irecaptchabase)
+**Inherits from:** [IReCaptchaBase](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces/irecaptchabase.html)
 
 ```cs
 public class ReCaptchaResizeableBase : IReCaptchaBase
@@ -60,7 +60,7 @@ Fires when verifcation was recieved.
 ### Verify
 Starts and stops the HTTP server and calls a verify callback with the url.
 
-**Returns:** A Google reCAPTCHA token
+**Returns:** A Google reCAPTCHA token.
 ```cs
 public string Verify(
     Func<string, CancellationToken, string> verifyCallback,
@@ -74,7 +74,7 @@ public string Verify(
 ### VerifyAsync
 Starts and stops the HTTP server and asynchronously calls verify callback with the url.
 
-**Returns:** A Google reCAPTCHA token
+**Returns:** A Google reCAPTCHA token.
 ```cs
 public async Task<string> VerifyAsync(
     Func<string, CancellationToken, Task<string>> verifyCallback,

@@ -50,7 +50,7 @@ Installing ReCaptcha.Desktop to your application is not very hard but it is slig
 ```
 
 - **Step 2:** Import the `CommonDictionary` to your App ResourceDictionary 
-```xml{4-6}
+```xml{4,6-7}
 </Application>
     <Application.Resources>
         <ResourceDictionary>
@@ -147,7 +147,7 @@ To edit a base theme you first have to decide if you want to use a light or dark
 ![](/guide/widget/control-customthemes-base.png)
 
 #### Create a custom theme
-If you want to reuse your theme multiple times without storing a theme somewhere in your application you can also create a custom theme by just creating a new class and inheriting from the Interface `ITheme`.
+If you want to reuse your theme multiple times without storing a theme somewhere in your application you can also create a custom theme by just creating a new class and inheriting from the Interface [`ITheme`](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/ui/themes/interfaces/itheme.html).
 ```cs
 public class MyTheme : ITheme
 {

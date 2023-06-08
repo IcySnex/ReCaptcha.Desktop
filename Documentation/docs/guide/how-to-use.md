@@ -84,7 +84,7 @@ services.AddSingleton<CaptchaViewModel>();
 ```
 
 ### Step 5: Add an User Interface
-This is an example "user registration" form. You can view the full XAML code on [GitHub](https://github.com/IcySnex/ReCaptcha.Desktop/tree/main/Samples/SimpleExampleMVVM/Views/CaptchaView.xaml)
+This is an example "user registration" form. You can view the full XAML code on [GitHub](https://github.com/IcySnex/ReCaptcha.Desktop/blob/main/Samples/SimpleExampleMVVM/Views/CaptchaView.xaml)
 ![](/guide/how-to-use/userinterface.gif)
 
 ### Step 6: Add logic to your ViewModel
@@ -196,4 +196,4 @@ It may happen that Google requests user input for the verification. But dont wor
 
 ---
 
-As you can see ReCaptcha.Desktop works perfectly and looks just like the origianl Google reCAPTCHA widget. And as you noticed, it was not really hard to set up, right? Good luck, verifying!
+As you can see ReCaptcha.Desktop works perfectly and looks just like the origianl Google reCAPTCHA widget. And as you noticed, it was not really hard to set up, right? The full code for this example is on [GitHub](https://github.com/IcySnex/ReCaptcha.Desktop/tree/main/Samples/SimpleExampleMVVM), if you're interested. Good luck, verifying!

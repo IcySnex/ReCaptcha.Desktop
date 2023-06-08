@@ -25,7 +25,7 @@ using ReCaptcha.Desktop.Client.Interfaces;
 using ReCaptcha.Desktop.Configuration;
 ```
 
-- **Step 2:** Create ReCaptcha [configuration]() & [base]()
+- **Step 2:** Create ReCaptcha [configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop/configuration/recaptchaconfig.html) & [base](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces/irecaptchabase.html)
 ```cs
 ReCaptchaConfig config = new("SITE_KEY");
 IRecaptchaBase reCaptcha = new ReCaptchaBase(config);
@@ -33,7 +33,7 @@ IRecaptchaBase reCaptcha = new ReCaptchaBase(config);
 
 - **Step 3:** Hook events _(Optional)_
 
-The `VerificationRecieved` event gets fired when the ReCaptcha base successfully recieved a token.
+The [`VerificationRecieved`](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces/irecaptchabase.html#verificationrecieved) event gets fired when the ReCaptcha base successfully recieved a token.
 ```cs
 reCaptcha.VerificationRecieved += (s, e) =>
     Console.WriteLine($"Verification recieved:\n\tToken: {e.Token}\n\tOccurred At: {e.OccurredAt}\n");
@@ -91,7 +91,7 @@ using ReCaptcha.Desktop.Client.Interfaces;
 using ReCaptcha.Desktop.Configuration;
 ```
 
-- **Step 3:** Create ReCaptcha [configuration](), window configuration & [client]()
+- **Step 3:** Create ReCaptcha [configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop/configuration/recaptchaconfig.html) , window configuration & [client](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces/irecaptchaclient.html)
 ```cs
 WindowConfig uiConfig = new("WINDOW_TITLE"); // WPF
 WindowConfig uiConfig = new("WINDOW_TITLE"); // WinUI3
@@ -102,7 +102,7 @@ ReCaptchaConfig config = new("SITE_KEY");
 IReCaptchaClient reCaptcha = new ReCaptchaClient(config, uiConfig);
 ```
 
-- **Step 4:** Hook events _(Optional)_
+- **Step 4:** Hook [events](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces/irecaptchaclient.html#verificationrecieved) _(Optional)_
 ```cs
 reCaptcha.VerificationRecieved += (s, e) =>
     MessageBox.Show($"Token: {e.Token}\nOccurred At: {e.OccurredAt}", "Verification recieved");
@@ -111,10 +111,10 @@ reCaptcha.VerificationCancelled += (s, e) =>
     MessageBox.Show($"Occurred At: {e.OccurredAt}", "Verification cancelled");
 ```
 
-- **Step 4:** Run `Verify` function
+- **Step 4:** Run verification
 
 Now that we have an UI framework, we don't need to create our own verify callback like in the Console sample - ReCaptcha.Desktop handles everything for us!
-Running `reCaptcha.VerifyAsync` will show a new window on WPF and WinUI3. On WinForms a new form will be shown. Since multi windowing is really limited in UWP a popup will be shown instead.
+Running [`reCaptcha.VerifyAsync`](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces/irecaptchaclient.html#verifyasync) will show a new window on WPF and WinUI3. On WinForms a new form will be shown. Since multi windowing is really limited in UWP a popup will be shown instead.
 ```cs
 CancellationTokenSource cts = new(TimeSpan.FromMinutes(1));
 string token = await reCaptcha.VerifyAsync(cts.Token);
