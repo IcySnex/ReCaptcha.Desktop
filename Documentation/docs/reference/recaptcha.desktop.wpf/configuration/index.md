@@ -1,4 +1,4 @@
-# ReCaptcha.Desktop.WPF.Configuration
+# ReCaptcha.Desktop.Configuration
 Contains the ReCaptcha client and reciever to handle verifications.
 
 **Type:** Namespace

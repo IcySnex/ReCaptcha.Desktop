@@ -3,7 +3,7 @@ Contains the ReCaptcha client and reciever for WPF to handle verifications, wind
 
 **Type:** Namespace
 <br />
-**Assembly:** ReCaptcha.Desktop.WPF.dll
+**Assembly:** [ReCaptcha.Desktop.WPF](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/)
 
 ## Namespaces
 | Namespace                                                       | Description                                                         |

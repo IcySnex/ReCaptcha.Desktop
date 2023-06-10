@@ -3,7 +3,7 @@ Configuration for a ReCaptcha client.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Client.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop/configuration/)
+**Namespace:** [ReCaptcha.Desktop.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop/configuration/)
 <br />
 **Assembly:** [ReCaptcha.Desktop](/ReCaptcha.Desktop/reference/recaptcha.desktop/)
 

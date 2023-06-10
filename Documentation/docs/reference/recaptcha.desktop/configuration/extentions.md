@@ -3,7 +3,7 @@ Extension methods to create configurations easier.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Client.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop/configuration/)
+**Namespace:** [ReCaptcha.Desktop.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop/configuration/)
 <br />
 **Assembly:** [ReCaptcha.Desktop](/ReCaptcha.Desktop/reference/recaptcha.desktop/)
 
@@ -16,7 +16,7 @@ public static class Extentions
 ### AsHttpServerConfig
 Creates a new HttpServerConfig.
 
-**Returns:** A new HttpServerConfig
+**Returns:** A new HttpServerConfig.
 ```cs
 public static HttpServerConfig AsHttpServerConfig(
     this string url,
@@ -30,7 +30,7 @@ public static HttpServerConfig AsHttpServerConfig(
 ### AsHttpServerConfig
 Checks wether a connection is open on the given HttpServerConfig.
 
-**Returns:** A bool wether its true
+**Returns:** A bool wether its true.
 ```cs
 public static Task<bool> IsOpenAsync(
     this HttpServerConfig configuration,
@@ -44,7 +44,7 @@ public static Task<bool> IsOpenAsync(
 ### AsReCaptchaConfig
 Creates a new ReCaptchaConfig.
 
-**Returns:** A bool wether its true
+**Returns:** A new AsReCaptchaConfig.
 ```cs
 public static ReCaptchaConfig AsReCaptchaConfig(
     this string siteKey,

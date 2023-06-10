@@ -180,7 +180,8 @@ export default defineUserConfig({
                 collapsible: true,
                 children: [
                   '/reference/recaptcha.desktop.winui/configuration/extentions',
-                  '/reference/recaptcha.desktop.winui/configuration/windowconfig'
+                  '/reference/recaptcha.desktop.winui/configuration/windowconfig',
+                  '/reference/recaptcha.desktop.winui/configuration/windowstartuplocation'
                 ]
               },
               {
@@ -231,7 +232,8 @@ export default defineUserConfig({
                 collapsible: true,
                 children: [
                   '/reference/recaptcha.desktop.uwp/configuration/extentions',
-                  '/reference/recaptcha.desktop.uwp/configuration/windowconfig'
+                  '/reference/recaptcha.desktop.uwp/configuration/popupconfig',
+                  '/reference/recaptcha.desktop.uwp/configuration/popupstartuplocation'
                 ]
               },
               {

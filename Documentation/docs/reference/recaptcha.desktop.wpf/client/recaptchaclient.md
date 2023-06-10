@@ -3,7 +3,7 @@ Client which handles all ReCaptcha verifications.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.WPF.Client](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/client/)
+**Namespace:** [ReCaptcha.Desktop.Client.WPF](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/client/)
 <br />
 **Assembly:** [ReCaptcha.Desktop.WPF](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/)
 <br />
