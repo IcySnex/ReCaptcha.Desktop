@@ -11,7 +11,7 @@ public enum PopupStartupLocation
     Manual,
 
     /// <summary>
-    /// The popup location will be centered on the primary window at startup
+    /// The window popup will be set manual on the primary window at startup
     /// </summary>
     CenterPrimary
 }

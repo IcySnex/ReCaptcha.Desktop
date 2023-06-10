@@ -135,6 +135,7 @@
       <DependentUpon>CommonDictionary.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\ReCaptcha.cs" />
+    <Compile Include="UI\ReCaptcha.cs" />
     <Compile Include="UI\Themes\DarkTheme.cs" />
     <Compile Include="UI\Themes\Interfaces\ITheme.cs" />
     <Compile Include="UI\Themes\LightTheme.cs" />

@@ -2,7 +2,7 @@
 using Windows.UI;
 using Windows.UI.Xaml.Media;
 
-namespace ReCaptcha.Desktop.WinUI.UI.Themes;
+namespace ReCaptcha.Desktop.UWP.UI.Themes;
 
 /// <summary>
 /// Light theme for ReCaptcha control

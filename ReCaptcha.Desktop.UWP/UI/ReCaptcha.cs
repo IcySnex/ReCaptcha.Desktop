@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ReCaptcha.Desktop.UWP.UI.Themes.Interfaces;
-using ReCaptcha.Desktop.WinUI.UI.Themes;
+using ReCaptcha.Desktop.UWP.UI.Themes;
 
 namespace ReCaptcha.Desktop.UWP.UI;
 
