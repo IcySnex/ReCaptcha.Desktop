@@ -25,4 +25,46 @@
 	<ItemGroup>
 	  <Resource Include="UI\Assets\Roboto-Regular.ttf" />
 	</ItemGroup>
+
+
+	<PropertyGroup>
+		<Title>ReCaptcha.Desktop.WPF</Title>
+		<PackageId>ReCaptcha.Desktop.WPF</PackageId>
+		<Authors>IcySnex</Authors>
+		<Description>
+			Contains the ReCaptcha client and reciever for WPF to handle verifications, window specific configurations and ReCaptcha control with themes.
+		</Description>
+		<PackageIcon>Icon.png</PackageIcon>
+
+		<Copyright>This is an open source library and not affiliated with Google in any way.</Copyright>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>ReCaptcha;Google;wpf</PackageTags>
+
+		<PackageProjectUrl>https://icysnex.github.io/ReCaptcha.Desktop/</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/IcySnex/ReCaptcha.Desktop</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+		<Version>1.0</Version>
+		<AssemblyVersion>1.0</AssemblyVersion>
+		<FileVersion>1.0</FileVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\Icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 </Project>

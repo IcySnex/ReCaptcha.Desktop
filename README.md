@@ -22,4 +22,4 @@ But don't worry, ReCaptcha.Desktop is still fast and the user doesn't see any of
 ## ReCaptcha control
 WPF                                                |  WinUi3                                                |  UWP
 :-------------------------------------------------:|:------------------------------------------------------:|:----------------------------------------------------:
-![](/Documentation/docs/.vuepress/public/guide/widget/demo-wpf.png)  |  ![](/Documentation/docs/.vuepress/public/guide/widget/demo-winui3.png)  |  ![](/Documentation/docs/.vuepress/public/guide/widget/demo-uwp.png)
+![](https://raw.githubusercontent.com/IcySnex/ReCaptcha.Desktop/main/Documentation/docs/.vuepress/public/guide/widget/demo-wpf.png)  |  ![](https://raw.githubusercontent.com/IcySnex/ReCaptcha.Desktop/main/Documentation/docs/.vuepress/public/guide/widget/demo-winui3.png)  |  ![](https://raw.githubusercontent.com/IcySnex/ReCaptcha.Desktop/main/Documentation/docs/.vuepress/public/guide/widget/demo-uwp.png)

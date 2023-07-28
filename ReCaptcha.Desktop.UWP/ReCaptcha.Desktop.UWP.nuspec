@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>ReCaptcha.Desktop.UWP</id>
+    <version>1.0.0</version>
+    <title>ReCaptcha.Desktop.UWP</title>
+    <authors>IcySnex</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <readme>README.md</readme>
+    <icon>Icon.png</icon>
+    <projectUrl>https://icysnex.github.io/ReCaptcha.Desktop/</projectUrl>
+    <repository type="git">https://github.com/IcySnex/ReCaptcha.Desktop</repository>
+    <description>Contains the ReCaptcha client and reciever for UWP to handle verifications, popup specific configurations and ReCaptcha control with themes.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>This is an open source library and not affiliated with Google in any way</copyright>
+    <tags>ReCaptcha;Google;uwp</tags>
+  </metadata>
+
+	<files>
+		<file src="..\Icon.png" target="" />
+		<file src="..\LICENSE" target="" />
+		<file src="..\README.md" target="" />
+
+		<file src=""/>
+	</files>
+</package>
