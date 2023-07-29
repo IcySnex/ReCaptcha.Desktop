@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Xaml;
 
-namespace ReCaptcha.Desktop.Configuration;
+namespace ReCaptcha.Desktop.WinUI.Configuration;
 
 /// <summary>
 /// Configuration for a ReCaptcha window

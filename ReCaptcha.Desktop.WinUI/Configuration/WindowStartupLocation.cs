@@ -1,4 +1,4 @@
-﻿namespace ReCaptcha.Desktop.Configuration;
+﻿namespace ReCaptcha.Desktop.WinUI.Configuration;
 
 /// <summary>
 /// Specifies where a window will be located on startup

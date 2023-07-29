@@ -4,11 +4,13 @@ using Serilog;
 using Microsoft.Extensions.Configuration;
 using ReCaptcha.Desktop.Sample.WinUI.Services;
 using Microsoft.Extensions.DependencyInjection;
-using ReCaptcha.Desktop.Client.WinUI;
+using ReCaptcha.Desktop.WinUI.Client;
 using ReCaptcha.Desktop.Sample.WinUI.Views;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ReCaptcha.Desktop.Sample.WinUI.ViewModels;
+using ReCaptcha.Desktop.WinUI.Client.Interfaces;
+using ReCaptcha.Desktop.Sample.WinUI.Models;
 
 namespace ReCaptcha.Desktop.Sample.WinUI;
 
@@ -33,8 +35,8 @@ public partial class App : Application
             })
             .ConfigureServices((context, services) =>
             {
-                services.Configure<Models.Configuration>(context.Configuration);
-                Models.Configuration configuration = context.Configuration.Get<Models.Configuration>() ?? new();
+                services.Configure<Configuration>(context.Configuration);
+                Configuration configuration = context.Configuration.Get<Configuration>() ?? new();
 
                 // Add ViewModels and MainView
                 services.AddSingleton<HomeViewModel>();
@@ -50,7 +52,10 @@ public partial class App : Application
                 services.AddSingleton<MicaBackdropHandler>();
                 services.AddSingleton<AcrylicBackdropHandler>();
                 services.AddSingleton<Navigation>();
-                services.AddSingleton(s => new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title), s.GetRequiredService<ILogger<ReCaptchaClient>>()));
+                services.AddSingleton<IReCaptchaClient>(s => new ReCaptchaClient(
+                    new(configuration.SiteKey, configuration.HostName),
+                    new(configuration.Title),
+                    s.GetRequiredService<ILogger<IReCaptchaClient>>()));
             })
             .Build();
         Provider = host.Services;
@@ -62,7 +67,7 @@ public partial class App : Application
         await host.StartAsync().ConfigureAwait(false);
 
         ILogger<App> logger = Provider.GetRequiredService<ILogger<App>>();
-        IOptions<Models.Configuration> configuration = Provider.GetRequiredService<IOptions<Models.Configuration>>();
+        IOptions<Configuration> configuration = Provider.GetRequiredService<IOptions<Configuration>>();
         WindowHelper windowHelper = Provider.GetRequiredService<WindowHelper>();
         MicaBackdropHandler mica = Provider.GetRequiredService<MicaBackdropHandler>();
         AcrylicBackdropHandler acrylic = Provider.GetRequiredService<AcrylicBackdropHandler>();
