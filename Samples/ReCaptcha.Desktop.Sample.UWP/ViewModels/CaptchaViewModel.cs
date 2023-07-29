@@ -8,25 +8,24 @@ using System.Threading.Tasks;
 using System.Threading;
 using System;
 using Windows.UI.Popups;
-using ReCaptcha.Desktop.Client.UWP;
-using ReCaptcha.Desktop.Configuration;
-using Windows.UI.Xaml;
 using Windows.Foundation;
 using Windows.UI.Xaml.Media.Imaging;
-using Microsoft.Win32.SafeHandles;
+using ReCaptcha.Desktop.Sample.UWP.Models;
+using ReCaptcha.Desktop.UWP.Client.Interfaces;
+using ReCaptcha.Desktop.UWP.Configuration;
 
 namespace ReCaptcha.Desktop.Sample.UWP.ViewModels;
 
 public partial class CaptchaViewModel : ObservableObject
 {
     readonly ILogger logger;
-    readonly Models.Configuration configuration;
-    readonly ReCaptchaClient captchaClient;
+    readonly Configuration configuration;
+    readonly IReCaptchaClient captchaClient;
 
     public CaptchaViewModel(
         ILogger<CaptchaViewModel> logger,
-        IOptions<Models.Configuration> configuration,
-        ReCaptchaClient captchaClient)
+        IOptions<Configuration> configuration,
+        IReCaptchaClient captchaClient)
     {
         this.logger = logger;
         this.configuration = configuration.Value;
@@ -72,15 +71,12 @@ public partial class CaptchaViewModel : ObservableObject
 
     void UpdateConfigurations()
     {
-        HttpServerConfig httpConfig = new(
-                    url: configuration.HttpUrl,
-                    port: configuration.HttpPort);
         ReCaptchaConfig reCaptchaConfig = new(
             siteKey: configuration.SiteKey,
+            hostName: configuration.HostName,
             language: configuration.Language,
             tokenRecievedHtml: configuration.TokenRecievedHtml,
-            tokenRecievedHookedHtml: configuration.TokenRecievedHookedHtml,
-            httpConfiguration: httpConfig);
+            tokenRecievedHookedHtml: configuration.TokenRecievedHookedHtml);
 
         PopupConfig popupConfig = new(
             title: configuration.Title,

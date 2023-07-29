@@ -1,4 +1,4 @@
-﻿namespace ReCaptcha.Desktop.Configuration;
+﻿namespace ReCaptcha.Desktop.UWP.Configuration;
 
 /// <summary>
 /// Specifies where a popup will be located on startup

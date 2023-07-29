@@ -2,7 +2,7 @@
 
 using Windows.UI.Xaml.Media;
 
-namespace ReCaptcha.Desktop.Configuration;
+namespace ReCaptcha.Desktop.UWP.Configuration;
 
 /// <summary>
 /// Configuration for a ReCaptcha popup

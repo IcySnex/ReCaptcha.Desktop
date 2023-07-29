@@ -5,11 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using ReCaptcha.Desktop.Client.UWP;
 using ReCaptcha.Desktop.Sample.UWP.Models;
 using ReCaptcha.Desktop.Sample.UWP.Services;
 using ReCaptcha.Desktop.Sample.UWP.ViewModels;
 using ReCaptcha.Desktop.Sample.UWP.Views;
+using ReCaptcha.Desktop.UWP.Client;
+using ReCaptcha.Desktop.UWP.Client.Interfaces;
 using Serilog;
 using System;
 using Windows.ApplicationModel;
@@ -45,8 +46,8 @@ sealed partial class App : Application
         })
         .ConfigureServices((context, services) =>
         {
-            services.Configure<Models.Configuration>(context.Configuration);
-            Models.Configuration configuration = context.Configuration.Get<Models.Configuration>() ?? new();
+            services.Configure<Configuration>(context.Configuration);
+            Configuration configuration = context.Configuration.Get<Configuration>() ?? new();
 
             // Add ViewModels and MainView
             services.AddSingleton<HomeViewModel>();
@@ -56,7 +57,10 @@ sealed partial class App : Application
             // Add services
             services.AddSingleton<JsonConverter>();
             services.AddSingleton<Navigation>();
-            services.AddSingleton(s => new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title), s.GetRequiredService<ILogger<ReCaptchaClient>>()));
+            services.AddSingleton<IReCaptchaClient>(s => new ReCaptchaClient(
+                new(configuration.SiteKey, configuration.HostName),
+                new(configuration.Title),
+                s.GetRequiredService<ILogger<IReCaptchaClient>>()));
         })
         .Build();
         Provider = host.Services;
@@ -83,7 +87,7 @@ sealed partial class App : Application
 
 
         JsonConverter converter = Provider.GetRequiredService<JsonConverter>();
-        IOptions<Models.Configuration> configuration = Provider.GetRequiredService<IOptions<Models.Configuration>>();
+        IOptions<Configuration> configuration = Provider.GetRequiredService<IOptions<Configuration>>();
 
         Suspending += async (s, e) =>
         {

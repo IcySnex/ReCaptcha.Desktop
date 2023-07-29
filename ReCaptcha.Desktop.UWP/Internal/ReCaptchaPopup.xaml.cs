@@ -1,4 +1,4 @@
-﻿using ReCaptcha.Desktop.Configuration;
+﻿using ReCaptcha.Desktop.UWP.Configuration;
 using System;
 using Windows.Devices.Input;
 using Windows.Foundation;

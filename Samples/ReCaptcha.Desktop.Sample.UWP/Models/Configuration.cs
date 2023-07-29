@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using ReCaptcha.Desktop.Configuration;
+using ReCaptcha.Desktop.UWP.Configuration;
 using System;
 
 namespace ReCaptcha.Desktop.Sample.UWP.Models;
@@ -7,14 +7,10 @@ namespace ReCaptcha.Desktop.Sample.UWP.Models;
 public partial class Configuration : ObservableObject
 {
     [ObservableProperty]
-    string httpUrl = "http://localhost";
-
-    [ObservableProperty]
-    int httpPort = 5000;
-
-
-    [ObservableProperty]
     string siteKey = "";
+
+    [ObservableProperty]
+    string hostName = "recaptcha.desktop";
 
     [ObservableProperty]
     string language = "en";
