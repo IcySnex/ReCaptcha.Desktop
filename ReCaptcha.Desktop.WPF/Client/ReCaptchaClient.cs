@@ -1,22 +1,30 @@
-﻿using ReCaptcha.Desktop.Configuration;
-using System.Threading;
+﻿using System.Threading;
 using System;
-using ReCaptcha.Desktop.Client.Interfaces;
-using ReCaptcha.Desktop.EventArgs;
 using System.Windows;
 using Microsoft.Web.WebView2.Wpf;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using ReCaptcha.Desktop.Client.Base;
+using Microsoft.Web.WebView2.Core;
+using System.IO;
+using System.Text;
+using ReCaptcha.Desktop.WPF.Client.Interfaces;
+using ReCaptcha.Desktop.WPF.Configuration;
+using ReCaptcha.Desktop.WPF.EventArgs;
 
-namespace ReCaptcha.Desktop.Client.WPF;
+namespace ReCaptcha.Desktop.WPF.Client;
 
 /// <summary>
 /// Client which handles all ReCaptcha verifications
 /// </summary>
 public class ReCaptchaClient : IReCaptchaClient
 {
-    readonly IReCaptchaBase reCaptcha = default!;
+    /// <summary>
+    /// The default reCaptcha HTML web content
+    /// </summary>
+    public static readonly string WebContent =
+        "<script src='https://www.google.com/recaptcha/api.js?hl={0}' async defer></script> <script> window.onload = async function() {{ grecaptcha.execute(); let rendered = false; while (!rendered) {{ rendered = document.body.childElementCount > 1; await (new Promise(resolve => setTimeout(resolve, 100))); }}; document.body.childNodes[1].style = null; new MutationObserver(() => grecaptcha.execute()).observe(document.body.childNodes[1], {{ attributes: true, attributeFilter: ['style'] }}); try {{ new ResizeObserver(() => chrome.webview.postMessage({{ 'width': document.body.childNodes[1].childNodes[1].offsetWidth, 'height': document.body.childNodes[1].childNodes[1].offsetHeight}})).observe(document.body.childNodes[1].childNodes[1]); }} catch {{}}; }}; function onTokenRecieved(token) {{ try {{ chrome.webview.postMessage({{ 'token': token }}); document.write('{1}'.replace('%token%', token)); }} catch {{ document.write('{2}'.replace('%token%', token)); }}; }}; </script> <style> body {{ overflow: hidden; }} .grecaptcha-badge {{ display: none; }} </style> <div class='g-recaptcha' on data-sitekey='{3}' data-callback='onTokenRecieved' data-size='invisible'></div>";
+
+
     readonly ReCaptchaReciever reciever = new();
 
     readonly ILogger<IReCaptchaClient>? logger;
@@ -30,8 +38,6 @@ public class ReCaptchaClient : IReCaptchaClient
         ReCaptchaConfig configuration,
         WindowConfig windowConfiguration)
     {
-        reCaptcha = new ReCaptchaResizeableBase(configuration);
-
         Configuration = configuration;
         WindowConfiguration = windowConfiguration;
     }
@@ -47,24 +53,36 @@ public class ReCaptchaClient : IReCaptchaClient
         WindowConfig windowConfiguration,
         ILogger<IReCaptchaClient> logger)
     {
-        reCaptcha = new ReCaptchaResizeableBase(configuration);
-
         Configuration = configuration;
         WindowConfiguration = windowConfiguration;
 
         this.logger = logger;
-
         logger.LogInformation("[ReCaptchaClient-.ctor] Initialized ReCaptchaClient");
     }
 
 
+    ReCaptchaConfig configuration = default!;
     /// <summary>
     /// The configuration used for this client
     /// </summary>
     public ReCaptchaConfig Configuration
     {
-        get => reCaptcha.Configuration;
-        set => reCaptcha.Configuration = value;
+        get => configuration;
+        set
+        {
+            if (configuration == value)
+                return;
+
+            string formattedWebContent = string.Format(
+                WebContent,
+                value.Language,
+                value.TokenRecievedHookedHtml.Replace("\n", "<br/>"),
+                value.TokenRecievedHtml.Replace("\n", "<br/>"),
+                value.SiteKey);
+            webContentResponse = new MemoryStream(Encoding.UTF8.GetBytes(formattedWebContent));
+
+            configuration = value;
+        }
     }
 
     /// <summary>
@@ -72,6 +90,8 @@ public class ReCaptchaClient : IReCaptchaClient
     /// </summary>
     public WindowConfig WindowConfiguration { get; set; }
 
+
+    Stream webContentResponse = default!;
 
     Window window = default!;
     WebView2 webView = default!;
@@ -118,7 +138,7 @@ public class ReCaptchaClient : IReCaptchaClient
     }
 
     /// <summary>
-    /// Fires when verifcation was cancelled
+    /// Fires when Google reCAPTCHA widget gets resized
     /// </summary>
     public event EventHandler<ReCaptchaResizedEventArgs>? ReCaptchaResized
     {
@@ -128,13 +148,15 @@ public class ReCaptchaClient : IReCaptchaClient
 
 
     /// <summary>
-    /// Starts and stops the HTTP server and opens a new window for the user to verify
+    /// Sets up the reCAPTCHA site and opens a new window for the user to verify
     /// </summary>
     /// <param name="cancellationToken">The token to cancel this action</param>
     /// <returns>A Google reCAPTCHA token</returns>
     public async Task<string> VerifyAsync(
         CancellationToken cancellationToken = default!)
     {
+        logger?.LogInformation("[ReCaptchaClient-VerifyAsync] reCAPTCHA verification was requested");
+
         // Define result
         string? token = null;
 
@@ -186,17 +208,17 @@ public class ReCaptchaClient : IReCaptchaClient
             window.ShowInTaskbar = true;
 
             // Set window position based on configuration and size
-            double left = hasResized ? window.Left + (webView.Width / 2) - (e.Width / 2) : WindowConfiguration.StartupLocation switch
+            double left = hasResized ? window.Left + webView.Width / 2 - e.Width / 2 : WindowConfiguration.StartupLocation switch
             {
                 WindowStartupLocation.CenterScreen => (SystemParameters.PrimaryScreenWidth - e.Width) / 2,
-                WindowStartupLocation.CenterOwner => WindowConfiguration.Owner?.Left + (WindowConfiguration.Owner?.Width / 2) - (e.Width / 2),
+                WindowStartupLocation.CenterOwner => WindowConfiguration.Owner?.Left + WindowConfiguration.Owner?.Width / 2 - e.Width / 2,
                 _ => WindowConfiguration.Left
             } ?? WindowConfiguration.Left;
             window.Left = left < 0 ? 0 : left > SystemParameters.PrimaryScreenWidth - e.Width ? SystemParameters.PrimaryScreenWidth - e.Width : left;
-            double top = hasResized ? window.Top + (webView.Height / 2) - (e.Height / 2) : WindowConfiguration.StartupLocation switch
+            double top = hasResized ? window.Top + webView.Height / 2 - e.Height / 2 : WindowConfiguration.StartupLocation switch
             {
                 WindowStartupLocation.CenterScreen => (SystemParameters.PrimaryScreenHeight - e.Height) / 2,
-                WindowStartupLocation.CenterOwner => WindowConfiguration.Owner?.Top + (WindowConfiguration.Owner?.Height / 2) - (e.Height / 2),
+                WindowStartupLocation.CenterOwner => WindowConfiguration.Owner?.Top + WindowConfiguration.Owner?.Height / 2 - e.Height / 2,
                 _ => WindowConfiguration.Top
             } ?? WindowConfiguration.Top;
             window.Top = top < 0 ? 0 : top > SystemParameters.PrimaryScreenHeight - e.Height ? SystemParameters.PrimaryScreenHeight - e.Height - 30 : top;
@@ -218,26 +240,31 @@ public class ReCaptchaClient : IReCaptchaClient
 
 
         // Setup WebView
+        logger?.LogInformation("[ReCaptchaClient-VerifyAsync] Setting up WebView2");
+
         await webView.EnsureCoreWebView2Async();
         reciever.SetWebView(webView.CoreWebView2);
 
         webView.CoreWebView2.Settings.AreDevToolsEnabled = false;
         webView.CoreWebView2.Settings.IsZoomControlEnabled = false;
+        webView.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+        webView.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
 
-
-        // Verify reCAPTCHA
-        Task<string> WaitForVerificationAsync(string url, CancellationToken cancellationToken)
+        webView.CoreWebView2.AddWebResourceRequestedFilter($"http://{Configuration.HostName.ToLower()}/webview/overridenresources/recaptcha", CoreWebView2WebResourceContext.All);
+        webView.CoreWebView2.WebResourceRequested += WebResourceRequested;
+        void WebResourceRequested(object? _, CoreWebView2WebResourceRequestedEventArgs e)
         {
-            logger?.LogInformation("[ReCaptchaClient-WaitForVerificationAsync] reCAPTCHA verification was requested");
+            logger?.LogInformation("[ReCaptchaClient-WebResourceRequested] WebView2 requested resource: Overriding to reCAPTCHA web content response");
+            e.Response = webView.CoreWebView2.Environment.CreateWebResourceResponse(webContentResponse, 200, "OK", "Content-Type: text/html");
+        };
 
-            // Set page to hosted reCAPTCHA
-            webView.Source = new(url);
-            // Wait until verified
-            return reciever.WaitAsyc(cancellationToken);
-        }
 
-        token = await reCaptcha.VerifyAsync(WaitForVerificationAsync, cancelSource.Token);
+        // Verify
+        webView.CoreWebView2.Navigate($"http://{Configuration.HostName.ToLower()}/webview/overridenresources/recaptcha");
+        token = await reciever.WaitAsyc(cancellationToken);
+
         logger?.LogInformation("[ReCaptchaClient-VerifyAsync] reCAPTCHA was successfully verified");
+
 
         // Close window and return
         window.Close();

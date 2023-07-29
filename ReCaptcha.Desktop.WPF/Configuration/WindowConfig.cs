@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-namespace ReCaptcha.Desktop.Configuration;
+namespace ReCaptcha.Desktop.WPF.Configuration;
 
 /// <summary>
 /// Configuration for a ReCaptcha window
@@ -41,7 +41,7 @@ public class WindowConfig
     /// The title of the window
     /// </summary>
     public string Title { get; set; }
-    
+
     /// <summary>
     /// The icon of the window
     /// </summary>

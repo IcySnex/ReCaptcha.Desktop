@@ -28,10 +28,10 @@
                 FontSize="16"
                 Opacity="0.8"
                 TextWrapping="Wrap">
-                You can setup your HTTP server, reCAPTCHA &amp; window configuration if you press 'Settings' in the top left corner.<LineBreak />
+                You can setup your reCAPTCHA &amp; window configuration if you press 'Settings' in the top left corner.<LineBreak />
                 You can also create a Logger window to view the log events by pressing 'Show Logger' in the top left corner.<LineBreak /><LineBreak />
-                The reCAPTCHA client works by creating a new HTTP server which listens to all requests on the specified URL &amp; Port.<LineBreak />
-                The WPF client extends this funcionailty by creating a new window with a WebView 2 to display for the user. it injects a 'hosted object' so the local website can communicate with the application and send the token.<LineBreak /><LineBreak />
+                ReCaptcha.Desktop works by redirecting the given hostname to a native reCAPTCHA web page on the WebView2<LineBreak />
+                Then the WPF client extends this funcionailty by creating a new window with a WebView2 to display for the user. The script on the native web page uses 'chrome.webview.postMessage' to communicate with the application.<LineBreak /><LineBreak />
                 You can press 'Start' to begin the reCAPTCHA verification. THe token will be displayed on the left side. In most cases this should be completely invisible but if Google detects suspicios traffic the user has to verify the reCAPTCHA by hand.</TextBlock>
 
             <Grid

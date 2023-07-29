@@ -1,11 +1,11 @@
 ﻿using Microsoft.Web.WebView2.Core;
-using ReCaptcha.Desktop.EventArgs;
+using ReCaptcha.Desktop.WPF.EventArgs;
 using System;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ReCaptcha.Desktop.Client.WPF;
+namespace ReCaptcha.Desktop.WPF.Client;
 
 /// <summary>
 /// Reciever to communicate with the HTTP server with extended resize functions

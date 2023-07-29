@@ -1,28 +1,30 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
-using ReCaptcha.Desktop.Client.WPF;
-using ReCaptcha.Desktop.Configuration;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Windows;
 using Microsoft.Extensions.Options;
 using System;
 using System.Threading;
+using ReCaptcha.Desktop.WPF.Configuration;
+using ReCaptcha.Desktop.Sample.WPF.Models;
+using ReCaptcha.Desktop.WPF.Client.Interfaces;
+
 namespace ReCaptcha.Desktop.Sample.WPF.ViewModels;
 
 public partial class CaptchaViewModel : ObservableObject
 {
     readonly ILogger<CaptchaViewModel> logger;
-    readonly Models.Configuration configuration;
+    readonly Configuration configuration;
     readonly MainViewModel mainViewModel;
-    readonly ReCaptchaClient captchaClient;
+    readonly IReCaptchaClient captchaClient;
 
     public CaptchaViewModel(
         ILogger<CaptchaViewModel> logger,
-        IOptions<Models.Configuration> configuration,
+        IOptions<Configuration> configuration,
         MainViewModel mainViewModel,
-        ReCaptchaClient captchaClient)
+        IReCaptchaClient captchaClient)
     {
         this.logger = logger;
         this.configuration = configuration.Value;
@@ -64,15 +66,12 @@ public partial class CaptchaViewModel : ObservableObject
 
     void UpdateConfigurations()
     {
-        HttpServerConfig httpConfig = new(
-                    url: configuration.HttpUrl,
-                    port: configuration.HttpPort);
         ReCaptchaConfig reCaptchaConfig = new(
             siteKey: configuration.SiteKey,
+            hostName: configuration.HostName,
             language: configuration.Language,
             tokenRecievedHtml: configuration.TokenRecievedHtml,
-            tokenRecievedHookedHtml: configuration.TokenRecievedHookedHtml,
-            httpConfiguration: httpConfig);
+            tokenRecievedHookedHtml: configuration.TokenRecievedHookedHtml);
 
         WindowConfig windowConfig = new(
             title: configuration.Title,

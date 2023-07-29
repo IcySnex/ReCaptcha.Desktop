@@ -3,15 +3,13 @@ using System;
 using Serilog;
 using System.Windows;
 using Microsoft.Extensions.Configuration;
-using ReCaptcha.Desktop.Client.WPF;
 using Microsoft.Extensions.DependencyInjection;
-using ReCaptcha.Desktop.Configuration;
 using ReCaptcha.Desktop.Sample.WPF.Services;
 using ReCaptcha.Desktop.Sample.WPF.ViewModels;
-using System.Windows.Media.Imaging;
-using System.Diagnostics;
 using Microsoft.Extensions.Logging;
-using ReCaptcha.Desktop.Client.Interfaces;
+using ReCaptcha.Desktop.WPF.Client;
+using ReCaptcha.Desktop.WPF.Client.Interfaces;
+using ReCaptcha.Desktop.Sample.WPF.Models;
 
 namespace ReCaptcha.Desktop.Sample.WPF;
 
@@ -36,8 +34,8 @@ public partial class App : Application
             })
             .ConfigureServices((context, services) =>
             {
-                services.Configure<Models.Configuration>(context.Configuration);
-                Models.Configuration configuration = context.Configuration.Get<Models.Configuration>() ?? new();
+                services.Configure<Configuration>(context.Configuration);
+                Configuration configuration = context.Configuration.Get<Configuration>() ?? new();
 
                 // Add ViewModels and MainView
                 services.AddSingleton<HomeViewModel>();
@@ -49,7 +47,10 @@ public partial class App : Application
 
                 // Add services
                 services.AddSingleton<JsonConverter>();
-                services.AddSingleton(s => new ReCaptchaClient(new(configuration.SiteKey), new(configuration.Title), s.GetRequiredService<ILogger<ReCaptchaClient>>()));
+                services.AddSingleton<IReCaptchaClient>(s => new ReCaptchaClient(
+                    new(configuration.SiteKey, configuration.HostName),
+                    new(configuration.Title),
+                    s.GetRequiredService<ILogger<IReCaptchaClient>>()));
             })
             .Build();
         Provider = host.Services;

@@ -24,31 +24,6 @@
 
 
             <ContentControl
-                ContentStringFormat="HttpUrl"
-                Tag="The url the server lives on"
-                Template="{StaticResource SettignsCard}">
-
-                <TextBox
-                    Padding="6"
-                    FontSize="14"
-                    Text="{Binding Configuration.HttpUrl, Mode=TwoWay}" />
-            </ContentControl>
-
-            <ContentControl
-                ContentStringFormat="HttpPort"
-                Tag="The port the server lives on"
-                Template="{StaticResource SettignsCard}">
-
-                <TextBox
-                    Width="100"
-                    Padding="6"
-                    HorizontalAlignment="Right"
-                    FontSize="14"
-                    PreviewKeyDown="OnHttpPortKeyDown"
-                    Text="{Binding Configuration.HttpPort, Mode=TwoWay}" />
-            </ContentControl>
-
-            <ContentControl
                 ContentStringFormat="SiteKey"
                 Tag="The SiteKey for the Google reCAPTCHA service"
                 Template="{StaticResource SettignsCard}">
@@ -57,6 +32,19 @@
                     Padding="6"
                     FontSize="14"
                     Text="{Binding Configuration.SiteKey, Mode=TwoWay}" />
+            </ContentControl>
+
+            <ContentControl
+                ContentStringFormat="HostName"
+                Tag="The name of the virtual host on which the reCAPTCHA is hosted. Should represent your application"
+                Template="{StaticResource SettignsCard}">
+
+                <TextBox
+                    Width="200"
+                    HorizontalAlignment="Right"
+                    Padding="6"
+                    FontSize="14"
+                    Text="{Binding Configuration.HostName, Mode=TwoWay}" />
             </ContentControl>
 
             <ContentControl
