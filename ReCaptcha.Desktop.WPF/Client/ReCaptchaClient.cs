@@ -261,7 +261,7 @@ public class ReCaptchaClient : IReCaptchaClient
 
         // Verify
         webView.CoreWebView2.Navigate($"http://{Configuration.HostName.ToLower()}/webview/overridenresources/recaptcha");
-        token = await reciever.WaitAsyc(cancellationToken);
+        token = await reciever.WaitAsyc(cancelSource.Token);
 
         logger?.LogInformation("[ReCaptchaClient-VerifyAsync] reCAPTCHA was successfully verified");
 
