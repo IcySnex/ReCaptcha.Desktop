@@ -24,11 +24,8 @@
   // Gets called when token was recieved
   function onTokenRecieved(token) {
     try {
-      // Get hosted object: InterOpReciever from WebView2 application
-      const reciever = chrome.webview.hostObjects.reciever;
-
-      // Send recieved token to InerOpReciever from WebView2 application and write successful message
-      reciever.SendToken(token);
+      // Send recieved token to reciever application and write successful message
+      chrome.webview.postMessage({ 'token': token });
       document.write('Successfully verfied Google reCAPTCHA.<br/>The token was sent to the reciever. This window should close automatically. If not, please contact the developer.'.replace('%token%', token));
     }
     catch {
