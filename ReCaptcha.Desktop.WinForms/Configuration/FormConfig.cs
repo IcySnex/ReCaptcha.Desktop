@@ -1,4 +1,4 @@
-﻿namespace ReCaptcha.Desktop.Configuration;
+﻿namespace ReCaptcha.Desktop.WinForms.Configuration;
 
 /// <summary>
 /// Configuration for a ReCaptcha form

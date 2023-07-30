@@ -29,88 +29,87 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CaptchaControl));
-            this.CaptchaLabel = new System.Windows.Forms.Label();
-            this.DividerPanel = new System.Windows.Forms.Panel();
-            this.ContentLabel = new System.Windows.Forms.Label();
-            this.VerifyButton = new System.Windows.Forms.Button();
-            this.TokenBox = new System.Windows.Forms.TextBox();
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            CaptchaLabel = new Label();
+            DividerPanel = new Panel();
+            ContentLabel = new Label();
+            VerifyButton = new Button();
+            TokenBox = new TextBox();
+            CancelButton = new Button();
+            SuspendLayout();
             // 
             // CaptchaLabel
             // 
-            this.CaptchaLabel.AutoSize = true;
-            this.CaptchaLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 18.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CaptchaLabel.Location = new System.Drawing.Point(12, 12);
-            this.CaptchaLabel.Name = "CaptchaLabel";
-            this.CaptchaLabel.Size = new System.Drawing.Size(199, 35);
-            this.CaptchaLabel.TabIndex = 0;
-            this.CaptchaLabel.Text = "Lets get started!";
+            CaptchaLabel.AutoSize = true;
+            CaptchaLabel.Font = new Font("Segoe UI Semibold", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            CaptchaLabel.Location = new Point(12, 12);
+            CaptchaLabel.Name = "CaptchaLabel";
+            CaptchaLabel.Size = new Size(199, 35);
+            CaptchaLabel.TabIndex = 0;
+            CaptchaLabel.Text = "Lets get started!";
             // 
             // DividerPanel
             // 
-            this.DividerPanel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.DividerPanel.Location = new System.Drawing.Point(12, 52);
-            this.DividerPanel.Name = "DividerPanel";
-            this.DividerPanel.Size = new System.Drawing.Size(860, 2);
-            this.DividerPanel.TabIndex = 1;
+            DividerPanel.BackColor = SystemColors.ActiveCaptionText;
+            DividerPanel.Location = new Point(12, 52);
+            DividerPanel.Name = "DividerPanel";
+            DividerPanel.Size = new Size(860, 2);
+            DividerPanel.TabIndex = 1;
             // 
             // ContentLabel
             // 
-            this.ContentLabel.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ContentLabel.Location = new System.Drawing.Point(12, 65);
-            this.ContentLabel.Name = "ContentLabel";
-            this.ContentLabel.Size = new System.Drawing.Size(860, 253);
-            this.ContentLabel.TabIndex = 2;
-            this.ContentLabel.Text = resources.GetString("ContentLabel.Text");
+            ContentLabel.Font = new Font("Segoe UI", 12.5F, FontStyle.Regular, GraphicsUnit.Point);
+            ContentLabel.Location = new Point(12, 65);
+            ContentLabel.Name = "ContentLabel";
+            ContentLabel.Size = new Size(878, 253);
+            ContentLabel.TabIndex = 2;
+            ContentLabel.Text = resources.GetString("ContentLabel.Text");
             // 
             // VerifyButton
             // 
-            this.VerifyButton.Location = new System.Drawing.Point(12, 326);
-            this.VerifyButton.Name = "VerifyButton";
-            this.VerifyButton.Size = new System.Drawing.Size(238, 74);
-            this.VerifyButton.TabIndex = 3;
-            this.VerifyButton.Text = "I\'m not a robot";
-            this.VerifyButton.UseVisualStyleBackColor = true;
-            this.VerifyButton.Click += new System.EventHandler(this.VerifyButton_Click);
+            VerifyButton.Location = new Point(12, 326);
+            VerifyButton.Name = "VerifyButton";
+            VerifyButton.Size = new Size(238, 74);
+            VerifyButton.TabIndex = 3;
+            VerifyButton.Text = "I'm not a robot";
+            VerifyButton.UseVisualStyleBackColor = true;
+            VerifyButton.Click += VerifyButton_Click;
             // 
             // TokenBox
             // 
-            this.TokenBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TokenBox.Location = new System.Drawing.Point(321, 326);
-            this.TokenBox.Multiline = true;
-            this.TokenBox.Name = "TokenBox";
-            this.TokenBox.ReadOnly = true;
-            this.TokenBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TokenBox.Size = new System.Drawing.Size(551, 74);
-            this.TokenBox.TabIndex = 4;
-            this.TokenBox.Text = "Press \"I\'m not a robot\"!";
+            TokenBox.BackColor = SystemColors.ControlLightLight;
+            TokenBox.Location = new Point(319, 326);
+            TokenBox.Multiline = true;
+            TokenBox.Name = "TokenBox";
+            TokenBox.ReadOnly = true;
+            TokenBox.ScrollBars = ScrollBars.Both;
+            TokenBox.Size = new Size(559, 74);
+            TokenBox.TabIndex = 4;
+            TokenBox.Text = "Press \"I'm not a robot\"!";
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(250, 326);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(58, 74);
-            this.CancelButton.TabIndex = 5;
-            this.CancelButton.Text = "Reset";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            CancelButton.Location = new Point(250, 326);
+            CancelButton.Name = "CancelButton";
+            CancelButton.Size = new Size(58, 74);
+            CancelButton.TabIndex = 5;
+            CancelButton.Text = "Reset";
+            CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.Click += CancelButton_Click;
             // 
             // CaptchaControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.TokenBox);
-            this.Controls.Add(this.VerifyButton);
-            this.Controls.Add(this.ContentLabel);
-            this.Controls.Add(this.DividerPanel);
-            this.Controls.Add(this.CaptchaLabel);
-            this.Name = "CaptchaControl";
-            this.Size = new System.Drawing.Size(884, 416);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(CancelButton);
+            Controls.Add(TokenBox);
+            Controls.Add(VerifyButton);
+            Controls.Add(ContentLabel);
+            Controls.Add(DividerPanel);
+            Controls.Add(CaptchaLabel);
+            Name = "CaptchaControl";
+            Size = new Size(893, 416);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

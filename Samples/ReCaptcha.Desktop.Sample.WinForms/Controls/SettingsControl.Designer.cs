@@ -28,747 +28,683 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SettingsLabel = new System.Windows.Forms.Label();
-            this.DividerPanel = new System.Windows.Forms.Panel();
-            this.ContentLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.HttpUrlPanel = new System.Windows.Forms.Panel();
-            this.HttpUrlContent = new System.Windows.Forms.TextBox();
-            this.HttpUrlDescription = new System.Windows.Forms.Label();
-            this.HttpUrlTitle = new System.Windows.Forms.Label();
-            this.HttpPortPanel = new System.Windows.Forms.Panel();
-            this.HttpPortDescription = new System.Windows.Forms.Label();
-            this.HttpPortContent = new System.Windows.Forms.NumericUpDown();
-            this.HttpPortTitle = new System.Windows.Forms.Label();
-            this.SiteKeyPanel = new System.Windows.Forms.Panel();
-            this.SiteKeyDescription = new System.Windows.Forms.Label();
-            this.SiteKeyTitle = new System.Windows.Forms.Label();
-            this.SiteKeyContent = new System.Windows.Forms.TextBox();
-            this.LanguagePanel = new System.Windows.Forms.Panel();
-            this.LanguageDescription = new System.Windows.Forms.Label();
-            this.LanguageTitle = new System.Windows.Forms.Label();
-            this.LanguageContent = new System.Windows.Forms.TextBox();
-            this.TokenRecievedHtmlPanel = new System.Windows.Forms.Panel();
-            this.TokenRecievedHtmlDescription = new System.Windows.Forms.Label();
-            this.TokenRecievedHtmlTitle = new System.Windows.Forms.Label();
-            this.TokenRecievedHtmlContent = new System.Windows.Forms.TextBox();
-            this.TokenRecievedHookedHtmlPanel = new System.Windows.Forms.Panel();
-            this.TokenRecievedHookedHtmlTitle = new System.Windows.Forms.Label();
-            this.TokenRecievedHookedHtmlContent = new System.Windows.Forms.TextBox();
-            this.TokenRecievedHookedHtmlDescription = new System.Windows.Forms.Label();
-            this.TitlePanel = new System.Windows.Forms.Panel();
-            this.TitleTitle = new System.Windows.Forms.Label();
-            this.TitleContent = new System.Windows.Forms.TextBox();
-            this.TitleDescription = new System.Windows.Forms.Label();
-            this.IconPanel = new System.Windows.Forms.Panel();
-            this.IconTitle = new System.Windows.Forms.Label();
-            this.IconContent = new System.Windows.Forms.TextBox();
-            this.IconDescription = new System.Windows.Forms.Label();
-            this.StartPositionPanel = new System.Windows.Forms.Panel();
-            this.StartPositionTitle = new System.Windows.Forms.Label();
-            this.StartPositionDescription = new System.Windows.Forms.Label();
-            this.StartPositionContent = new System.Windows.Forms.ComboBox();
-            this.LeftPanel = new System.Windows.Forms.Panel();
-            this.LeftDescription = new System.Windows.Forms.Label();
-            this.LeftContent = new System.Windows.Forms.NumericUpDown();
-            this.LeftTitle = new System.Windows.Forms.Label();
-            this.TopPanel = new System.Windows.Forms.Panel();
-            this.RightDescription = new System.Windows.Forms.Label();
-            this.TopContent = new System.Windows.Forms.NumericUpDown();
-            this.TopTitle = new System.Windows.Forms.Label();
-            this.ShowAsDialogpanel = new System.Windows.Forms.Panel();
-            this.ShowAsDialogContent = new System.Windows.Forms.CheckBox();
-            this.ShowAsDialogDescription = new System.Windows.Forms.Label();
-            this.ShowAsDialogTitle = new System.Windows.Forms.Label();
-            this.TimeoutPanel = new System.Windows.Forms.Panel();
-            this.TimeoutContent = new System.Windows.Forms.MaskedTextBox();
-            this.TimeoutDescription = new System.Windows.Forms.Label();
-            this.TimeoutTitle = new System.Windows.Forms.Label();
-            this.ShowHandlerMessagesPanel = new System.Windows.Forms.Panel();
-            this.ShowHandlerMessagesContent = new System.Windows.Forms.CheckBox();
-            this.ShowHandlerMessagesDescription = new System.Windows.Forms.Label();
-            this.ShowHandlerMessagesTitle = new System.Windows.Forms.Label();
-            this.ContentLayoutPanel.SuspendLayout();
-            this.HttpUrlPanel.SuspendLayout();
-            this.HttpPortPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HttpPortContent)).BeginInit();
-            this.SiteKeyPanel.SuspendLayout();
-            this.LanguagePanel.SuspendLayout();
-            this.TokenRecievedHtmlPanel.SuspendLayout();
-            this.TokenRecievedHookedHtmlPanel.SuspendLayout();
-            this.TitlePanel.SuspendLayout();
-            this.IconPanel.SuspendLayout();
-            this.StartPositionPanel.SuspendLayout();
-            this.LeftPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LeftContent)).BeginInit();
-            this.TopPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TopContent)).BeginInit();
-            this.ShowAsDialogpanel.SuspendLayout();
-            this.TimeoutPanel.SuspendLayout();
-            this.ShowHandlerMessagesPanel.SuspendLayout();
-            this.SuspendLayout();
+            SettingsLabel = new Label();
+            DividerPanel = new Panel();
+            ContentLayoutPanel = new FlowLayoutPanel();
+            SiteKeyPanel = new Panel();
+            SiteKeyDescription = new Label();
+            SiteKeyTitle = new Label();
+            SiteKeyContent = new TextBox();
+            panel1 = new Panel();
+            HostNameContent = new TextBox();
+            HostNameDescription = new Label();
+            HostNameTitle = new Label();
+            LanguagePanel = new Panel();
+            LanguageDescription = new Label();
+            LanguageTitle = new Label();
+            LanguageContent = new TextBox();
+            TokenRecievedHtmlPanel = new Panel();
+            TokenRecievedHtmlDescription = new Label();
+            TokenRecievedHtmlTitle = new Label();
+            TokenRecievedHtmlContent = new TextBox();
+            TokenRecievedHookedHtmlPanel = new Panel();
+            TokenRecievedHookedHtmlTitle = new Label();
+            TokenRecievedHookedHtmlContent = new TextBox();
+            TokenRecievedHookedHtmlDescription = new Label();
+            TitlePanel = new Panel();
+            TitleTitle = new Label();
+            TitleContent = new TextBox();
+            TitleDescription = new Label();
+            IconPanel = new Panel();
+            IconTitle = new Label();
+            IconContent = new TextBox();
+            IconDescription = new Label();
+            StartPositionPanel = new Panel();
+            StartPositionTitle = new Label();
+            StartPositionDescription = new Label();
+            StartPositionContent = new ComboBox();
+            LeftPanel = new Panel();
+            LeftDescription = new Label();
+            LeftContent = new NumericUpDown();
+            LeftTitle = new Label();
+            TopPanel = new Panel();
+            RightDescription = new Label();
+            TopContent = new NumericUpDown();
+            TopTitle = new Label();
+            ShowAsDialogpanel = new Panel();
+            ShowAsDialogContent = new CheckBox();
+            ShowAsDialogDescription = new Label();
+            ShowAsDialogTitle = new Label();
+            TimeoutPanel = new Panel();
+            TimeoutContent = new MaskedTextBox();
+            TimeoutDescription = new Label();
+            TimeoutTitle = new Label();
+            ShowHandlerMessagesPanel = new Panel();
+            ShowHandlerMessagesContent = new CheckBox();
+            ShowHandlerMessagesDescription = new Label();
+            ShowHandlerMessagesTitle = new Label();
+            ContentLayoutPanel.SuspendLayout();
+            SiteKeyPanel.SuspendLayout();
+            panel1.SuspendLayout();
+            LanguagePanel.SuspendLayout();
+            TokenRecievedHtmlPanel.SuspendLayout();
+            TokenRecievedHookedHtmlPanel.SuspendLayout();
+            TitlePanel.SuspendLayout();
+            IconPanel.SuspendLayout();
+            StartPositionPanel.SuspendLayout();
+            LeftPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)LeftContent).BeginInit();
+            TopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)TopContent).BeginInit();
+            ShowAsDialogpanel.SuspendLayout();
+            TimeoutPanel.SuspendLayout();
+            ShowHandlerMessagesPanel.SuspendLayout();
+            SuspendLayout();
             // 
             // SettingsLabel
             // 
-            this.SettingsLabel.AutoSize = true;
-            this.SettingsLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 18.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.SettingsLabel.Location = new System.Drawing.Point(12, 12);
-            this.SettingsLabel.Name = "SettingsLabel";
-            this.SettingsLabel.Size = new System.Drawing.Size(108, 35);
-            this.SettingsLabel.TabIndex = 0;
-            this.SettingsLabel.Text = "Settings";
+            SettingsLabel.AutoSize = true;
+            SettingsLabel.Font = new Font("Segoe UI Semibold", 18.75F, FontStyle.Bold, GraphicsUnit.Point);
+            SettingsLabel.Location = new Point(12, 12);
+            SettingsLabel.Name = "SettingsLabel";
+            SettingsLabel.Size = new Size(108, 35);
+            SettingsLabel.TabIndex = 0;
+            SettingsLabel.Text = "Settings";
             // 
             // DividerPanel
             // 
-            this.DividerPanel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.DividerPanel.Location = new System.Drawing.Point(12, 52);
-            this.DividerPanel.Name = "DividerPanel";
-            this.DividerPanel.Size = new System.Drawing.Size(860, 2);
-            this.DividerPanel.TabIndex = 1;
+            DividerPanel.BackColor = SystemColors.ActiveCaptionText;
+            DividerPanel.Location = new Point(12, 52);
+            DividerPanel.Name = "DividerPanel";
+            DividerPanel.Size = new Size(860, 2);
+            DividerPanel.TabIndex = 1;
             // 
             // ContentLayoutPanel
             // 
-            this.ContentLayoutPanel.AutoScroll = true;
-            this.ContentLayoutPanel.Controls.Add(this.HttpUrlPanel);
-            this.ContentLayoutPanel.Controls.Add(this.HttpPortPanel);
-            this.ContentLayoutPanel.Controls.Add(this.SiteKeyPanel);
-            this.ContentLayoutPanel.Controls.Add(this.LanguagePanel);
-            this.ContentLayoutPanel.Controls.Add(this.TokenRecievedHtmlPanel);
-            this.ContentLayoutPanel.Controls.Add(this.TokenRecievedHookedHtmlPanel);
-            this.ContentLayoutPanel.Controls.Add(this.TitlePanel);
-            this.ContentLayoutPanel.Controls.Add(this.IconPanel);
-            this.ContentLayoutPanel.Controls.Add(this.StartPositionPanel);
-            this.ContentLayoutPanel.Controls.Add(this.LeftPanel);
-            this.ContentLayoutPanel.Controls.Add(this.TopPanel);
-            this.ContentLayoutPanel.Controls.Add(this.ShowAsDialogpanel);
-            this.ContentLayoutPanel.Controls.Add(this.TimeoutPanel);
-            this.ContentLayoutPanel.Controls.Add(this.ShowHandlerMessagesPanel);
-            this.ContentLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.ContentLayoutPanel.Location = new System.Drawing.Point(12, 72);
-            this.ContentLayoutPanel.Name = "ContentLayoutPanel";
-            this.ContentLayoutPanel.Size = new System.Drawing.Size(872, 344);
-            this.ContentLayoutPanel.TabIndex = 2;
-            this.ContentLayoutPanel.WrapContents = false;
-            // 
-            // HttpUrlPanel
-            // 
-            this.HttpUrlPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.HttpUrlPanel.Controls.Add(this.HttpUrlContent);
-            this.HttpUrlPanel.Controls.Add(this.HttpUrlDescription);
-            this.HttpUrlPanel.Controls.Add(this.HttpUrlTitle);
-            this.HttpUrlPanel.Location = new System.Drawing.Point(3, 3);
-            this.HttpUrlPanel.Name = "HttpUrlPanel";
-            this.HttpUrlPanel.Size = new System.Drawing.Size(840, 66);
-            this.HttpUrlPanel.TabIndex = 0;
-            // 
-            // HttpUrlContent
-            // 
-            this.HttpUrlContent.Location = new System.Drawing.Point(567, 22);
-            this.HttpUrlContent.Name = "HttpUrlContent";
-            this.HttpUrlContent.PlaceholderText = "http://localhost";
-            this.HttpUrlContent.Size = new System.Drawing.Size(256, 23);
-            this.HttpUrlContent.TabIndex = 5;
-            // 
-            // HttpUrlDescription
-            // 
-            this.HttpUrlDescription.AutoSize = true;
-            this.HttpUrlDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.HttpUrlDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.HttpUrlDescription.Location = new System.Drawing.Point(15, 35);
-            this.HttpUrlDescription.Name = "HttpUrlDescription";
-            this.HttpUrlDescription.Size = new System.Drawing.Size(176, 20);
-            this.HttpUrlDescription.TabIndex = 4;
-            this.HttpUrlDescription.Text = "The url the server lives on";
-            // 
-            // HttpUrlTitle
-            // 
-            this.HttpUrlTitle.AutoSize = true;
-            this.HttpUrlTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.HttpUrlTitle.Location = new System.Drawing.Point(12, 12);
-            this.HttpUrlTitle.Name = "HttpUrlTitle";
-            this.HttpUrlTitle.Size = new System.Drawing.Size(73, 25);
-            this.HttpUrlTitle.TabIndex = 3;
-            this.HttpUrlTitle.Text = "HttpUrl";
-            // 
-            // HttpPortPanel
-            // 
-            this.HttpPortPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.HttpPortPanel.Controls.Add(this.HttpPortDescription);
-            this.HttpPortPanel.Controls.Add(this.HttpPortContent);
-            this.HttpPortPanel.Controls.Add(this.HttpPortTitle);
-            this.HttpPortPanel.Location = new System.Drawing.Point(3, 75);
-            this.HttpPortPanel.Name = "HttpPortPanel";
-            this.HttpPortPanel.Size = new System.Drawing.Size(840, 66);
-            this.HttpPortPanel.TabIndex = 1;
-            // 
-            // HttpPortDescription
-            // 
-            this.HttpPortDescription.AutoSize = true;
-            this.HttpPortDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.HttpPortDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.HttpPortDescription.Location = new System.Drawing.Point(15, 35);
-            this.HttpPortDescription.Name = "HttpPortDescription";
-            this.HttpPortDescription.Size = new System.Drawing.Size(176, 20);
-            this.HttpPortDescription.TabIndex = 4;
-            this.HttpPortDescription.Text = "The url the server lives on";
-            // 
-            // HttpPortContent
-            // 
-            this.HttpPortContent.Location = new System.Drawing.Point(703, 22);
-            this.HttpPortContent.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.HttpPortContent.Name = "HttpPortContent";
-            this.HttpPortContent.Size = new System.Drawing.Size(120, 23);
-            this.HttpPortContent.TabIndex = 2;
-            // 
-            // HttpPortTitle
-            // 
-            this.HttpPortTitle.AutoSize = true;
-            this.HttpPortTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.HttpPortTitle.Location = new System.Drawing.Point(12, 12);
-            this.HttpPortTitle.Name = "HttpPortTitle";
-            this.HttpPortTitle.Size = new System.Drawing.Size(82, 25);
-            this.HttpPortTitle.TabIndex = 3;
-            this.HttpPortTitle.Text = "HttpPort";
+            ContentLayoutPanel.AutoScroll = true;
+            ContentLayoutPanel.Controls.Add(SiteKeyPanel);
+            ContentLayoutPanel.Controls.Add(panel1);
+            ContentLayoutPanel.Controls.Add(LanguagePanel);
+            ContentLayoutPanel.Controls.Add(TokenRecievedHtmlPanel);
+            ContentLayoutPanel.Controls.Add(TokenRecievedHookedHtmlPanel);
+            ContentLayoutPanel.Controls.Add(TitlePanel);
+            ContentLayoutPanel.Controls.Add(IconPanel);
+            ContentLayoutPanel.Controls.Add(StartPositionPanel);
+            ContentLayoutPanel.Controls.Add(LeftPanel);
+            ContentLayoutPanel.Controls.Add(TopPanel);
+            ContentLayoutPanel.Controls.Add(ShowAsDialogpanel);
+            ContentLayoutPanel.Controls.Add(TimeoutPanel);
+            ContentLayoutPanel.Controls.Add(ShowHandlerMessagesPanel);
+            ContentLayoutPanel.FlowDirection = FlowDirection.TopDown;
+            ContentLayoutPanel.Location = new Point(12, 72);
+            ContentLayoutPanel.Name = "ContentLayoutPanel";
+            ContentLayoutPanel.Size = new Size(872, 344);
+            ContentLayoutPanel.TabIndex = 2;
+            ContentLayoutPanel.WrapContents = false;
             // 
             // SiteKeyPanel
             // 
-            this.SiteKeyPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.SiteKeyPanel.Controls.Add(this.SiteKeyDescription);
-            this.SiteKeyPanel.Controls.Add(this.SiteKeyTitle);
-            this.SiteKeyPanel.Controls.Add(this.SiteKeyContent);
-            this.SiteKeyPanel.Location = new System.Drawing.Point(3, 147);
-            this.SiteKeyPanel.Name = "SiteKeyPanel";
-            this.SiteKeyPanel.Size = new System.Drawing.Size(840, 66);
-            this.SiteKeyPanel.TabIndex = 5;
+            SiteKeyPanel.BackColor = SystemColors.ControlLight;
+            SiteKeyPanel.Controls.Add(SiteKeyDescription);
+            SiteKeyPanel.Controls.Add(SiteKeyTitle);
+            SiteKeyPanel.Controls.Add(SiteKeyContent);
+            SiteKeyPanel.Location = new Point(3, 3);
+            SiteKeyPanel.Name = "SiteKeyPanel";
+            SiteKeyPanel.Size = new Size(857, 66);
+            SiteKeyPanel.TabIndex = 5;
             // 
             // SiteKeyDescription
             // 
-            this.SiteKeyDescription.AutoSize = true;
-            this.SiteKeyDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SiteKeyDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.SiteKeyDescription.Location = new System.Drawing.Point(15, 35);
-            this.SiteKeyDescription.Name = "SiteKeyDescription";
-            this.SiteKeyDescription.Size = new System.Drawing.Size(317, 20);
-            this.SiteKeyDescription.TabIndex = 4;
-            this.SiteKeyDescription.Text = "The SiteKey for the Google reCAPTCHA service";
+            SiteKeyDescription.AutoSize = true;
+            SiteKeyDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            SiteKeyDescription.ForeColor = SystemColors.ControlDarkDark;
+            SiteKeyDescription.Location = new Point(15, 35);
+            SiteKeyDescription.Name = "SiteKeyDescription";
+            SiteKeyDescription.Size = new Size(317, 20);
+            SiteKeyDescription.TabIndex = 4;
+            SiteKeyDescription.Text = "The SiteKey for the Google reCAPTCHA service";
             // 
             // SiteKeyTitle
             // 
-            this.SiteKeyTitle.AutoSize = true;
-            this.SiteKeyTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SiteKeyTitle.Location = new System.Drawing.Point(12, 12);
-            this.SiteKeyTitle.Name = "SiteKeyTitle";
-            this.SiteKeyTitle.Size = new System.Drawing.Size(73, 25);
-            this.SiteKeyTitle.TabIndex = 3;
-            this.SiteKeyTitle.Text = "SiteKey";
+            SiteKeyTitle.AutoSize = true;
+            SiteKeyTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            SiteKeyTitle.Location = new Point(12, 12);
+            SiteKeyTitle.Name = "SiteKeyTitle";
+            SiteKeyTitle.Size = new Size(73, 25);
+            SiteKeyTitle.TabIndex = 3;
+            SiteKeyTitle.Text = "SiteKey";
             // 
             // SiteKeyContent
             // 
-            this.SiteKeyContent.Location = new System.Drawing.Point(567, 22);
-            this.SiteKeyContent.Name = "SiteKeyContent";
-            this.SiteKeyContent.Size = new System.Drawing.Size(256, 23);
-            this.SiteKeyContent.TabIndex = 6;
+            SiteKeyContent.Location = new Point(578, 22);
+            SiteKeyContent.Name = "SiteKeyContent";
+            SiteKeyContent.Size = new Size(256, 23);
+            SiteKeyContent.TabIndex = 6;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(HostNameContent);
+            panel1.Controls.Add(HostNameDescription);
+            panel1.Controls.Add(HostNameTitle);
+            panel1.Location = new Point(3, 75);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(857, 66);
+            panel1.TabIndex = 7;
+            // 
+            // HostNameContent
+            // 
+            HostNameContent.Location = new Point(634, 22);
+            HostNameContent.Name = "HostNameContent";
+            HostNameContent.PlaceholderText = "recaptcha.desktop";
+            HostNameContent.Size = new Size(200, 23);
+            HostNameContent.TabIndex = 6;
+            // 
+            // HostNameDescription
+            // 
+            HostNameDescription.AutoSize = true;
+            HostNameDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            HostNameDescription.ForeColor = SystemColors.ControlDarkDark;
+            HostNameDescription.Location = new Point(15, 35);
+            HostNameDescription.Name = "HostNameDescription";
+            HostNameDescription.Size = new Size(657, 20);
+            HostNameDescription.TabIndex = 4;
+            HostNameDescription.Text = "The name of the virtual host on which the reCAPTCHA is hosted. Should represent your application";
+            // 
+            // HostNameTitle
+            // 
+            HostNameTitle.AutoSize = true;
+            HostNameTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            HostNameTitle.Location = new Point(12, 12);
+            HostNameTitle.Name = "HostNameTitle";
+            HostNameTitle.Size = new Size(100, 25);
+            HostNameTitle.TabIndex = 3;
+            HostNameTitle.Text = "HostName";
             // 
             // LanguagePanel
             // 
-            this.LanguagePanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.LanguagePanel.Controls.Add(this.LanguageDescription);
-            this.LanguagePanel.Controls.Add(this.LanguageTitle);
-            this.LanguagePanel.Controls.Add(this.LanguageContent);
-            this.LanguagePanel.Location = new System.Drawing.Point(3, 219);
-            this.LanguagePanel.Name = "LanguagePanel";
-            this.LanguagePanel.Size = new System.Drawing.Size(840, 66);
-            this.LanguagePanel.TabIndex = 6;
+            LanguagePanel.BackColor = SystemColors.ControlLight;
+            LanguagePanel.Controls.Add(LanguageDescription);
+            LanguagePanel.Controls.Add(LanguageTitle);
+            LanguagePanel.Controls.Add(LanguageContent);
+            LanguagePanel.Location = new Point(3, 147);
+            LanguagePanel.Name = "LanguagePanel";
+            LanguagePanel.Size = new Size(857, 66);
+            LanguagePanel.TabIndex = 6;
             // 
             // LanguageDescription
             // 
-            this.LanguageDescription.AutoSize = true;
-            this.LanguageDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LanguageDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LanguageDescription.Location = new System.Drawing.Point(15, 35);
-            this.LanguageDescription.Name = "LanguageDescription";
-            this.LanguageDescription.Size = new System.Drawing.Size(330, 20);
-            this.LanguageDescription.TabIndex = 4;
-            this.LanguageDescription.Text = "The language for the Google reCAPTCHA service";
+            LanguageDescription.AutoSize = true;
+            LanguageDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LanguageDescription.ForeColor = SystemColors.ControlDarkDark;
+            LanguageDescription.Location = new Point(15, 35);
+            LanguageDescription.Name = "LanguageDescription";
+            LanguageDescription.Size = new Size(330, 20);
+            LanguageDescription.TabIndex = 4;
+            LanguageDescription.Text = "The language for the Google reCAPTCHA service";
             // 
             // LanguageTitle
             // 
-            this.LanguageTitle.AutoSize = true;
-            this.LanguageTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LanguageTitle.Location = new System.Drawing.Point(12, 12);
-            this.LanguageTitle.Name = "LanguageTitle";
-            this.LanguageTitle.Size = new System.Drawing.Size(95, 25);
-            this.LanguageTitle.TabIndex = 3;
-            this.LanguageTitle.Text = "Language";
+            LanguageTitle.AutoSize = true;
+            LanguageTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LanguageTitle.Location = new Point(12, 12);
+            LanguageTitle.Name = "LanguageTitle";
+            LanguageTitle.Size = new Size(95, 25);
+            LanguageTitle.TabIndex = 3;
+            LanguageTitle.Text = "Language";
             // 
             // LanguageContent
             // 
-            this.LanguageContent.Location = new System.Drawing.Point(703, 22);
-            this.LanguageContent.Name = "LanguageContent";
-            this.LanguageContent.PlaceholderText = "en";
-            this.LanguageContent.Size = new System.Drawing.Size(120, 23);
-            this.LanguageContent.TabIndex = 6;
+            LanguageContent.Location = new Point(714, 22);
+            LanguageContent.Name = "LanguageContent";
+            LanguageContent.PlaceholderText = "en";
+            LanguageContent.Size = new Size(120, 23);
+            LanguageContent.TabIndex = 6;
             // 
             // TokenRecievedHtmlPanel
             // 
-            this.TokenRecievedHtmlPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.TokenRecievedHtmlPanel.Controls.Add(this.TokenRecievedHtmlDescription);
-            this.TokenRecievedHtmlPanel.Controls.Add(this.TokenRecievedHtmlTitle);
-            this.TokenRecievedHtmlPanel.Controls.Add(this.TokenRecievedHtmlContent);
-            this.TokenRecievedHtmlPanel.Location = new System.Drawing.Point(3, 291);
-            this.TokenRecievedHtmlPanel.Name = "TokenRecievedHtmlPanel";
-            this.TokenRecievedHtmlPanel.Size = new System.Drawing.Size(840, 66);
-            this.TokenRecievedHtmlPanel.TabIndex = 7;
+            TokenRecievedHtmlPanel.BackColor = SystemColors.ControlLight;
+            TokenRecievedHtmlPanel.Controls.Add(TokenRecievedHtmlDescription);
+            TokenRecievedHtmlPanel.Controls.Add(TokenRecievedHtmlTitle);
+            TokenRecievedHtmlPanel.Controls.Add(TokenRecievedHtmlContent);
+            TokenRecievedHtmlPanel.Location = new Point(3, 219);
+            TokenRecievedHtmlPanel.Name = "TokenRecievedHtmlPanel";
+            TokenRecievedHtmlPanel.Size = new Size(857, 66);
+            TokenRecievedHtmlPanel.TabIndex = 7;
             // 
             // TokenRecievedHtmlDescription
             // 
-            this.TokenRecievedHtmlDescription.AutoSize = true;
-            this.TokenRecievedHtmlDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TokenRecievedHtmlDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.TokenRecievedHtmlDescription.Location = new System.Drawing.Point(15, 35);
-            this.TokenRecievedHtmlDescription.Name = "TokenRecievedHtmlDescription";
-            this.TokenRecievedHtmlDescription.Size = new System.Drawing.Size(465, 20);
-            this.TokenRecievedHtmlDescription.TabIndex = 4;
-            this.TokenRecievedHtmlDescription.Text = "The HTML which gets displayed after the user verifed the reCAPTCHA";
+            TokenRecievedHtmlDescription.AutoSize = true;
+            TokenRecievedHtmlDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TokenRecievedHtmlDescription.ForeColor = SystemColors.ControlDarkDark;
+            TokenRecievedHtmlDescription.Location = new Point(15, 35);
+            TokenRecievedHtmlDescription.Name = "TokenRecievedHtmlDescription";
+            TokenRecievedHtmlDescription.Size = new Size(465, 20);
+            TokenRecievedHtmlDescription.TabIndex = 4;
+            TokenRecievedHtmlDescription.Text = "The HTML which gets displayed after the user verifed the reCAPTCHA";
             // 
             // TokenRecievedHtmlTitle
             // 
-            this.TokenRecievedHtmlTitle.AutoSize = true;
-            this.TokenRecievedHtmlTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TokenRecievedHtmlTitle.Location = new System.Drawing.Point(12, 12);
-            this.TokenRecievedHtmlTitle.Name = "TokenRecievedHtmlTitle";
-            this.TokenRecievedHtmlTitle.Size = new System.Drawing.Size(175, 25);
-            this.TokenRecievedHtmlTitle.TabIndex = 3;
-            this.TokenRecievedHtmlTitle.Text = "TokenRecievedHtml";
+            TokenRecievedHtmlTitle.AutoSize = true;
+            TokenRecievedHtmlTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TokenRecievedHtmlTitle.Location = new Point(12, 12);
+            TokenRecievedHtmlTitle.Name = "TokenRecievedHtmlTitle";
+            TokenRecievedHtmlTitle.Size = new Size(175, 25);
+            TokenRecievedHtmlTitle.TabIndex = 3;
+            TokenRecievedHtmlTitle.Text = "TokenRecievedHtml";
             // 
             // TokenRecievedHtmlContent
             // 
-            this.TokenRecievedHtmlContent.Location = new System.Drawing.Point(567, 22);
-            this.TokenRecievedHtmlContent.Name = "TokenRecievedHtmlContent";
-            this.TokenRecievedHtmlContent.PlaceholderText = "Token recieved: %token%";
-            this.TokenRecievedHtmlContent.Size = new System.Drawing.Size(256, 23);
-            this.TokenRecievedHtmlContent.TabIndex = 6;
+            TokenRecievedHtmlContent.Location = new Point(578, 22);
+            TokenRecievedHtmlContent.Name = "TokenRecievedHtmlContent";
+            TokenRecievedHtmlContent.PlaceholderText = "Token recieved: %token%";
+            TokenRecievedHtmlContent.Size = new Size(256, 23);
+            TokenRecievedHtmlContent.TabIndex = 6;
             // 
             // TokenRecievedHookedHtmlPanel
             // 
-            this.TokenRecievedHookedHtmlPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.TokenRecievedHookedHtmlPanel.Controls.Add(this.TokenRecievedHookedHtmlTitle);
-            this.TokenRecievedHookedHtmlPanel.Controls.Add(this.TokenRecievedHookedHtmlContent);
-            this.TokenRecievedHookedHtmlPanel.Controls.Add(this.TokenRecievedHookedHtmlDescription);
-            this.TokenRecievedHookedHtmlPanel.Location = new System.Drawing.Point(3, 363);
-            this.TokenRecievedHookedHtmlPanel.Name = "TokenRecievedHookedHtmlPanel";
-            this.TokenRecievedHookedHtmlPanel.Size = new System.Drawing.Size(840, 66);
-            this.TokenRecievedHookedHtmlPanel.TabIndex = 8;
+            TokenRecievedHookedHtmlPanel.BackColor = SystemColors.ControlLight;
+            TokenRecievedHookedHtmlPanel.Controls.Add(TokenRecievedHookedHtmlTitle);
+            TokenRecievedHookedHtmlPanel.Controls.Add(TokenRecievedHookedHtmlContent);
+            TokenRecievedHookedHtmlPanel.Controls.Add(TokenRecievedHookedHtmlDescription);
+            TokenRecievedHookedHtmlPanel.Location = new Point(3, 291);
+            TokenRecievedHookedHtmlPanel.Name = "TokenRecievedHookedHtmlPanel";
+            TokenRecievedHookedHtmlPanel.Size = new Size(857, 66);
+            TokenRecievedHookedHtmlPanel.TabIndex = 8;
             // 
             // TokenRecievedHookedHtmlTitle
             // 
-            this.TokenRecievedHookedHtmlTitle.AutoSize = true;
-            this.TokenRecievedHookedHtmlTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TokenRecievedHookedHtmlTitle.Location = new System.Drawing.Point(12, 12);
-            this.TokenRecievedHookedHtmlTitle.Name = "TokenRecievedHookedHtmlTitle";
-            this.TokenRecievedHookedHtmlTitle.Size = new System.Drawing.Size(240, 25);
-            this.TokenRecievedHookedHtmlTitle.TabIndex = 3;
-            this.TokenRecievedHookedHtmlTitle.Text = "TokenRecievedHookedHtml";
+            TokenRecievedHookedHtmlTitle.AutoSize = true;
+            TokenRecievedHookedHtmlTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TokenRecievedHookedHtmlTitle.Location = new Point(12, 12);
+            TokenRecievedHookedHtmlTitle.Name = "TokenRecievedHookedHtmlTitle";
+            TokenRecievedHookedHtmlTitle.Size = new Size(240, 25);
+            TokenRecievedHookedHtmlTitle.TabIndex = 3;
+            TokenRecievedHookedHtmlTitle.Text = "TokenRecievedHookedHtml";
             // 
             // TokenRecievedHookedHtmlContent
             // 
-            this.TokenRecievedHookedHtmlContent.Location = new System.Drawing.Point(567, 22);
-            this.TokenRecievedHookedHtmlContent.Name = "TokenRecievedHookedHtmlContent";
-            this.TokenRecievedHookedHtmlContent.PlaceholderText = "Token recieved and sent to application.";
-            this.TokenRecievedHookedHtmlContent.Size = new System.Drawing.Size(256, 23);
-            this.TokenRecievedHookedHtmlContent.TabIndex = 6;
+            TokenRecievedHookedHtmlContent.Location = new Point(578, 22);
+            TokenRecievedHookedHtmlContent.Name = "TokenRecievedHookedHtmlContent";
+            TokenRecievedHookedHtmlContent.PlaceholderText = "Token recieved and sent to application.";
+            TokenRecievedHookedHtmlContent.Size = new Size(256, 23);
+            TokenRecievedHookedHtmlContent.TabIndex = 6;
             // 
             // TokenRecievedHookedHtmlDescription
             // 
-            this.TokenRecievedHookedHtmlDescription.AutoSize = true;
-            this.TokenRecievedHookedHtmlDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TokenRecievedHookedHtmlDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.TokenRecievedHookedHtmlDescription.Location = new System.Drawing.Point(15, 35);
-            this.TokenRecievedHookedHtmlDescription.Name = "TokenRecievedHookedHtmlDescription";
-            this.TokenRecievedHookedHtmlDescription.Size = new System.Drawing.Size(689, 20);
-            this.TokenRecievedHookedHtmlDescription.TabIndex = 4;
-            this.TokenRecievedHookedHtmlDescription.Text = "The HTML which gets displayed after the user verifed the reCAPTCHA and its hooked" +
-    " to the application";
+            TokenRecievedHookedHtmlDescription.AutoSize = true;
+            TokenRecievedHookedHtmlDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TokenRecievedHookedHtmlDescription.ForeColor = SystemColors.ControlDarkDark;
+            TokenRecievedHookedHtmlDescription.Location = new Point(15, 35);
+            TokenRecievedHookedHtmlDescription.Name = "TokenRecievedHookedHtmlDescription";
+            TokenRecievedHookedHtmlDescription.Size = new Size(689, 20);
+            TokenRecievedHookedHtmlDescription.TabIndex = 4;
+            TokenRecievedHookedHtmlDescription.Text = "The HTML which gets displayed after the user verifed the reCAPTCHA and its hooked to the application";
             // 
             // TitlePanel
             // 
-            this.TitlePanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.TitlePanel.Controls.Add(this.TitleTitle);
-            this.TitlePanel.Controls.Add(this.TitleContent);
-            this.TitlePanel.Controls.Add(this.TitleDescription);
-            this.TitlePanel.Location = new System.Drawing.Point(3, 435);
-            this.TitlePanel.Name = "TitlePanel";
-            this.TitlePanel.Size = new System.Drawing.Size(840, 66);
-            this.TitlePanel.TabIndex = 9;
+            TitlePanel.BackColor = SystemColors.ControlLight;
+            TitlePanel.Controls.Add(TitleTitle);
+            TitlePanel.Controls.Add(TitleContent);
+            TitlePanel.Controls.Add(TitleDescription);
+            TitlePanel.Location = new Point(3, 363);
+            TitlePanel.Name = "TitlePanel";
+            TitlePanel.Size = new Size(857, 66);
+            TitlePanel.TabIndex = 9;
             // 
             // TitleTitle
             // 
-            this.TitleTitle.AutoSize = true;
-            this.TitleTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TitleTitle.Location = new System.Drawing.Point(12, 12);
-            this.TitleTitle.Name = "TitleTitle";
-            this.TitleTitle.Size = new System.Drawing.Size(48, 25);
-            this.TitleTitle.TabIndex = 3;
-            this.TitleTitle.Text = "Title";
+            TitleTitle.AutoSize = true;
+            TitleTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TitleTitle.Location = new Point(12, 12);
+            TitleTitle.Name = "TitleTitle";
+            TitleTitle.Size = new Size(48, 25);
+            TitleTitle.TabIndex = 3;
+            TitleTitle.Text = "Title";
             // 
             // TitleContent
             // 
-            this.TitleContent.Location = new System.Drawing.Point(567, 22);
-            this.TitleContent.Name = "TitleContent";
-            this.TitleContent.PlaceholderText = "WinForms Sample - Google reCAPTCHA";
-            this.TitleContent.Size = new System.Drawing.Size(256, 23);
-            this.TitleContent.TabIndex = 6;
+            TitleContent.Location = new Point(578, 22);
+            TitleContent.Name = "TitleContent";
+            TitleContent.PlaceholderText = "WinForms Sample - Google reCAPTCHA";
+            TitleContent.Size = new Size(256, 23);
+            TitleContent.TabIndex = 6;
             // 
             // TitleDescription
             // 
-            this.TitleDescription.AutoSize = true;
-            this.TitleDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TitleDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.TitleDescription.Location = new System.Drawing.Point(15, 35);
-            this.TitleDescription.Name = "TitleDescription";
-            this.TitleDescription.Size = new System.Drawing.Size(142, 20);
-            this.TitleDescription.TabIndex = 4;
-            this.TitleDescription.Text = "The title of the form";
+            TitleDescription.AutoSize = true;
+            TitleDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TitleDescription.ForeColor = SystemColors.ControlDarkDark;
+            TitleDescription.Location = new Point(15, 35);
+            TitleDescription.Name = "TitleDescription";
+            TitleDescription.Size = new Size(142, 20);
+            TitleDescription.TabIndex = 4;
+            TitleDescription.Text = "The title of the form";
             // 
             // IconPanel
             // 
-            this.IconPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.IconPanel.Controls.Add(this.IconTitle);
-            this.IconPanel.Controls.Add(this.IconContent);
-            this.IconPanel.Controls.Add(this.IconDescription);
-            this.IconPanel.Location = new System.Drawing.Point(3, 507);
-            this.IconPanel.Name = "IconPanel";
-            this.IconPanel.Size = new System.Drawing.Size(840, 66);
-            this.IconPanel.TabIndex = 10;
+            IconPanel.BackColor = SystemColors.ControlLight;
+            IconPanel.Controls.Add(IconTitle);
+            IconPanel.Controls.Add(IconContent);
+            IconPanel.Controls.Add(IconDescription);
+            IconPanel.Location = new Point(3, 435);
+            IconPanel.Name = "IconPanel";
+            IconPanel.Size = new Size(857, 66);
+            IconPanel.TabIndex = 10;
             // 
             // IconTitle
             // 
-            this.IconTitle.AutoSize = true;
-            this.IconTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.IconTitle.Location = new System.Drawing.Point(12, 12);
-            this.IconTitle.Name = "IconTitle";
-            this.IconTitle.Size = new System.Drawing.Size(48, 25);
-            this.IconTitle.TabIndex = 3;
-            this.IconTitle.Text = "Icon";
+            IconTitle.AutoSize = true;
+            IconTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            IconTitle.Location = new Point(12, 12);
+            IconTitle.Name = "IconTitle";
+            IconTitle.Size = new Size(48, 25);
+            IconTitle.TabIndex = 3;
+            IconTitle.Text = "Icon";
             // 
             // IconContent
             // 
-            this.IconContent.Location = new System.Drawing.Point(567, 22);
-            this.IconContent.Name = "IconContent";
-            this.IconContent.PlaceholderText = "Icon.ico";
-            this.IconContent.Size = new System.Drawing.Size(256, 23);
-            this.IconContent.TabIndex = 6;
+            IconContent.Location = new Point(578, 22);
+            IconContent.Name = "IconContent";
+            IconContent.PlaceholderText = "Icon.ico";
+            IconContent.Size = new Size(256, 23);
+            IconContent.TabIndex = 6;
             // 
             // IconDescription
             // 
-            this.IconDescription.AutoSize = true;
-            this.IconDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.IconDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.IconDescription.Location = new System.Drawing.Point(15, 35);
-            this.IconDescription.Name = "IconDescription";
-            this.IconDescription.Size = new System.Drawing.Size(144, 20);
-            this.IconDescription.TabIndex = 4;
-            this.IconDescription.Text = "The icon of the form";
+            IconDescription.AutoSize = true;
+            IconDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            IconDescription.ForeColor = SystemColors.ControlDarkDark;
+            IconDescription.Location = new Point(15, 35);
+            IconDescription.Name = "IconDescription";
+            IconDescription.Size = new Size(144, 20);
+            IconDescription.TabIndex = 4;
+            IconDescription.Text = "The icon of the form";
             // 
             // StartPositionPanel
             // 
-            this.StartPositionPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.StartPositionPanel.Controls.Add(this.StartPositionTitle);
-            this.StartPositionPanel.Controls.Add(this.StartPositionDescription);
-            this.StartPositionPanel.Controls.Add(this.StartPositionContent);
-            this.StartPositionPanel.Location = new System.Drawing.Point(3, 579);
-            this.StartPositionPanel.Name = "StartPositionPanel";
-            this.StartPositionPanel.Size = new System.Drawing.Size(840, 66);
-            this.StartPositionPanel.TabIndex = 11;
+            StartPositionPanel.BackColor = SystemColors.ControlLight;
+            StartPositionPanel.Controls.Add(StartPositionTitle);
+            StartPositionPanel.Controls.Add(StartPositionDescription);
+            StartPositionPanel.Controls.Add(StartPositionContent);
+            StartPositionPanel.Location = new Point(3, 507);
+            StartPositionPanel.Name = "StartPositionPanel";
+            StartPositionPanel.Size = new Size(857, 66);
+            StartPositionPanel.TabIndex = 11;
             // 
             // StartPositionTitle
             // 
-            this.StartPositionTitle.AutoSize = true;
-            this.StartPositionTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StartPositionTitle.Location = new System.Drawing.Point(12, 12);
-            this.StartPositionTitle.Name = "StartPositionTitle";
-            this.StartPositionTitle.Size = new System.Drawing.Size(117, 25);
-            this.StartPositionTitle.TabIndex = 3;
-            this.StartPositionTitle.Text = "StartPosition";
+            StartPositionTitle.AutoSize = true;
+            StartPositionTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            StartPositionTitle.Location = new Point(12, 12);
+            StartPositionTitle.Name = "StartPositionTitle";
+            StartPositionTitle.Size = new Size(117, 25);
+            StartPositionTitle.TabIndex = 3;
+            StartPositionTitle.Text = "StartPosition";
             // 
             // StartPositionDescription
             // 
-            this.StartPositionDescription.AutoSize = true;
-            this.StartPositionDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StartPositionDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.StartPositionDescription.Location = new System.Drawing.Point(15, 35);
-            this.StartPositionDescription.Name = "StartPositionDescription";
-            this.StartPositionDescription.Size = new System.Drawing.Size(203, 20);
-            this.StartPositionDescription.TabIndex = 4;
-            this.StartPositionDescription.Text = "The start position of the form";
+            StartPositionDescription.AutoSize = true;
+            StartPositionDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            StartPositionDescription.ForeColor = SystemColors.ControlDarkDark;
+            StartPositionDescription.Location = new Point(15, 35);
+            StartPositionDescription.Name = "StartPositionDescription";
+            StartPositionDescription.Size = new Size(203, 20);
+            StartPositionDescription.TabIndex = 4;
+            StartPositionDescription.Text = "The start position of the form";
             // 
             // StartPositionContent
             // 
-            this.StartPositionContent.FormattingEnabled = true;
-            this.StartPositionContent.Location = new System.Drawing.Point(567, 22);
-            this.StartPositionContent.Name = "StartPositionContent";
-            this.StartPositionContent.Size = new System.Drawing.Size(256, 23);
-            this.StartPositionContent.TabIndex = 7;
+            StartPositionContent.FormattingEnabled = true;
+            StartPositionContent.Location = new Point(578, 22);
+            StartPositionContent.Name = "StartPositionContent";
+            StartPositionContent.Size = new Size(256, 23);
+            StartPositionContent.TabIndex = 7;
             // 
             // LeftPanel
             // 
-            this.LeftPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.LeftPanel.Controls.Add(this.LeftDescription);
-            this.LeftPanel.Controls.Add(this.LeftContent);
-            this.LeftPanel.Controls.Add(this.LeftTitle);
-            this.LeftPanel.Location = new System.Drawing.Point(3, 651);
-            this.LeftPanel.Name = "LeftPanel";
-            this.LeftPanel.Size = new System.Drawing.Size(840, 66);
-            this.LeftPanel.TabIndex = 12;
+            LeftPanel.BackColor = SystemColors.ControlLight;
+            LeftPanel.Controls.Add(LeftDescription);
+            LeftPanel.Controls.Add(LeftContent);
+            LeftPanel.Controls.Add(LeftTitle);
+            LeftPanel.Location = new Point(3, 579);
+            LeftPanel.Name = "LeftPanel";
+            LeftPanel.Size = new Size(857, 66);
+            LeftPanel.TabIndex = 12;
             // 
             // LeftDescription
             // 
-            this.LeftDescription.AutoSize = true;
-            this.LeftDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LeftDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LeftDescription.Location = new System.Drawing.Point(15, 35);
-            this.LeftDescription.Name = "LeftDescription";
-            this.LeftDescription.Size = new System.Drawing.Size(196, 20);
-            this.LeftDescription.TabIndex = 4;
-            this.LeftDescription.Text = "The left position of the form";
+            LeftDescription.AutoSize = true;
+            LeftDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LeftDescription.ForeColor = SystemColors.ControlDarkDark;
+            LeftDescription.Location = new Point(15, 35);
+            LeftDescription.Name = "LeftDescription";
+            LeftDescription.Size = new Size(196, 20);
+            LeftDescription.TabIndex = 4;
+            LeftDescription.Text = "The left position of the form";
             // 
             // LeftContent
             // 
-            this.LeftContent.Location = new System.Drawing.Point(703, 22);
-            this.LeftContent.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.LeftContent.Name = "LeftContent";
-            this.LeftContent.Size = new System.Drawing.Size(120, 23);
-            this.LeftContent.TabIndex = 2;
+            LeftContent.Location = new Point(714, 22);
+            LeftContent.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            LeftContent.Name = "LeftContent";
+            LeftContent.Size = new Size(120, 23);
+            LeftContent.TabIndex = 2;
             // 
             // LeftTitle
             // 
-            this.LeftTitle.AutoSize = true;
-            this.LeftTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LeftTitle.Location = new System.Drawing.Point(12, 12);
-            this.LeftTitle.Name = "LeftTitle";
-            this.LeftTitle.Size = new System.Drawing.Size(43, 25);
-            this.LeftTitle.TabIndex = 3;
-            this.LeftTitle.Text = "Left";
+            LeftTitle.AutoSize = true;
+            LeftTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LeftTitle.Location = new Point(12, 12);
+            LeftTitle.Name = "LeftTitle";
+            LeftTitle.Size = new Size(43, 25);
+            LeftTitle.TabIndex = 3;
+            LeftTitle.Text = "Left";
             // 
             // TopPanel
             // 
-            this.TopPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.TopPanel.Controls.Add(this.RightDescription);
-            this.TopPanel.Controls.Add(this.TopContent);
-            this.TopPanel.Controls.Add(this.TopTitle);
-            this.TopPanel.Location = new System.Drawing.Point(3, 723);
-            this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(840, 66);
-            this.TopPanel.TabIndex = 13;
+            TopPanel.BackColor = SystemColors.ControlLight;
+            TopPanel.Controls.Add(RightDescription);
+            TopPanel.Controls.Add(TopContent);
+            TopPanel.Controls.Add(TopTitle);
+            TopPanel.Location = new Point(3, 651);
+            TopPanel.Name = "TopPanel";
+            TopPanel.Size = new Size(857, 66);
+            TopPanel.TabIndex = 13;
             // 
             // RightDescription
             // 
-            this.RightDescription.AutoSize = true;
-            this.RightDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.RightDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.RightDescription.Location = new System.Drawing.Point(15, 35);
-            this.RightDescription.Name = "RightDescription";
-            this.RightDescription.Size = new System.Drawing.Size(197, 20);
-            this.RightDescription.TabIndex = 4;
-            this.RightDescription.Text = "The top position of the form";
+            RightDescription.AutoSize = true;
+            RightDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            RightDescription.ForeColor = SystemColors.ControlDarkDark;
+            RightDescription.Location = new Point(15, 35);
+            RightDescription.Name = "RightDescription";
+            RightDescription.Size = new Size(197, 20);
+            RightDescription.TabIndex = 4;
+            RightDescription.Text = "The top position of the form";
             // 
             // TopContent
             // 
-            this.TopContent.Location = new System.Drawing.Point(703, 22);
-            this.TopContent.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.TopContent.Name = "TopContent";
-            this.TopContent.Size = new System.Drawing.Size(120, 23);
-            this.TopContent.TabIndex = 2;
+            TopContent.Location = new Point(714, 22);
+            TopContent.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            TopContent.Name = "TopContent";
+            TopContent.Size = new Size(120, 23);
+            TopContent.TabIndex = 2;
             // 
             // TopTitle
             // 
-            this.TopTitle.AutoSize = true;
-            this.TopTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TopTitle.Location = new System.Drawing.Point(12, 12);
-            this.TopTitle.Name = "TopTitle";
-            this.TopTitle.Size = new System.Drawing.Size(42, 25);
-            this.TopTitle.TabIndex = 3;
-            this.TopTitle.Text = "Top";
+            TopTitle.AutoSize = true;
+            TopTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TopTitle.Location = new Point(12, 12);
+            TopTitle.Name = "TopTitle";
+            TopTitle.Size = new Size(42, 25);
+            TopTitle.TabIndex = 3;
+            TopTitle.Text = "Top";
             // 
             // ShowAsDialogpanel
             // 
-            this.ShowAsDialogpanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ShowAsDialogpanel.Controls.Add(this.ShowAsDialogContent);
-            this.ShowAsDialogpanel.Controls.Add(this.ShowAsDialogDescription);
-            this.ShowAsDialogpanel.Controls.Add(this.ShowAsDialogTitle);
-            this.ShowAsDialogpanel.Location = new System.Drawing.Point(3, 795);
-            this.ShowAsDialogpanel.Name = "ShowAsDialogpanel";
-            this.ShowAsDialogpanel.Size = new System.Drawing.Size(840, 66);
-            this.ShowAsDialogpanel.TabIndex = 14;
+            ShowAsDialogpanel.BackColor = SystemColors.ControlLight;
+            ShowAsDialogpanel.Controls.Add(ShowAsDialogContent);
+            ShowAsDialogpanel.Controls.Add(ShowAsDialogDescription);
+            ShowAsDialogpanel.Controls.Add(ShowAsDialogTitle);
+            ShowAsDialogpanel.Location = new Point(3, 723);
+            ShowAsDialogpanel.Name = "ShowAsDialogpanel";
+            ShowAsDialogpanel.Size = new Size(857, 66);
+            ShowAsDialogpanel.TabIndex = 14;
             // 
             // ShowAsDialogContent
             // 
-            this.ShowAsDialogContent.AutoSize = true;
-            this.ShowAsDialogContent.Location = new System.Drawing.Point(809, 28);
-            this.ShowAsDialogContent.Name = "ShowAsDialogContent";
-            this.ShowAsDialogContent.Size = new System.Drawing.Size(15, 14);
-            this.ShowAsDialogContent.TabIndex = 5;
-            this.ShowAsDialogContent.UseVisualStyleBackColor = true;
+            ShowAsDialogContent.AutoSize = true;
+            ShowAsDialogContent.Location = new Point(820, 28);
+            ShowAsDialogContent.Name = "ShowAsDialogContent";
+            ShowAsDialogContent.Size = new Size(15, 14);
+            ShowAsDialogContent.TabIndex = 5;
+            ShowAsDialogContent.UseVisualStyleBackColor = true;
             // 
             // ShowAsDialogDescription
             // 
-            this.ShowAsDialogDescription.AutoSize = true;
-            this.ShowAsDialogDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ShowAsDialogDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ShowAsDialogDescription.Location = new System.Drawing.Point(15, 35);
-            this.ShowAsDialogDescription.Name = "ShowAsDialogDescription";
-            this.ShowAsDialogDescription.Size = new System.Drawing.Size(363, 20);
-            this.ShowAsDialogDescription.TabIndex = 4;
-            this.ShowAsDialogDescription.Text = "Wether to block the UI thread when showing the form";
+            ShowAsDialogDescription.AutoSize = true;
+            ShowAsDialogDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            ShowAsDialogDescription.ForeColor = SystemColors.ControlDarkDark;
+            ShowAsDialogDescription.Location = new Point(15, 35);
+            ShowAsDialogDescription.Name = "ShowAsDialogDescription";
+            ShowAsDialogDescription.Size = new Size(363, 20);
+            ShowAsDialogDescription.TabIndex = 4;
+            ShowAsDialogDescription.Text = "Wether to block the UI thread when showing the form";
             // 
             // ShowAsDialogTitle
             // 
-            this.ShowAsDialogTitle.AutoSize = true;
-            this.ShowAsDialogTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ShowAsDialogTitle.Location = new System.Drawing.Point(12, 12);
-            this.ShowAsDialogTitle.Name = "ShowAsDialogTitle";
-            this.ShowAsDialogTitle.Size = new System.Drawing.Size(133, 25);
-            this.ShowAsDialogTitle.TabIndex = 3;
-            this.ShowAsDialogTitle.Text = "ShowAsDialog";
+            ShowAsDialogTitle.AutoSize = true;
+            ShowAsDialogTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            ShowAsDialogTitle.Location = new Point(12, 12);
+            ShowAsDialogTitle.Name = "ShowAsDialogTitle";
+            ShowAsDialogTitle.Size = new Size(133, 25);
+            ShowAsDialogTitle.TabIndex = 3;
+            ShowAsDialogTitle.Text = "ShowAsDialog";
             // 
             // TimeoutPanel
             // 
-            this.TimeoutPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.TimeoutPanel.Controls.Add(this.TimeoutContent);
-            this.TimeoutPanel.Controls.Add(this.TimeoutDescription);
-            this.TimeoutPanel.Controls.Add(this.TimeoutTitle);
-            this.TimeoutPanel.Location = new System.Drawing.Point(3, 867);
-            this.TimeoutPanel.Name = "TimeoutPanel";
-            this.TimeoutPanel.Size = new System.Drawing.Size(840, 66);
-            this.TimeoutPanel.TabIndex = 15;
+            TimeoutPanel.BackColor = SystemColors.ControlLight;
+            TimeoutPanel.Controls.Add(TimeoutContent);
+            TimeoutPanel.Controls.Add(TimeoutDescription);
+            TimeoutPanel.Controls.Add(TimeoutTitle);
+            TimeoutPanel.Location = new Point(3, 795);
+            TimeoutPanel.Name = "TimeoutPanel";
+            TimeoutPanel.Size = new Size(857, 66);
+            TimeoutPanel.TabIndex = 15;
             // 
             // TimeoutContent
             // 
-            this.TimeoutContent.Location = new System.Drawing.Point(703, 22);
-            this.TimeoutContent.Mask = "00:00:00";
-            this.TimeoutContent.Name = "TimeoutContent";
-            this.TimeoutContent.Size = new System.Drawing.Size(121, 23);
-            this.TimeoutContent.TabIndex = 5;
-            this.TimeoutContent.ValidatingType = typeof(System.DateTime);
+            TimeoutContent.Location = new Point(714, 22);
+            TimeoutContent.Mask = "00:00:00";
+            TimeoutContent.Name = "TimeoutContent";
+            TimeoutContent.Size = new Size(121, 23);
+            TimeoutContent.TabIndex = 5;
+            TimeoutContent.ValidatingType = typeof(DateTime);
             // 
             // TimeoutDescription
             // 
-            this.TimeoutDescription.AutoSize = true;
-            this.TimeoutDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TimeoutDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.TimeoutDescription.Location = new System.Drawing.Point(15, 35);
-            this.TimeoutDescription.Name = "TimeoutDescription";
-            this.TimeoutDescription.Size = new System.Drawing.Size(275, 20);
-            this.TimeoutDescription.TabIndex = 4;
-            this.TimeoutDescription.Text = "The timespan when this action times out";
+            TimeoutDescription.AutoSize = true;
+            TimeoutDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TimeoutDescription.ForeColor = SystemColors.ControlDarkDark;
+            TimeoutDescription.Location = new Point(15, 35);
+            TimeoutDescription.Name = "TimeoutDescription";
+            TimeoutDescription.Size = new Size(275, 20);
+            TimeoutDescription.TabIndex = 4;
+            TimeoutDescription.Text = "The timespan when this action times out";
             // 
             // TimeoutTitle
             // 
-            this.TimeoutTitle.AutoSize = true;
-            this.TimeoutTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TimeoutTitle.Location = new System.Drawing.Point(12, 12);
-            this.TimeoutTitle.Name = "TimeoutTitle";
-            this.TimeoutTitle.Size = new System.Drawing.Size(81, 25);
-            this.TimeoutTitle.TabIndex = 3;
-            this.TimeoutTitle.Text = "Timeout";
+            TimeoutTitle.AutoSize = true;
+            TimeoutTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            TimeoutTitle.Location = new Point(12, 12);
+            TimeoutTitle.Name = "TimeoutTitle";
+            TimeoutTitle.Size = new Size(81, 25);
+            TimeoutTitle.TabIndex = 3;
+            TimeoutTitle.Text = "Timeout";
             // 
             // ShowHandlerMessagesPanel
             // 
-            this.ShowHandlerMessagesPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ShowHandlerMessagesPanel.Controls.Add(this.ShowHandlerMessagesContent);
-            this.ShowHandlerMessagesPanel.Controls.Add(this.ShowHandlerMessagesDescription);
-            this.ShowHandlerMessagesPanel.Controls.Add(this.ShowHandlerMessagesTitle);
-            this.ShowHandlerMessagesPanel.Location = new System.Drawing.Point(3, 939);
-            this.ShowHandlerMessagesPanel.Name = "ShowHandlerMessagesPanel";
-            this.ShowHandlerMessagesPanel.Size = new System.Drawing.Size(840, 66);
-            this.ShowHandlerMessagesPanel.TabIndex = 16;
+            ShowHandlerMessagesPanel.BackColor = SystemColors.ControlLight;
+            ShowHandlerMessagesPanel.Controls.Add(ShowHandlerMessagesContent);
+            ShowHandlerMessagesPanel.Controls.Add(ShowHandlerMessagesDescription);
+            ShowHandlerMessagesPanel.Controls.Add(ShowHandlerMessagesTitle);
+            ShowHandlerMessagesPanel.Location = new Point(3, 867);
+            ShowHandlerMessagesPanel.Name = "ShowHandlerMessagesPanel";
+            ShowHandlerMessagesPanel.Size = new Size(857, 66);
+            ShowHandlerMessagesPanel.TabIndex = 16;
             // 
             // ShowHandlerMessagesContent
             // 
-            this.ShowHandlerMessagesContent.AutoSize = true;
-            this.ShowHandlerMessagesContent.Location = new System.Drawing.Point(809, 28);
-            this.ShowHandlerMessagesContent.Name = "ShowHandlerMessagesContent";
-            this.ShowHandlerMessagesContent.Size = new System.Drawing.Size(15, 14);
-            this.ShowHandlerMessagesContent.TabIndex = 5;
-            this.ShowHandlerMessagesContent.UseVisualStyleBackColor = true;
+            ShowHandlerMessagesContent.AutoSize = true;
+            ShowHandlerMessagesContent.Location = new Point(820, 28);
+            ShowHandlerMessagesContent.Name = "ShowHandlerMessagesContent";
+            ShowHandlerMessagesContent.Size = new Size(15, 14);
+            ShowHandlerMessagesContent.TabIndex = 5;
+            ShowHandlerMessagesContent.UseVisualStyleBackColor = true;
             // 
             // ShowHandlerMessagesDescription
             // 
-            this.ShowHandlerMessagesDescription.AutoSize = true;
-            this.ShowHandlerMessagesDescription.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ShowHandlerMessagesDescription.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ShowHandlerMessagesDescription.Location = new System.Drawing.Point(15, 35);
-            this.ShowHandlerMessagesDescription.Name = "ShowHandlerMessagesDescription";
-            this.ShowHandlerMessagesDescription.Size = new System.Drawing.Size(363, 20);
-            this.ShowHandlerMessagesDescription.TabIndex = 4;
-            this.ShowHandlerMessagesDescription.Text = "Wether to block the UI thread when showing the form";
+            ShowHandlerMessagesDescription.AutoSize = true;
+            ShowHandlerMessagesDescription.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            ShowHandlerMessagesDescription.ForeColor = SystemColors.ControlDarkDark;
+            ShowHandlerMessagesDescription.Location = new Point(15, 35);
+            ShowHandlerMessagesDescription.Name = "ShowHandlerMessagesDescription";
+            ShowHandlerMessagesDescription.Size = new Size(363, 20);
+            ShowHandlerMessagesDescription.TabIndex = 4;
+            ShowHandlerMessagesDescription.Text = "Wether to block the UI thread when showing the form";
             // 
             // ShowHandlerMessagesTitle
             // 
-            this.ShowHandlerMessagesTitle.AutoSize = true;
-            this.ShowHandlerMessagesTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ShowHandlerMessagesTitle.Location = new System.Drawing.Point(12, 12);
-            this.ShowHandlerMessagesTitle.Name = "ShowHandlerMessagesTitle";
-            this.ShowHandlerMessagesTitle.Size = new System.Drawing.Size(207, 25);
-            this.ShowHandlerMessagesTitle.TabIndex = 3;
-            this.ShowHandlerMessagesTitle.Text = "ShowHandlerMessages";
+            ShowHandlerMessagesTitle.AutoSize = true;
+            ShowHandlerMessagesTitle.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            ShowHandlerMessagesTitle.Location = new Point(12, 12);
+            ShowHandlerMessagesTitle.Name = "ShowHandlerMessagesTitle";
+            ShowHandlerMessagesTitle.Size = new Size(207, 25);
+            ShowHandlerMessagesTitle.TabIndex = 3;
+            ShowHandlerMessagesTitle.Text = "ShowHandlerMessages";
             // 
             // SettingsControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ContentLayoutPanel);
-            this.Controls.Add(this.DividerPanel);
-            this.Controls.Add(this.SettingsLabel);
-            this.DoubleBuffered = true;
-            this.Name = "SettingsControl";
-            this.Size = new System.Drawing.Size(884, 416);
-            this.ContentLayoutPanel.ResumeLayout(false);
-            this.HttpUrlPanel.ResumeLayout(false);
-            this.HttpUrlPanel.PerformLayout();
-            this.HttpPortPanel.ResumeLayout(false);
-            this.HttpPortPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HttpPortContent)).EndInit();
-            this.SiteKeyPanel.ResumeLayout(false);
-            this.SiteKeyPanel.PerformLayout();
-            this.LanguagePanel.ResumeLayout(false);
-            this.LanguagePanel.PerformLayout();
-            this.TokenRecievedHtmlPanel.ResumeLayout(false);
-            this.TokenRecievedHtmlPanel.PerformLayout();
-            this.TokenRecievedHookedHtmlPanel.ResumeLayout(false);
-            this.TokenRecievedHookedHtmlPanel.PerformLayout();
-            this.TitlePanel.ResumeLayout(false);
-            this.TitlePanel.PerformLayout();
-            this.IconPanel.ResumeLayout(false);
-            this.IconPanel.PerformLayout();
-            this.StartPositionPanel.ResumeLayout(false);
-            this.StartPositionPanel.PerformLayout();
-            this.LeftPanel.ResumeLayout(false);
-            this.LeftPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LeftContent)).EndInit();
-            this.TopPanel.ResumeLayout(false);
-            this.TopPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TopContent)).EndInit();
-            this.ShowAsDialogpanel.ResumeLayout(false);
-            this.ShowAsDialogpanel.PerformLayout();
-            this.TimeoutPanel.ResumeLayout(false);
-            this.TimeoutPanel.PerformLayout();
-            this.ShowHandlerMessagesPanel.ResumeLayout(false);
-            this.ShowHandlerMessagesPanel.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(ContentLayoutPanel);
+            Controls.Add(DividerPanel);
+            Controls.Add(SettingsLabel);
+            DoubleBuffered = true;
+            Name = "SettingsControl";
+            Size = new Size(894, 416);
+            ContentLayoutPanel.ResumeLayout(false);
+            SiteKeyPanel.ResumeLayout(false);
+            SiteKeyPanel.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            LanguagePanel.ResumeLayout(false);
+            LanguagePanel.PerformLayout();
+            TokenRecievedHtmlPanel.ResumeLayout(false);
+            TokenRecievedHtmlPanel.PerformLayout();
+            TokenRecievedHookedHtmlPanel.ResumeLayout(false);
+            TokenRecievedHookedHtmlPanel.PerformLayout();
+            TitlePanel.ResumeLayout(false);
+            TitlePanel.PerformLayout();
+            IconPanel.ResumeLayout(false);
+            IconPanel.PerformLayout();
+            StartPositionPanel.ResumeLayout(false);
+            StartPositionPanel.PerformLayout();
+            LeftPanel.ResumeLayout(false);
+            LeftPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)LeftContent).EndInit();
+            TopPanel.ResumeLayout(false);
+            TopPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)TopContent).EndInit();
+            ShowAsDialogpanel.ResumeLayout(false);
+            ShowAsDialogpanel.PerformLayout();
+            TimeoutPanel.ResumeLayout(false);
+            TimeoutPanel.PerformLayout();
+            ShowHandlerMessagesPanel.ResumeLayout(false);
+            ShowHandlerMessagesPanel.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -776,14 +712,6 @@
         private Label SettingsLabel;
         private Panel DividerPanel;
         private FlowLayoutPanel ContentLayoutPanel;
-        private Panel HttpUrlPanel;
-        private Label HttpUrlTitle;
-        private Label HttpUrlDescription;
-        private TextBox HttpUrlContent;
-        private Panel HttpPortPanel;
-        private Label HttpPortDescription;
-        private Label HttpPortTitle;
-        private NumericUpDown HttpPortContent;
         private Panel SiteKeyPanel;
         private Label SiteKeyDescription;
         private Label SiteKeyTitle;
@@ -832,5 +760,9 @@
         private CheckBox ShowHandlerMessagesContent;
         private Label ShowHandlerMessagesDescription;
         private Label ShowHandlerMessagesTitle;
+        private Panel panel1;
+        private Label HostNameDescription;
+        private Label HostNameTitle;
+        private TextBox HostNameContent;
     }
 }

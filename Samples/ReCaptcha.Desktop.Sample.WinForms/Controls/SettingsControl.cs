@@ -8,9 +8,8 @@ public partial class SettingsControl : UserControl
 
         ContentLayoutPanel.VerticalScroll.Value = 1;
 
-        HttpUrlContent.DataBindings.Add(new("Text", Program.Configuration, "HttpUrl"));
-        HttpPortContent.DataBindings.Add(new("Value", Program.Configuration, "HttpPort"));
         SiteKeyContent.DataBindings.Add(new("Text", Program.Configuration, "SiteKey"));
+        HostNameContent.DataBindings.Add(new("Text", Program.Configuration, "HostName"));
         LanguageContent.DataBindings.Add(new("Text", Program.Configuration, "Language"));
         TokenRecievedHtmlContent.DataBindings.Add(new("Text", Program.Configuration, "TokenRecievedHtml"));
         TokenRecievedHookedHtmlContent.DataBindings.Add(new("Text", Program.Configuration, "TokenRecievedHookedHtml"));

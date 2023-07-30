@@ -1,13 +1,17 @@
-﻿using ReCaptcha.Desktop.Configuration;
-using ReCaptcha.Desktop.Client.WinForms;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
+using ReCaptcha.Desktop.WinForms.Configuration;
+using ReCaptcha.Desktop.WinForms.Client;
+using ReCaptcha.Desktop.WinForms.Client.Interfaces;
 
 namespace ReCaptcha.Desktop.Sample.WinForms.Controls;
 
 public partial class CaptchaControl : UserControl
 {
     readonly ILogger logger = Program.LoggerFactory.CreateLogger<CaptchaControl>();
-    readonly ReCaptchaClient captchaClient = new(new(Program.Configuration.SiteKey), new(Program.Configuration.Title));
+    readonly IReCaptchaClient captchaClient = new ReCaptchaClient(
+        new(Program.Configuration.SiteKey, Program.Configuration.HostName),
+        new(Program.Configuration.Title),
+        Program.LoggerFactory.CreateLogger<IReCaptchaClient>());
 
     public CaptchaControl()
     {
@@ -48,15 +52,12 @@ public partial class CaptchaControl : UserControl
 
     void UpdateConfigurations()
     {
-        HttpServerConfig httpConfig = new(
-            url: Program.Configuration.HttpUrl,
-            port: Program.Configuration.HttpPort);
         ReCaptchaConfig reCaptchaConfig = new(
             siteKey: Program.Configuration.SiteKey,
+            hostName: Program.Configuration.HostName,
             language: Program.Configuration.Language,
             tokenRecievedHtml: Program.Configuration.TokenRecievedHtml,
-            tokenRecievedHookedHtml: Program.Configuration.TokenRecievedHookedHtml,
-            httpConfiguration: httpConfig);
+            tokenRecievedHookedHtml: Program.Configuration.TokenRecievedHookedHtml);
 
         FormConfig formConfig = new(
             title: Program.Configuration.Title,
@@ -74,7 +75,7 @@ public partial class CaptchaControl : UserControl
     }
 
 
-    private async void VerifyButton_Click(object sender, System.EventArgs e)
+    private async void VerifyButton_Click(object sender, EventArgs e)
     {
         // Disable verify button & set verify/cancel button text
         VerifyButton.Enabled = false;
@@ -106,7 +107,7 @@ public partial class CaptchaControl : UserControl
         }
     }
 
-    private void CancelButton_Click(object sender, System.EventArgs e)
+    private void CancelButton_Click(object sender, EventArgs e)
     {
         // Reset token & cancel verification if not already reset
         TokenBox.Text = "Press \"I'm not a robot\"!";

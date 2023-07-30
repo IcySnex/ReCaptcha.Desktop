@@ -2,12 +2,9 @@
 
 public class Configuration
 {
-    public string HttpUrl { get; set; } = "http://localhost";
-
-    public int HttpPort { get; set; } = 5000;
-
-
     public string SiteKey { get; set; } = "";
+
+    public string HostName { get; set; } = "recaptcha.desktop";
 
     public string Language { get; set; } = "en";
 

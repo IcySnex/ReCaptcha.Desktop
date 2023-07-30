@@ -3,13 +3,14 @@ using Microsoft.Extensions.Logging;
 using ReCaptcha.Desktop.Sample.WinForms.Services;
 using Serilog;
 using Serilog.Extensions.Logging;
+using ReCaptcha.Desktop.Sample.WinForms.Models;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace ReCaptcha.Desktop.Sample.WinForms;
 
 internal static class Program
 {
-    public static Models.Configuration Configuration { get; private set; } = default!;
+    public static Configuration Configuration { get; private set; } = default!;
 
     public static InMemorySink Sink { get; } = new();
     public static SerilogLoggerFactory LoggerFactory = new(
@@ -31,7 +32,7 @@ internal static class Program
         Configuration = new ConfigurationBuilder()
            .AddJsonFile("Configuration.json", true)
            .Build()
-           .Get<Models.Configuration>() ?? new();
+           .Get<Configuration>() ?? new();
 
         Application.Run(MainForm);
 

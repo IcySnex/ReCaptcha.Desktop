@@ -1,8 +1,8 @@
 ﻿using Microsoft.Web.WebView2.Core;
-using ReCaptcha.Desktop.EventArgs;
+using ReCaptcha.Desktop.WinForms.EventArgs;
 using System.Text.Json;
 
-namespace ReCaptcha.Desktop.Client.WinForms;
+namespace ReCaptcha.Desktop.WinForms.Client;
 
 /// <summary>
 /// Reciever to communicate with the HTTP server with extended resize functions
