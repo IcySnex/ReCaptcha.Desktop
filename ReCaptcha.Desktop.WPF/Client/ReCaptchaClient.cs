@@ -168,7 +168,7 @@ public class ReCaptchaClient : IReCaptchaClient
             if (token is null && window is not null)
                 window.Dispatcher.BeginInvoke(() => window?.Close());
 
-            logger?.LogInformation("[ReCaptchaClient-OnTokenCancelled] reCAPTCHA vericitaion timed out");
+            logger?.LogInformation("[ReCaptchaClient-OnTokenCancelled] reCAPTCHA vericitaion was cancelled");
         });
 
 
