@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCaptcha.Desktop.WinForms"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReCaptcha.Desktop.Sample.WinForms", "Samples\ReCaptcha.Desktop.Sample.WinForms\ReCaptcha.Desktop.Sample.WinForms.csproj", "{5D0F4C5E-0FC7-4D2E-809D-12AA5AA862AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleExampleMVVM", "C:\Users\User69\Desktop\SimpleExampleMVVM\SimpleExampleMVVM\SimpleExampleMVVM.csproj", "{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleExampleMVVM", "Samples\SimpleExampleMVVM\SimpleExampleMVVM.csproj", "{2C20B6C9-3EEE-4C23-B41D-BC6ADC1EA248}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

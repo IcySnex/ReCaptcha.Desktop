@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using ReCaptcha.Desktop.Client.Interfaces;
-using ReCaptcha.Desktop.Client.WPF;
-using ReCaptcha.Desktop.Configuration;
+using ReCaptcha.Desktop.WPF.Client;
+using ReCaptcha.Desktop.WPF.Client.Interfaces;
+using ReCaptcha.Desktop.WPF.Configuration;
 using SimpleExampleMVVM.ViewModel;
 using System;
 using System.Windows;
@@ -27,7 +27,7 @@ public partial class App : Application
             {
                 // Add Services
                 services.AddSingleton<IReCaptchaClient>(provider => new ReCaptchaClient(
-                    "SITE_KEY".AsReCaptchaConfig(),
+                    "SITE_KEY".AsReCaptchaConfig("example.mvvm"),
                     "WINDOW_TITLE".AsWindowConfig(),
                     provider.GetRequiredService<ILogger<IReCaptchaClient>>()));
 

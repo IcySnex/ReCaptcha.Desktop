@@ -1,27 +1,21 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.Logging;
-using ReCaptcha.Desktop.Client.Interfaces;
-using ReCaptcha.Desktop.WPF.UI.Themes.Interfaces;
+using ReCaptcha.Desktop.WPF.Client.Interfaces;
 using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Media;
 
 namespace SimpleExampleMVVM.ViewModel;
 
 public partial class CaptchaViewModel : ObservableObject
 {
-    readonly ILogger<CaptchaViewModel> logger;
     readonly IReCaptchaClient reCaptcha;
 
     public CaptchaViewModel(
-        ILogger<CaptchaViewModel> logger,
         IReCaptchaClient reCaptcha)
     {
-        this.logger = logger;
         this.reCaptcha = reCaptcha;
     }
 
