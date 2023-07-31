@@ -3,6 +3,9 @@ using System.Windows.Media;
 
 namespace ReCaptcha.Desktop.WPF.Configuration;
 
+/// <summary>
+/// Extension methods to create configurations easier 
+/// </summary>
 public static class Extentions
 {
     /// <summary>

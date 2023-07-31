@@ -4,6 +4,9 @@ using Windows.UI.Xaml.Media;
 
 namespace ReCaptcha.Desktop.UWP.Configuration;
 
+/// <summary>
+/// Extension methods to create configurations easier 
+/// </summary>
 public static class Extentions
 {
     /// <summary>

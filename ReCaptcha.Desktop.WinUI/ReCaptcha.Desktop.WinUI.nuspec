@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+	<metadata>
+		<id>ReCaptcha.Desktop.WinUI</id>
+		<version>2.0.2</version>
+		<title>ReCaptcha.Desktop.WinUI</title>
+		<authors>IcySnex</authors>
+		<owners>IcySnex</owners>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<license type="file">LICENSE.txt</license>
+		<readme>README.md</readme>
+		<icon>Icon.png</icon>
+		<projectUrl>https://icysnex.github.io/ReCaptcha.Desktop/</projectUrl>
+		<repository type="git" url="https://github.com/IcySnex/ReCaptcha.Desktop.git"/>
+		<description>
+Access Google reCAPTCHA with WinUI
+- Easy to use: Get started with just a few lines of code, regardless of the desktop frameworks.
+- Fast &amp; Reliable: ReCaptcha.Desktop uses WebView2 and the official reCAPTCHA widget to bring you the best performance and stability.
+- Customizable: From themes to fundamental components! ReCaptcha.Desktop allows you to customize just about anything.
+
+Contains the ReCaptcha client, reciever &amp; configuration for WinUI to handle verifications, window specific configurations and ReCaptcha control with themes.
+		</description>
+		<copyright>This is an open source library and not affiliated with Google in any way</copyright>
+
+		<dependencies>
+			<group targetFramework="net6.0-windows10.0">
+				<dependency id="Microsoft.Extensions.Logging.Abstractions" version="7.0.1"/>
+				<dependency id="Microsoft.WindowsAppSDK" version="1.3.230724000"/>
+				<dependency id="Microsoft.Windows.SDK.BuildTools" version="10.0.22621.756"/>
+			</group>
+		</dependencies>
+	</metadata>
+
+	<files>
+		<file src="bin\Release\net6.0-windows10.0.19041.0\ReCaptcha.Desktop.WinUI.dll" target="lib\net6.0-windows10.0" />
+		<file src="bin\Release\net6.0-windows10.0.19041.0\ReCaptcha.Desktop.WinUI.pdb" target="lib\net6.0-windows10.0" />
+		<file src="bin\Release\net6.0-windows10.0.19041.0\ReCaptcha.Desktop.WinUI.pri" target="lib\net6.0-windows10.0" />
+		<file src="bin\Release\net6.0-windows10.0.19041.0\ReCaptcha.Desktop.WinUI.XML" target="lib\net6.0-windows10.0" />
+
+		<file src="bin\Release\net6.0-windows10.0.19041.0\ReCaptcha.Desktop.WinUI\UI\CommonDictionary.xaml" target="lib\net6.0-windows10.0\ReCaptcha.Desktop.WinUI\UI"/>
+		<file src="bin\Release\net6.0-windows10.0.19041.0\ReCaptcha.Desktop.WinUI\UI\CommonDictionary.xbf" target="lib\net6.0-windows10.0\ReCaptcha.Desktop.WinUI\UI"/>
+
+		<file src="bin\Release\net6.0-windows10.0.19041.0\ReCaptcha.Desktop.WinUI\LICENSE.txt" target="lib\net6.0-windows10.0\ReCaptcha.Desktop.WinUI" />
+		<file src="bin\Release\net6.0-windows10.0.19041.0\ReCaptcha.Desktop.WinUI\UI\Assets\Icon.png" target="lib\net6.0-windows10.0\ReCaptcha.Desktop.WinUI\UI\Assets"/>
+		<file src="bin\Release\net6.0-windows10.0.19041.0\ReCaptcha.Desktop.WinUI\UI\Assets\Roboto-Regular.ttf" target="lib\net6.0-windows10.0\ReCaptcha.Desktop.WinUI\UI\Assets"/>
+
+		<file src="LICENSE.txt" target="" />
+		<file src="..\Icon.png" target="" />
+		<file src="..\README.md" target="" />
+	</files>
+</package>

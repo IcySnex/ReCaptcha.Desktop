@@ -3,6 +3,9 @@ using ReCaptcha.Desktop.WinForms.Configuration;
 
 namespace ReCaptcha.Desktop.WinForms.Client.Interfaces;
 
+/// <summary>
+/// Client which handles all ReCaptcha verifications
+/// </summary>
 public interface IReCaptchaClient
 {
     /// <summary>

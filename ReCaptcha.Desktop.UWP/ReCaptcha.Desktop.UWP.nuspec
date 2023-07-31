@@ -1,27 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
 <package >
-  <metadata>
-    <id>ReCaptcha.Desktop.UWP</id>
-    <version>1.0.0</version>
-    <title>ReCaptcha.Desktop.UWP</title>
-    <authors>IcySnex</authors>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <license type="file">LICENSE</license>
-    <readme>README.md</readme>
-    <icon>Icon.png</icon>
-    <projectUrl>https://icysnex.github.io/ReCaptcha.Desktop/</projectUrl>
-    <repository type="git">https://github.com/IcySnex/ReCaptcha.Desktop</repository>
-    <description>Contains the ReCaptcha client and reciever for UWP to handle verifications, popup specific configurations and ReCaptcha control with themes.</description>
-    <releaseNotes></releaseNotes>
-    <copyright>This is an open source library and not affiliated with Google in any way</copyright>
-    <tags>ReCaptcha;Google;uwp</tags>
-  </metadata>
+	<metadata>
+		<id>ReCaptcha.Desktop.UWP</id>
+		<version>2.0.2</version>
+		<title>ReCaptcha.Desktop.UWP</title>
+		<authors>IcySnex</authors>
+		<owners>IcySnex</owners>
+		<requireLicenseAcceptance>true</requireLicenseAcceptance>
+		<license type="file">LICENSE.txt</license>
+		<readme>README.md</readme>
+		<icon>Icon.png</icon>
+		<projectUrl>https://icysnex.github.io/ReCaptcha.Desktop/</projectUrl>
+		<repository type="git" url="https://github.com/IcySnex/ReCaptcha.Desktop.git"/>
+		<description>
+Access Google reCAPTCHA with UWP
+- Easy to use: Get started with just a few lines of code, regardless of the desktop frameworks.
+- Fast &amp; Reliable: ReCaptcha.Desktop uses WebView2 and the official reCAPTCHA widget to bring you the best performance and stability.
+- Customizable: From themes to fundamental components! ReCaptcha.Desktop allows you to customize just about anything.
 
+Contains the ReCaptcha client, reciever &amp; configuration for UWP to handle verifications, window specific configurations and ReCaptcha control with themes.
+		</description>
+		<copyright>This is an open source library and not affiliated with Google in any way</copyright>
+
+		<dependencies>
+			<group targetFramework="uap10.0">
+				<dependency id="Microsoft.Extensions.Logging.Abstractions" version="7.0.1"/>
+				<dependency id="Microsoft.UI.Xaml" version="2.8.5"/>
+				<dependency id="System.Text.Json" version="7.0.3"/>
+			</group>
+		</dependencies>
+	</metadata>
+	
 	<files>
+		<file src="bin\ARM\Release\ReCaptcha.Desktop.UWP.dll" target="runtimes\win10-arm\lib\uap10.0" />
+		<file src="bin\ARM\Release\ReCaptcha.Desktop.UWP.pdb" target="runtimes\win10-arm\lib\uap10.0" />
+		<file src="bin\ARM64\Release\ReCaptcha.Desktop.UWP.dll" target="runtimes\win10-arm64\lib\uap10.0" />
+		<file src="bin\ARM64\Release\ReCaptcha.Desktop.UWP.pdb" target="runtimes\win10-arm64\lib\uap10.0" />
+		<file src="bin\x64\Release\ReCaptcha.Desktop.UWP.dll" target="runtimes\win10-x64\lib\uap10.0" />
+		<file src="bin\x64\Release\ReCaptcha.Desktop.UWP.pdb" target="runtimes\win10-x64\lib\uap10.0" />
+		<file src="bin\x86\Release\ReCaptcha.Desktop.UWP.dll" target="runtimes\win10-x86\lib\uap10.0" />
+		<file src="bin\x86\Release\ReCaptcha.Desktop.UWP.pdb" target="runtimes\win10-x86\lib\uap10.0" />
+		
+	    <file src="bin\Release\ReCaptcha.Desktop.UWP.dll" target="ref\uap10.0" />
+	    <file src="bin\Release\ReCaptcha.Desktop.UWP.pdb" target="ref\uap10.0" />
+		<file src="bin\Release\ReCaptcha.Desktop.UWP.pri" target="ref\uap10.0" />
+		<file src="bin\Release\ReCaptcha.Desktop.UWP.XML" target="ref\uap10.0" />
+		
+		<file src="bin\Release\ReCaptcha.Desktop.UWP\ReCaptcha.Desktop.UWP.xr.xml" target="ref\uap10.0\ReCaptcha.Desktop.UWP" />
+		<file src="bin\Release\ReCaptcha.Desktop.UWP\LICENSE.txt" target="ref\uap10.0\ReCaptcha.Desktop.UWP" />
+		<file src="bin\Release\ReCaptcha.Desktop.UWP\UI\Assets\Icon.png" target="ref\uap10.0\ReCaptcha.Desktop.UWP\UI\Assets"/>
+		<file src="bin\Release\ReCaptcha.Desktop.UWP\UI\Assets\Roboto-Regular.ttf" target="ref\uap10.0\ReCaptcha.Desktop.UWP\UI\Assets"/>
+		
+		<file src="UI\CommonDictionary.xaml" target="lib\uap10.0\ReCaptcha.Desktop.UWP\UI"/>
+		<file src="Internal\ReCaptchaPopup.xaml" target="lib\uap10.0\ReCaptcha.Desktop.UWP\Internal"/>
+	
+		<file src="LICENSE.txt" target="" />
 		<file src="..\Icon.png" target="" />
-		<file src="..\LICENSE" target="" />
 		<file src="..\README.md" target="" />
-
-		<file src=""/>
 	</files>
 </package>

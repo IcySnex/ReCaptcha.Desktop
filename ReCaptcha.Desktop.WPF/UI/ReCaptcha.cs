@@ -28,6 +28,9 @@ public class ReCaptcha : ContentControl
 
     CheckBox verifyCheckBox = default!;
 
+    /// <summary>
+    /// When overridden in a derived class, is invoked whenever application code or internal processes call System.Windows.FrameworkElement.ApplyTemplate.
+    /// </summary>
     public override void OnApplyTemplate()
     {
         base.OnApplyTemplate();

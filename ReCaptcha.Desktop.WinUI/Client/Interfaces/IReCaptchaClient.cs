@@ -6,6 +6,9 @@ using ReCaptcha.Desktop.WinUI.EventArgs;
 
 namespace ReCaptcha.Desktop.WinUI.Client.Interfaces;
 
+/// <summary>
+/// Client which handles all ReCaptcha verifications
+/// </summary>
 public interface IReCaptchaClient
 {
     /// <summary>

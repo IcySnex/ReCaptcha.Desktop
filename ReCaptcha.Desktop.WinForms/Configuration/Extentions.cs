@@ -1,5 +1,8 @@
 ﻿namespace ReCaptcha.Desktop.WinForms.Configuration;
 
+/// <summary>
+/// Extension methods to create configurations easier 
+/// </summary>
 public static class Extentions
 {
     /// <summary>

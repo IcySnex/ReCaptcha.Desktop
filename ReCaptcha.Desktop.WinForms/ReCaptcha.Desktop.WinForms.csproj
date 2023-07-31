@@ -20,7 +20,12 @@
 		<PackageId>ReCaptcha.Desktop.WinForms</PackageId>
 		<Authors>IcySnex</Authors>
 		<Description>
-			Contains the ReCaptcha client and reciever for WinForms to handle verifications and form specific configurations.
+Access Google reCAPTCHA with WinForms
+- Easy to use: Get started with just a few lines of code, regardless of the desktop frameworks.
+- Fast &amp; Reliable: ReCaptcha.Desktop uses WebView2 and the official reCAPTCHA widget to bring you the best performance and stability.
+- Customizable: From themes to fundamental components! ReCaptcha.Desktop allows you to customize just about anything.
+
+Contains the ReCaptcha client, reciever &amp; configuration for WinForms to handle verifications, window specific configurations and ReCaptcha control with themes.
 		</Description>
 		<PackageIcon>Icon.png</PackageIcon>
 
@@ -36,9 +41,10 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-		<Version>1.0</Version>
-		<AssemblyVersion>1.0</AssemblyVersion>
-		<FileVersion>1.0</FileVersion>
+		<Version>2.0.2</Version>
+		<AssemblyVersion>2.0.2</AssemblyVersion>
+		<FileVersion>2.0.2</FileVersion>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -1,6 +1,8 @@
 .vs/
 packages/
 
+*.nupkg
+*.exe
 *.suo
 *.user
 _ReSharper.*
