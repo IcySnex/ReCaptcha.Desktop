@@ -38,78 +38,6 @@ export default defineUserConfig({
         collapsible: true,
         children: [
           {
-            text: 'ReCaptcha.Desktop',
-            link: '/reference/recaptcha.desktop',
-            collapsible: true,
-            children: [
-              {
-                text: 'Client',
-                link: '/reference/recaptcha.desktop/client',
-                collapsible: true,
-                children: [
-                  {
-                    text: 'Base',
-                    link: '/reference/recaptcha.desktop/client/base',
-                    collapsible: true,
-                    children: [
-                      '/reference/recaptcha.desktop/client/base/recaptchabase',
-                      '/reference/recaptcha.desktop/client/base/recaptcharesizeablebase'
-                    ]
-                  },
-                  {
-                    text: 'Interfaces',
-                    link: '/reference/recaptcha.desktop/client/interfaces',
-                    collapsible: true,
-                    children: [
-                      '/reference/recaptcha.desktop/client/interfaces/irecaptchabase',
-                      '/reference/recaptcha.desktop/client/interfaces/irecaptchaclient'
-                    ]
-                  }
-                ]
-              },
-              {
-                text: 'Configuration',
-                link: '/reference/recaptcha.desktop/configuration',
-                collapsible: true,
-                children: [
-                  '/reference/recaptcha.desktop/configuration/extentions',
-                  '/reference/recaptcha.desktop/configuration/httpserverconfig',
-                  '/reference/recaptcha.desktop/configuration/recaptchaconfig'
-                ]
-              },
-              {
-                text: 'EventArgs',
-                link: '/reference/recaptcha.desktop/eventargs',
-                collapsible: true,
-                children: [
-                  '/reference/recaptcha.desktop/eventargs/httpserverstartedeventargs',
-                  '/reference/recaptcha.desktop/eventargs/httpserverstoppedeventargs',
-                  '/reference/recaptcha.desktop/eventargs/recaptcharesizedeventargs',
-                  '/reference/recaptcha.desktop/eventargs/requesterroroccurredeventargs',
-                  '/reference/recaptcha.desktop/eventargs/requestoccurredeventargs',
-                  '/reference/recaptcha.desktop/eventargs/verificationcancelledeventargs',
-                  '/reference/recaptcha.desktop/eventargs/verificationrecievedeventargs'
-                ]
-              },
-              {
-                text: 'HTTP',
-                link: '/reference/recaptcha.desktop/http',
-                collapsible: true,
-                children: [
-                  {
-                    text: 'Interfaces',
-                    link: '/reference/recaptcha.desktop/http/interfaces',
-                    collapsible: true,
-                    children: [
-                      '/reference/recaptcha.desktop/http/interfaces/ihttpserver',
-                    ]
-                  },
-                  '/reference/recaptcha.desktop/http/httpserver'
-                ]
-              }
-            ]
-          },
-          {
             text: 'ReCaptcha.Desktop.WPF',
             link: '/reference/recaptcha.desktop.wpf',
             collapsible: true,
@@ -119,6 +47,14 @@ export default defineUserConfig({
                 link: '/reference/recaptcha.desktop.wpf/client',
                 collapsible: true,
                 children: [
+                  {
+                    text: 'Interfaces',
+                    link: '/reference/recaptcha.desktop.wpf/client/interfaces',
+                    collapsible: true,
+                    children: [
+                      '/reference/recaptcha.desktop.wpf/client/interfaces/irecaptchaclient',
+                    ]
+                  },
                   '/reference/recaptcha.desktop.wpf/client/recaptchaclient',
                   '/reference/recaptcha.desktop.wpf/client/recaptchareciever'
                 ]
@@ -129,7 +65,18 @@ export default defineUserConfig({
                 collapsible: true,
                 children: [
                   '/reference/recaptcha.desktop.wpf/configuration/extentions',
+                  '/reference/recaptcha.desktop.wpf/configuration/recaptchaconfig',
                   '/reference/recaptcha.desktop.wpf/configuration/windowconfig'
+                ]
+              },
+              {
+                text: 'EventArgs',
+                link: '/reference/recaptcha.desktop.wpf/eventargs',
+                collapsible: true,
+                children: [
+                  '/reference/recaptcha.desktop.winui/eventargs/recaptcharesizedeventargs',
+                  '/reference/recaptcha.desktop.winui/eventargs/verificationcancelledeventargs',
+                  '/reference/recaptcha.desktop.winui/eventargs/verificationrecievedeventargs'
                 ]
               },
               {
@@ -170,6 +117,14 @@ export default defineUserConfig({
                 link: '/reference/recaptcha.desktop.winui/client',
                 collapsible: true,
                 children: [
+                  {
+                    text: 'Interfaces',
+                    link: '/reference/recaptcha.desktop.winui/client/interfaces',
+                    collapsible: true,
+                    children: [
+                      '/reference/recaptcha.desktop.winui/client/interfaces/irecaptchaclient',
+                    ]
+                  },
                   '/reference/recaptcha.desktop.winui/client/recaptchaclient',
                   '/reference/recaptcha.desktop.winui/client/recaptchareciever'
                 ]
@@ -180,8 +135,19 @@ export default defineUserConfig({
                 collapsible: true,
                 children: [
                   '/reference/recaptcha.desktop.winui/configuration/extentions',
+                  '/reference/recaptcha.desktop.winui/configuration/recaptchaconfig',
                   '/reference/recaptcha.desktop.winui/configuration/windowconfig',
                   '/reference/recaptcha.desktop.winui/configuration/windowstartuplocation'
+                ]
+              },
+              {
+                text: 'EventArgs',
+                link: '/reference/recaptcha.desktop.winui/eventargs',
+                collapsible: true,
+                children: [
+                  '/reference/recaptcha.desktop.winui/eventargs/recaptcharesizedeventargs',
+                  '/reference/recaptcha.desktop.winui/eventargs/verificationcancelledeventargs',
+                  '/reference/recaptcha.desktop.winui/eventargs/verificationrecievedeventargs'
                 ]
               },
               {
@@ -222,6 +188,14 @@ export default defineUserConfig({
                 link: '/reference/recaptcha.desktop.uwp/client',
                 collapsible: true,
                 children: [
+                  {
+                    text: 'Interfaces',
+                    link: '/reference/recaptcha.desktop.uwp/client/interfaces',
+                    collapsible: true,
+                    children: [
+                      '/reference/recaptcha.desktop.uwp/client/interfaces/irecaptchaclient',
+                    ]
+                  },
                   '/reference/recaptcha.desktop.uwp/client/recaptchaclient',
                   '/reference/recaptcha.desktop.uwp/client/recaptchareciever'
                 ]
@@ -232,8 +206,19 @@ export default defineUserConfig({
                 collapsible: true,
                 children: [
                   '/reference/recaptcha.desktop.uwp/configuration/extentions',
+                  '/reference/recaptcha.desktop.uwp/configuration/recaptchaconfig',
                   '/reference/recaptcha.desktop.uwp/configuration/popupconfig',
                   '/reference/recaptcha.desktop.uwp/configuration/popupstartuplocation'
+                ]
+              },
+              {
+                text: 'EventArgs',
+                link: '/reference/recaptcha.desktop.uwp/eventargs',
+                collapsible: true,
+                children: [
+                  '/reference/recaptcha.desktop.uwp/eventargs/recaptcharesizedeventargs',
+                  '/reference/recaptcha.desktop.uwp/eventargs/verificationcancelledeventargs',
+                  '/reference/recaptcha.desktop.uwp/eventargs/verificationrecievedeventargs'
                 ]
               },
               {
@@ -274,6 +259,14 @@ export default defineUserConfig({
                 link: '/reference/recaptcha.desktop.winforms/client',
                 collapsible: true,
                 children: [
+                  {
+                    text: 'Interfaces',
+                    link: '/reference/recaptcha.desktop.winforms/client/interfaces',
+                    collapsible: true,
+                    children: [
+                      '/reference/recaptcha.desktop.winforms/client/interfaces/irecaptchaclient',
+                    ]
+                  },
                   '/reference/recaptcha.desktop.winforms/client/recaptchaclient',
                   '/reference/recaptcha.desktop.winforms/client/recaptchareciever'
                 ]
@@ -284,9 +277,20 @@ export default defineUserConfig({
                 collapsible: true,
                 children: [
                   '/reference/recaptcha.desktop.winforms/configuration/extentions',
-                  '/reference/recaptcha.desktop.winforms/configuration/windowconfig'
+                  '/reference/recaptcha.desktop.winforms/configuration/recaptchaconfig',
+                  '/reference/recaptcha.desktop.winforms/configuration/formconfig'
                 ]
-              }
+              },
+              {
+                text: 'EventArgs',
+                link: '/reference/recaptcha.desktop.winforms/eventargs',
+                collapsible: true,
+                children: [
+                  '/reference/recaptcha.desktop.winforms/eventargs/recaptcharesizedeventargs',
+                  '/reference/recaptcha.desktop.winforms/eventargs/verificationcancelledeventargs',
+                  '/reference/recaptcha.desktop.winforms/eventargs/verificationrecievedeventargs'
+                ]
+              },
             ]
           },
         ]
@@ -303,28 +307,6 @@ export default defineUserConfig({
         children:
         [
           {
-            text: 'ReCaptcha.Desktop',
-            link: '/reference/recaptcha.desktop',
-            children: [
-              {
-                text: 'Client',
-                link: '/reference/recaptcha.desktop/client',
-              },
-              {
-                text: 'Configuration',
-                link: '/reference/recaptcha.desktop/configuration',
-              },
-              {
-                text: 'EventArgs',
-                link: '/reference/recaptcha.desktop/eventargs',
-              },
-              {
-                text: 'HTTP',
-                link: '/reference/recaptcha.desktop/http',
-              }
-            ]
-          },
-          {
             text: 'ReCaptcha.Desktop.WPF',
             link: '/reference/recaptcha.desktop.wpf',
             children: [
@@ -335,6 +317,10 @@ export default defineUserConfig({
               {
                 text: 'Configuration',
                 link: '/reference/recaptcha.desktop.wpf/configuration',
+              },
+              {
+                text: 'EventArgs',
+                link: '/reference/recaptcha.desktop.wpf/eventargs',
               },
               {
                 text: 'UI',
@@ -355,6 +341,10 @@ export default defineUserConfig({
                 link: '/reference/recaptcha.desktop.winui/configuration',
               },
               {
+                text: 'EventArgs',
+                link: '/reference/recaptcha.desktop.winui/eventargs',
+              },
+              {
                 text: 'UI',
                 link: '/reference/recaptcha.desktop.winui/ui',
               }
@@ -373,6 +363,10 @@ export default defineUserConfig({
                 link: '/reference/recaptcha.desktop.uwp/configuration',
               },
               {
+                text: 'EventArgs',
+                link: '/reference/recaptcha.desktop.uwp/eventargs',
+              },
+              {
                 text: 'UI',
                 link: '/reference/recaptcha.desktop.uwp/ui',
               }
@@ -389,7 +383,11 @@ export default defineUserConfig({
               {
                 text: 'Configuration',
                 link: '/reference/recaptcha.desktop.winforms/configuration',
-              }
+              },
+              {
+                text: 'EventArgs',
+                link: '/reference/recaptcha.desktop.winforms/eventargs',
+              },
             ]
           }
         ],
