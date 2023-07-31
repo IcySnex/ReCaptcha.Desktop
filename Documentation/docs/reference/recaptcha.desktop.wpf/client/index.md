@@ -1,5 +1,5 @@
 # ReCaptcha.Desktop.Client.WPF
-Contains the ReCaptcha client and reciever to handle verifications.
+Contains the interface and client to handle verifications.
 
 **Type:** Namespace
 <br />
@@ -7,6 +7,11 @@ Contains the ReCaptcha client and reciever to handle verifications.
 
 ## Namespaces
 | Namespace                                                    | Description                                                                      |
+|--------------------------------------------------------------|----------------------------------------------------------------------------------|
+| [Interfaces](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/client/interfaces/) | Contains the interface for ReCaptcha client.                  |
+
+## Classes
+| Class                                                    | Description                                                                      |
 |--------------------------------------------------------------|----------------------------------------------------------------------------------|
 | [ReCaptchaClient](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/client/recaptchaclient.html)              | Client which handles all ReCaptcha verifications. |
 | [ReCaptchaReciever](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/client/recaptchareciever.html)              | Reciever to communicate with the HTTP server with extended resize functions. |

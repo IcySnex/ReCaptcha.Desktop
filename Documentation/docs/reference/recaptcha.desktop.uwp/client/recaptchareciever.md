@@ -3,7 +3,7 @@ Reciever to communicate with the HTTP server with extended resize functions.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Client.UWP](/ReCaptcha.Desktop/reference/recaptcha.desktop.uwp/client/)
+**Namespace:** [ReCaptcha.Desktop.UWP.Client](/ReCaptcha.Desktop/reference/recaptcha.desktop.uwp/client/)
 <br />
 **Assembly:** [ReCaptcha.Desktop.UWP](/ReCaptcha.Desktop/reference/recaptcha.desktop.uwp/)
 

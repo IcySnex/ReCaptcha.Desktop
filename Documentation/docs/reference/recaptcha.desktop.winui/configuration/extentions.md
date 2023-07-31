@@ -3,7 +3,7 @@ Extension methods to create configurations easier.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.winui/configuration/)
+**Namespace:** [ReCaptcha.Desktop.WinUI.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.winui/configuration/)
 <br />
 **Assembly:** [ReCaptcha.Desktop.WinUI](/ReCaptcha.Desktop/reference/recaptcha.desktop.winui/)
 
@@ -13,6 +13,27 @@ public static class Extentions
 
 ## Methods
 
+### AsReCaptchaConfig
+Creates a new ReCaptchaConfig.
+
+**Returns:** A new AsReCaptchaConfig.
+```cs
+public static ReCaptchaConfig AsReCaptchaConfig(
+    this string siteKey,
+    string hostName,
+    string language = "en",
+    string tokenRecievedHtml = "Token recieved: %token%",
+    string tokenRecievedHookedHtml = "Token recieved and sent to application.",
+    HttpServerConfig? httpConfiguration = null)
+```
+| Parameter                                                | Description                           |
+|----------------------------------------------------------|---------------------------------------|
+| `this string` siteKey | The SiteKey for the Google reCAPTCHA service. |
+| `string` hostName | The name of the virtual host on which the reCAPTCHA is hosted. Should represent your application. |
+| *`string` language*                  | The language for the Google reCAPTCHA service.      |
+| *`string` tokenRecievedHtml*                  | The HTML which gets displayed after the user verifed the reCAPTCHA. Use %token% to embed the token inside the message.      |
+| *`string` tokenRecievedHookedHtml*                  | The HTML which gets displayed after the user verifed the reCAPTCHA and its hooked to the application. Use %token% to embed the token inside the message.      |
+| *`HttpServerConfig?` httpConfiguration*                  | The configuration for the HttpServer.      |
 ### AsWindowConfig
 Creates a new AsWindowConfig.
 
@@ -20,7 +41,7 @@ Creates a new AsWindowConfig.
 ```cs
 public static WindowConfig AsWindowConfig(
     this string title,
-    string icon = default!,
+    ImageSource icon = default!,
     Window? owner = null,
     bool showAsDialog = false,
     WindowStartupLocation startupLocation = WindowStartupLocation.CenterScreen,
@@ -30,7 +51,7 @@ public static WindowConfig AsWindowConfig(
 | Parameter                                                | Description                           |
 |----------------------------------------------------------|---------------------------------------|
 | `this string` title | The title of the window. |
-| *`string` icon*                  | The icon of the window.      |
+| *`ImageSource` icon*                  | The icon of the window.      |
 | *`Window?` owner*                  | The owner of this window. (Only used for StartupLocation.CenterOwner).      |
 | *`bool` showAsDialog*                  | Wether to block the UI thread when showing the window.      |
 | *`WindowStartupLocation?` startupLocation*                  | The startup postion of the window.      |

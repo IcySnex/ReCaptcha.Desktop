@@ -1,21 +1,17 @@
 # How to use (MVVM)
 Using the ReCaptcha control in your applications is really easy and the exact same for all supported platforms ([WPF](https://learn.microsoft.com/en-us/dotnet/desktop/wpf), [WinUI3](https://learn.microsoft.com/en-us/windows/apps/winui/winui3/), [UWP](https://learn.microsoft.com/windows/uwp/)). This guide will explain how to use the ReCaptcha.Desktop with the control inside a MVVM application.
 
-For the example we use [Dependency Injection](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection) and the [CommunityToolkit.MVVM](https://learn.microsoft.com/dotnet/communitytoolkit/mvvm/) library but you can use whatever you prefer, just make sure you correctly set up your project for MVVM and Dependency Injection.
+For this example we use WPF with [Dependency Injection](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection) and the [CommunityToolkit.MVVM](https://learn.microsoft.com/dotnet/communitytoolkit/mvvm/) library but you can use whatever you prefer, just make sure you correctly set up your project for MVVM and Dependency Injection.
 
-### Step 1: Install base package (ReCaptcha.Desktop)
-```powershell
-dotnet add <PROJECT> package ReCaptcha.Desktop
-```
 
-### Step 2: Install UI package
+### Step 1: Install ReCaptcha.Desktop package
 ```powershell
 dotnet add <PROJECT> package ReCaptcha.Desktop.WPF # WPF
 dotnet add <PROJECT> package ReCaptcha.Desktop.WinUI # WinUI3
 dotnet add <PROJECT> package ReCaptcha.Desktop.UWP # UWP
 ```
 
-### Step 3: Add ReCaptcha service to your App [ServiceProvider](https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovider)
+### Step 2: Add ReCaptcha service to your App [ServiceProvider](https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovider)
 
 This example project uses the [Microsoft.Extensions.Logging](https://learn.microsoft.com/en-us/dotnet/core/extensions/logging) logging infrastructure but you can also use any other logger like [Serilog](https://serilog.net/). ReCaptcha.Desktop supports out of the box logging. Just pass in a `ILogger<IReCaptchaClient>` into the constructor and you are good to go.
 
@@ -36,7 +32,7 @@ public App()
         {
             // Add Services
             services.AddSingleton<IReCaptchaClient>(provider => new ReCaptchaClient(
-                "GOOGLE_SITE_KEY".AsReCaptchaConfig(),
+                "GOOGLE_SITE_KEY".AsReCaptchaConfig("HOST_NAME"),
                 "WINDOW_TITLE".AsWindowConfig(),
                 provider.GetRequiredService<ILogger<IReCaptchaClient>>()));
 
@@ -48,7 +44,7 @@ public App()
 }
 ```
 
-### Step 4: Create a new View and ViewModel
+### Step 3: Create a new View and ViewModel
 
 The View is called `CaptchaView`. In a real world application you probably have a ViewModelLocator or something like that but for now we will just set the `DataContext` of the view in the constrcutor:
 ```cs{4}
@@ -83,11 +79,11 @@ services.AddSingleton<CaptchaViewModel>();
 ...
 ```
 
-### Step 5: Add an User Interface
+### Step 4: Add an User Interface
 This is an example "user registration" form. You can view the full XAML code on [GitHub](https://github.com/IcySnex/ReCaptcha.Desktop/blob/main/Samples/SimpleExampleMVVM/Views/CaptchaView.xaml)
 ![](/guide/how-to-use/userinterface.gif)
 
-### Step 6: Add logic to your ViewModel
+### Step 5: Add logic to your ViewModel
 The ReCaptcha.Desktop widget supports both MVVM and non-MVVM applications so you can also use `EventHandlers` instead of `Commands` and edit the control properties without `Bindings`.
 ```cs
 // The verification will return an official Google reCAPTCHA token which could be used to verify other Google services
@@ -169,7 +165,7 @@ void SendRegistration()
 }
 ```
 
-### Step 7: Add reCAPTCHA widget
+### Step 6: Add reCAPTCHA widget
 Befroe you can start using the ReCaptcha control in your user interface, you have to follow the steps on the [Widget Installation](/ReCaptcha.Desktop/guide/widget.html#installation) guide.
 
 After installing the necessary resources to your App you can just add the `<ui:ReCaptcha />` control to your visual tree. Make sure to bind all properties and commands set in the ViewModel.

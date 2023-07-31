@@ -1,5 +1,5 @@
-# ReCaptcha.Desktop.Configuration
-Contains the ReCaptcha client and reciever to handle verifications.
+# ReCaptcha.Desktop.WPF.Configuration
+Contains configurations for ReCaptcha client and window.
 
 **Type:** Namespace
 <br />
@@ -9,4 +9,5 @@ Contains the ReCaptcha client and reciever to handle verifications.
 | Namespace                                                    | Description                                                                      |
 |--------------------------------------------------------------|----------------------------------------------------------------------------------|
 | [Extentions](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/configuration/extentions.html)              | Extension methods to create configurations easier. |
+| [ReCaptchaConfig](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/configuration/recaptchaconfig.html)              | Configuration for a ReCaptcha client. |
 | [WindowConfig](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/configuration/windowconfig.html)              | Configuration for a ReCaptcha window. |

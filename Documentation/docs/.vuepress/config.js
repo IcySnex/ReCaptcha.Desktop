@@ -6,7 +6,7 @@ export default defineUserConfig({
   base: '/ReCaptcha.Desktop/',
   lang: 'en-US',
   title: 'ReCaptcha.Desktop',
-  description: 'Access Google reCAPTCHA on all major windows desktop frameworks (WPF, WinUI, UWP, Winforms, Console) ',
+  description: 'Access Google reCAPTCHA on all major windows desktop frameworks (WPF, WinUI, UWP, Winforms) ',
 
   head: [[ 'link', { rel: 'icon', href: '/ReCaptcha.Desktop/icon.svg' }]],
   theme: defaultTheme({

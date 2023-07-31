@@ -1,5 +1,5 @@
-# ReCaptcha.Desktop.Configuration
-Contains the ReCaptcha client and reciever to handle verifications.
+# ReCaptcha.Desktop.WinForms.Configuration
+Contains configurations for ReCaptcha client and window.
 
 **Type:** Namespace
 <br />
@@ -9,4 +9,5 @@ Contains the ReCaptcha client and reciever to handle verifications.
 | Namespace                                                    | Description                                                                      |
 |--------------------------------------------------------------|----------------------------------------------------------------------------------|
 | [Extentions](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/configuration/extentions.html)              | Extension methods to create configurations easier. |
+| [ReCaptchaConfig](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/configuration/recaptchaconfig.html)              | Configuration for a ReCaptcha client. |
 | [FormConfig](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/configuration/formconfig.html)              | Configuration for a ReCaptcha form. |

@@ -3,11 +3,11 @@ Client which handles all ReCaptcha verifications.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Client.WinUI](/ReCaptcha.Desktop/reference/recaptcha.desktop.winui/client/)
+**Namespace:** [ReCaptcha.Desktop.WinUI.Client](/ReCaptcha.Desktop/reference/recaptcha.desktop.winui/client/)
 <br />
 **Assembly:** [ReCaptcha.Desktop.WinUI](/ReCaptcha.Desktop/reference/recaptcha.desktop.winui/)
 <br />
-**Inherits from:** [IReCaptchaClient](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces/irecaptchaclient.html)
+**Inherits from:** [IReCaptchaClient](/ReCaptcha.Desktop/reference/recaptcha.desktop.winui/client/interfaces/irecaptchaclient.html)
 
 ```cs
 public class ReCaptchaBase : IReCaptchaBase
@@ -85,7 +85,7 @@ Fires when verifcation was cancelled.
 ## Methods
 
 ### VerifyAsync
-Starts and stops the HTTP server and opens a new window for the user to verify.
+Sets up the reCAPTCHA site and opens a new window for the user to verify.
 
 **Returns:** A Google reCAPTCHA token.
 ```cs

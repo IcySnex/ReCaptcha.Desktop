@@ -3,7 +3,7 @@ Configuration for a ReCaptcha window.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.winui/configuration/)
+**Namespace:** [ReCaptcha.Desktop.WinUI.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.winui/configuration/)
 <br />
 **Assembly:** [ReCaptcha.Desktop.WinUI](/ReCaptcha.Desktop/reference/recaptcha.desktop.winui/)
 
@@ -16,7 +16,7 @@ Creates a new WindowConfig.
 ```cs
 public WindowConfig(
     string title,
-    string icon = default!,
+    ImageSource icon = default!,
     Window? owner = null,
     bool showAsDialog = false,
     WindowStartupLocation startupLocation = WindowStartupLocation.CenterScreen,
@@ -26,7 +26,7 @@ public WindowConfig(
 | Parameter                                                | Description                           |
 |----------------------------------------------------------|---------------------------------------|
 | `string` title | The title of the window. |
-| *`string` icon*                  | The icon of the window.      |
+| *`ImageSource` icon*                  | The icon of the window.      |
 | *`Window?` owner*                  | The owner of this window. (Only used for StartupLocation.CenterOwner).      |
 | *`bool` showAsDialog*                  | Wether to block the UI thread when showing the window.      |
 | *`WindowStartupLocation` startupLocation*                  | The startup postion of the window.      |
@@ -47,7 +47,7 @@ The title of the window.
 ### Icon
 The icon of the window.
 
-**Type**: `string`
+**Type**: `ImageSource`
 <br />
 **Modifier:** none
 <br />

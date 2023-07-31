@@ -14,8 +14,8 @@ actions:
     type: secondary
 
 features:
-  - title: Across all frameworks
-    details: Use Google reCAPTCHA for all your projects with just a few lines of code, regardless of the desktop frameworks.
+  - title: Easy to use
+    details: Get started with just a few lines of code, regardless of the desktop frameworks.
   - title: Fast & Reliable
     details: ReCaptcha.Desktop uses WebView2 and the official reCAPTCHA widget to bring you the best performance and stability.
   - title: Customizable

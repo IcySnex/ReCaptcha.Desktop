@@ -1,5 +1,5 @@
 # ReCaptcha.Desktop.WinForms
-Contains the ReCaptcha client and reciever for WinForms to handle verifications, window specific configurations and ReCaptcha control with themes.
+Contains the ReCaptcha client, reciever & configuration for WinForms to handle verifications.
 
 **Type:** Namespace
 <br />
@@ -8,5 +8,6 @@ Contains the ReCaptcha client and reciever for WinForms to handle verifications,
 ## Namespaces
 | Namespace                                                       | Description                                                         |
 |-----------------------------------------------------------------|---------------------------------------------------------------------|
-| [Client](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/client/)               | Contains the ReCaptcha client and reciever to handle verifications. |
-| [Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/configuration/) | Also contains extensions to create this configs easier.             |
+| [Client](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/client/)               | Contains the interface and client to handle verifications. |
+| [Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/configuration/) | Contains configurations for ReCaptcha client and window.             |
+| [EventArgs](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/eventargs/)                       | Contains all necessary event aguemnts which may get fired during verification.             |

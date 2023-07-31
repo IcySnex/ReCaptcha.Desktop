@@ -3,7 +3,7 @@ Configuration for a ReCaptcha popup.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.uwp/configuration/)
+**Namespace:** [ReCaptcha.Desktop.UWP.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.uwp/configuration/)
 <br />
 **Assembly:** [ReCaptcha.Desktop.UWP](/ReCaptcha.Desktop/reference/recaptcha.desktop.uwp/)
 

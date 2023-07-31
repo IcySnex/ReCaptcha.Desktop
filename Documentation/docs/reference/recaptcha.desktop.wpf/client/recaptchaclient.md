@@ -3,11 +3,11 @@ Client which handles all ReCaptcha verifications.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Client.WPF](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/client/)
+**Namespace:** [ReCaptcha.Desktop.WPF.Client](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/client/)
 <br />
 **Assembly:** [ReCaptcha.Desktop.WPF](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/)
 <br />
-**Inherits from:** [IReCaptchaClient](/ReCaptcha.Desktop/reference/recaptcha.desktop/client/interfaces/irecaptchaclient.html)
+**Inherits from:** [IReCaptchaClient](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/client/interfaces/irecaptchaclient.html)
 
 ```cs
 public class ReCaptchaBase : IReCaptchaBase
@@ -85,7 +85,7 @@ Fires when verifcation was cancelled.
 ## Methods
 
 ### VerifyAsync
-Starts and stops the HTTP server and opens a new window for the user to verify.
+Sets up the reCAPTCHA site and opens a new window for the user to verify.
 
 **Returns:** A Google reCAPTCHA token.
 ```cs

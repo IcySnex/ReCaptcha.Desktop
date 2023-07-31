@@ -3,7 +3,7 @@ Extension methods to create configurations easier.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/configuration/)
+**Namespace:** [ReCaptcha.Desktop.WPF.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/configuration/)
 <br />
 **Assembly:** [ReCaptcha.Desktop.WPF](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/)
 
@@ -13,6 +13,27 @@ public static class Extentions
 
 ## Methods
 
+### AsReCaptchaConfig
+Creates a new ReCaptchaConfig.
+
+**Returns:** A new AsReCaptchaConfig.
+```cs
+public static ReCaptchaConfig AsReCaptchaConfig(
+    this string siteKey,
+    string hostName,
+    string language = "en",
+    string tokenRecievedHtml = "Token recieved: %token%",
+    string tokenRecievedHookedHtml = "Token recieved and sent to application.",
+    HttpServerConfig? httpConfiguration = null)
+```
+| Parameter                                                | Description                           |
+|----------------------------------------------------------|---------------------------------------|
+| `this string` siteKey | The SiteKey for the Google reCAPTCHA service. |
+| `string` hostName | The name of the virtual host on which the reCAPTCHA is hosted. Should represent your application. |
+| *`string` language*                  | The language for the Google reCAPTCHA service.      |
+| *`string` tokenRecievedHtml*                  | The HTML which gets displayed after the user verifed the reCAPTCHA. Use %token% to embed the token inside the message.      |
+| *`string` tokenRecievedHookedHtml*                  | The HTML which gets displayed after the user verifed the reCAPTCHA and its hooked to the application. Use %token% to embed the token inside the message.      |
+| *`HttpServerConfig?` httpConfiguration*                  | The configuration for the HttpServer.      |
 ### AsWindowConfig
 Creates a new AsWindowConfig.
 

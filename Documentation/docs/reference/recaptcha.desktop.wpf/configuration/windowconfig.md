@@ -3,7 +3,7 @@ Configuration for a ReCaptcha window.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/configuration/)
+**Namespace:** [ReCaptcha.Desktop.WPF.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/configuration/)
 <br />
 **Assembly:** [ReCaptcha.Desktop.WPF](/ReCaptcha.Desktop/reference/recaptcha.desktop.wpf/)
 

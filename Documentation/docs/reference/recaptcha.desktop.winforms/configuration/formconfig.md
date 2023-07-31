@@ -3,7 +3,7 @@ Configuration for a ReCaptcha form.
 
 **Type:** Class
 <br />
-**Namespace:** [ReCaptcha.Desktop.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/configuration/)
+**Namespace:** [ReCaptcha.Desktop.WinForms.Configuration](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/configuration/)
 <br />
 **Assembly:** [ReCaptcha.Desktop.WinForms](/ReCaptcha.Desktop/reference/recaptcha.desktop.winforms/)
 
