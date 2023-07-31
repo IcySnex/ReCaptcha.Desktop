@@ -3,6 +3,7 @@ packages/
 
 *.nupkg
 *.exe
+*.pfx
 *.suo
 *.user
 _ReSharper.*
@@ -46,6 +47,7 @@ Samples/ReCaptcha.Desktop.Sample.WinUI/obj/
 
 Samples/ReCaptcha.Desktop.Sample.UWP/bin/
 Samples/ReCaptcha.Desktop.Sample.UWP/obj/
+Samples/ReCaptcha.Desktop.Sample.UWP/AppPackages/
 
 Samples/ReCaptcha.Desktop.Sample.WinForms/bin/
 Samples/ReCaptcha.Desktop.Sample.WinForms/obj/

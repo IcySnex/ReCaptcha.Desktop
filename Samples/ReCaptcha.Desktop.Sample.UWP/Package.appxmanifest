@@ -8,15 +8,15 @@
 
   <Identity
     Name="6a62ff4f-c8d9-4a14-a95e-685f78f83dba"
-    Publisher="CN=User69"
-    Version="1.0.0.0" />
+    Publisher="CN=IcySnex"
+    Version="1.0.18.0" />
 
   <mp:PhoneIdentity PhoneProductId="6a62ff4f-c8d9-4a14-a95e-685f78f83dba" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ReCaptcha.Desktop.Sample.UWP</DisplayName>
-    <PublisherDisplayName>User69</PublisherDisplayName>
-    <Logo>Icon.png</Logo>
+    <PublisherDisplayName>IcySnex</PublisherDisplayName>
+    <Logo>Assets\PackageLogo.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -33,10 +33,9 @@
       EntryPoint="ReCaptcha.Desktop.Sample.UWP.App">
       <uap:VisualElements
         DisplayName="ReCaptcha.Desktop.Sample.UWP"
-        Square44x44Logo="Icon.png"
         Description="ReCaptcha.Desktop.Sample.UWP"
-        BackgroundColor="transparent" Square150x150Logo="Icon.png">
-        <uap:DefaultTile>
+        BackgroundColor="transparent"  Square44x44Logo="Assets\AppIcon.png" Square150x150Logo="Assets\MediumTile.png">
+        <uap:DefaultTile >
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo"/>
           </uap:ShowNameOnTiles>

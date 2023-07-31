@@ -1,0 +1,2 @@
+MainPackage=D:\Personal\Coding\ReCaptcha.Desktop\Samples\ReCaptcha.Desktop.Sample.UWP\bin\ARM\Release\ReCaptcha.Desktop.Sample.UWP_1.0.17.0_ARM.msix
+SymbolPackage=D:\Personal\Coding\ReCaptcha.Desktop\Samples\ReCaptcha.Desktop.Sample.UWP\obj\ARM\Release\Symbols\ReCaptcha.Desktop.Sample.UWP_1.0.17.0_ARM.appxsym

@@ -2,6 +2,6 @@
 	<Application>
 		<Assembly Name="*Application*" Dynamic="Required All" />
 
-
+		<Type Name="Microsoft.Extensions.Hosting.Internal.Host" Dynamic="Required All" />
 	</Application>
 </Directives>
