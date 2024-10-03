@@ -45,9 +45,9 @@ Contains the ReCaptcha client, reciever &amp; configuration for WinForms to hand
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-		<Version>2.0.2</Version>
-		<AssemblyVersion>2.0.2</AssemblyVersion>
-		<FileVersion>2.0.2</FileVersion>
+		<Version>2.1.0</Version>
+		<AssemblyVersion>2.1.0</AssemblyVersion>
+		<FileVersion>2.1.0</FileVersion>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 

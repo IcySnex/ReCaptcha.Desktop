@@ -7,10 +7,8 @@
 		<Nullable>enable</Nullable>
 		<UseWinUI>true</UseWinUI>
 		<EnableCoreMrtTooling Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">false</EnableCoreMrtTooling>
-		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 	<ItemGroup>
-	  <None Remove="LICENSE.txt" />
 	  <None Remove="UI\Assets\Roboto-Regular.ttf" />
 	  <None Remove="UI\Assets\Icon.png" />
 	  <None Remove="UI\CommonDictionary.xaml" />
@@ -23,7 +21,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="LICENSE.txt" />
 	  <Content Include="UI\Assets\Roboto-Regular.ttf">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
@@ -33,8 +30,56 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="..\Icon.png" Link="Icon.png">
+	    <PackagePath>\</PackagePath>
+	    <Pack>True</Pack>
+	  </None>
+	  <None Include="..\LICENSE" Link="LICENSE">
+	    <PackagePath>\</PackagePath>
+	    <Pack>True</Pack>
+	  </None>
+	  <None Include="..\README.md" Link="README.md">
+	    <PackagePath>\</PackagePath>
+	    <Pack>True</Pack>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
 		<Page Update="UI\CommonDictionary.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</Page>
 	</ItemGroup>
+
+
+	<PropertyGroup>
+		<Title>ReCaptcha.Desktop.WinUI</Title>
+		<PackageId>ReCaptcha.Desktop.WinUI</PackageId>
+		<Authors>IcySnex</Authors>
+		<Description>
+			Access Google reCAPTCHA with WinUI
+			- Easy to use: Get started with just a few lines of code, regardless of the desktop frameworks.
+			- Fast &amp; Reliable: ReCaptcha.Desktop uses WebView2 and the official reCAPTCHA widget to bring you the best performance and stability.
+			- Customizable: From themes to fundamental components! ReCaptcha.Desktop allows you to customize just about anything.
+
+			Contains the ReCaptcha client, reciever &amp; configuration for WinUI to handle verifications, window specific configurations and ReCaptcha control with themes.
+		</Description>
+		<PackageIcon>Icon.png</PackageIcon>
+
+		<Copyright>This is an open source library and not affiliated with Google in any way.</Copyright>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>ReCaptcha;Google;WinUI</PackageTags>
+
+		<PackageProjectUrl>https://icysnex.github.io/ReCaptcha.Desktop/</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/IcySnex/ReCaptcha.Desktop</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+		<Version>2.1.0</Version>
+		<AssemblyVersion>2.1.0</AssemblyVersion>
+		<FileVersion>2.1.0</FileVersion>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
 </Project>
