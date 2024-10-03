@@ -37,36 +37,36 @@ public class FormConfig
     /// <summary>
     /// The title of the form
     /// </summary>
-    public string Title { get; set; }
+    public string Title { get; }
 
     /// <summary>
     /// The icon of the form
     /// </summary>
-    public Icon Icon { get; set; }
+    public Icon Icon { get; }
 
     /// <summary>
     /// The parent of this form
     /// (Only used for StartupLocation.CenterParent)
     /// </summary>
-    public Form? Parent { get; set; }
+    public Form? Parent { get; }
 
     /// <summary>
     /// The start position of the form
     /// </summary>
-    public FormStartPosition StartPosition { get; set; }
+    public FormStartPosition StartPosition { get; }
 
     /// <summary>
     /// The left position of the form
     /// </summary>
-    public int Left { get; set; }
+    public int Left { get; }
 
     /// <summary>
     /// The top position of the form
     /// </summary>
-    public int Top { get; set; }
+    public int Top { get; }
 
     /// <summary>
     /// Wether to block the UI thread when showing the form
     /// </summary>
-    public bool ShowAsDialog { get; set; }
+    public bool ShowAsDialog { get; }
 }

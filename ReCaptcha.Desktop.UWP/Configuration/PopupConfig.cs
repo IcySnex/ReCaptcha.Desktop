@@ -48,48 +48,48 @@ public class PopupConfig
     /// The title of the dialog
     /// (Only used when HasTitleBar is true)
     /// </summary>
-    public string? Title { get; set; }
+    public string? Title { get; }
 
     /// <summary>
     /// The icon of the dialog
     /// (Only used when HasTitleBar is true)
     /// </summary>
-    public ImageSource? Icon { get; set; }
+    public ImageSource? Icon { get; }
 
     /// <summary>
     /// Wether the dialog has a TitleBar
     /// </summary>
-    public bool HasTitleBar { get; set; }
+    public bool HasTitleBar { get; }
 
     /// <summary>
     /// Wether the dialog is draggable within the main window
     /// (Only used when HasTitleBar is true)
     /// </summary>
-    public bool IsDragable { get; set; }
+    public bool IsDragable { get; }
 
     /// <summary>
     /// Wether the dialog dims the main windows background
     /// </summary>
-    public bool IsDimmed { get; set; }
+    public bool IsDimmed { get; }
 
     /// <summary>
     /// Wether the window has rounded corners
     /// (If null the value is true on Windows 11 and false on Windows 10)
     /// </summary>
-    public bool? HasRoundedCorners { get; set; }
+    public bool? HasRoundedCorners { get; }
 
     /// <summary>
     /// The startup location of the popup
     /// </summary>
-    public PopupStartupLocation StartupLocation { get; set; }
+    public PopupStartupLocation StartupLocation { get; }
 
     /// <summary>
     /// The left position of the popup
     /// </summary>
-    public int Left { get; set; }
+    public int Left { get; }
 
     /// <summary>
     /// The top position of the popup
     /// </summary>
-    public int Top { get; set; }
+    public int Top { get; }
 }

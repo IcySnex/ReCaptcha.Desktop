@@ -31,28 +31,28 @@ public class ReCaptchaConfig
     /// <summary>
     /// The SiteKey for the Google reCAPTCHA service
     /// </summary>
-    public string SiteKey { get; set; }
+    public string SiteKey { get; }
 
     /// <summary>
     /// The name of the virtual host on which the reCAPTCHA is hosted.
     /// Should represent your application
     /// </summary>
-    public string HostName { get; set; }
+    public string HostName { get; }
 
     /// <summary>
     /// The language for the Google reCAPTCHA service
     /// </summary>
-    public string Language { get; set; }
+    public string Language { get; }
 
     /// <summary>
     /// The HTML which gets displayed after the user verifed the reCAPTCHA
     /// Use %token% to embed the token inside the message
     /// </summary>
-    public string TokenRecievedHtml { get; set; }
+    public string TokenRecievedHtml { get; }
 
     /// <summary>
     /// The HTML which gets displayed after the user verifed the reCAPTCHA and its hooked to the application.
     /// Use %token% to embed the token inside the message
     /// </summary>
-    public string TokenRecievedHookedHtml { get; set; }
+    public string TokenRecievedHookedHtml { get; }
 }

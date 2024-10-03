@@ -39,36 +39,36 @@ public class WindowConfig
     /// <summary>
     /// The title of the window
     /// </summary>
-    public string Title { get; set; }
+    public string Title { get; }
     
     /// <summary>
     /// The icon of the window
     /// </summary>
-    public string Icon { get; set; }
+    public string Icon { get; }
 
     /// <summary>
     /// The owner of this window
     /// (Only used for StartupLocation.CenterOwner)
     /// </summary>
-    public Window? Owner { get; set; }
+    public Window? Owner { get; }
 
     /// <summary>
     /// The startup location of the window
     /// </summary>
-    public WindowStartupLocation StartupLocation { get; set; }
+    public WindowStartupLocation StartupLocation { get; }
 
     /// <summary>
     /// The left position of the window
     /// </summary>
-    public int Left { get; set; }
+    public int Left { get; }
 
     /// <summary>
     /// The top position of the window
     /// </summary>
-    public int Top { get; set; }
+    public int Top { get; }
 
     /// <summary>
     /// Wether to block the UI thread when showing the window
     /// </summary>
-    public bool ShowAsDialog { get; set; }
+    public bool ShowAsDialog { get; }
 }
