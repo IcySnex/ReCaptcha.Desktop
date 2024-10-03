@@ -68,17 +68,17 @@ public interface ITheme
     public Brush CheckBoxCheckmark { get; }
 
 
-    /// <summary>
-    /// Creates a new light theme
-    /// </summary>
-    /// <returns>A new light theme</returns>
-    public static ITheme Light() =>
-        new LightTheme();
+    ///// <summary>
+    ///// Creates a new light theme
+    ///// </summary>
+    ///// <returns>A new light theme</returns>
+    //public static ITheme Light() =>
+    //    new LightTheme();
 
-    /// <summary>
-    /// Creates a new dark theme
-    /// </summary>
-    /// <returns>A new dark theme</returns>
-    public static ITheme Dark() =>
-        new DarkTheme();
+    ///// <summary>
+    ///// Creates a new dark theme
+    ///// </summary>
+    ///// <returns>A new dark theme</returns>
+    //public static ITheme Dark() =>
+    //    new DarkTheme();
 }

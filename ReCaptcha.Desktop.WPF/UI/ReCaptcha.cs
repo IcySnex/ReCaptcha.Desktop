@@ -7,6 +7,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using ReCaptcha.Desktop.WPF.UI.Themes.Interfaces;
+using ReCaptcha.Desktop.WPF.UI.Themes;
 
 namespace ReCaptcha.Desktop.WPF.UI;
 
@@ -193,7 +194,7 @@ public class ReCaptcha : ContentControl
     /// The theme property used by the ReCaptcha control
     /// </summary>
     public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
-        "Theme", typeof(ITheme), typeof(ReCaptcha), new PropertyMetadata(ITheme.Light()));
+        "Theme", typeof(ITheme), typeof(ReCaptcha), new PropertyMetadata(new LightTheme()));
 
 
     /// <summary>
